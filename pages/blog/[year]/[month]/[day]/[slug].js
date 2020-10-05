@@ -1,23 +1,28 @@
-import { getAllPostsWithSlug, getPostData } from '../../../../../lib/post'
+import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from '../../../../../lib/post'
+import { render } from '../../../../../lib/markdown'
 
-export default function Post({ content }) {
-  return <div className='markdown-body container'>
-    { content }
+export default function Post({ content, title }) {
+  // !FIXME: don't render title twice
+
+  return <div className='container'>
+    <h1>{title}</h1>
+    <div className='markdown-body' dangerouslySetInnerHTML={{ __html: render(content) }} />
   </div>
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const { content } = await getPostData(params)
+  const { content, title } = await getPostData(params)
 
   return {
     props: {
-      content
+      content,
+      title
     }
   }
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllPostsWithSlug()
+  const paths = formatPostsAsParams(await getAllPostsWithSlug())
 
   return {
     paths,

@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import { getAllPostsWithSlug } from '../lib/post'
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div>
       <Head>
@@ -9,8 +10,26 @@ export default function Home() {
       </Head>
 
       <div className="container markdown-body">
-        <h1>Hello World</h1>
+        <ul>
+          { posts.map(post => {
+            const { date: { year, month, day }, slug } = post
+
+            return <li key={post.id}>
+              <a href={`/blog/${year}/${month}/${day}/${slug}`}>{post.title}</a>
+            </li>}
+            ) }
+        </ul>
       </div>
     </div>
   )
+}
+
+export async function getStaticProps({ params, preview = false, previewData }) {
+  const posts = await getAllPostsWithSlug()
+
+  return {
+    props: {
+      posts
+    }
+  }
 }
