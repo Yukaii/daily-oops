@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/45778d60a3644c5341ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/45778d60a3644c5341ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/99f69d8824a6803bcd41.css" as="style"/><link rel="stylesheet" href="/_next/static/css/99f69d8824a6803bcd41.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-cf623a42e88897408aaa.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.cb05d56be993eb6b088a.js" as="script"/><link rel="preload" href="/_next/static/chunks/c1c2800e.bca366718f045dbe8189.js" as="script"/><link rel="preload" href="/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.b1b4058541fcfd6d9ff9.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-edf1f6f8ae6df4418e8f.js" as="script"/><link rel="preload" href="/_next/static/chunks/9f96d65d.48645f27e8113cd1fcea.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-7bf8e956948268128949.js" as="script"/></head><body><div id="__next"><div class="container"><h1>用 inlets 加上 caddy 實現窮人版的 https ngrok</h1><div class="markdown-body"><h1>用 inlets 加上 caddy 實現窮人版的 https ngrok</h1>
+<h6>tags: <code>draft</code></h6>
+<blockquote>
+<p>我就客家</p>
+</blockquote>
+<h2>準備一臺跑 Inlets 的伺服器</h2>
+<p>看是用 GCP 還是 Linode，也可以用 inlets control 自動開機器。我這裡是用 gcp 的 always free tier</p>
+<h5><code>/etc/systemd/system/inlets.service</code></h5>
+<pre><code class="language-ini">[Unit]
+Description=Inlets Server Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+StartLimitInterval=0
+EnvironmentFile=/etc/default/inlets
+ExecStart=/usr/local/bin/inlets server --port=8000 --token=&quot;${AUTHTOKEN}&quot;
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p><code>echo 'export AUTHTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d&quot; &quot; -f1)' &gt; /etc/default/inlets</code></p>
+<p>用下載 Caddy 的 deb 用 dpkg 安裝</p>
+<p>檢查一下有沒有 caddy service，若沒有照這個安裝：</p>
+<p>https://caddyserver.com/docs/install</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl enable inlets
+sudo systemctl start inlets
+</code></pre>
+<h5><code>/etc/caddy/Caddyfile</code></h5>
+<blockquote>
+<p>Caddy v2 configuration</p>
+</blockquote>
+<pre><code class="language-caddy">box.yukai.dev
+reverse_proxy localhost:8000
+reverse_proxy /tunnel localhost:8000
+</code></pre>
+<pre><code>journalctl -u inlets --follow
+journalctl -u caddy --follow
+</code></pre>
+<pre><code class="language-bash">sudo vim /etc/sudoers
+
+# caddy ALL=(ALL:ALL) NOPASSWD:ALL
+</code></pre>
+<pre><code class="language-bash!">inlets client --remote=wss://box.yukai.dev --upstream=http://localhost:3000 -t $TOKEN
+</code></pre>
+<h3>補充：設定 Shell Function 讓使用起來方便</h3>
+<pre><code class="language-fish">function tunnel --description &quot;ngrok alternative&quot;
+  set --local options 'p/port=!_validate_int' 'h/help'
+
+  argparse $options -- $argv
+
+  if set --query _flag_help; or not set -q _flag_port
+    printf &quot;Usage: tunnel [OPTIONS]\n\n&quot;
+    printf &quot;Options:\n&quot;
+    printf &quot;  -p --port       Local port to bind\n&quot;
+    return 0
+  end
+
+  eval &quot;inlets client --remote=wss://box.yukai.dev --upstream=http://localhost:$_flag_port -t $INLETS_AUTH_TOKEN&quot;
+end
+</code></pre>
+<p>config.fish</p>
+<pre><code class="language-diff">+ source $__fish_config_dir/secrets.fish
+</code></pre>
+<pre><code class="language-fish">set -x INLETS_AUTH_TOKEN asdfasdfasdfasdfasf
+</code></pre>
+<h3>附錄</h3>
+<p>再使用 GCP instance f1.micro always free，整套下來只需要買 domain (或也不需要)，更客家 :+1:</p>
+<h3>Reference</h3>
+<ul>
+<li>https://ksana410.github.io/2019/08/27/expose-your-local-endpoint-to-internet-with-inlets/</li>
+<li>https://blog.alexellis.io/https-inlets-local-endpoints/</li>
+<li>Alternatives: https://news.ycombinator.com/item?id=20410552</li>
+<li>https://github.com/inlets/inletsctl 留言 provision 都要自動化，提一下 Pro 的自動 TLS</li>
+<li>https://ianwu.tw/press/programming/tool/inlets.html#%E5%AE%89%E8%A3%9D%E6%96%B9%E5%BC%8F</li>
+</ul>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"content":"# 用 inlets 加上 caddy 實現窮人版的 https ngrok\n\n###### tags: `draft`\n\n\u003e 我就客家\n\n\n## 準備一臺跑 Inlets 的伺服器\n\n看是用 GCP 還是 Linode，也可以用 inlets control 自動開機器。我這裡是用 gcp 的 always free tier\n\n\n##### `/etc/systemd/system/inlets.service`\n\n```ini\n[Unit]\nDescription=Inlets Server Service\nAfter=network.target\n\n[Service]\nType=simple\nRestart=always\nRestartSec=1\nStartLimitInterval=0\nEnvironmentFile=/etc/default/inlets\nExecStart=/usr/local/bin/inlets server --port=8000 --token=\"${AUTHTOKEN}\"\n\n[Install]\nWantedBy=multi-user.target\n```\n\n`echo 'export AUTHTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d\" \" -f1)' \u003e /etc/default/inlets`\n\n用下載 Caddy 的 deb 用 dpkg 安裝\n\n檢查一下有沒有 caddy service，若沒有照這個安裝：\n\nhttps://caddyserver.com/docs/install\n\n```bash\nsudo systemctl daemon-reload\nsudo systemctl enable inlets\nsudo systemctl start inlets\n```\n\n\n##### `/etc/caddy/Caddyfile`\n\n\u003e Caddy v2 configuration\n\n```caddy\nbox.yukai.dev\nreverse_proxy localhost:8000\nreverse_proxy /tunnel localhost:8000\n```\n\n```\njournalctl -u inlets --follow\njournalctl -u caddy --follow\n```\n\n```bash\nsudo vim /etc/sudoers\n\n# caddy ALL=(ALL:ALL) NOPASSWD:ALL\n```\n\n```bash!\ninlets client --remote=wss://box.yukai.dev --upstream=http://localhost:3000 -t $TOKEN\n```\n\n\n### 補充：設定 Shell Function 讓使用起來方便\n\n```fish\nfunction tunnel --description \"ngrok alternative\"\n  set --local options 'p/port=!_validate_int' 'h/help'\n\n  argparse $options -- $argv\n\n  if set --query _flag_help; or not set -q _flag_port\n    printf \"Usage: tunnel [OPTIONS]\\n\\n\"\n    printf \"Options:\\n\"\n    printf \"  -p --port       Local port to bind\\n\"\n    return 0\n  end\n\n  eval \"inlets client --remote=wss://box.yukai.dev --upstream=http://localhost:$_flag_port -t $INLETS_AUTH_TOKEN\"\nend\n```\n\nconfig.fish\n\n```diff\n+ source $__fish_config_dir/secrets.fish\n```\n\n```fish\nset -x INLETS_AUTH_TOKEN asdfasdfasdfasdfasf\n```\n\n### 附錄\n\n再使用 GCP instance f1.micro always free，整套下來只需要買 domain (或也不需要)，更客家 :+1:\n\n\n### Reference\n\n- https://ksana410.github.io/2019/08/27/expose-your-local-endpoint-to-internet-with-inlets/\n- https://blog.alexellis.io/https-inlets-local-endpoints/\n- Alternatives: https://news.ycombinator.com/item?id=20410552\n- https://github.com/inlets/inletsctl 留言 provision 都要自動化，提一下 Pro 的自動 TLS\n- https://ianwu.tw/press/programming/tool/inlets.html#%E5%AE%89%E8%A3%9D%E6%96%B9%E5%BC%8F\n\n","title":"用 inlets 加上 caddy 實現窮人版的 https ngrok"},"__N_SSG":true},"page":"/blog/[year]/[month]/[day]/[slug]","query":{"year":"2020","month":"07","day":"03","slug":"inlets-free-ngrok-https-with-caddy"},"buildId":"V0hGEdIuHaoPD4ZwE35Yc","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-a98cee78eb8282e29fb6.js"></script><script src="/_next/static/chunks/main-cf623a42e88897408aaa.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.cb05d56be993eb6b088a.js" async=""></script><script src="/_next/static/chunks/c1c2800e.bca366718f045dbe8189.js" async=""></script><script src="/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.b1b4058541fcfd6d9ff9.js" async=""></script><script src="/_next/static/chunks/pages/_app-edf1f6f8ae6df4418e8f.js" async=""></script><script src="/_next/static/chunks/9f96d65d.48645f27e8113cd1fcea.js" async=""></script><script src="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-7bf8e956948268128949.js" async=""></script><script src="/_next/static/V0hGEdIuHaoPD4ZwE35Yc/_buildManifest.js" async=""></script><script src="/_next/static/V0hGEdIuHaoPD4ZwE35Yc/_ssgManifest.js" async=""></script></body></html>

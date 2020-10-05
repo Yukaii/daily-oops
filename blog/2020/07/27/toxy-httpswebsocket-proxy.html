@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/45778d60a3644c5341ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/45778d60a3644c5341ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/99f69d8824a6803bcd41.css" as="style"/><link rel="stylesheet" href="/_next/static/css/99f69d8824a6803bcd41.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-cf623a42e88897408aaa.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.cb05d56be993eb6b088a.js" as="script"/><link rel="preload" href="/_next/static/chunks/c1c2800e.bca366718f045dbe8189.js" as="script"/><link rel="preload" href="/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.b1b4058541fcfd6d9ff9.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-edf1f6f8ae6df4418e8f.js" as="script"/><link rel="preload" href="/_next/static/chunks/9f96d65d.48645f27e8113cd1fcea.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-7bf8e956948268128949.js" as="script"/></head><body><div id="__next"><div class="container"><h1>用 toxy 架設可程式化模擬各種網路情況的 http/s、websocket proxy</h1><div class="markdown-body"><h1>用 toxy 架設可程式化模擬各種網路情況的 http/s、websocket proxy</h1>
+<h6>tags: <code>draft</code></h6>
+<pre><code class="language-bash">npm install toxy
+</code></pre>
+<pre><code class="language-javascript">const toxy = require('toxy')
+
+const proxy = toxy()
+const rules = toxy.rules
+const poisons = toxy.poisons
+
+proxy
+  .forward('http://localhost:3000')
+
+proxy
+  .get('/build/MathJax/*')
+  .poison(poisons.slowOpen({ delay: 3 * 1000 }))
+  .poison(poisons.timeout(5000))
+  .withRule(rules.probability(50))
+
+proxy
+  .get('/*/download')
+  .poison(poisons.slowOpen({ delay: 2 * 1000 }))
+
+proxy
+  .all('/*')
+
+proxy
+  .protocol('ws')
+  .forward('ws://localhost:3000')
+
+proxy.listen(4000)
+console.log('Proxy server started')
+</code></pre>
+<h2>Alternatives</h2>
+<ul>
+<li>clumsy</li>
+<li>network link conditioner</li>
+</ul>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"content":"# 用 toxy 架設可程式化模擬各種網路情況的 http/s、websocket proxy\n\n###### tags: `draft`\n\n```bash\nnpm install toxy\n```\n\n```javascript\nconst toxy = require('toxy')\n\nconst proxy = toxy()\nconst rules = toxy.rules\nconst poisons = toxy.poisons\n\nproxy\n  .forward('http://localhost:3000')\n\nproxy\n  .get('/build/MathJax/*')\n  .poison(poisons.slowOpen({ delay: 3 * 1000 }))\n  .poison(poisons.timeout(5000))\n  .withRule(rules.probability(50))\n\nproxy\n  .get('/*/download')\n  .poison(poisons.slowOpen({ delay: 2 * 1000 }))\n\nproxy\n  .all('/*')\n\nproxy\n  .protocol('ws')\n  .forward('ws://localhost:3000')\n\nproxy.listen(4000)\nconsole.log('Proxy server started')\n```\n\n## Alternatives\n\n- clumsy\n- network link conditioner\n","title":"用 toxy 架設可程式化模擬各種網路情況的 http/s、websocket proxy"},"__N_SSG":true},"page":"/blog/[year]/[month]/[day]/[slug]","query":{"year":"2020","month":"07","day":"27","slug":"toxy-httpswebsocket-proxy"},"buildId":"V0hGEdIuHaoPD4ZwE35Yc","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-a98cee78eb8282e29fb6.js"></script><script src="/_next/static/chunks/main-cf623a42e88897408aaa.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.cb05d56be993eb6b088a.js" async=""></script><script src="/_next/static/chunks/c1c2800e.bca366718f045dbe8189.js" async=""></script><script src="/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.b1b4058541fcfd6d9ff9.js" async=""></script><script src="/_next/static/chunks/pages/_app-edf1f6f8ae6df4418e8f.js" async=""></script><script src="/_next/static/chunks/9f96d65d.48645f27e8113cd1fcea.js" async=""></script><script src="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-7bf8e956948268128949.js" async=""></script><script src="/_next/static/V0hGEdIuHaoPD4ZwE35Yc/_buildManifest.js" async=""></script><script src="/_next/static/V0hGEdIuHaoPD4ZwE35Yc/_ssgManifest.js" async=""></script></body></html>
