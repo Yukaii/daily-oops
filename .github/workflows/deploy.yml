@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm ci
     - name: Run next build
       run: |
         npx next build && npx next export && touch out/.nojekyll
