@@ -22,10 +22,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - name: Yarn CLI
+      uses: CultureHQ/actions-yarn@v1.0.1
+    - run: yarn
     - name: Run next build
       run: |
-        npx next build && npx next export && touch out/.nojekyll
+        yarn next build && yarn next export && touch out/.nojekyll
     - name: GitHub Pages
       # You may pin to the exact commit or the version.
       # uses: crazy-max/ghaction-github-pages@361b74e73ccac505c7b5bcbff9b7d6cb0510dc4e
@@ -34,7 +36,7 @@ jobs:
         # Create incremental commit instead of doing push force
         keep_history: true
         # Build directory to deploy
-        build_dir: /out
+        build_dir: out
         # The committer name and email address
         # Allow Jekyll to build your site
         jekyll: false
