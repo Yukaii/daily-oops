@@ -26,6 +26,8 @@ jobs:
       uses: CultureHQ/actions-yarn@v1.0.1
     - run: yarn
     - name: Run next build
+      env:
+        HACKMD_PROFILE: ${{ secrets.HACKMD_PROFILE }}
       run: |
         yarn next build && yarn next export && touch out/.nojekyll
     - name: GitHub Pages
