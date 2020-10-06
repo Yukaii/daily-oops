@@ -22,7 +22,8 @@
     "react-dom": "16.13.1",
     "sass": "^1.26.11",
     "shorthash": "^0.0.2",
-    "slugify": "^1.4.5"
+    "slugify": "^1.4.5",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "fs-extra": "^9.0.1"
