@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@primer/css": "^15.2.0",
+    "@primer/octicons-react": "^11.0.0",
     "bluebird": "^3.7.2",
     "cheerio": "^1.0.0-rc.3",
     "dayjs": "^1.9.1",

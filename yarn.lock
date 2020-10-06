@@ -1063,6 +1063,11 @@
   dependencies:
     "@primer/octicons" "^9.1.1"
 
+"@primer/octicons-react@^11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-11.0.0.tgz#8171177a55d944c9e6b491c43f2957e86191cfa5"
+  integrity sha512-lHEoFVhTyyjxIDJJgVQBJGsEU4BywFbpHuBPDM8jpqYszGcYaV3zCLWNCUaQgLfzl3lRBUXc+pMrzT5qRXLftg==
+
 "@primer/octicons@^9.1.1":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-9.6.0.tgz#e195f2dd5f30b6918ad5d8ff224c12f778d02408"
