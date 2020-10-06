@@ -1,12 +1,11 @@
 import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from '../../../../../lib/post'
 import { render } from '../../../../../lib/markdown'
+import Header from '../../../../../components/Header'
 
 export default function Post({ content, title }) {
-  // !FIXME: don't render title twice
-
   return <div className='container'>
-    <h1>{title}</h1>
-    <div className='markdown-body' dangerouslySetInnerHTML={{ __html: render(content) }} />
+    <Header />
+    <div className='markdown-body mx-auto pt-4 pb-6' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
   </div>
 }
 
