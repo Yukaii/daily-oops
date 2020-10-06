@@ -1,14 +1,18 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { getAllPostsWithSlug } from '../lib/post'
 import Header from '../components/Header'
+
+dayjs.extend(localizedFormat)
 
 export default function Home({ posts }) {
 
   const postRows = posts.map(post => {
   const { date: { year, month, day }, slug } = post
-
+  const date = dayjs(`${year}-${month}-${day}`)
 
   return <div className="Box-row d-flex flex-items-center" key={post.id}>
     <div className="flex-auto">
@@ -19,7 +23,7 @@ export default function Home({ posts }) {
       </Link>
 
       <div className="text-small text-gray-light">
-        Description
+        { date.format('LL') }
       </div>
     </div>
   </div>
