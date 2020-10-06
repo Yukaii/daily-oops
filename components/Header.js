@@ -1,21 +1,26 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import { BookIcon, CodeIcon, InfoIcon } from '@primer/octicons-react'
+
 const Header = () => {
   const { pathname } = useRouter()
 
   const items = [
     {
       text: 'Blog',
-      href: '/'
+      href: '/',
+      icon: BookIcon
     },
     {
       text: 'Projects',
-      href: '/projects'
+      href: '/projects',
+      icon: CodeIcon
     },
     {
       text: 'About',
-      href: '/about'
+      href: '/about',
+      icon: InfoIcon
     }
   ]
 
@@ -29,7 +34,15 @@ const Header = () => {
       <div className="UnderlineNav-body" role="tablist">
         {
           items.map(item => (<Link href={item.href} key={item.href}>
-            <button className="UnderlineNav-item" role="tab" type="button" aria-selected={item.href === pathname}>{item.text}</button>
+            <button className="UnderlineNav-item" role="tab" type="button" aria-selected={item.href === pathname}>
+              {
+                item.icon ? <>
+                  <item.icon className='UnderlineNav-octicon' />
+                  <span>{item.text}</span>
+                </>
+                : item.text
+              }
+            </button>
           </Link>))
         }
       </div>
