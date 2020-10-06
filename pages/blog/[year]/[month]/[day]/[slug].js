@@ -11,7 +11,7 @@ export default function Post({ content, title }) {
     </Head>
 
     <Header />
-    <div className='markdown-body mx-auto pt-4 pb-6 px-1' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
+    <div className='markdown-body mx-auto pt-4 pb-6 px-3' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
   </div>
 }
 
