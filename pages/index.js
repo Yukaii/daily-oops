@@ -9,7 +9,6 @@ import Header from '../components/Header'
 dayjs.extend(localizedFormat)
 
 export default function Home({ posts }) {
-
   const postRows = posts.map(post => {
   const { date: { year, month, day }, slug } = post
   const date = dayjs(`${year}-${month}-${day}`)
