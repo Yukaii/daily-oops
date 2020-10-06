@@ -20,12 +20,12 @@ const Header = () => {
   ]
 
   return <>
-    <div className='d-block text-center bg-gray py-4'>
+    <div className='d-block text-center bg-gray py-4 px-1'>
       <h1>
         Daily Oops!
       </h1>
     </div>
-    <nav className="UnderlineNav flex-justify-center bg-gray">
+    <nav className="UnderlineNav flex-justify-center bg-gray px-1">
       <div className="UnderlineNav-body" role="tablist">
         {
           items.map(item => (<Link href={item.href} key={item.href}>

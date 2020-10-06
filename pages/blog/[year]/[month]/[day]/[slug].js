@@ -5,13 +5,13 @@ import { render } from '../../../../../lib/markdown'
 import Header from '../../../../../components/Header'
 
 export default function Post({ content, title }) {
-  return <div className='container'>
+  return <div>
     <Head>
       <title>{ title } | Daily Oops!</title>
     </Head>
 
     <Header />
-    <div className='markdown-body mx-auto pt-4 pb-6' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
+    <div className='markdown-body mx-auto pt-4 pb-6 px-1' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
   </div>
 }
 

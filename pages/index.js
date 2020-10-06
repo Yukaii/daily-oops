@@ -34,7 +34,7 @@ export default function Home({ posts }) {
 
       <Header />
 
-      <div className="d-block mx-auto markdown-body py-4" style={{ maxWidth: 700 }}>
+      <div className="d-block mx-auto markdown-body py-4 px-1" style={{ maxWidth: 700 }}>
         <div className="Box">
           {postRows}
         </div>
