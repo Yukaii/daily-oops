@@ -1,0 +1,244 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>第十六篇 - ELK 安裝筆記 | Daily Oops!</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/45778d60a3644c5341ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/45778d60a3644c5341ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/e4258c405de180b72652.css" as="style"/><link rel="stylesheet" href="/_next/static/css/e4258c405de180b72652.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-2fb41fa543a1e674f096.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.9ec1f7868b3e9d138cdd.js" as="script"/><link rel="preload" href="/_next/static/chunks/c1c2800e.19830e50427f38e47434.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.cb82874e43d6dd0d0fae.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-6f7019f6f5388083710c.js" as="script"/><link rel="preload" href="/_next/static/chunks/0e226fb0.72f93e4cb7021a00e808.js" as="script"/><link rel="preload" href="/_next/static/chunks/9f96d65d.6d2fb2f6923d41a412a8.js" as="script"/><link rel="preload" href="/_next/static/chunks/39029a4f0b0d40d46b79d3315f88da1b7749bd7f.5a43b4f7d2949ffa6f12.js" as="script"/><link rel="preload" href="/_next/static/chunks/35c7c14249a4e2e42e1e799eb48e20c6dd8c6b4d.2bb70c78b7c30f6c9e9d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-a24c9778d9cc066b0aed.js" as="script"/></head><body><div id="__next"><div><div class="d-block text-center bg-gray py-4 px-1"><div class="CircleBadge CircleBadge--large mx-auto mb-3" style="background-color:#F5CC7F"><img src="/logo-transparent.png" alt="Daily Oops" style="height:auto;max-height:75%;max-width:75%" class="user-select-none"/></div><h1>Daily Oops!</h1></div><nav class="UnderlineNav flex-justify-center bg-gray px-1 position-sticky top-0" style="z-index:1"><div class="UnderlineNav-body" role="tablist"><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg><span>Blog</span></button><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg><span>Projects</span></button><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg><span>About</span></button></div></nav><div class="markdown-body container pt-4 pb-6 px-3"><h1>第十六篇 - ELK 安裝筆記</h1>
+<p>這份其實是學校作業（逃）。雖然說是作業，但也還算有分享的價值，就在此整理出來。因為主力機 MBA 的儲存空間快炸了，所以我在 AWS 上開了一台 <code>t2.medium</code> 的機器來跑 Spark 以及 ELK Stack。在課堂中， ELK 是以下載 binary zip 包的方式設定，因為小弟習慣用 APT 套件管理程式，所以裝 ELK 相關設定方式也和 binary zip 不太一樣。</p>
+<p>安裝過程主要參考<a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04">數位海的這篇</a>，還有上課簡報。數位海這篇超詳細的，可以交互對照一下。</p>
+<h2>安裝 Java 8</h2>
+<pre><code class="language-bash">sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y install oracle-java8-installer
+</code></pre>
+<h2>安裝 ElasticSearch</h2>
+<pre><code class="language-bash">wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo &quot;deb http://packages.elastic.co/elasticsearch/2.x/debian stable main&quot; | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+sudo apt-get update
+sudo apt-get -y install elasticsearch
+</code></pre>
+<p>到這邊裝完，然後編輯 ElasticSearch 設定檔：</p>
+<pre><code class="language-bash">sudo vi /etc/elasticsearch/elasticsearch.yml
+</code></pre>
+<p>把 network.host 改成 <code>0.0.0.0</code>，讓外網也可以存取。</p>
+<p><img src="https://i.imgur.com/dlKuGDm.png" alt=""></p>
+<blockquote>
+<p>註：之後還會搭上 nginx 的 reverse proxy，並裝上前端 kibana，這裡為了安全性也可以不要改。</p>
+</blockquote>
+<p>重啟 elasticsearch 的服務：</p>
+<pre><code class="language-bash">sudo service elasticsearch restart
+</code></pre>
+<p>讓它開機時自動啟動（Optional）</p>
+<pre><code class="language-bash">sudo update-rc.d elasticsearch defaults 95 10
+</code></pre>
+<p>ElasticSearch binary 檔的位置在 <code>/usr/share/elasticserach/bin</code>。</p>
+<p>安裝 head plugin：</p>
+<pre><code class="language-bash">sudo /usr/share/elasticserach/bin/plugin install mobz/elasticsearch-head
+</code></pre>
+<p>把 iptable 打開</p>
+<pre><code class="language-bash">sudo iptables -A INPUT -m tcp -p tcp --dport 9200 -j ACCEPT
+sudo iptables -A INPUT -m udp -p udp --dport 9200 -j ACCEPT
+</code></pre>
+<p>記得在 EC2 打開 9200 port，這時候開啟瀏覽器，進到</p>
+<pre><code class="language-bash">http://YOUR_IP_ADDRESS:9200/_plugin/head
+</code></pre>
+<p>就有一個簡單的圖形界面啦。</p>
+<h2>安裝 Kibana</h2>
+<pre><code class="language-bash">echo &quot;deb http://packages.elastic.co/kibana/4.4/debian stable main&quot; | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
+sudo apt-get update
+sudo apt-get -y install kibana
+</code></pre>
+<p>到這裡裝完，然後編輯 kibana 的設定檔：</p>
+<pre><code class="language-bash">sudo vi /opt/kibana/config/kibana.yml
+</code></pre>
+<p>把 server.host 從 <code>0.0.0.0</code> 改成 <code>localhost</code>，因為稍後會裝 nginx 來做我們的反向代理：</p>
+<pre><code class="language-bash">server.host: &quot;localhost&quot;
+</code></pre>
+<p>加入開機啟動，然後啟動服務：</p>
+<pre><code class="language-bash">sudo update-rc.d kibana defaults 96 9
+sudo service kibana start
+</code></pre>
+<p>安裝 nginx 啥的</p>
+<pre><code class="language-bash">sudo apt-get install nginx apache2-utils
+</code></pre>
+<p>建立一個 kibanaadmin 的認證使用者（名稱可換）</p>
+<pre><code class="language-bash">sudo htpasswd -c /etc/nginx/htpasswd.users kibanaadmin
+</code></pre>
+<p>編輯 nginx 設定檔</p>
+<pre><code class="language-bash">sudo vi /etc/nginx/sites-available/default
+</code></pre>
+<p>換成下面這個</p>
+<pre><code class="language-nginx">server {
+    listen 80;
+
+    server_name example.com;
+
+    auth_basic &quot;Restricted Access&quot;;
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+</code></pre>
+<p><code>example.com</code> 的地方，看你要換成 Instance 的 IP 或是 domain name 都可以。EC2 可以換成 public dns name。</p>
+<p>重啟 nginx</p>
+<pre><code class="language-bash">sudo service nginx restart
+</code></pre>
+<h2>安裝 Logstash</h2>
+<pre><code class="language-bash">echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
+sudo apt-get update
+sudo apt-get install logstash
+</code></pre>
+<p>中間數位海插了一段設定 SSL 的，因為我沒有要用就跳過這部分。</p>
+<p>Logstash 安裝完的 binary 會在 <code>/opt/logstash/bin</code> 。</p>
+<h2>設定 Logstash</h2>
+<pre><code class="language-bash">sudo vim /etc/logstash/conf.d/02-twitter.conf
+</code></pre>
+<p>填入以下內容</p>
+<pre><code class="language-logstash">input {
+    twitter {
+        consumer_key =&gt; &quot;&quot;
+        consumer_secret =&gt; &quot;&quot;
+        oauth_token =&gt; &quot;&quot;
+        oauth_token_secret =&gt; &quot;&quot;
+        keywords =&gt; [&quot;beauty&quot;]
+        languages =&gt; [&quot;en&quot;]
+        full_tweet =&gt; true
+    }
+
+}
+output {
+    elasticsearch {
+        index =&gt; &quot;twitter&quot;
+    }
+}
+</code></pre>
+<p>oauth 的 key 就填自己申請的，keywords 填自己要的，然後存檔離開。</p>
+<p>接下來跑</p>
+<pre><code class="language-bash">sudo service logstash configtest
+</code></pre>
+<p>看一下設定檔有沒有寫錯， 然後重啟 logstash 服務，並加入開機自啟動(Optional)</p>
+<pre><code class="language-bash">sudo service logstash restart
+sudo update-rc.d logstash defaults 96 9
+</code></pre>
+<p>原則上這時候登入 kibana 或是在 head 儀表板就可以看到記錄數一直增多了 :p</p>
+<h2>匯出資料</h2>
+<p>我用了 <a href="https://github.com/taskrabbit/elasticsearch-dump">elasticsearch-dump</a> 套件，記得先裝好 node v1.0 以上版本。</p>
+<pre><code class="language-bash">npm install elasticdump -g # 安裝
+elasticdump --input=http://localhost:9200/twitter --output=twitter.json # 一鍵匯出
+</code></pre>
+<h2>上傳</h2>
+<p>之前 Github 推了 LFS(Large File Storage)，json 雖然純文字檔很好壓縮，但無論怎麽壓還是有點難推進到 100 MB ，也就是 Github 支援的最大容量，以內。勢必就要來用下 git-lfs 了。</p>
+<p><img src="https://i.imgur.com/ypwyyN4.png" alt=""></p>
+<h2>匯出的資料格式</h2>
+<p>搜尋的關鍵字是 beauty，你知道 twitter 上最多這種圖帳了，多訂閱幾個總是使人心情愉悅 #)</p>
+<pre><code class="language-json">{
+  &quot;_index&quot;: &quot;twitter&quot;, // 灌入到 elasticsaerch 裡的資料表
+  &quot;_type&quot;: &quot;logs&quot;,
+  &quot;_id&quot;: &quot;AVPCY9McFvHLlvNymVV9&quot;, // elasticearch 產生的 id
+  &quot;_score&quot;: 1,
+  &quot;_source&quot;: {
+    &quot;created_at&quot;: &quot;Tue Mar 29 12:40:34 +0000 2016&quot;, // 建立於
+    &quot;id&quot;: 714794377491587100, // twitter 的 tweets id
+    &quot;id_str&quot;: &quot;714794377491587072&quot;,
+    &quot;text&quot;: &quot;Regina King On The 'Fascinating' Beauty Of Black Women's Hair https://t.co/0838uXkQ1e @HannahOliver152&quot;,
+    &quot;source&quot;: &quot;&lt;a href=\&quot;http://dlvr.it\&quot; rel=\&quot;nofollow\&quot;&gt;dlvr.it&lt;/a&gt;&quot;,
+    &quot;truncated&quot;: false,
+    &quot;in_reply_to_status_id&quot;: null,
+    &quot;in_reply_to_status_id_str&quot;: null,
+    &quot;in_reply_to_user_id&quot;: null,
+    &quot;in_reply_to_user_id_str&quot;: null,
+    &quot;in_reply_to_screen_name&quot;: null,
+    &quot;user&quot;: { // twitter user 的資料
+      &quot;id&quot;: 2558258431, // user id
+      &quot;id_str&quot;: &quot;2558258431&quot;,
+      &quot;name&quot;: &quot;Hannah Oliver&quot;, //名字
+      &quot;screen_name&quot;: &quot;HannahOliver152&quot;, //帳號名
+      &quot;location&quot;: null,
+      &quot;url&quot;: &quot;http://www.wordpress.com&quot;,
+      &quot;description&quot;: &quot;Our life always expresses the result of our dominant thoughts.&quot;,
+      &quot;protected&quot;: false,
+      &quot;verified&quot;: false,
+      &quot;followers_count&quot;: 31,
+      &quot;friends_count&quot;: 11,
+      &quot;listed_count&quot;: 6,
+      &quot;favourites_count&quot;: 0,
+      &quot;statuses_count&quot;: 17481,
+      &quot;created_at&quot;: &quot;Tue Jun 10 05:18:02 +0000 2014&quot;,
+      &quot;utc_offset&quot;: null,
+      &quot;time_zone&quot;: null,
+      &quot;geo_enabled&quot;: false,
+      &quot;lang&quot;: &quot;en&quot;,
+      &quot;contributors_enabled&quot;: false,
+      &quot;is_translator&quot;: false,
+      &quot;profile_background_color&quot;: &quot;C0DEED&quot;,
+      &quot;profile_background_image_url&quot;: &quot;http://abs.twimg.com/images/themes/theme1/bg.png&quot;,
+      &quot;profile_background_image_url_https&quot;: &quot;https://abs.twimg.com/images/themes/theme1/bg.png&quot;,
+      &quot;profile_background_tile&quot;: false,
+      &quot;profile_link_color&quot;: &quot;0084B4&quot;,
+      &quot;profile_sidebar_border_color&quot;: &quot;C0DEED&quot;,
+      &quot;profile_sidebar_fill_color&quot;: &quot;DDEEF6&quot;,
+      &quot;profile_text_color&quot;: &quot;333333&quot;,
+      &quot;profile_use_background_image&quot;: true,
+      &quot;profile_image_url&quot;: &quot;http://pbs.twimg.com/profile_images/476232749041201152/yWKGqAkC_normal.jpeg&quot;,
+      &quot;profile_image_url_https&quot;: &quot;https://pbs.twimg.com/profile_images/476232749041201152/yWKGqAkC_normal.jpeg&quot;,
+      &quot;profile_banner_url&quot;: &quot;https://pbs.twimg.com/profile_banners/2558258431/1402377722&quot;,
+      &quot;default_profile&quot;: true,
+      &quot;default_profile_image&quot;: false,
+      &quot;following&quot;: null,
+      &quot;follow_request_sent&quot;: null,
+      &quot;notifications&quot;: null
+    },
+    &quot;geo&quot;: null,
+    &quot;coordinates&quot;: null,
+    &quot;place&quot;: null,
+    &quot;contributors&quot;: null,
+    &quot;is_quote_status&quot;: false,
+    &quot;retweet_count&quot;: 0,
+    &quot;favorite_count&quot;: 0,
+    &quot;entities&quot;: {
+      &quot;hashtags&quot;: [],
+      &quot;urls&quot;: [
+        {
+          &quot;url&quot;: &quot;https://t.co/0838uXkQ1e&quot;,
+          &quot;expanded_url&quot;: &quot;http://dlvr.it/Kw7QcG&quot;,
+          &quot;display_url&quot;: &quot;dlvr.it/Kw7QcG&quot;,
+          &quot;indices&quot;: [
+            62,
+            85
+          ]
+        }
+      ],
+      &quot;user_mentions&quot;: [
+        {
+          &quot;screen_name&quot;: &quot;HannahOliver152&quot;,
+          &quot;name&quot;: &quot;Hannah Oliver&quot;,
+          &quot;id&quot;: 2558258431,
+          &quot;id_str&quot;: &quot;2558258431&quot;,
+          &quot;indices&quot;: [
+            86,
+            102
+          ]
+        }
+      ],
+      &quot;symbols&quot;: []
+    },
+    &quot;favorited&quot;: false,
+    &quot;retweeted&quot;: false,
+    &quot;possibly_sensitive&quot;: false,
+    &quot;filter_level&quot;: &quot;low&quot;,
+    &quot;lang&quot;: &quot;en&quot;,
+    &quot;timestamp_ms&quot;: &quot;1459255234488&quot;,
+    &quot;@version&quot;: &quot;1&quot;,
+    &quot;@timestamp&quot;: &quot;2016-03-29T12:40:34.000Z&quot;
+  },
+  &quot;fields&quot;: {
+    &quot;@timestamp&quot;: [
+      1459255234000
+    ]
+  }
+}
+</code></pre>
+<p>（完）</p>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"content":"\n# 第十六篇 - ELK 安裝筆記\n\n這份其實是學校作業（逃）。雖然說是作業，但也還算有分享的價值，就在此整理出來。因為主力機 MBA 的儲存空間快炸了，所以我在 AWS 上開了一台 `t2.medium` 的機器來跑 Spark 以及 ELK Stack。在課堂中， ELK 是以下載 binary zip 包的方式設定，因為小弟習慣用 APT 套件管理程式，所以裝 ELK 相關設定方式也和 binary zip 不太一樣。\n\n安裝過程主要參考[數位海的這篇][1]，還有上課簡報。數位海這篇超詳細的，可以交互對照一下。\n\n[1]: https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04\n\n## 安裝 Java 8\n\n```bash\nsudo add-apt-repository -y ppa:webupd8team/java\nsudo apt-get update\nsudo apt-get -y install oracle-java8-installer\n```\n\n## 安裝 ElasticSearch\n\n```bash\nwget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -\necho \"deb http://packages.elastic.co/elasticsearch/2.x/debian stable main\" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list\nsudo apt-get update\nsudo apt-get -y install elasticsearch\n```\n\n到這邊裝完，然後編輯 ElasticSearch 設定檔：\n\n```bash\nsudo vi /etc/elasticsearch/elasticsearch.yml\n```\n\n把 network.host 改成 `0.0.0.0`，讓外網也可以存取。\n\n![](https://i.imgur.com/dlKuGDm.png)\n\n\u003e 註：之後還會搭上 nginx 的 reverse proxy，並裝上前端 kibana，這裡為了安全性也可以不要改。\n\n重啟 elasticsearch 的服務：\n\n```bash\nsudo service elasticsearch restart\n```\n\n讓它開機時自動啟動（Optional）\n\n```bash\nsudo update-rc.d elasticsearch defaults 95 10\n```\n\nElasticSearch binary 檔的位置在 `/usr/share/elasticserach/bin`。\n\n安裝 head plugin：\n\n```bash\nsudo /usr/share/elasticserach/bin/plugin install mobz/elasticsearch-head\n```\n\n把 iptable 打開\n\n```bash\nsudo iptables -A INPUT -m tcp -p tcp --dport 9200 -j ACCEPT\nsudo iptables -A INPUT -m udp -p udp --dport 9200 -j ACCEPT\n```\n\n記得在 EC2 打開 9200 port，這時候開啟瀏覽器，進到\n\n```bash\nhttp://YOUR_IP_ADDRESS:9200/_plugin/head\n```\n\n就有一個簡單的圖形界面啦。\n\n## 安裝 Kibana\n\n```bash\necho \"deb http://packages.elastic.co/kibana/4.4/debian stable main\" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list\nsudo apt-get update\nsudo apt-get -y install kibana\n```\n\n到這裡裝完，然後編輯 kibana 的設定檔：\n\n```bash\nsudo vi /opt/kibana/config/kibana.yml\n```\n\n把 server.host 從 `0.0.0.0` 改成 `localhost`，因為稍後會裝 nginx 來做我們的反向代理：\n\n```bash\nserver.host: \"localhost\"\n```\n\n加入開機啟動，然後啟動服務：\n\n```bash\nsudo update-rc.d kibana defaults 96 9\nsudo service kibana start\n```\n\n安裝 nginx 啥的\n\n```bash\nsudo apt-get install nginx apache2-utils\n```\n\n建立一個 kibanaadmin 的認證使用者（名稱可換）\n\n```bash\nsudo htpasswd -c /etc/nginx/htpasswd.users kibanaadmin\n```\n\n編輯 nginx 設定檔\n\n```bash\nsudo vi /etc/nginx/sites-available/default\n```\n\n換成下面這個\n\n```nginx\nserver {\n    listen 80;\n\n    server_name example.com;\n\n    auth_basic \"Restricted Access\";\n    auth_basic_user_file /etc/nginx/htpasswd.users;\n\n    location / {\n        proxy_pass http://localhost:5601;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n        proxy_cache_bypass $http_upgrade;\n    }\n}\n```\n\n`example.com` 的地方，看你要換成 Instance 的 IP 或是 domain name 都可以。EC2 可以換成 public dns name。\n\n重啟 nginx\n\n```bash\nsudo service nginx restart\n```\n\n## 安裝 Logstash\n\n```bash\necho 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list\nsudo apt-get update\nsudo apt-get install logstash\n```\n\n中間數位海插了一段設定 SSL 的，因為我沒有要用就跳過這部分。\n\nLogstash 安裝完的 binary 會在 `/opt/logstash/bin` 。\n\n## 設定 Logstash\n\n```bash\nsudo vim /etc/logstash/conf.d/02-twitter.conf\n```\n\n填入以下內容\n\n```logstash\ninput {\n    twitter {\n        consumer_key =\u003e \"\"\n        consumer_secret =\u003e \"\"\n        oauth_token =\u003e \"\"\n        oauth_token_secret =\u003e \"\"\n        keywords =\u003e [\"beauty\"]\n        languages =\u003e [\"en\"]\n        full_tweet =\u003e true\n    }\n\n}\noutput {\n    elasticsearch {\n        index =\u003e \"twitter\"\n    }\n}\n```\n\noauth 的 key 就填自己申請的，keywords 填自己要的，然後存檔離開。\n\n接下來跑\n\n```bash\nsudo service logstash configtest\n```\n\n看一下設定檔有沒有寫錯， 然後重啟 logstash 服務，並加入開機自啟動(Optional)\n\n```bash\nsudo service logstash restart\nsudo update-rc.d logstash defaults 96 9\n```\n\n原則上這時候登入 kibana 或是在 head 儀表板就可以看到記錄數一直增多了 :p\n\n## 匯出資料\n\n我用了 [elasticsearch-dump](https://github.com/taskrabbit/elasticsearch-dump) 套件，記得先裝好 node v1.0 以上版本。\n\n```bash\nnpm install elasticdump -g # 安裝\nelasticdump --input=http://localhost:9200/twitter --output=twitter.json # 一鍵匯出\n```\n\n## 上傳\n\n之前 Github 推了 LFS(Large File Storage)，json 雖然純文字檔很好壓縮，但無論怎麽壓還是有點難推進到 100 MB ，也就是 Github 支援的最大容量，以內。勢必就要來用下 git-lfs 了。\n\n![](https://i.imgur.com/ypwyyN4.png)\n\n## 匯出的資料格式\n\n搜尋的關鍵字是 beauty，你知道 twitter 上最多這種圖帳了，多訂閱幾個總是使人心情愉悅 #)\n\n```json\n{\n  \"_index\": \"twitter\", // 灌入到 elasticsaerch 裡的資料表\n  \"_type\": \"logs\",\n  \"_id\": \"AVPCY9McFvHLlvNymVV9\", // elasticearch 產生的 id\n  \"_score\": 1,\n  \"_source\": {\n    \"created_at\": \"Tue Mar 29 12:40:34 +0000 2016\", // 建立於\n    \"id\": 714794377491587100, // twitter 的 tweets id\n    \"id_str\": \"714794377491587072\",\n    \"text\": \"Regina King On The 'Fascinating' Beauty Of Black Women's Hair https://t.co/0838uXkQ1e @HannahOliver152\",\n    \"source\": \"\u003ca href=\\\"http://dlvr.it\\\" rel=\\\"nofollow\\\"\u003edlvr.it\u003c/a\u003e\",\n    \"truncated\": false,\n    \"in_reply_to_status_id\": null,\n    \"in_reply_to_status_id_str\": null,\n    \"in_reply_to_user_id\": null,\n    \"in_reply_to_user_id_str\": null,\n    \"in_reply_to_screen_name\": null,\n    \"user\": { // twitter user 的資料\n      \"id\": 2558258431, // user id\n      \"id_str\": \"2558258431\",\n      \"name\": \"Hannah Oliver\", //名字\n      \"screen_name\": \"HannahOliver152\", //帳號名\n      \"location\": null,\n      \"url\": \"http://www.wordpress.com\",\n      \"description\": \"Our life always expresses the result of our dominant thoughts.\",\n      \"protected\": false,\n      \"verified\": false,\n      \"followers_count\": 31,\n      \"friends_count\": 11,\n      \"listed_count\": 6,\n      \"favourites_count\": 0,\n      \"statuses_count\": 17481,\n      \"created_at\": \"Tue Jun 10 05:18:02 +0000 2014\",\n      \"utc_offset\": null,\n      \"time_zone\": null,\n      \"geo_enabled\": false,\n      \"lang\": \"en\",\n      \"contributors_enabled\": false,\n      \"is_translator\": false,\n      \"profile_background_color\": \"C0DEED\",\n      \"profile_background_image_url\": \"http://abs.twimg.com/images/themes/theme1/bg.png\",\n      \"profile_background_image_url_https\": \"https://abs.twimg.com/images/themes/theme1/bg.png\",\n      \"profile_background_tile\": false,\n      \"profile_link_color\": \"0084B4\",\n      \"profile_sidebar_border_color\": \"C0DEED\",\n      \"profile_sidebar_fill_color\": \"DDEEF6\",\n      \"profile_text_color\": \"333333\",\n      \"profile_use_background_image\": true,\n      \"profile_image_url\": \"http://pbs.twimg.com/profile_images/476232749041201152/yWKGqAkC_normal.jpeg\",\n      \"profile_image_url_https\": \"https://pbs.twimg.com/profile_images/476232749041201152/yWKGqAkC_normal.jpeg\",\n      \"profile_banner_url\": \"https://pbs.twimg.com/profile_banners/2558258431/1402377722\",\n      \"default_profile\": true,\n      \"default_profile_image\": false,\n      \"following\": null,\n      \"follow_request_sent\": null,\n      \"notifications\": null\n    },\n    \"geo\": null,\n    \"coordinates\": null,\n    \"place\": null,\n    \"contributors\": null,\n    \"is_quote_status\": false,\n    \"retweet_count\": 0,\n    \"favorite_count\": 0,\n    \"entities\": {\n      \"hashtags\": [],\n      \"urls\": [\n        {\n          \"url\": \"https://t.co/0838uXkQ1e\",\n          \"expanded_url\": \"http://dlvr.it/Kw7QcG\",\n          \"display_url\": \"dlvr.it/Kw7QcG\",\n          \"indices\": [\n            62,\n            85\n          ]\n        }\n      ],\n      \"user_mentions\": [\n        {\n          \"screen_name\": \"HannahOliver152\",\n          \"name\": \"Hannah Oliver\",\n          \"id\": 2558258431,\n          \"id_str\": \"2558258431\",\n          \"indices\": [\n            86,\n            102\n          ]\n        }\n      ],\n      \"symbols\": []\n    },\n    \"favorited\": false,\n    \"retweeted\": false,\n    \"possibly_sensitive\": false,\n    \"filter_level\": \"low\",\n    \"lang\": \"en\",\n    \"timestamp_ms\": \"1459255234488\",\n    \"@version\": \"1\",\n    \"@timestamp\": \"2016-03-29T12:40:34.000Z\"\n  },\n  \"fields\": {\n    \"@timestamp\": [\n      1459255234000\n    ]\n  }\n}\n```\n\n（完）\n\n[1]: https://github.com/Yukaii/CS5124701\n[2]: https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04\n","title":"第十六篇 - ELK 安裝筆記"},"__N_SSG":true},"page":"/blog/[year]/[month]/[day]/[slug]","query":{"year":"2016","month":"04","day":"07","slug":"elk-installation-notes"},"buildId":"tutoquxD9YkhAogUcGXXA","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-e5012cf49fbb0a2642db.js"></script><script src="/_next/static/chunks/main-2fb41fa543a1e674f096.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.9ec1f7868b3e9d138cdd.js" async=""></script><script src="/_next/static/chunks/c1c2800e.19830e50427f38e47434.js" async=""></script><script src="/_next/static/chunks/commons.cb82874e43d6dd0d0fae.js" async=""></script><script src="/_next/static/chunks/pages/_app-6f7019f6f5388083710c.js" async=""></script><script src="/_next/static/chunks/0e226fb0.72f93e4cb7021a00e808.js" async=""></script><script src="/_next/static/chunks/9f96d65d.6d2fb2f6923d41a412a8.js" async=""></script><script src="/_next/static/chunks/39029a4f0b0d40d46b79d3315f88da1b7749bd7f.5a43b4f7d2949ffa6f12.js" async=""></script><script src="/_next/static/chunks/35c7c14249a4e2e42e1e799eb48e20c6dd8c6b4d.2bb70c78b7c30f6c9e9d.js" async=""></script><script src="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-a24c9778d9cc066b0aed.js" async=""></script><script src="/_next/static/tutoquxD9YkhAogUcGXXA/_buildManifest.js" async=""></script><script src="/_next/static/tutoquxD9YkhAogUcGXXA/_ssgManifest.js" async=""></script></body></html>
