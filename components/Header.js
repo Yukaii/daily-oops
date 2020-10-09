@@ -26,8 +26,8 @@ const Header = () => {
 
   return <>
     <div className='d-block text-center bg-gray py-4 px-1'>
-      <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ backgroundColor: '#F5CC7F' }}>
-        <img src='/logo-transparent.png' alt='Daily Oops' style={{ height: 'auto', maxHeight: '75%', maxWidth: '75%' }} className='user-select-none' />
+      <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
+        <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxHeight: '80%' }} className='user-select-none' />
       </div>
       <h1>
         Daily Oops!
