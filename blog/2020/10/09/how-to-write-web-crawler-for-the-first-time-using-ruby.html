@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>第十一篇 - 第一次自幹爬蟲就上手 - 使用 Ruby | Daily Oops!</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/45778d60a3644c5341ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/45778d60a3644c5341ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/e4258c405de180b72652.css" as="style"/><link rel="stylesheet" href="/_next/static/css/e4258c405de180b72652.css" data-n-g=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/_next/static/chunks/main-2fb41fa543a1e674f096.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.9ec1f7868b3e9d138cdd.js" as="script"/><link rel="preload" href="/_next/static/chunks/c1c2800e.19830e50427f38e47434.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.cb82874e43d6dd0d0fae.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-6f7019f6f5388083710c.js" as="script"/><link rel="preload" href="/_next/static/chunks/0e226fb0.72f93e4cb7021a00e808.js" as="script"/><link rel="preload" href="/_next/static/chunks/9f96d65d.6d2fb2f6923d41a412a8.js" as="script"/><link rel="preload" href="/_next/static/chunks/39029a4f0b0d40d46b79d3315f88da1b7749bd7f.5a43b4f7d2949ffa6f12.js" as="script"/><link rel="preload" href="/_next/static/chunks/35c7c14249a4e2e42e1e799eb48e20c6dd8c6b4d.2bb70c78b7c30f6c9e9d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-a24c9778d9cc066b0aed.js" as="script"/></head><body><div id="__next"><div><div class="d-block text-center bg-gray py-4 px-1"><div class="CircleBadge CircleBadge--large mx-auto mb-3" style="background-color:#F5CC7F"><img src="/logo-transparent.png" alt="Daily Oops" style="height:auto;max-height:75%;max-width:75%" class="user-select-none"/></div><h1>Daily Oops!</h1></div><nav class="UnderlineNav flex-justify-center bg-gray px-1 position-sticky top-0" style="z-index:1"><div class="UnderlineNav-body" role="tablist"><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg><span>Blog</span></button><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg><span>Projects</span></button><button class="UnderlineNav-item" role="tab" type="button" aria-selected="false"><svg aria-hidden="true" role="img" class="UnderlineNav-octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg><span>About</span></button></div></nav><div class="markdown-body container pt-4 pb-6 px-3"><h2>目標</h2>
+<p>我們將會解析中正大學選課系統的選課資料，將它轉換成我們想要的格式 (JSON)，把它存起來。</p>
+<h2>預先知識</h2>
+<ul>
+<li>已經裝好 ruby 環境了</li>
+<li>如果是 OSX 記得把 Command Line Tool 裝起來</li>
+</ul>
+<!--more-->
+<h2>PART A:準備檔案</h2>
+<pre><code class="language-bash">    $ mkdir ccu
+    $ cd ccu
+    $ touch Gemfile crawler.rb
+</code></pre>
+<p>建立專案資料夾及檔案，<code>Gemfile</code> 是 <code>Bundler</code> 用來管理 ruby 套件相依的工具，<a href="http://bundler.io/">沒有裝的先來裝個</a>。</p>
+<p>接下來前往<a href="https://kiki.ccu.edu.tw/~ccmisp06/Course/">中正大學課程網站</a>下載該學期的課程資料，網頁下方有一個 <strong>開課資料壓縮檔下載</strong> 的區塊，下載並解壓縮，放到我們的專案目錄底下。</p>
+<p>現在資料夾下檔案應該如下圖
+<img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/dbdLytaARcKx03aTMwJR_step1.png" alt="step1.png"></p>
+<h2>PART B:設置套件</h2>
+<p>編輯 Gemfile 檔，設置這次中正課程爬蟲所需要的套件。加入以下兩行：</p>
+<pre><code class="language-ruby">source 'https://rubygems.org'
+
+gem 'nokogiri'
+gem 'pry'
+</code></pre>
+<p>其中 <code>nokogiri</code> 是超常用，用來解析 HTML/XML 標簽語言結構的套件。
+它可以將你的 HTML 檔解析成 Nokogiri 的物件，方便查詢、篩選。</p>
+<p><a href="http://pryrepl.org/"><code>pry</code></a> 你可以先把它想像成一個加強的 irb，附加上 syntax highlighting, plugin architecture, runtime invocation 等等強大的功能。我一般都用來 debug。</p>
+<p>寫完之後跑 bundle，安裝完這兩個套件</p>
+<pre><code class="language-bash">bundle
+</code></pre>
+<p>裝完長這樣
+<img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/hCNL1HqMSyGU5VFhGHNc_gemfile.png" alt="gemfile.png"></p>
+<h2>PART C:玩一下</h2>
+<p>先觀察一下課程網頁的結構</p>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/RtVfu4fbTZq6hrl7nEUV_table.png" alt="table.png"></p>
+<p>每個課程網頁裡面都有一張表格，表格每一列有我們需要的課程資料，我們要做的就是把每一格的資料從網頁中抓出來。</p>
+<p>打開 Chrome 開發人員工具，對表格中的其中一格選擇檢查元素，可以看到下面的結構</p>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/J49HGBWgTKecrv9Fcz6R_structure.png" alt="structure.png"></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;....&lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      ...
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p><code>&lt;td&gt;</code>標記中存的就是我們要的資料。它的結構是 table 包 tbody 包 tr 包 td。</p>
+<hr/>
+<p>稍微的來跟 pry 玩一下。</p>
+<p>打開 Terminal 確定我們在專案目錄下，啟動 pry 進度 interactive console 模式：</p>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/uK7BV41mTQGR5lNaf3kn_step2.png" alt="step2.png"></p>
+<p>將任意一個課程網頁檔讀進來</p>
+<pre><code class="language-ruby">str = File.read('1031/1014.html');
+</code></pre>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/QSrjA3FsQuC389J9WPpi_step3.png" alt="step3.png"></p>
+<p>我在行末加上一個分號，這是讓 pry 不會預覽回傳值。當沒加的時候，就會預覽回傳值，也就是讀進來的 html</p>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/Db5ei9I9TUugtynGB4PP_step3-1.png" alt="step3-1.png"></p>
+<p>在此界面下，j/k 上下捲動，d/u 捲動半頁，q 離開回到 console。</p>
+<p>再來載入 <code>nokogiri</code>，將剛剛讀取進來的 html 資料字串轉為 Nokogiri 物件，我們將物件存為 doc 變數：</p>
+<pre><code class="language-ruby">require 'nokogiri';
+doc = Nokogiri::HTML(str);
+</code></pre>
+<p><img src="http://user-image.logdown.io/user/1128/blog/1112/post/243459/yRsJw8cxT7WOdnOnfqdx_nokogiri.png" alt="nokogiri.png"></p>
+<hr/>
+<p>在此我們就進入爬蟲的精華了！(自己說)</p>
+<p>接下來我們將使用 CSS selector(選擇器) 語法，幫助我們從落落長的 html 文件中拿取我們要的資訊。</p>
+<p>css selector 基本的規則分成幾個：</p>
+<ul>
+<li>HTML tag selector</li>
+<li>id selector</li>
+<li>class selector</li>
+<li>attribute selector</li>
+</ul>
+<p>html 長這樣</p>
+<pre><code class="language-html">&lt;table class=&quot;hi&quot; id=&quot;table1&quot; width=&quot;500&quot;&gt;&lt;/table&gt;&gt;
+</code></pre>
+<p>也就是</p>
+<pre><code class="language-html">&lt;tag class=&quot;class-value&quot; id=&quot;id-value&quot; attribute=&quot;attribute-value&quot;&gt;&lt;/tag&gt;&gt;
+</code></pre>
+<p>在使用 css selector 就會用</p>
+<pre><code>table.hi#table1[width=&quot;500&quot;]
+</code></pre>
+<p>來選擇，選擇也可以是多層的，例如 <code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code>就用</p>
+<pre><code>table tr td
+</code></pre>
+<p>更多詳細精確的用法，請自行 Google。</p>
+<hr/>
+<p>繼續剛才的進度，我們把 Nokogiri 的物件存成了 doc，我們可以開始用這個物件下 css selector，例如</p>
+<pre><code class="language-ruby">doc.css('table')
+doc.css('table tr')
+doc.css('table tr td')
+</code></pre>
+<p>可以分別試試看結果。</p>
+<p>Nokogiri 在 select 時也可以是嵌套的，請記住，<code>.css('')</code>方法回傳是一個 nokogiri 物件的陣列，所以我們可以這樣用</p>
+<pre><code class="language-ruby">doc.css('table').first.css('tr').first.css('td')
+</code></pre>
+<p>代表第一個 <code>table</code> 中的第一個 <code>tr</code>(table row)中的第一個 <code>td</code>(table data)</p>
+<h2>PART D:動工</h2>
+<pre><code class="language-ruby">require 'nokogiri'
+require 'pry'
+require 'json'
+
+courses = []
+Dir.glob('1031/*.html').each do |filename|
+  str = File.read(filename)
+  doc = Nokogiri::HTML(str.encode(&quot;utf-8&quot;, :invalid =&gt; :replace, :undef =&gt; :replace))
+
+  doc.css('table tr:not(:first-child)').each do |row|
+    datas = row.css('td')
+
+    courses &lt;&lt; {
+      grade: datas[0] &amp;&amp; datas[0].text,
+      serial: datas[1] &amp;&amp; datas[1].text,
+      class_type: datas[2] &amp;&amp; datas[2].text,
+      name: datas[3] &amp;&amp; datas[3].text,
+      lecturer: datas[4] &amp;&amp; datas[4].text,
+      credits: datas[6] &amp;&amp; datas[6].text,
+      required_or_elective: datas[7] &amp;&amp; datas[7].text,
+      time_location: datas[8] &amp;&amp; datas[8].text,
+      type: datas[10] &amp;&amp; datas[10].text,
+      outline: datas[11] &amp;&amp; datas[11].css('a')[0] &amp;&amp; datas[11].css('a')[0][:href],
+      note: datas[12] &amp;&amp; datas[12].text
+    }
+  end
+end
+
+File.open('courses.json', 'w') {|file| file.write(JSON.pretty_generate(courses))}
+
+</code></pre>
+<p>這是最終完成的<a href="https://github.com/colorgy/crawler-CCU-course">結果</a>，實際上和我們剛才在 pry 裏試玩時差不了多少，一些函式如果不理解都可以 Google，有幾點注意。</p>
+<h4>encode</h4>
+<pre><code class="language-ruby">str.encode(&quot;utf-8&quot;, :invalid =&gt; :replace, :undef =&gt; :replace)
+</code></pre>
+<p>在這段我將檔案讀出的編碼去掉不合法和未定義的部分，否則在輸出成 JSON 時會出錯。</p>
+<h4>賦值</h4>
+<pre><code class="language-ruby">datas[2] &amp;&amp; datas[2].text
+</code></pre>
+<p>先確定 data[2] 非 nil，再取用方法，比用 if 判斷 <code>data[2].nil?</code> 簡潔</p>
+<h2>Debug</h2>
+<p>在你想要的斷點加入</p>
+<pre><code class="language-ruby">binding.pry
+</code></pre>
+<p>一般來說我會在插入的該行下方再多加入一行無意義的輸出，例如：</p>
+<pre><code class="language-ruby">binding.pry
+puts &quot;asdf&quot;
+</code></pre>
+<p>因為假如 binding.pry 的下一行是 end 或是方法結束，斷點會直接跳回上一層，很不方便。</p>
+<p>在斷點的地方你可以直接取用你所在區域的變數，以及可以用的方法，如此你可以邊寫邊確認你的程式碼是正確、或是你想要的，就不用在每次 print 出來啦！</p>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"content":"## 目標\n我們將會解析中正大學選課系統的選課資料，將它轉換成我們想要的格式 (JSON)，把它存起來。\n\n## 預先知識\n* 已經裝好 ruby 環境了\n* 如果是 OSX 記得把 Command Line Tool 裝起來\n\n\u003c!--more--\u003e\n\n## PART A:準備檔案\n```bash\n    $ mkdir ccu\n    $ cd ccu\n    $ touch Gemfile crawler.rb\n```\n\n建立專案資料夾及檔案，`Gemfile` 是 `Bundler` 用來管理 ruby 套件相依的工具，[沒有裝的先來裝個](http://bundler.io/)。\n\n接下來前往[中正大學課程網站](https://kiki.ccu.edu.tw/~ccmisp06/Course/)下載該學期的課程資料，網頁下方有一個 **開課資料壓縮檔下載** 的區塊，下載並解壓縮，放到我們的專案目錄底下。\n\n現在資料夾下檔案應該如下圖\n![step1.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/dbdLytaARcKx03aTMwJR_step1.png)\n\n\n## PART B:設置套件\n編輯 Gemfile 檔，設置這次中正課程爬蟲所需要的套件。加入以下兩行：\n\n```ruby\nsource 'https://rubygems.org'\n\ngem 'nokogiri'\ngem 'pry'\n```\n\n其中 `nokogiri` 是超常用，用來解析 HTML/XML 標簽語言結構的套件。\n它可以將你的 HTML 檔解析成 Nokogiri 的物件，方便查詢、篩選。\n\n[`pry`](http://pryrepl.org/) 你可以先把它想像成一個加強的 irb，附加上 syntax highlighting, plugin architecture, runtime invocation 等等強大的功能。我一般都用來 debug。\n\n寫完之後跑 bundle，安裝完這兩個套件\n\n```bash\nbundle\n```\n\n裝完長這樣\n![gemfile.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/hCNL1HqMSyGU5VFhGHNc_gemfile.png)\n\n## PART C:玩一下\n先觀察一下課程網頁的結構\n\n![table.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/RtVfu4fbTZq6hrl7nEUV_table.png)\n\n\n每個課程網頁裡面都有一張表格，表格每一列有我們需要的課程資料，我們要做的就是把每一格的資料從網頁中抓出來。\n\n打開 Chrome 開發人員工具，對表格中的其中一格選擇檢查元素，可以看到下面的結構\n\n![structure.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/J49HGBWgTKecrv9Fcz6R_structure.png)\n\n\n```html\n\u003ctable\u003e\n  \u003ctbody\u003e\n    \u003ctr\u003e....\u003c/tr\u003e\n    \u003ctr\u003e\n      \u003ctd\u003e...\u003c/td\u003e\n      \u003ctd\u003e...\u003c/td\u003e\n      ...\n    \u003c/tr\u003e\n  \u003c/tbody\u003e\n\u003c/table\u003e\n```\n\n`\u003ctd\u003e`標記中存的就是我們要的資料。它的結構是 table 包 tbody 包 tr 包 td。\n\n\u003chr/\u003e\n\n稍微的來跟 pry 玩一下。\n\n打開 Terminal 確定我們在專案目錄下，啟動 pry 進度 interactive console 模式：\n\n![step2.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/uK7BV41mTQGR5lNaf3kn_step2.png)\n\n將任意一個課程網頁檔讀進來\n\n```ruby\nstr = File.read('1031/1014.html');\n```\n\n![step3.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/QSrjA3FsQuC389J9WPpi_step3.png)\n\n我在行末加上一個分號，這是讓 pry 不會預覽回傳值。當沒加的時候，就會預覽回傳值，也就是讀進來的 html\n\n![step3-1.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/Db5ei9I9TUugtynGB4PP_step3-1.png)\n\n在此界面下，j/k 上下捲動，d/u 捲動半頁，q 離開回到 console。\n\n再來載入 `nokogiri`，將剛剛讀取進來的 html 資料字串轉為 Nokogiri 物件，我們將物件存為 doc 變數：\n\n```ruby\nrequire 'nokogiri';\ndoc = Nokogiri::HTML(str);\n```\n\n![nokogiri.png](http://user-image.logdown.io/user/1128/blog/1112/post/243459/yRsJw8cxT7WOdnOnfqdx_nokogiri.png)\n\n\u003chr/\u003e\n\n在此我們就進入爬蟲的精華了！(自己說)\n\n接下來我們將使用 CSS selector(選擇器) 語法，幫助我們從落落長的 html 文件中拿取我們要的資訊。\n\ncss selector 基本的規則分成幾個：\n\n* HTML tag selector\n* id selector\n* class selector\n* attribute selector\n\nhtml 長這樣\n\n```html\n\u003ctable class=\"hi\" id=\"table1\" width=\"500\"\u003e\u003c/table\u003e\u003e\n```\n\n也就是\n\n```html\n\u003ctag class=\"class-value\" id=\"id-value\" attribute=\"attribute-value\"\u003e\u003c/tag\u003e\u003e\n```\n\n在使用 css selector 就會用\n\n```\ntable.hi#table1[width=\"500\"]\n```\n\n來選擇，選擇也可以是多層的，例如 ```\u003ctable\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e```就用\n\n```\ntable tr td\n```\n\n更多詳細精確的用法，請自行 Google。\n\n\u003chr/\u003e\n\n繼續剛才的進度，我們把 Nokogiri 的物件存成了 doc，我們可以開始用這個物件下 css selector，例如\n\n```ruby\ndoc.css('table')\ndoc.css('table tr')\ndoc.css('table tr td')\n```\n\n可以分別試試看結果。\n\nNokogiri 在 select 時也可以是嵌套的，請記住，`.css('')`方法回傳是一個 nokogiri 物件的陣列，所以我們可以這樣用\n\n```ruby\ndoc.css('table').first.css('tr').first.css('td')\n```\n\n代表第一個 `table` 中的第一個 `tr`(table row)中的第一個 `td`(table data)\n\n## PART D:動工\n\n```ruby\nrequire 'nokogiri'\nrequire 'pry'\nrequire 'json'\n\ncourses = []\nDir.glob('1031/*.html').each do |filename|\n  str = File.read(filename)\n  doc = Nokogiri::HTML(str.encode(\"utf-8\", :invalid =\u003e :replace, :undef =\u003e :replace))\n\n  doc.css('table tr:not(:first-child)').each do |row|\n    datas = row.css('td')\n\n    courses \u003c\u003c {\n      grade: datas[0] \u0026\u0026 datas[0].text,\n      serial: datas[1] \u0026\u0026 datas[1].text,\n      class_type: datas[2] \u0026\u0026 datas[2].text,\n      name: datas[3] \u0026\u0026 datas[3].text,\n      lecturer: datas[4] \u0026\u0026 datas[4].text,\n      credits: datas[6] \u0026\u0026 datas[6].text,\n      required_or_elective: datas[7] \u0026\u0026 datas[7].text,\n      time_location: datas[8] \u0026\u0026 datas[8].text,\n      type: datas[10] \u0026\u0026 datas[10].text,\n      outline: datas[11] \u0026\u0026 datas[11].css('a')[0] \u0026\u0026 datas[11].css('a')[0][:href],\n      note: datas[12] \u0026\u0026 datas[12].text\n    }\n  end\nend\n\nFile.open('courses.json', 'w') {|file| file.write(JSON.pretty_generate(courses))}\n\n```\n這是最終完成的[結果](https://github.com/colorgy/crawler-CCU-course)，實際上和我們剛才在 pry 裏試玩時差不了多少，一些函式如果不理解都可以 Google，有幾點注意。\n\n#### encode\n\n```ruby\nstr.encode(\"utf-8\", :invalid =\u003e :replace, :undef =\u003e :replace)\n```\n\n在這段我將檔案讀出的編碼去掉不合法和未定義的部分，否則在輸出成 JSON 時會出錯。\n\n#### 賦值\n\n```ruby\ndatas[2] \u0026\u0026 datas[2].text\n```\n\n先確定 data[2] 非 nil，再取用方法，比用 if 判斷 `data[2].nil?` 簡潔\n\n## Debug\n\n在你想要的斷點加入\n\n```ruby\nbinding.pry\n```\n\n一般來說我會在插入的該行下方再多加入一行無意義的輸出，例如：\n\n```ruby\nbinding.pry\nputs \"asdf\"\n```\n\n因為假如 binding.pry 的下一行是 end 或是方法結束，斷點會直接跳回上一層，很不方便。\n\n在斷點的地方你可以直接取用你所在區域的變數，以及可以用的方法，如此你可以邊寫邊確認你的程式碼是正確、或是你想要的，就不用在每次 print 出來啦！\n","title":"第十一篇 - 第一次自幹爬蟲就上手 - 使用 Ruby"},"__N_SSG":true},"page":"/blog/[year]/[month]/[day]/[slug]","query":{"year":"2020","month":"10","day":"09","slug":"how-to-write-web-crawler-for-the-first-time-using-ruby"},"buildId":"pbKbeCDUqAps_lPatSFa3","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-e5012cf49fbb0a2642db.js"></script><script src="/_next/static/chunks/main-2fb41fa543a1e674f096.js" async=""></script><script src="/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/_next/static/chunks/framework.9ec1f7868b3e9d138cdd.js" async=""></script><script src="/_next/static/chunks/c1c2800e.19830e50427f38e47434.js" async=""></script><script src="/_next/static/chunks/commons.cb82874e43d6dd0d0fae.js" async=""></script><script src="/_next/static/chunks/pages/_app-6f7019f6f5388083710c.js" async=""></script><script src="/_next/static/chunks/0e226fb0.72f93e4cb7021a00e808.js" async=""></script><script src="/_next/static/chunks/9f96d65d.6d2fb2f6923d41a412a8.js" async=""></script><script src="/_next/static/chunks/39029a4f0b0d40d46b79d3315f88da1b7749bd7f.5a43b4f7d2949ffa6f12.js" async=""></script><script src="/_next/static/chunks/35c7c14249a4e2e42e1e799eb48e20c6dd8c6b4d.2bb70c78b7c30f6c9e9d.js" async=""></script><script src="/_next/static/chunks/pages/blog/%5Byear%5D/%5Bmonth%5D/%5Bday%5D/%5Bslug%5D-a24c9778d9cc066b0aed.js" async=""></script><script src="/_next/static/pbKbeCDUqAps_lPatSFa3/_buildManifest.js" async=""></script><script src="/_next/static/pbKbeCDUqAps_lPatSFa3/_ssgManifest.js" async=""></script></body></html>
