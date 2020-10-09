@@ -9,11 +9,11 @@ import Header from 'components/Header'
 dayjs.extend(localizedFormat)
 
 export default function Home({ posts }) {
-  const postRows = posts.map(post => {
+  const postRows = posts.map((post, index) => {
   const { date: { year, month, day }, slug } = post
   const date = dayjs(`${year}-${month}-${day}`)
 
-  return <div className="Box-row d-flex flex-items-center" key={post.id}>
+  return <div className="Box-row Box-row--hover-gray d-flex flex-items-center" key={post.id}>
     <div className="flex-auto">
       <Link href={`/blog/${year}/${month}/${day}/${slug}`}>
         <a>
@@ -22,7 +22,7 @@ export default function Home({ posts }) {
       </Link>
 
       <div className="text-small text-gray-light">
-        { date.format('LL') }
+        #{posts.length - index} posted on { date.format('LL') }
       </div>
     </div>
   </div>
