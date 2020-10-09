@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
-import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from '../../../../../lib/post'
-import { render } from '../../../../../lib/markdown'
-import Header from '../../../../../components/Header'
+import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
+import Header from 'components/Header'
+import Markdown from 'components/Markdown'
 
 export default function Post({ content, title }) {
   return <div>
@@ -11,7 +11,7 @@ export default function Post({ content, title }) {
     </Head>
 
     <Header />
-    <div className='markdown-body mx-auto pt-4 pb-6 px-3' dangerouslySetInnerHTML={{ __html: render(content) }} style={{ maxWidth: 700 }} />
+    <Markdown content={content} className='container pt-4 pb-6 px-3' />
   </div>
 }
 

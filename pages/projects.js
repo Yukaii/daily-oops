@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
-import Header from '../components/Header'
+import Header from 'components/Header'
 
-import { loadProjects } from '../lib/project'
+import { loadProjects } from 'lib/project'
 
 export default function Projects ({ projects }) {
   return <div>
