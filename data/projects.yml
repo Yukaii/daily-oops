@@ -26,10 +26,6 @@
   description: Show VSCode, SublimeText, Atom editors extension count
   link: https://yukaii.tw/extension-stats
 
-- title: 'My open source project ideas'
-  description: My open source ideas, projects, and WIP
-  link: https://github.com/Yukaii/open-source-ideas
-
 - title: 'Mp3tag KKBox web source'
   description: 讓 mp3tag 支援 KKBox tag 搜尋
   link: https://github.com/Yukaii/KKBox-web-source
