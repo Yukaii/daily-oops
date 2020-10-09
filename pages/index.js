@@ -3,8 +3,8 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
-import { getAllPostsWithSlug } from '../lib/post'
-import Header from '../components/Header'
+import { getAllPostsWithSlug } from 'lib/post'
+import Header from 'components/Header'
 
 dayjs.extend(localizedFormat)
 

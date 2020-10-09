@@ -26,6 +26,7 @@
     "yaml": "^1.10.0"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
     "fs-extra": "^9.0.1"
   }
 }
