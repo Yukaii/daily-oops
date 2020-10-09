@@ -1,12 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import dayjs from 'dayjs'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { getAllPostsWithSlug } from 'lib/post'
+import dayjs from 'lib/dayjs'
 import Header from 'components/Header'
-
-dayjs.extend(localizedFormat)
 
 export default function Home({ posts }) {
   const postRows = posts.map((post, index) => {
