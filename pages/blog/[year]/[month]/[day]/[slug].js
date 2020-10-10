@@ -1,13 +1,16 @@
 import Head from 'next/head'
 import dayjs from 'lib/dayjs'
+import { DiscussionEmbed } from 'disqus-react'
 
 import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
+import { getDisqusConfig } from 'lib/disqus'
 import Header from 'components/Header'
 import Markdown from 'components/Markdown'
 
-export default function Post({ content, title, params }) {
-  const { year, month, day } = params
+export default function Post({ content, title, params, disqus }) {
+  const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
+  const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
 
   return <div>
     <Head>
@@ -19,6 +22,21 @@ export default function Post({ content, title, params }) {
       <span className='text-mono text-gray-light'>{ date.format('LL') }</span>
     </div>
     <Markdown content={content} className='container pb-6 px-3' />
+    {
+      disqus && <div className='container py-3 px-3'>
+        <DiscussionEmbed
+          shortname={disqus.shortname}
+          config={
+            {
+              url: url,
+              identifier: url,
+              title: title,
+              language: 'zh_TW'
+            }
+          }
+        />
+      </div>
+    }
   </div>
 }
 
@@ -29,7 +47,8 @@ export async function getStaticProps({ params, preview = false, previewData }) {
     props: {
       content,
       title,
-      params
+      params,
+      disqus: getDisqusConfig()
     }
   }
 }

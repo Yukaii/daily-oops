@@ -13,6 +13,7 @@
     "bluebird": "^3.7.2",
     "cheerio": "^1.0.0-rc.3",
     "dayjs": "^1.9.1",
+    "disqus-react": "^1.0.10",
     "fast-glob": "^3.2.4",
     "got": "^11.7.0",
     "gray-matter": "^4.0.2",
