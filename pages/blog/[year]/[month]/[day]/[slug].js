@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import dayjs from 'lib/dayjs'
-import { DiscussionEmbed } from 'disqus-react';
+import { DiscussionEmbed } from 'disqus-react'
 
 import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
+import { getDisqusConfig } from 'lib/disqus'
 import Header from 'components/Header'
 import Markdown from 'components/Markdown'
 
@@ -47,10 +48,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
       content,
       title,
       params,
-      disqus: {
-        shortname: process.env.DISQUS_SHORTNAME,
-        domain: process.env.DISQUS_DOMAIN
-      }
+      disqus: getDisqusConfig()
     }
   }
 }
