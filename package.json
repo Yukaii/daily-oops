@@ -17,6 +17,7 @@
     "fast-glob": "^3.2.4",
     "got": "^11.7.0",
     "gray-matter": "^4.0.2",
+    "highlight.js": "^10.2.1",
     "markdown-it": "^11.0.1",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-deflist": "^2.1.0",
