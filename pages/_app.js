@@ -3,6 +3,8 @@ import Head from 'next/head'
 import '@primer/css/index.scss'
 import 'styles/globals.css'
 
+import 'highlight.js/styles/github-gist.css'
+
 function MyApp({ Component, pageProps }) {
   return <>
     <Head>
