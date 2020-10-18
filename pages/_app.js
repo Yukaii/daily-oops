@@ -1,9 +1,13 @@
 import Head from 'next/head'
+import Router from 'next/router'
 
 import '@primer/css/index.scss'
 import 'styles/globals.css'
 
 import 'highlight.js/styles/github-gist.css'
+import { pageview } from 'lib/gtag'
+
+Router.events.on('routeChangeComplete', (url) => pageview(url))
 
 function MyApp({ Component, pageProps }) {
   return <>
