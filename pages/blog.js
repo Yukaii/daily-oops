@@ -13,7 +13,7 @@ export default function Blog({ posts }) {
 
       <Header />
 
-      <div className="d-block mx-auto markdown-body py-4 px-1" style={{ maxWidth: 700 }}>
+      <div className="d-block mx-auto markdown-body py-4 px-3" style={{ maxWidth: 700 }}>
         <div className="Box">
           {
             posts.map(
@@ -22,6 +22,10 @@ export default function Blog({ posts }) {
             )
           }
         </div>
+
+        <a href='/feed.xml'>
+          <button className='mt-3 btn btn-primary' type='button'>Subscribe via RSS</button>
+        </a>
       </div>
     </div>
   )
