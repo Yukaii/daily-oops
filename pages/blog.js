@@ -1,35 +1,28 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
 import { getAllPostsWithSlug } from 'lib/post'
 import Header from 'components/Header'
 import PostRow from 'components/PostRow'
 
-export default function Home({ posts }) {
+export default function Blog({ posts }) {
   return (
     <div>
       <Head>
-        <title>Daily Oops!</title>
+        <title>Blog | Daily Oops!</title>
       </Head>
 
       <Header />
 
       <div className="d-block mx-auto markdown-body py-4 px-1" style={{ maxWidth: 700 }}>
-        <h2>Recent posts</h2>
-
         <div className="Box">
           {
-            posts.slice(0, 5).map(
+            posts.map(
               (post, index) =>
                 <PostRow post={post} index={index} key={post.id} totalCount={posts.length} />
             )
           }
         </div>
-
-        <Link href='/blog'>
-          <button className='mt-3 btn btn-primary' type='button'>Read More</button>
-        </Link>
-        </div>
+      </div>
     </div>
   )
 }
