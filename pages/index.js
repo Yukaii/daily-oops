@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 import { getAllPostsWithSlug } from 'lib/post'
+import { writeRSS } from 'lib/rss'
 import Header from 'components/Header'
 import PostRow from 'components/PostRow'
 
@@ -42,8 +43,12 @@ export default function Home({ posts }) {
         </div>
 
         <Link href='/blog'>
-          <button className='mt-3 btn' type='button'>Read More</button>
+          <button className='mt-3 btn mr-2' type='button'>Read More</button>
         </Link>
+
+        <a href='/feed.xml'>
+          <button className='mt-3 btn btn-primary' type='button'>Subscribe via RSS</button>
+        </a>
         </div>
     </div>
   )
@@ -51,6 +56,8 @@ export default function Home({ posts }) {
 
 export async function getStaticProps() {
   const posts = await getAllPostsWithSlug()
+
+  writeRSS(posts.slice(0, 10))
 
   return {
     props: {
