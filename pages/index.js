@@ -15,7 +15,7 @@ export default function Home({ posts }) {
 
       <Header />
 
-      <div className="d-block mx-auto markdown-body py-4 px-1" style={{ maxWidth: 700 }}>
+      <div className="d-block mx-auto markdown-body py-4 px-3" style={{ maxWidth: 700 }}>
         <h2>Hi</h2>
 
         <p>
