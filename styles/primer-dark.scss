@@ -183,4 +183,17 @@ body.dark-mode {
   .UnderlineNav-item.selected .UnderlineNav-octicon, .UnderlineNav-item[role=tab][aria-selected=true] .UnderlineNav-octicon, .UnderlineNav-item[aria-current]:not([aria-current=false]) .UnderlineNav-octicon {
     color: var(--bright-color);
   }
+
+  .text-gray-dark {
+    color: var(--text-gray-light-color) !important;
+  }
+
+  .text-gray {
+    color: var(--text-color) !important;
+  }
+
+  .box-shadow-medium {
+    box-shadow: none !important;
+    border: solid 1px var(--border-color) !important;
+  }
 }
