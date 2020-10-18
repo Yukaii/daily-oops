@@ -1,15 +1,20 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { BookIcon, CodeIcon, InfoIcon } from '@primer/octicons-react'
+import { OctofaceIcon, BookIcon, CodeIcon, InfoIcon } from '@primer/octicons-react'
 
 const Header = () => {
   const { pathname } = useRouter()
 
   const items = [
     {
-      text: 'Blog',
+      text: 'Home',
       href: '/',
+      icon: OctofaceIcon
+    },
+    {
+      text: 'Blog',
+      href: '/blog',
       icon: BookIcon
     },
     {
