@@ -7,3 +7,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.markdown-body img {
+  border-radius: 6px;
+}
