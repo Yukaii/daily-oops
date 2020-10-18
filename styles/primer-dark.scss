@@ -49,6 +49,7 @@ body.dark-mode {
 
     img {
       filter: brightness(.8) contrast(1.2);
+      background-color: transparent;
     }
 
     code, tt {
