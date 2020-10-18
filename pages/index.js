@@ -49,7 +49,7 @@ export default function Home({ posts }) {
         <a href='/feed.xml'>
           <button className='mt-3 btn btn-primary' type='button'>Subscribe via RSS</button>
         </a>
-        </div>
+      </div>
     </div>
   )
 }
