@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Blog | Daily Oops!</title>
+        <link>https://yukai.dev/blog</link>
+        <description>Daily Oops RSS Feed</description>
+        <lastBuildDate>Sun, 12 Apr 2020 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[我的駕照心得]]></title>
+            <link>https://yukai.dev/blog/2020/03/12/getting-manual-transmission-drivers-license</link>
+            <guid>https://yukai.dev/blog/2020/03/12/getting-manual-transmission-drivers-license</guid>
+            <pubDate>Sun, 12 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 我的駕照心得
+
+## 前言
+
+TL;DR 我順利通過手排車駕照考試了！
+
+從成年開始常常就會想是不是該考個駕照了。第一次出國時，看著朋友駕駛在加州的公路，幾度疲累卻又無人換手，就很懊惱自己怎麽還不會開車。過了幾個忙碌的暑假，終於等到今年初比較清閒，剛好朋友準備出國也需要駕照，於是相揪一起報名駕訓班。
+
+汽車駕照考試分成筆試和路考。筆試 85 分及格，路考 70 分及格；而路考又分成場內（號誌、直線換檔、上坡起步、S 彎、倒車入庫、路邊停車等）和道駕。真正「開車」的部分只有道駕，場內的部分單靠口訣記憶方向盤迴轉角度和時機，就能順利通關，儘管你可能會開的走走停停，被扣些無傷大雅的小分數，但確實不需要任何上路經驗就能拿到駕照。這也造成一票人雖然拿到了駕照，但卻零上路經驗的結果。
+
+從 2017 開始駕照才開始加考道路駕駛，雖然難度提高，但這項政策也確實擋下許多三寶，我朋友就開玩笑的和我說：「我是考完駕照才開始學車的」，可見一斑啊，喂！（不過該位朋友確實不是三寶，特此聲明）
+
+以下就來分享我的學車經驗吧！
+
+
+## 心態
+
+我自己學車是比較「感覺派」的。感覺派是相對「公式派」而言，我自己]]></description>
+            <content:encoded><![CDATA[<h1>我的駕照心得</h1>
+<h2>前言</h2>
+<p>TL;DR 我順利通過手排車駕照考試了！</p>
+<p>從成年開始常常就會想是不是該考個駕照了。第一次出國時，看著朋友駕駛在加州的公路，幾度疲累卻又無人換手，就很懊惱自己怎麽還不會開車。過了幾個忙碌的暑假，終於等到今年初比較清閒，剛好朋友準備出國也需要駕照，於是相揪一起報名駕訓班。</p>
+<p>汽車駕照考試分成筆試和路考。筆試 85 分及格，路考 70 分及格；而路考又分成場內（號誌、直線換檔、上坡起步、S 彎、倒車入庫、路邊停車等）和道駕。真正「開車」的部分只有道駕，場內的部分單靠口訣記憶方向盤迴轉角度和時機，就能順利通關，儘管你可能會開的走走停停，被扣些無傷大雅的小分數，但確實不需要任何上路經驗就能拿到駕照。這也造成一票人雖然拿到了駕照，但卻零上路經驗的結果。</p>
+<p>從 2017 開始駕照才開始加考道路駕駛，雖然難度提高，但這項政策也確實擋下許多三寶，我朋友就開玩笑的和我說：「我是考完駕照才開始學車的」，可見一斑啊，喂！（不過該位朋友確實不是三寶，特此聲明）</p>
+<p>以下就來分享我的學車經驗吧！</p>
+<h2>心態</h2>
+<p>我自己學車是比較「感覺派」的。感覺派是相對「公式派」而言，我自己的定義來說就是：「方向盤的操控和速度都能依照感覺自由掌握」，而非運用記憶點和方向盤迴轉的角度來完成。</p>
+<p>但我想澄清一點，「感覺派」和「開車訣竅」或是「判定點」並沒有衝突。開車訣竅指的像是方向盤迴正時機或是煞車控制等，可能不影響實際的行車結果，彎還是轉的過去，車子還是停的下來，但有了這些訣竅卻會讓行車更加舒適。判定點指的是運用車子部件與視線的延伸延伸線，去得知車體與物體相對距離的技巧，在轉彎或停車抓距離時十分有幫助。</p>
+<p>「感覺派」像是千錘百鍊後的肌肉記憶，任何一個熟稔的駕駛人都會擁有的能力，只不過偏執的我硬要在短短幾周裡面掌握，為此還是挨了教練的不少念：「明明就有簡單的方法，為何你一定要自創呢？」。反正好玩嘛 😋</p>
+<h2>學習歷程</h2>
+<p>前前後後學車時間也就三週多三天而已，報名時間剛好在武漢肺炎剛爆發時，著實讓我緊張的一下，怕駕訓班會不會停課或爆發感染，好在台灣還沒開始大爆發（不要亂立 flag），駕訓班的防疫概念也做的不錯，讓我可以順利結束課程 :)</p>
+<h3>第一週：場內練習</h3>
+<p>我上的是平日班，此時剛好報名人數不多，頭一個禮拜比較需要教練指導時，因為起得早，加上教練後續沒有課程安排，我時常一次練超過兩節的分量。於是場內的大部分項目，在前三天就通通結束了。雖然和 S 彎奮鬥比較久，在第一週我的三項成功率（S 彎、倒車入庫、路邊停車）達到了七成。</p>
+<h3>第二週：精熟場內</h3>
+<p>第二週開始我持續的練習場內三項之力，加上新學會的上坡起步。說起來手排車的上坡起步也是挺玄的項目，簡單的步驟如下：</p>
+<ol>
+<li>輕放離合器至車身微震</li>
+<li>輕踩油門</li>
+<li>再放離合器感到車身有稍稍往前，若無重複 2 步驟及 3 步驟</li>
+<li>放下手剎車，車身即向上爬坡前進</li>
+</ol>
+<p>恩，說起來簡單。但我會說玄，是因為油門和離合器的踩放並不需要一定的比例，甚至失誤後（沒踩對）也有機會救回來，只要適時的補油和調整離合器。上坡起步學習到的不只是上坡，而是離合器和油門的動態控制，這項技術也能用在停止時手排車的快速起步。不過這都是我第三週後的理解了，還曾經卡在坡上五分鐘呢！<s>真是恥辱</s></p>
+<p>在第二週之後，場內三項之力只要認真起來，基本上已經不會壓線失誤了，成功率大概在九成，甚至還能用怠速全速開秀過 S 彎，大約等同普通學員一次倒車入庫的時間，對於速度比較慢的學員，甚至還能做到兩次 S 彎呢。<s>還是讓我自吹自擂一下</s></p>
+<h3>第三週：道駕與筆試</h3>
+<p>第三週開始，除了每天例行的場內練習外，我必須起個大早，由教練陪同進行道駕練習。因為學的是手排車，但道駕用的是自排，第一次上車時一時不知道怎麽打檔，還被坐在後座的學弟嗆（怒）。不過道駕用的自排車實在比手排教練車好開太多了，輕輕一踩就能剎住的剎車，還有軟軟的油門，方向盤又好轉，一上車就不想下來了 😆 我就這樣每天五點半起個大早，連天都還沒亮就騎著機車跑去駕訓班，練了好幾天。</p>
+<p>然後在考前的前一個週末，駕訓班安排了筆試的總複習，聽完課後就開始讀題庫。不過說起來我的運氣還真好，最後抽到的題目完全沒有罰鍰金額、罰則和數字計算，差不多就是裸考就能通過的程度 😅，不過你也不是天天在過年的，還是乖乖準備吧！</p>
+<h3>考試當天</h3>
+<p>練了快一個月的車都是晴天，結果考試當天早上竟然下大雨😂，心一橫就直接搭計程車去駕訓班了，想說也不差這次坐車的錢，要是騎車又淋溼等下考試一定很不爽。</p>
+<p>輪到我準備上車時還是有點緊張，心裡一直想會不會等會腳一抖就熄火，還沒開始就先被扣分了。結果還好一切順利，最怕的道駕路邊停車也停在完美安全的距離。一完成路邊停車，剩下的就只是開回駕訓班了，我的腦袋裡一直反覆著卡特的 It’s over dunk 的 over 手勢，真的結束了，舒服！</p>
+<h2>口訣：滿街的三寶</h2>
+<p>如果要我給還沒學車的朋友一個建議，竊以為下面這兩張圖最為適合：</p>
+<p><img src="https://i.imgur.com/BgwliLI.png" alt=""></p>
+<blockquote>
+<p>自豪貌</p>
+</blockquote>
+<p>既然是三寶所以才要來學車嘛，所以就找自己節奏慢慢學就好了。遇到比較愛碎碎唸的教練抱怨你進度慢，你也要有自知之明，因為你就三寶，所以只能慢慢練培養肌肉記憶。<s>教練的話就不用理他了</s></p>
+<p><img src="https://i.imgur.com/ByvvUO7.png" alt=""></p>
+<blockquote>
+<p>送給駕訓班的所有同學</p>
+</blockquote>
+<p>你可以把他解讀成防禦性駕駛。路上三寶就是這麼多，你自己也可能會失誤，既然如此就不要那麼貼彎，路線選擇安全點，預測一下前面三寶的行動，保持安全最重要。</p>
+<p>吹了這麼多，拿到駕照到現在我倒是還沒上過一次路。<s>還是來繼續考 L2 駕照實在</s></p>
+<h2>後遺症</h2>
+<p>原本我對路上開什麼車一直都是沒啥興趣的，連車子的廠牌也叫不出大半，結果考完駕照後瘋狂看了一系列關於手排車換檔上路的實務影片，還學了一堆英文單字（Double clutch 啦 Heel Toe 啦 Downshifting 啦），搞得忽然很想弄台便宜的二手車來上路！</p>
+<p>更慘的是，YouTube 推薦影片慢慢出現一堆試新車的影片，看到公司樓下停了台可愛的歐洲車還會馬上去查型號（Abarth 595 真是太可愛啦 😍）。</p>
+<p>考駕照真是一條不歸路啊…😂</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[使用 Chrome NetLog 解析隱藏在 DevTools 中的 Header 資訊]]></title>
+            <link>https://yukai.dev/blog/2019/03/02/chrome-netlog-and-netlog-viewer-hidden-header-credentials</link>
+            <guid>https://yukai.dev/blog/2019/03/02/chrome-netlog-and-netlog-viewer-hidden-header-credentials</guid>
+            <pubDate>Tue, 02 Apr 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 使用 Chrome NetLog 解析隱藏在 DevTools 中的 Header 資訊
+
+在檢視 DevTools 網路頁的 Headers 資訊時，有時後會顯示下面這行警告訊息：
+
+![](https://i.imgur.com/P7WZcYY.png)
+
+> Provisional headers are shown
+
+這就代表有些敏感資訊被 DevTools 隱藏。舉例來說，CloudFront 有一套 [基於 Signed Cookie 的驗證系統][1]，某些需要登入後才能存取的資源，比如 **電子書**、影音就需要用這種方式來防止外流。不過有做 DRM 還是比較好啦，畢竟沒 DRM 你的檔案還是跟裸奔一樣啊！😆
+
+## 該是 NetLog 登場的時刻
+
+NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系統 (Network Logging System)，因為我們需要拿取被 DevTools 隱藏的資訊，所以就要靠 NetLog 啦。有 Log 才能 Debug！
+
+1. 打開 [`chrome://net-export/`](]]></description>
+            <content:encoded><![CDATA[<h1>使用 Chrome NetLog 解析隱藏在 DevTools 中的 Header 資訊</h1>
+<p>在檢視 DevTools 網路頁的 Headers 資訊時，有時後會顯示下面這行警告訊息：</p>
+<p><img src="https://i.imgur.com/P7WZcYY.png" alt=""></p>
+<blockquote>
+<p>Provisional headers are shown</p>
+</blockquote>
+<p>這就代表有些敏感資訊被 DevTools 隱藏。舉例來說，CloudFront 有一套 <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-custom-policy.html">基於 Signed Cookie 的驗證系統</a>，某些需要登入後才能存取的資源，比如 <strong>電子書</strong>、影音就需要用這種方式來防止外流。不過有做 DRM 還是比較好啦，畢竟沒 DRM 你的檔案還是跟裸奔一樣啊！😆</p>
+<h2>該是 NetLog 登場的時刻</h2>
+<p>NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系統 (Network Logging System)，因為我們需要拿取被 DevTools 隱藏的資訊，所以就要靠 NetLog 啦。有 Log 才能 Debug！</p>
+<ol>
+<li>打開 <a href="chrome://net-export/"><code>chrome://net-export/</code></a>，你應該會看到以下的介面
+<img src="https://i.imgur.com/8qFazRw.png" alt=""></li>
+<li>記得選擇第二項 <strong>Include cookies and credentials</strong>，這才是我們要的</li>
+<li>點按鈕，選擇完 dump 位置後開始記錄網路事件。開始進行你要 Log 的操作，此時分頁開越少越好，輸出資料的雜訊不會那麼多比較好讀</li>
+</ol>
+<h2>用 NetLog Viewer 來打開 dump 出的 log 檔</h2>
+<p>那麼輸出的 JSON 檔要怎麼讀？Google 也幫你弄好了。</p>
+<ol>
+<li>打開 <a href="https://netlog-viewer.appspot.com">NetLog Viewer</a></li>
+<li>把剛剛輸出的 JSON 檔案，拖弋到視窗
+<img src="https://i.imgur.com/oJj7teQ.png" alt=""></li>
+<li>Bang!
+<img src="https://i.imgur.com/0K3spmz.png" alt=""></li>
+<li>點開左側的 Event，搜尋框輸入你要找的東西就可以了
+<img src="https://i.imgur.com/pPYkL1f.png" alt=""></li>
+<li>剩下來就不說啦，搜尋你要的 Request 或 Cookie 鍵值，拉出你要的資訊，就和使用 DevTools 一樣</li>
+</ol>
+<h2>嗯</h2>
+<p>所以說，你要解析的敏感資訊是什麼呢？</p>
+<p>光喜自得！</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Chrome Extension - Kabegami New Page]]></title>
+            <link>https://yukai.dev/blog/2018/07/16/kabegami-new-page</link>
+            <guid>https://yukai.dev/blog/2018/07/16/kabegami-new-page</guid>
+            <pubDate>Thu, 16 Aug 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# Chrome Extension - Kabegami New Page
+
+## 先看 Demo
+
+![Imgur](https://i.imgur.com/CW9l7iA.gif)
+
+**TL;DR**，這是一個讓瀏覽器新分頁**每次隨機顯示桌布**的擴充功能。
+
+瀏覽器成為第二個桌面，我自幹這個功能也是相當合理的 =w=
+
+## 到哪下載？
+
+[這裡](https://chrome.google.com/webstore/detail/kabegami-new-page/fbbdincgjgdmbbkongmineooghpadbgk)
+
+## 技術架構
+
+- 好久沒玩的 Vue.js，做點小玩意兒剛剛好
+- JS 好朋友 TypeScript，沒這個真的不知怎麽寫前端了
+- Imgur API，流量無限我他媽還不傳爆！
+
+值得一提的是這次用 TypeScript Generics 搭配 localforage 弄了一層簡單的 [ActiveModel-like API](https://github.com/Yukaii/kanahei-wallpapers]]></description>
+            <content:encoded><![CDATA[<h1>Chrome Extension - Kabegami New Page</h1>
+<h2>先看 Demo</h2>
+<p><img src="https://i.imgur.com/CW9l7iA.gif" alt="Imgur"></p>
+<p><strong>TL;DR</strong>，這是一個讓瀏覽器新分頁<strong>每次隨機顯示桌布</strong>的擴充功能。</p>
+<p>瀏覽器成為第二個桌面，我自幹這個功能也是相當合理的 =w=</p>
+<h2>到哪下載？</h2>
+<p><a href="https://chrome.google.com/webstore/detail/kabegami-new-page/fbbdincgjgdmbbkongmineooghpadbgk">這裡</a></p>
+<h2>技術架構</h2>
+<ul>
+<li>好久沒玩的 Vue.js，做點小玩意兒剛剛好</li>
+<li>JS 好朋友 TypeScript，沒這個真的不知怎麽寫前端了</li>
+<li>Imgur API，流量無限我他媽還不傳爆！</li>
+</ul>
+<p>值得一提的是這次用 TypeScript Generics 搭配 localforage 弄了一層簡單的 <a href="https://github.com/Yukaii/kanahei-wallpapers/blob/master/src/app/lib/store.ts#L26">ActiveModel-like API</a>，莫名的成就感啊 😂</p>
+<h2>Show me the code</h2>
+<p>按照慣例一向開源開爆的，GitHub repo 在 <a href="https://github.com/Yukaii/kanahei-wallpapers">https://github.com/Yukaii/kanahei-wallpapers</a>。為何名字裡有 kanahei？原因是一開始純粹想做他們家限定的桌布，沒想到回饋不錯只好一般化，讓大家可以上傳自己想用的桌布。之後可能會改名吧，再說。</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[更改 Opera 的新分頁]]></title>
+            <link>https://yukai.dev/blog/2018/06/06/how-to-change-opera-new-start-page</link>
+            <guid>https://yukai.dev/blog/2018/06/06/how-to-change-opera-new-start-page</guid>
+            <pubDate>Fri, 06 Jul 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 更改 Opera 的新分頁
+
+我從去年起開始使用 Opera，原因有二：基於 Chromium 以及內建的暗色主題。不過這不是本篇的主題，就讓我輕輕帶過吧 XD
+
+現在的 Opera 既然是基於 Chromium 改的，當然支援 Google Chrome 的瀏覽器擴充功能，只要安裝 Opera 官方出的 [Install Chrome Extensions](https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/) 擴充套件，就能無縫直接在 Chrome Web Store 下載了，不過還是有些限制，比如 Chrome Apps 和主題就不支援，修改新分頁的擴充功能也沒辦法直接使用。
+
+接下來教你怎麽啟用 Opera 修改新分頁的擴充功能 😝
+
+1. 安裝完上面提到的 [Install Chrome Extensions](https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/) 之]]></description>
+            <content:encoded><![CDATA[<h1>更改 Opera 的新分頁</h1>
+<p>我從去年起開始使用 Opera，原因有二：基於 Chromium 以及內建的暗色主題。不過這不是本篇的主題，就讓我輕輕帶過吧 XD</p>
+<p>現在的 Opera 既然是基於 Chromium 改的，當然支援 Google Chrome 的瀏覽器擴充功能，只要安裝 Opera 官方出的 <a href="https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> 擴充套件，就能無縫直接在 Chrome Web Store 下載了，不過還是有些限制，比如 Chrome Apps 和主題就不支援，修改新分頁的擴充功能也沒辦法直接使用。</p>
+<p>接下來教你怎麽啟用 Opera 修改新分頁的擴充功能 😝</p>
+<ol>
+<li>
+<p>安裝完上面提到的 <a href="https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> 之後，到 <a href="https://chrome.google.com/webstore/detail/new-tab-start-page-pro/mjfahldkpjhcnfbbmdhpjolcjpcfhcpj">Chrome Web Store</a> 頁面安裝 New Tab Start Page Pro</p>
+</li>
+<li>
+<p>安裝修改新分頁的功能，以 <a href="https://chrome.google.com/webstore/detail/unsplash-instant/pejkokffkapolfffcgbmdmhdelanoaih">Unplash Instant</a> 為例，一樣先到 Chrome Web Store 安裝</p>
+</li>
+<li>
+<p>複製擴充功能的 ID，在擴充功能 Web Store 網址的最後面，以 Unsplash Instant 為例，就是 <code>pejkokffkapolfffcgbmdmhdelanoaih</code>，也可以從 Opera 的擴充功能頁面拿到</p>
+<p><img src="https://i.imgur.com/MCcnznn.png" alt="ID"></p>
+</li>
+<li>
+<p>叫出 New Tab Start Page Pro 的設定頁，在 New Tab &amp; Start Page URL 欄位填入：<code>chrome-extension://pejkokffkapolfffcgbmdmhdelanoaih/index.html</code></p>
+</li>
+<li>
+<p>其它照截圖的選起來</p>
+<p><img src="https://i.imgur.com/07NcIOh.png" alt="options"></p>
+</li>
+<li>
+<p>按 Save 存檔</p>
+</li>
+</ol>
+<p>效果如下圖，雖然開啟新分頁之後會閃一下，聊勝於無啦</p>
+<p><img src="https://i.imgur.com/Ctvff8y.gif" alt="gif"></p>
+<p>（完）</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能]]></title>
+            <link>https://yukai.dev/blog/2018/04/13/use-gmail-smtp-without-your-own-smtp-server</link>
+            <guid>https://yukai.dev/blog/2018/04/13/use-gmail-smtp-without-your-own-smtp-server</guid>
+            <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[# 用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能
+
+## 你到底再工啥小
+
+在啦幹。解釋一下，敝單位由於歷史因素及安全考量，所以內部的郵件系統在外網時，只開放收信（IMAP）而沒有寄信（SMTP）功能。這摸不方便的狀況一定要來 workaround，免費 Gmail 就有 SMTP 寄信功能，我們就直接用吧。值得一提的是這方法是我成功之後才去 Google 驗證解法的，難得一波直覺流 <3
+
+## 設定步驟
+
+1. 設定電子郵件客戶端的寄信伺服器為 Gmail 的 SMTP，伺服器填：`smtp.gmail.com`，帳號：`xxx@gmail.com`，密碼為 gmail 密碼。若你有兩階段驗證，密碼就去[應用程式密碼][2-factor]產生
+2. 到 Gmail 的 **帳戶和匯入** -> **以這個地址寄送郵件** -> 點選 **新增另一個電子郵件地址**
+3. 把**視為別名**給取消勾選、填入你要用來寄信的 mail
+5. SMTP 伺服器欄位，填入 Gmail 的 SMTP（跟上面第一點填的一樣）
+6. 收信驗證 mail
+7. 搞定
+
+]]></description>
+            <content:encoded><![CDATA[<h1>用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能</h1>
+<h2>你到底再工啥小</h2>
+<p>在啦幹。解釋一下，敝單位由於歷史因素及安全考量，所以內部的郵件系統在外網時，只開放收信（IMAP）而沒有寄信（SMTP）功能。這摸不方便的狀況一定要來 workaround，免費 Gmail 就有 SMTP 寄信功能，我們就直接用吧。值得一提的是這方法是我成功之後才去 Google 驗證解法的，難得一波直覺流 &lt;3</p>
+<h2>設定步驟</h2>
+<ol>
+<li>設定電子郵件客戶端的寄信伺服器為 Gmail 的 SMTP，伺服器填：<code>smtp.gmail.com</code>，帳號：<code>xxx@gmail.com</code>，密碼為 gmail 密碼。若你有兩階段驗證，密碼就去<a href="https://myaccount.google.com/apppasswords">應用程式密碼</a>產生</li>
+<li>到 Gmail 的 <strong>帳戶和匯入</strong> -&gt; <strong>以這個地址寄送郵件</strong> -&gt; 點選 <strong>新增另一個電子郵件地址</strong></li>
+<li>把<strong>視為別名</strong>給取消勾選、填入你要用來寄信的 mail</li>
+<li>SMTP 伺服器欄位，填入 Gmail 的 SMTP（跟上面第一點填的一樣）</li>
+<li>收信驗證 mail</li>
+<li>搞定</li>
+</ol>
+<p>最近 Gmail 準備要推出改版了，希望這部分的 UI 不要差太多。另外本篇就先不截圖了，非開發者比較需要 XD</p>
+<p>via <a href="https://webapps.stackexchange.com/a/72975">https://webapps.stackexchange.com/a/72975</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[來推廣一下 Alfred 好了]]></title>
+            <link>https://yukai.dev/blog/2018/02/19/my-own-alfred-workflow-and-macos-sierra-theme</link>
+            <guid>https://yukai.dev/blog/2018/02/19/my-own-alfred-workflow-and-macos-sierra-theme</guid>
+            <pubDate>Mon, 19 Mar 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 來推廣一下 Alfred 好了
+
+## 日常刷存在感開始
+
+三個月沒有發新的文章。雖然斷斷續續累積不少內容在 Evernote 和 GitHub 票上，但就是懶的整理成文章發表。看看我，連新年新希望都懶的刷啦。若是非要給去年來個總結，大致就是「運氣真好，幹得不錯」吧（結果還是總結了嘛，總結還是比開支票輕鬆）
+
+今天要來推廣一下 macOS 下的神器 Alfred，其實我也用了快四年，只是去年才還債 Powerpack（？）
+
+[Alfred][alfred] 除了能**快速啟動/切換**應用程式外，還能編寫自己的 workflow 腳本，來達成匯率轉換、[翻譯][alfred-translate]、即時顯示資訊等等。雖然理論上能透過 API 做到各種應用，但 UI 限制就擺在那，有些功能你硬要用 Alfred workflow 做就顯得彆鈕 😆。
+
+好，這樣就推廣完畢啦（逃）。接下來寫點我自己對 Alfred 做的修改和套件：
+
+[alfred]: https://www.alfredapp.com/
+[alfred-translate]: https://github.com]]></description>
+            <content:encoded><![CDATA[<h1>來推廣一下 Alfred 好了</h1>
+<h2>日常刷存在感開始</h2>
+<p>三個月沒有發新的文章。雖然斷斷續續累積不少內容在 Evernote 和 GitHub 票上，但就是懶的整理成文章發表。看看我，連新年新希望都懶的刷啦。若是非要給去年來個總結，大致就是「運氣真好，幹得不錯」吧（結果還是總結了嘛，總結還是比開支票輕鬆）</p>
+<p>今天要來推廣一下 macOS 下的神器 Alfred，其實我也用了快四年，只是去年才還債 Powerpack（？）</p>
+<p><a href="https://www.alfredapp.com/">Alfred</a> 除了能<strong>快速啟動/切換</strong>應用程式外，還能編寫自己的 workflow 腳本，來達成匯率轉換、<a href="https://github.com/zetavg/alfred-google-translate-workflow">翻譯</a>、即時顯示資訊等等。雖然理論上能透過 API 做到各種應用，但 UI 限制就擺在那，有些功能你硬要用 Alfred workflow 做就顯得彆鈕 😆。</p>
+<p>好，這樣就推廣完畢啦（逃）。接下來寫點我自己對 Alfred 做的修改和套件：</p>
+<h2>自製的 macOS 風格主題 (macOS-styled alfred theme)</h2>
+<p><img src="https://i.imgur.com/zg25hcK.png" alt="mac-os-styled-alfred-theme"></p>
+<p><a href="https://www.alfredapp.com/extras/theme/R20A5tyTVc/">下載連結</a></p>
+<h3>特色</h3>
+<ul>
+<li>macOS 標準藍色，參見 <a href="https://developer.apple.com/macos/human-interface-guidelines/visual-design/color/">Apple Human Interface Guidelines 的色彩部分</a></li>
+<li><s>深度微調的背景糢糊和黑色</s> 其實就是肉眼觀測法</li>
+<li>還不錯的 scrollbar</li>
+</ul>
+<p>廢話一堆，受限於 Alfred 的 API，主題能調整的一些些，反正不要太突兀，和系統風格差不多就好。<s>像我就只會抄 Spotlight</s></p>
+<p>BTW，Alfred 分享網址出來的預覽圖實在有點醜啊，應該很久沒更新了吧 XD</p>
+<h2>自己來寫 Powerpack</h2>
+<p>使用 JS Hero <a href="https://github.com/sindresorhus">sindresorhus</a> 大大的 <a href="https://github.com/sindresorhus/alfy">alfy</a> 套件，就可以輕鬆的用 Node.js 來寫 Alfred workflow，各種 <code>npm</code> 套件隨你用，還可以利用 <code>npm</code> 來發佈、安裝 workflow。</p>
+<p>像我就做了內部分機表速查的小工具，誰打電話來找麻煩，要接還是不接，一按就知道！❤️ （被揍）</p>
+<p><img src="https://i.imgur.com/9YzPPwQ.png" alt="alfred-contacts"></p>
+<blockquote>
+<p>Skitch 馬賽克馬的好糾結</p>
+</blockquote>
+<h2>Awesome alfred</h2>
+<p><a href="https://github.com/derimagia/awesome-alfred-workflows">Awesome</a> 系列都這麼多年，什麼不會就讀一讀吧 XD</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[用 ssh tunnel 連線到 router 背後的機器，並建立 SOCKS5 proxy 存取內網資源]]></title>
+            <link>https://yukai.dev/blog/2017/10/07/ssh-reverse-tunnel-behind-the-router-with-socks5-proxy</link>
+            <guid>https://yukai.dev/blog/2017/10/07/ssh-reverse-tunnel-behind-the-router-with-socks5-proxy</guid>
+            <pubDate>Tue, 07 Nov 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 用 ssh tunnel 連線到 router 背後的機器，並建立 SOCKS5 proxy 存取內網資源
+
+## 這役男實在是...
+
+記一下最近遇到的問題。
+
+目前小弟正在公家單位服役。凡公家機關，內部架個外包的管理系統也是很合理的，不過因為是內部系統，所以只能透過區網來存取。對於我這個用自己機器的人來說就不太方便啦，連線的 Wifi Router 又不能和內網相通。
+
+剛好單位有台閒置的虛擬機，也可以存取內網，Google 了幾個方案之後發現 ssh tunnel 的影響最小：不用裝些有的沒的，也不用更改網路環境，加上我已經有了台 Linode 上的遠端開發機常駐，就來試試吧 =w=
+
+以下是環境的簡易說明圖。「那臺機器」就是閒置的內網虛擬機，「開發機器」是常駐 Linode 的遠端開發機，「Client 機」是任一台可以連線到開發機的裝置，可能是 Macbook Air、iPad，或是路邊撿來裝上 putty 的 Windows（逃）
+
+```txt
+                          +
+                          |
+    ]]></description>
+            <content:encoded><![CDATA[<h1>用 ssh tunnel 連線到 router 背後的機器，並建立 SOCKS5 proxy 存取內網資源</h1>
+<h2>這役男實在是…</h2>
+<p>記一下最近遇到的問題。</p>
+<p>目前小弟正在公家單位服役。凡公家機關，內部架個外包的管理系統也是很合理的，不過因為是內部系統，所以只能透過區網來存取。對於我這個用自己機器的人來說就不太方便啦，連線的 Wifi Router 又不能和內網相通。</p>
+<p>剛好單位有台閒置的虛擬機，也可以存取內網，Google 了幾個方案之後發現 ssh tunnel 的影響最小：不用裝些有的沒的，也不用更改網路環境，加上我已經有了台 Linode 上的遠端開發機常駐，就來試試吧 =w=</p>
+<p>以下是環境的簡易說明圖。「那臺機器」就是閒置的內網虛擬機，「開發機器」是常駐 Linode 的遠端開發機，「Client 機」是任一台可以連線到開發機的裝置，可能是 Macbook Air、iPad，或是路邊撿來裝上 putty 的 Windows（逃）</p>
+<pre><code class="language-txt">                          +
+                          |
+                          |
+                   ssh with reverse port
++---------------+  forwarding            +---------------+
+|               +------------------------&gt;               |
+|   那臺機器     &lt;------------------------+    開發機器    &lt;-----+ mosh + tmux
+|               |   ssh to localhost via |               |     |   掛上去
+|   (ubuntu)    |   forwarded port       |   (Linode)    |     |
++---------------+         |              +---------------+     |
+                          |                                    +-------------+
+                          |                                    |             |
+                          |                                    |             |
+                          |                                    |  Client 機  |
+                          |                                    |             |
+                          |                                    |             |
+                          +                                    +-------------+
+
+                一堆 router 和防火牆等等
+
+</code></pre>
+<h2>ssh remote port forwarding</h2>
+<p>先在 Ubuntu 上跑 ssh 指令連到遠端開發機，再加上 Remote port forwarding 參數：</p>
+<pre><code class="language-bash"><span class="hljs-comment"># run on machine behind router</span>
+ssh -NfR 11111:localhost:22 REMOTE_SERVER_IP
+</code></pre>
+<p>可以看到 ssh 有三個參數，分別為：</p>
+<ul>
+<li><code>-N</code>: 單純連線，不送指令</li>
+<li><code>-f</code>: 放到背景執行</li>
+<li><code>-R</code>: Remote port forwarding，遠端埠重導</li>
+</ul>
+<p>上面指令的作用是，建立 ssh tunnel，讓遠端機器的 <code>11111</code> port 連回本機的 port 22 (localhost:22)。</p>
+<p>所以接下來在遠端機跑：</p>
+<pre><code class="language-bash"><span class="hljs-comment"># run on remote machine</span>
+ssh localhost -p 11111
+</code></pre>
+<p>就可以 ssh 回 router 背後的機器啦。</p>
+<h2>SOCKS5 Proxy</h2>
+<p>接下來我們修改一點指令，加上 dynamic port forwarding 參數 <code>-D</code>：</p>
+<pre><code class="language-bash"><span class="hljs-comment"># run on remote machine</span>
+ssh -ND 0.0.0.0:8080 localhost -p 11111
+</code></pre>
+<p>另一個參數 <code>-N</code> 讓指令純建立 tunnel，<code>0.0.0.0</code> 讓所有 IP 都能連到這臺機器，<code>8080</code> 是綁定的 port。<code>-p</code> 指令連接埠，也就是方才 forward 過來的 <code>11111</code>。</p>
+<p>這樣 SOCKS5 Proxy 就算跑起來了，最後來設定 Client 端。我另外開了一個 Chrome 的 Profile，裝上 <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega</a> 插件，方便隔離：</p>
+<p><img src="https://i.imgur.com/kOjwrdw.png" alt="image"></p>
+<p>Remote IP 就是遠端開發機的 IP。Bypass List 要檢查一下，<code>192.168.x.x</code> 也要 forward，記得從 List 刪掉。</p>
+<p>然後就可以在外網存取 <code>192.168.X.X</code> 的區網資源啦！太舒適啦！</p>
+<h2>參考資料</h2>
+<ul>
+<li><a href="https://jordancrawford.kiwi/home-server-without-portforward/">Accessing home services from anywhere, without port forwarding!</a> - 用 tinc 做 VPN，感覺更佳舒適</li>
+<li><a href="https://superuser.com/questions/595989/ssh-through-a-router-without-port-forwarding">ssh through a router without port forwarding</a> - SuperUser 日常爬文</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[郵政 VISA 盜刷處理心得]]></title>
+            <link>https://yukai.dev/blog/2017/10/02/my-experience-with-chunghwa-post-visa-credit-card-fraud</link>
+            <guid>https://yukai.dev/blog/2017/10/02/my-experience-with-chunghwa-post-visa-credit-card-fraud</guid>
+            <pubDate>Thu, 02 Nov 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 郵政 VISA 盜刷處理心得
+
+## 似乎月更已成慣例
+
+一個多月前，我剛結束成功嶺的新訓，來到高雄開始為期一週的專訓。才享受自由的空氣沒多久，第一天下午就收到一筆金額 4XXXX 的簡訊，騙鬼咧我明明就乖乖坐在這裡啊！
+
+接下來我就慢慢走過：~~[否認、憤怒、討價還價、沮喪、接受](https://zh.m.wikipedia.org/zh-hant/库伯勒-罗丝模型) 的過程~~。才不是咧，當然是趕快打卡片後面的號碼求救啊！我和郵局確認該筆
+交易的消費資訊（商家、消費國等），這真的不是我花的吼。
+
+確定之後就辦理卡片掛失，雖然卡片不是真的不見，但這樣就不會再有交易了。可是這張卡就沒用啦 XD，再換新卡之前只能臨櫃提款。
+
+##  跑行政流程
+
+因為專訓期間我也不能亂跑（其實還是可以，不過剛從陰間出來的都比較膽小 w），所以就拖到了禮拜六才弄。
+
+我帶著四神器：卡片、存摺、開戶印章、身分證，填了兩張表單：「持卡人聲明書」和「疑義帳款複查申請」，聲明真的不是媽媽的姊姊的叔叔的爸爸的弟弟把我的卡借去刷了。櫃檯小姐表示郵局會把這筆交易提交 VISA 審查，確認之後就會撥款回來。
+
+#]]></description>
+            <content:encoded><![CDATA[<h1>郵政 VISA 盜刷處理心得</h1>
+<h2>似乎月更已成慣例</h2>
+<p>一個多月前，我剛結束成功嶺的新訓，來到高雄開始為期一週的專訓。才享受自由的空氣沒多久，第一天下午就收到一筆金額 4XXXX 的簡訊，騙鬼咧我明明就乖乖坐在這裡啊！</p>
+<p>接下來我就慢慢走過：<s><a href="https://zh.m.wikipedia.org/zh-hant/%E5%BA%93%E4%BC%AF%E5%8B%92-%E7%BD%97%E4%B8%9D%E6%A8%A1%E5%9E%8B">否認、憤怒、討價還價、沮喪、接受</a> 的過程</s>。才不是咧，當然是趕快打卡片後面的號碼求救啊！我和郵局確認該筆
+交易的消費資訊（商家、消費國等），這真的不是我花的吼。</p>
+<p>確定之後就辦理卡片掛失，雖然卡片不是真的不見，但這樣就不會再有交易了。可是這張卡就沒用啦 XD，再換新卡之前只能臨櫃提款。</p>
+<h2>跑行政流程</h2>
+<p>因為專訓期間我也不能亂跑（其實還是可以，不過剛從陰間出來的都比較膽小 w），所以就拖到了禮拜六才弄。</p>
+<p>我帶著四神器：卡片、存摺、開戶印章、身分證，填了兩張表單：「持卡人聲明書」和「疑義帳款複查申請」，聲明真的不是媽媽的姊姊的叔叔的爸爸的弟弟把我的卡借去刷了。櫃檯小姐表示郵局會把這筆交易提交 VISA 審查，確認之後就會撥款回來。</p>
+<h2>然後我就拿回錢啦</h2>
+<p>就在昨天，郵局的承辦小姐通知我的錢已經回來了，爽啦！雖然前前後後跑了郵局三次（加換卡），但比當初說的兩個月還快啊，<s>又可以大刷特刷敗家囉！</s></p>
+<p>這次也不知道是哪個網站洩漏卡號，之後要享受網路刷卡的便利前還是要做好準備，學學強者我朋友的作法：開另一個戶專門用來刷卡，只匯足夠的錢進去就好 :p</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[用 PowerShell 批次轉換 docx 到 pdf]]></title>
+            <link>https://yukai.dev/blog/2017/08/29/batch-convert-word-docx-to-pdf</link>
+            <guid>https://yukai.dev/blog/2017/08/29/batch-convert-word-docx-to-pdf</guid>
+            <pubDate>Fri, 29 Sep 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 用 PowerShell 批次轉換 docx 到 pdf
+
+## 近況
+
+內容與標題不符。
+
+我從今年的八月[開始登入](https://alive.yukaii.tw/)替代役 online。替代役自由多了，回想起成功嶺的那兩周，不僅餐餐吃不飽，還因為腸胃炎而再次掉了兩公斤多 Zzz，實在有夠悲劇。
+
+可能因為這麼悲慘的運氣補償機制吧(喂)，我來到了國訓中心開始了一年的役期，也多了些「閒暇時間」可以利用，無論如何都是非常幸運了 QAQ
+
+進入正題吧
+
+## 批次轉換 docx 成 pdf
+
+需求很簡單，也有現成軟體可以達成，不過身為一個開發者，連文書也要做的潮才行。以往一直沒什麼機會在 Windows 下進行自動化(多半是當時還太菜)，有了這個機會當然要好好利用。
+
+雖然沒寫過 PowerShell，不過 Google 第一項結果在 [StackOverFlow](https://stackoverflow.com/a/16537996) 就有了，輕鬆愉快。
+
+### 啟用腳本執行權限
+
+首先設定讓 powershell 可以執行腳本，以系統管理員身分執行 PowerShell]]></description>
+            <content:encoded><![CDATA[<h1>用 PowerShell 批次轉換 docx 到 pdf</h1>
+<h2>近況</h2>
+<p>內容與標題不符。</p>
+<p>我從今年的八月<a href="https://alive.yukaii.tw/">開始登入</a>替代役 online。替代役自由多了，回想起成功嶺的那兩周，不僅餐餐吃不飽，還因為腸胃炎而再次掉了兩公斤多 Zzz，實在有夠悲劇。</p>
+<p>可能因為這麼悲慘的運氣補償機制吧(喂)，我來到了國訓中心開始了一年的役期，也多了些「閒暇時間」可以利用，無論如何都是非常幸運了 QAQ</p>
+<p>進入正題吧</p>
+<h2>批次轉換 docx 成 pdf</h2>
+<p>需求很簡單，也有現成軟體可以達成，不過身為一個開發者，連文書也要做的潮才行。以往一直沒什麼機會在 Windows 下進行自動化(多半是當時還太菜)，有了這個機會當然要好好利用。</p>
+<p>雖然沒寫過 PowerShell，不過 Google 第一項結果在 <a href="https://stackoverflow.com/a/16537996">StackOverFlow</a> 就有了，輕鬆愉快。</p>
+<h3>啟用腳本執行權限</h3>
+<p>首先設定讓 powershell 可以執行腳本，以系統管理員身分執行 PowerShell 並跑起以下指令：</p>
+<pre><code class="language-powershell"><span class="hljs-built_in">Set-ExecutionPolicy</span> RemoteSigned
+</code></pre>
+<h3>寫 PowerShell 腳本</h3>
+<p>然後把以下腳本存成副檔名為 <code>.ps1</code>，比如 <code>word-to-pdf.ps1</code>。其中 <code>$documents_path</code> 改成目標資料夾路徑。</p>
+<pre><code class="language-powershell"><span class="hljs-comment"># From https://stackoverflow.com/a/16537996</span>
+
+<span class="hljs-variable">$documents_path</span> = <span class="hljs-string">&#x27;C:\Users\user\Documents\blahblahblah&#x27;</span>
+<span class="hljs-variable">$word_app</span> = <span class="hljs-built_in">New-Object</span> <span class="hljs-literal">-ComObject</span> Word.Application
+
+<span class="hljs-comment"># This filter will find .doc as well as .docx documents</span>
+<span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-literal">-Path</span> <span class="hljs-variable">$documents_path</span> <span class="hljs-literal">-Filter</span> *.doc? <span class="hljs-literal">-Recurse</span> | <span class="hljs-built_in">ForEach-Object</span> {
+    <span class="hljs-variable">$document</span> = <span class="hljs-variable">$word_app</span>.Documents.Open(<span class="hljs-variable">$_</span>.FullName)
+    <span class="hljs-variable">$pdf_filename</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(<span class="hljs-variable">$_</span>.DirectoryName)\<span class="hljs-variable">$</span>(<span class="hljs-variable">$_</span>.BaseName).pdf&quot;</span>
+    <span class="hljs-variable">$document</span>.SaveAs([<span class="hljs-type">ref</span>] <span class="hljs-variable">$pdf_filename</span>, [<span class="hljs-type">ref</span>] <span class="hljs-number">17</span>)
+    <span class="hljs-variable">$document</span>.Close()
+}
+
+<span class="hljs-variable">$word_app</span>.Quit()
+</code></pre>
+<p>注意的是在 <code>Get-ChildItem</code> 方法我加上了 <code>-Recurse</code> 遞迴參數，讓所有子目錄底下的 <code>docx</code> 都能被轉換到。</p>
+<p>點擊兩下執行，所有 pdf 就會慢慢產生在 <code>docx</code> 檔的旁邊啦，瞬間開始耍廢！(喂)</p>
+<p>之後若有更多的 PowerShell 輔助使用腳本，我都會放在 <a href="https://github.com/Yukaii/powershell-study">powershell-study</a> 這個 repo，歡迎自行取用 :p</p>
+<p>(完)</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[用 Travis CI 自動部署 Jekyll 部落格到 GitHub Pages]]></title>
+            <link>https://yukai.dev/blog/2017/08/01/auto-deploy-jekyll-blog-with-travis-ci-official-gh-pages-plugin</link>
+            <guid>https://yukai.dev/blog/2017/08/01/auto-deploy-jekyll-blog-with-travis-ci-official-gh-pages-plugin</guid>
+            <pubDate>Fri, 01 Sep 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 用 Travis CI 自動部署 Jekyll 部落格到 GitHub Pages
+
+弄完 [ics-scheduler](https://github.com/Yukaii/ics-scheduler) 專案後沒多久就開了 [Travis Auto Build 的 issue](https://github.com/Yukaii/Blog/issues/2) 放置 Play。可惜我實在太懶，而現階段的部屬流程也很簡單： 建構、提交再推送。建構跑 `jekyll build` 指令，包成 bash script 更是秒秒鐘；提交完，fish 又有基於歷史的指令自動補全，推送的 `git subtree` 指令打到一半，後面的自動補完出來按個 enter 就好了。
+
+自動化永遠不嫌多，把建構出的結果一起加到進版控系統追蹤也不夠優雅的，每次新增一篇文章 diff 又一大堆。正巧今天早上收信的時候，看到以前關注的 GitHub 議題：「[將 jekyll-assets 整合到 github pages 官方 gem](https://github.com/github/pages-ge]]></description>
+            <content:encoded><![CDATA[<h1>用 Travis CI 自動部署 Jekyll 部落格到 GitHub Pages</h1>
+<p>弄完 <a href="https://github.com/Yukaii/ics-scheduler">ics-scheduler</a> 專案後沒多久就開了 <a href="https://github.com/Yukaii/Blog/issues/2">Travis Auto Build 的 issue</a> 放置 Play。可惜我實在太懶，而現階段的部屬流程也很簡單： 建構、提交再推送。建構跑 <code>jekyll build</code> 指令，包成 bash script 更是秒秒鐘；提交完，fish 又有基於歷史的指令自動補全，推送的 <code>git subtree</code> 指令打到一半，後面的自動補完出來按個 enter 就好了。</p>
+<p>自動化永遠不嫌多，把建構出的結果一起加到進版控系統追蹤也不夠優雅的，每次新增一篇文章 diff 又一大堆。正巧今天早上收信的時候，看到以前關注的 GitHub 議題：「<a href="https://github.com/github/pages-gem/issues/189#issuecomment-319070628">將 jekyll-assets 整合到 github pages 官方 gem</a>」有更新，留言提到 <a href="https://docs.travis-ci.com/user/deployment/pages">Travis 現在也有 GitHub Pages 自動部屬的預設配置</a>了。機不可失，官方有支援，設定就簡單。來設定自動部屬吧 XD</p>
+<h2>設置</h2>
+<p>交互參照 <a href="https://docs.travis-ci.com/user/deployment/pages">Travis CI 的文件</a>及 <a href="https://jekyllrb.com/docs/continuous-integration/travis-ci/">Jekyll 的文件</a>，最後的 <code>.travis.yml</code> 長這樣：</p>
+<pre><code class="language-yaml"><span class="hljs-attr">language:</span> <span class="hljs-string">ruby</span>
+<span class="hljs-attr">rvm:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-number">2.3</span><span class="hljs-number">.3</span>
+ 
+<span class="hljs-attr">script:</span> <span class="hljs-string">./bin/cibuild</span>
+ 
+<span class="hljs-attr">before_script:</span>
+ <span class="hljs-bullet">-</span> <span class="hljs-string">chmod</span> <span class="hljs-string">+x</span> <span class="hljs-string">./bin/cibuild</span>
+ 
+<span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">provider:</span> <span class="hljs-string">pages</span>
+  <span class="hljs-attr">skip_cleanup:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">github_token:</span> <span class="hljs-string">$GITHUB_TOKEN</span>
+  <span class="hljs-attr">repo:</span> <span class="hljs-string">Yukaii/yukaii.github.io</span>
+  <span class="hljs-attr">local_dir:</span> <span class="hljs-string">_site</span>
+  <span class="hljs-attr">target_branch:</span> <span class="hljs-string">master</span>
+  <span class="hljs-attr">on:</span>
+    <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span>
+</code></pre>
+<p>分三段來看。</p>
+<h3><code>language: ruby</code></h3>
+<p>因為用的是 Jekyll，所以該有的 ruby 環境也要設定。Travis clone repo 下來之後便會自動 <code>bundle install</code> 裝完套件。</p>
+<h3><code>script</code> &amp; <code>before_script</code></h3>
+<p>這部份就是建制網站，cibuild 這個腳本長這樣：</p>
+<pre><code class="language-bash"><span class="hljs-meta">#!/usr/bin/env bash</span>
+ 
+<span class="hljs-built_in">set</span> -e
+ 
+JEKYLL_ENV=production bundle <span class="hljs-built_in">exec</span> jekyll build
+</code></pre>
+<p>就是 jekyll build 指令啦。</p>
+<h3><code>deploy</code></h3>
+<p>最後 deploy 的部分，因為我部屬到 GitHub Pages 的 使用者頁面(User Site, <strong>username</strong>.github.io)，所以 <code>repo</code> 和 <code>target_branch</code> 要額外設定。其它就照著 <a href="https://docs.travis-ci.com/user/deployment/pages">Travis 文件</a>預設填就好了。</p>
+<p>Jekyll 建制完的檔案預設會在 <code>_site</code> 目錄底下，所以 <code>local_dir</code> 也要設為 <code>_site</code></p>
+<h2><code>No such file or directory @ rb_sysopen</code> 錯誤</h2>
+<p>在 Travis CI 上面跑 Jekyll 就會炸掉 XDD 就照著 <a href="https://github.com/jekyll/jekyll/issues/2938">jekyll/jekyll#2938</a>，在 <code>_config.yml</code> 的 <code>exclude</code> 加入 <code>vendor</code> 解掉。</p>
+<h2>成果</h2>
+<p>以後只要用線上的 Markdown 編輯器寫完文章（比如 <a href="https://hackmd.io">HackMD</a> ），再貼到 GitHub 線上 commit，部落格就能自動更新啦。也可以用 <a href="http://prose.io">prose.io</a> 這類的線上 GitHub 內容管理工具，編輯提交一手包，還有草稿可以用 :p</p>
+<p>Travis 建構的缺點是 CI 服務裝完套件還是得花個幾分鐘，沒有以往那麼迅速。寫個文章而已嘛，還是可以忍受的，geek 到心理愉悅最重要（？）</p>
+<p>（完）</p>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
