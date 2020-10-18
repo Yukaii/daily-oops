@@ -15,6 +15,21 @@ export default function Home({ posts }) {
       <Header />
 
       <div className="d-block mx-auto markdown-body py-4 px-1" style={{ maxWidth: 700 }}>
+        <h2>Hi</h2>
+
+        <p>
+          This is Yukai Huang's personal website.
+        </p>
+
+        <p>
+          Here you can read my <Link href="/blog">recent posts</Link>, play with <Link href="/projects">my side projects before</Link>, or <Link href="/about">get to know me more</Link>.
+        </p>
+
+        <p>
+          安久吧！
+        </p>
+
+
         <h2>Recent posts</h2>
 
         <div className="Box">
@@ -27,7 +42,7 @@ export default function Home({ posts }) {
         </div>
 
         <Link href='/blog'>
-          <button className='mt-3 btn btn-primary' type='button'>Read More</button>
+          <button className='mt-3 btn' type='button'>Read More</button>
         </Link>
         </div>
     </div>
