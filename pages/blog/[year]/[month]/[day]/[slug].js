@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import dayjs from 'lib/dayjs'
 import { DiscussionEmbed } from 'disqus-react'
+import { SRLWrapper } from 'simple-react-lightbox'
 
 import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
 import { getDisqusConfig } from 'lib/disqus'
@@ -21,7 +22,9 @@ export default function Post({ content, title, params, disqus }) {
     <div className='container pt-4 pb-3 px-3'>
       <span className='text-mono text-gray-light'>{ date.format('LL') }</span>
     </div>
-    <Markdown content={content} className='container pb-6 px-3' />
+    <SRLWrapper>
+      <Markdown content={content} className='container pb-6 px-3' />
+    </SRLWrapper>
     {
       disqus && <div className='container py-3 px-3'>
         <DiscussionEmbed
