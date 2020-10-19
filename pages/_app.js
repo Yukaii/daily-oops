@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Router from 'next/router'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 import '@primer/css/index.scss'
 import 'styles/globals.css'
@@ -16,7 +17,9 @@ function MyApp({ Component, pageProps }) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <meta name="color-scheme" content="dark light" />
     </Head>
-    <Component {...pageProps} />
+    <SimpleReactLightbox>
+      <Component {...pageProps} />
+    </SimpleReactLightbox>
   </>
 }
 
