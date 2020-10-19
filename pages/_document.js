@@ -2,18 +2,8 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { GA_TRACKING_ID } from 'lib/gtag'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const isProduction = process.env.NODE_ENV === 'production'
-
-    return {
-      ...initialProps,
-      isProduction,
-    }
-  }
-
   render() {
-    const { isProduction } = this.props
+    const isProduction = process.env.NODE_ENV === 'production'
 
     return (
       <Html>
