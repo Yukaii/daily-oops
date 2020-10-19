@@ -1,14 +1,25 @@
-body.dark-mode {
+body,
+.btn,
+.btn-primary,
+.bg-gray,
+.Box {
+  transition: background 320ms, border 320ms;
+}
+
+:root {
   --text-color: #b9b9b9;
   --text-gray-light-color: #929292;
   --bg-color: #121212;
   --bg-gray-color: #272727;
   --bg-dark: #1f1f1f;
   --blue-color: #8bb9ea;
-  --green-color: #06581d;
+  --green-color: #106929;
   --border-color: #4a4a4a;
+  --active-border-color: ##9fc3e7;
   --bright-color: white;
+}
 
+body.dark-mode {
   background-color: var(--bg-color);
   color: var(--text-color);
 
@@ -20,9 +31,14 @@ body.dark-mode {
     color: var(--text-color);
     background-color: var(--bg-color);
     border-color: var(--border-color);
+    box-shadow: none;
 
     .octicon {
       color: var(--text-color);
+    }
+
+    &:focus, &.focus {
+      border-color: var(--active-border-color);
     }
   }
 
