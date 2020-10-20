@@ -1,0 +1,33 @@
+.markdown-body {
+  .hljs-line {
+    width: 100%;
+    height: 1.2em;
+    margin-left: 2em;
+    margin-top: -1.3em;
+  }
+
+  .code-gutter {
+    user-select: none;
+    padding: 16px;
+    padding-right: 0px;
+    text-align: right;
+    color: #1b1f234d;
+  }
+
+  span.hljs-line-number:before {
+    content: attr(data-line-number);
+  }
+
+  .code-inner {
+    padding: 16px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .highlight pre,
+  pre {
+    padding: 0;
+    background-color: white;
+    border: solid 1px #e1e4e8;
+  }
+}
