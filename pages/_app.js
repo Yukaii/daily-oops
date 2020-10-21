@@ -5,6 +5,7 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 import '@primer/css/index.scss'
 import 'styles/globals.css'
 import 'styles/primer-dark.scss'
+import 'styles/linegutter.scss'
 
 import 'highlight.js/styles/github-gist.css'
 import { pageview } from 'lib/gtag'
