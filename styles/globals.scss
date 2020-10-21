@@ -1,0 +1,39 @@
+.container {
+  max-width: 700px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.markdown-body img {
+  border-radius: 6px;
+}
+
+.markdown-body pre .copy-snippet-button {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .fa-check {
+    display: none;
+  }
+
+  .fa-clipboard {
+    display: block;
+  }
+
+  &.copied {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    .fa-check {
+      display: block;
+    }
+
+    .fa-clipboard {
+      display: none;
+    }
+  }
+}

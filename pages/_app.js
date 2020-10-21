@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Router from 'next/router'
 import SimpleReactLightbox from 'simple-react-lightbox'
+import '@fortawesome/fontawesome-free/js/all'
 
 import '@primer/css/index.scss'
-import 'styles/globals.css'
+import 'styles/globals.scss'
 import 'styles/primer-dark.scss'
 import 'styles/linegutter.scss'
 
