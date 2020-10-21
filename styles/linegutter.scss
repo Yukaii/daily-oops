@@ -1,33 +1,65 @@
+:root {
+  --fence-gutter-text-color: #1b1f234d;
+  --fence-highlighted-color: #fffbdd;
+  --fence-border-color: #e1e4e8;
+}
+
 .markdown-body {
-  .hljs-line {
+  table.fence-wrapper {
     width: 100%;
-    height: 1.2em;
-    margin-left: 2em;
-    margin-top: -1.3em;
-  }
+    margin-top: 16px;
+    display: table;
 
-  .code-gutter {
-    user-select: none;
-    padding: 16px;
-    padding-right: 0px;
-    text-align: right;
-    color: #1b1f234d;
-  }
+    td {
+      border: none;
+      padding: 0;
 
-  span.hljs-line-number:before {
-    content: attr(data-line-number);
-  }
+      &.hljs-line-number {
+        text-align: right;
+        padding: 0 6px 0 16px;
+        user-select: none;
+        color: var(--fence-gutter-text-color);
+        width: 1%;
+      }
 
-  .code-inner {
-    padding: 16px;
-    width: 100%;
-    z-index: 1;
+      &.hljs-line-number:before {
+        content: attr(data-line-number);
+        border: none;
+        min-width: 50px;
+        white-space: nowrap;
+        width: 1%;
+        vertical-align: top;
+      }
+
+      &.hljs-line {
+        padding-left: 10px;
+
+        &.highlighted {
+          background-color: var(--fence-highlighted-color);
+        }
+      }
+    }
+
+    tr {
+      border: none;
+      background-color: transparent;
+
+      &:nth-child(2n) {
+        background-color: transparent;
+      }
+    }
   }
 
   .highlight pre,
   pre {
     padding: 0;
     background-color: white;
-    border: solid 1px #e1e4e8;
+    border: solid 1px var(--fence-border-color);
   }
+}
+
+body.dark-mode {
+  --fence-gutter-text-color: #b9b9b9;
+  --fence-highlighted-color: #494843;
+  --fence-border-color: #4a4a4a;
 }
