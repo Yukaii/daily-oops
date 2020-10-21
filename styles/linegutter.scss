@@ -71,7 +71,14 @@
     padding: 0;
     background-color: var(--fence-background-color);
     border: solid 1px var(--fence-border-color);
+    overflow: unset;
     position: relative;
+
+    & > code {
+      width: 100%;
+      overflow: auto;
+      display: block;
+    }
   }
 }
 
