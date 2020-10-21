@@ -2,6 +2,7 @@
   --fence-gutter-text-color: #1b1f234d;
   --fence-highlighted-color: #fffbdd;
   --fence-border-color: #e1e4e8;
+  --fence-background-color: white;
 }
 
 .markdown-body {
@@ -16,10 +17,13 @@
 
       &.hljs-line-number {
         text-align: right;
-        padding: 0 6px 0 16px;
+        padding: 0 16px 0 16px;
         user-select: none;
         color: var(--fence-gutter-text-color);
         width: 1%;
+        background-color: var(--fence-background-color);
+
+        position: absolute;
       }
 
       &.hljs-line-number:before {
@@ -33,10 +37,17 @@
 
       &.hljs-line {
         padding-left: 10px;
+        padding-right: 16px;
 
         &.highlighted {
           background-color: var(--fence-highlighted-color);
         }
+      }
+    }
+
+    &.has-line-number {
+      td.hljs-line {
+        padding-left: 40px;
       }
     }
 
@@ -53,13 +64,14 @@
   .highlight pre,
   pre {
     padding: 0;
-    background-color: white;
+    background-color: var(--fence-background-color);
     border: solid 1px var(--fence-border-color);
   }
 }
 
 body.dark-mode {
-  --fence-gutter-text-color: #b9b9b9;
+  --fence-gutter-text-color: #5c6370;
   --fence-highlighted-color: #494843;
   --fence-border-color: #4a4a4a;
+  --fence-background-color: #1f1f1f;
 }
