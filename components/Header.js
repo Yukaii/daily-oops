@@ -40,7 +40,7 @@ const Header = () => {
         Daily Oops!
       </h1>
     </div>
-    <nav className="UnderlineNav flex-justify-center bg-gray px-3 position-sticky top-0" style={{ zIndex: 1 }}>
+    <nav className="UnderlineNav flex-justify-center bg-gray px-3 position-sticky top-0" style={{ zIndex: 99 }}>
       <div className="UnderlineNav-body" role="tablist" style={{ maxWidth: '100%' }}>
         {
           items.map(item => (<Link href={item.href} key={item.href}>

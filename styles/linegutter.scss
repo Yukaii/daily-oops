@@ -16,27 +16,28 @@
       padding: 0;
 
       &.hljs-line-number {
+        display: none;
         text-align: right;
-        padding: 0 16px 0 16px;
+        padding: 0 5px 0 16px;
         user-select: none;
         color: var(--fence-gutter-text-color);
         width: 1%;
         background-color: var(--fence-background-color);
-
-        position: absolute;
+        position: sticky;
+        left: 0;
+        z-index: 1;
       }
 
       &.hljs-line-number:before {
         content: attr(data-line-number);
         border: none;
-        min-width: 50px;
         white-space: nowrap;
-        width: 1%;
+        width: 100%;
         vertical-align: top;
       }
 
       &.hljs-line {
-        padding-left: 10px;
+        padding-left: 16px;
         padding-right: 16px;
 
         &.highlighted {
@@ -47,7 +48,11 @@
 
     &.has-line-number {
       td.hljs-line {
-        padding-left: 40px;
+        padding-left: 10px;
+      }
+
+      td.hljs-line-number {
+        display: table-cell;
       }
     }
 
