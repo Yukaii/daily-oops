@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Image from 'next/image'
+
 import NightSwitch from 'components/NightSwitch'
 
 import { OctofaceIcon, BookIcon, CodeIcon, InfoIcon } from '@primer/octicons-react'
@@ -34,7 +36,7 @@ const Header = () => {
     <div className='d-block text-center bg-gray py-4 px-3'>
       <NightSwitch />
       <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
-        <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxHeight: '80%' }} className='user-select-none' />
+        <Image src='/logo-animated.gif' alt='Daily Oops' width={300} height={300} style={{ height: 'auto', maxHeight: '80%' }} className='user-select-none' />
       </div>
       <h1>
         Daily Oops!
