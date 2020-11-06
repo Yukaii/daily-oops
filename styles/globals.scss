@@ -10,6 +10,7 @@
 
 .markdown-body img {
   border-radius: 6px;
+  cursor: zoom-in;
 }
 
 .markdown-body pre .copy-snippet-button {
@@ -20,6 +21,7 @@
 
   .fa-check {
     display: none;
+    color: #28a745;
   }
 
   .fa-clipboard {
