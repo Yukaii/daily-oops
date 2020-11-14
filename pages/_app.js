@@ -3,13 +3,13 @@ import Router from 'next/router'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import '@fortawesome/fontawesome-free/js/all'
 
+import { pageview } from 'lib/gtag'
+
 import '@primer/css/index.scss'
 import 'styles/globals.scss'
 import 'styles/primer-dark.scss'
 import 'styles/linegutter.scss'
-
 import 'highlight.js/styles/github-gist.css'
-import { pageview } from 'lib/gtag'
 
 Router.events.on('routeChangeComplete', (url) => process.env.NODE_ENV === 'production' && pageview(url))
 

@@ -26,6 +26,7 @@ class MyDocument extends Document {
                   __html: `
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
+                    window.gtag = gtag
                     gtag('js', new Date());
 
                     gtag('config', '${GA_TRACKING_ID}', {
@@ -38,7 +39,7 @@ class MyDocument extends Document {
           )}
         </Head>
         <body>
-          <script src="noflash.js" />
+          <script src="/noflash.js" />
           <Main />
           <NextScript />
         </body>
