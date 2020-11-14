@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { GA_TRACKING_ID } from 'lib/constants'
+import { NEXT_PUBLIC_GA_TRACKING_ID } from 'lib/constants'
 
 class MyDocument extends Document {
   render() {
@@ -19,7 +19,7 @@ class MyDocument extends Document {
             <t>
               <script
                 async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
               />
               <script
                 dangerouslySetInnerHTML={{
@@ -29,7 +29,7 @@ class MyDocument extends Document {
                     window.gtag = gtag
                     gtag('js', new Date());
 
-                    gtag('config', '${GA_TRACKING_ID}', {
+                    gtag('config', '${NEXT_PUBLIC_GA_TRACKING_ID}', {
                       page_path: window.location.pathname,
                     });
                   `,

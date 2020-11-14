@@ -32,7 +32,7 @@ jobs:
         DISQUS_SHORTNAME: ${{ secrets.DISQUS_SHORTNAME }}
         DISQUS_DOMAIN: ${{ secrets.DISQUS_DOMAIN }}
         DOMAIN: ${{ secrets.DOMAIN }}
-        GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+        NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
 
       run: |
         yarn next build && yarn next export && touch out/.nojekyll
