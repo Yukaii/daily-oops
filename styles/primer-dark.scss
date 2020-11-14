@@ -76,6 +76,12 @@ body.dark-mode {
       background-color: var(--bg-dark);
     }
 
+    h1, h2, h3, h4, h5, h6 {
+      .octicon-link {
+        color: var(--text-color);
+      }
+    }
+
     /*
 
     Atom One Dark by Daniel Gamage
