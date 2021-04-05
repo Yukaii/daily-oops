@@ -6,7 +6,7 @@ import PostRow from 'components/PostRow'
 
 export default function Blog({ posts }) {
   return (
-    <div>
+    <article>
       <Head>
         <title>Blog | Daily Oops!</title>
       </Head>
@@ -27,7 +27,7 @@ export default function Blog({ posts }) {
           <button className='mt-3 btn btn-primary' type='button'>Subscribe via RSS</button>
         </a>
       </div>
-    </div>
+    </article>
   )
 }
 

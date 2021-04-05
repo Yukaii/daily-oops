@@ -14,7 +14,9 @@ export default function Post({ content, title, params, disqus }) {
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
 
-  return <div>
+  const description = content.slice(0, 300)
+
+  return <section>
     <Head>
       <title>{ title } | Daily Oops!</title>
       <meta name="title" content={title} />
@@ -60,7 +62,7 @@ export default function Post({ content, title, params, disqus }) {
         />
       </div>
     }
-  </div>
+  </section>
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
