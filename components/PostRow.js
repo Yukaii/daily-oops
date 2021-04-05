@@ -13,7 +13,7 @@ export default function PostRow ({ post, index, totalCount }) {
         </a>
       </Link>
 
-      <div className="text-small text-gray-light">
+      <div className="text-small color-text-secondary">
         #{totalCount - index} posted on { date.format('LL') }
       </div>
     </div>

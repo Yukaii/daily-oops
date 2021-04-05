@@ -1,66 +1,7 @@
-body,
-.btn,
-.btn-primary,
-.bg-gray,
-.Box {
-  transition: background 320ms, border 320ms;
-}
-
-:root {
-  --text-color: #b9b9b9;
-  --text-gray-light-color: #929292;
-  --bg-color: #121212;
-  --bg-gray-color: #272727;
-  --bg-dark: #1f1f1f;
-  --blue-color: #8bb9ea;
-  --green-color: #106929;
-  --border-color: #4a4a4a;
-  --active-border-color: ##9fc3e7;
-  --bright-color: white;
-}
-
 body.dark-mode {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-
-  a {
-    color: var(--blue-color);
-  }
-
-  .btn {
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    border-color: var(--border-color);
-    box-shadow: none;
-
-    .octicon {
-      color: var(--text-color);
-    }
-
-    &:focus, &.focus {
-      border-color: var(--active-border-color);
-    }
-  }
-
-  .btn-primary {
-    background-color: var(--green-color);
-  }
-
-  .text-gray-light {
-    color: var(--text-gray-light-color);
-  }
-
-  .bg-gray {
-    background-color: var(--bg-gray-color) !important;
-  }
-
   .markdown-body {
     h1, h2 {
-      border-color: var(--border-color);
-    }
-
-    blockquote {
-      color: var(--text-gray-light-color);
+      border-color: var(--color-border-primary);
     }
 
     img {
@@ -68,17 +9,9 @@ body.dark-mode {
       background-color: transparent;
     }
 
-    code, tt {
-      background-color: var(--bg-dark);
-    }
-
-    .highlight pre, pre {
-      background-color: var(--bg-dark);
-    }
-
     h1, h2, h3, h4, h5, h6 {
       .octicon-link {
-        color: var(--text-color);
+        color: var(--color-text-secondary);
       }
     }
 
@@ -179,43 +112,5 @@ body.dark-mode {
       text-decoration: underline;
     }
 
-  }
-
-  .Box {
-    background-color: var(--bg-gray-color);
-    border-color: var(--border-color);
-  }
-
-  .Box-row--hover-gray:hover {
-    background-color: var(--border-color);
-  }
-
-  .Box-row {
-    border-color: var(--border-color);
-  }
-
-  .UnderlineNav-item {
-    color: var(--text-color);
-  }
-
-  .UnderlineNav {
-    box-shadow: inset 0 -1px 0 #3c3d3f;
-  }
-
-  .UnderlineNav-item.selected .UnderlineNav-octicon, .UnderlineNav-item[role=tab][aria-selected=true] .UnderlineNav-octicon, .UnderlineNav-item[aria-current]:not([aria-current=false]) .UnderlineNav-octicon {
-    color: var(--bright-color);
-  }
-
-  .text-gray-dark {
-    color: var(--text-gray-light-color) !important;
-  }
-
-  .text-gray {
-    color: var(--text-color) !important;
-  }
-
-  .box-shadow-medium {
-    box-shadow: none !important;
-    border: solid 1px var(--border-color) !important;
   }
 }
