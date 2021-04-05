@@ -4,7 +4,16 @@ import useCopySnippet from 'lib/hooks/useCopySnippet'
 const Markdown = ({ content, className, ...props }) => {
   useCopySnippet()
 
-  return <div className={`markdown-body ${className}`} dangerouslySetInnerHTML={{ __html: render(content) }} {...props} />
+  return <main id='main' property='schema:mainEntity'>
+    <article 
+      itemScope
+      itemprop='post'
+      typeof='schema:Article schema:BlogPosting'
+      property='schema:articleBody'
+      className={`markdown-body ${className}`} 
+      dangerouslySetInnerHTML={{ __html: render(content) }} {...props} 
+    />    
+  </main>
 }
 
 export default Markdown
