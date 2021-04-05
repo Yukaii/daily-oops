@@ -22,7 +22,12 @@ export default function Post({ content, title, params, disqus }) {
     <div className='container pt-4 pb-3 px-3'>
       <span className='text-mono text-gray-light'>{ date.format('LL') }</span>
     </div>
-    <SRLWrapper>
+    <SRLWrapper options={{
+      settings: {
+        lightboxTransitionSpeed: 0.3,
+        slideTransitionSpeed: 0.3
+      }
+    }}>
       <Markdown content={content} className='container pb-6 px-3' />
     </SRLWrapper>
     {
