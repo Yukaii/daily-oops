@@ -13,25 +13,32 @@ export default function Post({ content, title, params, disqus }) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
-
-  const description = content.slice(0, 300)
+  const description = content.slice(0, 150)
+  const time = date.format()
 
   return <section>
     <Head>
       <title>{ title } | Daily Oops!</title>
       <meta name="title" content={title} />
+      <meta name="author" content="Yukai Huang" />
+      <meta property="article:published_time" content={time} />
+      <meta property="article:published_time" content={time} />
     </Head>
-    
+
     <NextSeo
       title={title}
       description={description}
       openGraph={{
-        type: 'website',
+        type: 'article',
         locale: 'zh-Hant-TW',
         url,
         title,
         description,
         site_name: 'Daily Oops!',
+        article: {
+          publishedTime: time,
+          modifiedTime: time,
+        }        
       }}
     />
 
