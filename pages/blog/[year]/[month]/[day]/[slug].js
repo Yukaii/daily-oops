@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import dayjs from 'lib/dayjs'
 import { DiscussionEmbed } from 'disqus-react'
 import { SRLWrapper } from 'simple-react-lightbox'
@@ -16,7 +17,21 @@ export default function Post({ content, title, params, disqus }) {
   return <div>
     <Head>
       <title>{ title } | Daily Oops!</title>
+      <meta name="title" content={title} />
     </Head>
+    
+    <NextSeo
+      title={title}
+      description={description}
+      openGraph={{
+        type: 'website',
+        locale: 'zh-Hant-TW',
+        url,
+        title,
+        description,
+        site_name: 'Daily Oops!',
+      }}
+    />
 
     <Header />
     <div className='container pt-4 pb-3 px-3'>
