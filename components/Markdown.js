@@ -7,7 +7,7 @@ const Markdown = ({ content, className, ...props }) => {
   return <main id='main' property='schema:mainEntity'>
     <article 
       itemScope
-      itemprop='post'
+      itemProp='post'
       typeof='schema:Article schema:BlogPosting'
       property='schema:articleBody'
       className={`markdown-body ${className}`} 
