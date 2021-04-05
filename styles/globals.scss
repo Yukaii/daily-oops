@@ -25,7 +25,7 @@ html {
 
   .fa-check {
     display: none;
-    color: #28a745;
+    color: var(--color-bg-success-inverse);
   }
 
   .fa-clipboard {

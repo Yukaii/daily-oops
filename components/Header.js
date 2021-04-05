@@ -32,7 +32,7 @@ const Header = () => {
   ]
 
   return <>
-    <div className='d-block text-center bg-gray py-4 px-3'>
+    <div className='d-block text-center color-bg-secondary py-4 px-3'>
       <NightSwitch />
       <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
         <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxHeight: '80%' }} className='user-select-none' />
@@ -41,7 +41,7 @@ const Header = () => {
         Daily Oops!
       </h1>
     </div>
-    <nav className="UnderlineNav flex-justify-center bg-gray px-3 position-sticky top-0" style={{ zIndex: 99 }}>
+    <nav className="UnderlineNav flex-justify-center color-bg-secondary px-3 position-sticky top-0" style={{ zIndex: 99 }}>
       <div className="UnderlineNav-body" role="tablist" style={{ maxWidth: '100%' }}>
         {
           items.map(item => (<Link href={item.href} key={item.href}>
