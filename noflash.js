@@ -10,6 +10,7 @@
   function setClassOnDocumentBody(darkMode) {
     document.body.classList.add(darkMode ? classNameDark : classNameLight);
     document.body.classList.remove(darkMode ? classNameLight : classNameDark);
+    document.documentElement.setAttribute('data-color-mode', darkMode ? 'dark' : 'light')
   }
   
   var preferDarkQuery = '(prefers-color-scheme: dark)';
