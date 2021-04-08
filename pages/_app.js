@@ -10,7 +10,8 @@ import '@primer/css/index.scss'
 import 'styles/globals.scss'
 import 'styles/primer-dark.scss'
 import 'styles/linegutter.scss'
-import 'highlight.js/styles/github-gist.css'
+
+import '@yukaii/github-highlightjs-themes/themes/github-light-default.css'
 
 Router.events.on('routeChangeComplete', (url) => process.env.NODE_ENV === 'production' && pageview(url))
 
