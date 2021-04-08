@@ -234,6 +234,11 @@
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
   integrity sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==
 
+"@yukaii/github-highlightjs-themes@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@yukaii/github-highlightjs-themes/-/github-highlightjs-themes-1.0.0.tgz#019a8319ea3777a0a9cbff5965b27e4f5344d850"
+  integrity sha512-4TpQ3GUmh7Ech16o3aDcU/2fG/mNDvYKuItM+Pj/zT36CtR8cS4z3+Yis/GqN/JybWZKFSv8c+SIHilOIb4mzw==
+
 anser@1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.9.tgz#1f85423a5dcf8da4631a341665ff675b96845760"
