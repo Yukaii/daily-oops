@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "rootDir": "./",
+    "checkJs": true,
+    "jsx": "react-jsx",
+  },
+  "exclude": ["node_modules", "out", ".next"],
+}

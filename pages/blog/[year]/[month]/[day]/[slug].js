@@ -2,12 +2,14 @@ import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import dayjs from 'lib/dayjs'
 import { DiscussionEmbed } from 'disqus-react'
+import useDarkMode from 'use-dark-mode'
 import { SRLWrapper } from 'simple-react-lightbox'
 
 import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
 import { getDisqusConfig } from 'lib/disqus'
 import Header from 'components/Header'
 import Markdown from 'components/Markdown'
+import { useEffect, useState } from 'react'
 
 export default function Post({ content, title, params, disqus }) {
   const { year, month, day, slug } = params
@@ -15,6 +17,14 @@ export default function Post({ content, title, params, disqus }) {
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
   const description = content.slice(0, 150)
   const time = date.format()
+
+  const darkMode = useDarkMode()
+  const [layoutDarkMode, setLayoutDarkMode] = useState(darkMode.value)
+  useEffect(() => {
+    window.setTimeout(() => {
+      setLayoutDarkMode(darkMode.value)
+    }, 100)
+  }, [darkMode.value])
 
   return <section>
     <Head>
@@ -58,14 +68,13 @@ export default function Post({ content, title, params, disqus }) {
       disqus && <div className='container py-3 px-3'>
         <DiscussionEmbed
           shortname={disqus.shortname}
-          config={
-            {
-              url: url,
-              identifier: url,
-              title: title,
-              language: 'zh_TW'
-            }
-          }
+          config={{
+            url: url,
+            identifier: url,
+            title: title,
+            language: 'zh_TW'
+          }}
+          darkmode={JSON.stringify(layoutDarkMode)}
         />
       </div>
     }
