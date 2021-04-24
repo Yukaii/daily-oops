@@ -6,6 +6,7 @@ name: GitHub Pages Build
 on:
   push:
     branches: [ production ]
+  workflow_dispatch:
 
 jobs:
   build:
