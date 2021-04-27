@@ -1,8 +1,5 @@
 :root {
-  --fence-gutter-text-color: #1b1f234d;
   --fence-highlighted-color: #fffbdd;
-  --fence-border-color: #e1e4e8;
-  --fence-background-color: white;
 }
 
 .markdown-body {
@@ -20,9 +17,8 @@
         text-align: right;
         padding: 0 5px 0 16px;
         user-select: none;
-        color: var(--fence-gutter-text-color);
+        color: var(--color-scale-gray-4);
         width: 1%;
-        background-color: var(--fence-background-color);
         position: sticky;
         left: 0;
         z-index: 1;
@@ -69,8 +65,7 @@
   .highlight pre,
   pre {
     padding: 0;
-    background-color: var(--fence-background-color);
-    border: solid 1px var(--fence-border-color);
+    border: 1px solid var(--color-border-primary);
     overflow: unset;
     position: relative;
 
@@ -83,8 +78,5 @@
 }
 
 body.dark-mode {
-  --fence-gutter-text-color: #5c6370;
   --fence-highlighted-color: #494843;
-  --fence-border-color: #4a4a4a;
-  --fence-background-color: #1f1f1f;
 }
