@@ -46,6 +46,7 @@ html {
   }
 }
 
+// !Workaround: This fix disqus auto mode within primer css
 #disqus_thread {
   color-scheme: light !important;
 }
