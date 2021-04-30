@@ -11,6 +11,7 @@ export default function Home({ posts }) {
     <div>
       <NextSeo
         title='Daily Oops!'
+        titleTemplate='%s'
         description={`Yukai's blog. Web tech, apps, photos, and notes.`}
         openGraph={{
           type: 'article',
