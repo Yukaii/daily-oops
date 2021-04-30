@@ -1,17 +1,24 @@
-import Head from 'next/head'
 import Link from 'next/link'
 
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
 import Header from 'components/Header'
 import PostRow from 'components/PostRow'
+import { NextSeo } from 'next-seo'
 
 export default function Home({ posts }) {
   return (
     <div>
-      <Head>
-        <title>Daily Oops!</title>
-      </Head>
+      <NextSeo
+        title='Daily Oops!'
+        description={`Yukai's blog. Web tech, apps, photos, and notes.`}
+        openGraph={{
+          type: 'article',
+          locale: 'zh-Hant-TW',
+          title: 'Daily Oops!',
+          site_name: 'Daily Oops!',
+        }}
+      />
 
       <Header />
 

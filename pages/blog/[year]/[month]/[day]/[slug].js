@@ -27,17 +27,10 @@ export default function Post({ content, title, params, disqus }) {
   }, [darkMode.value])
 
   return <section>
-    <Head>
-      <title>{ title } | Daily Oops!</title>
-      <meta name="title" content={title} />
-      <meta name="author" content="Yukai Huang" />
-      <meta property="article:published_time" content={time} />
-      <meta property="article:published_time" content={time} />
-    </Head>
-
     <NextSeo
       title={title}
       description={description}
+      titleTemplate='%s | Daily Oops!'
       openGraph={{
         type: 'article',
         locale: 'zh-Hant-TW',
