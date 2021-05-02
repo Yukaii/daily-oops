@@ -1708,6 +1708,11 @@ markdown-it-footnote@^3.0.2:
   resolved "https://registry.yarnpkg.com/markdown-it-footnote/-/markdown-it-footnote-3.0.2.tgz#1575ee7a093648d4e096aa33386b058d92ac8bc1"
   integrity sha512-JVW6fCmZWjvMdDQSbOT3nnOQtd9iAXmw7hTSh26+v42BnvXeVyGMDBm5b/EZocMed2MbCAHiTX632vY0FyGB8A==
 
+markdown-it-image-figures@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-image-figures/-/markdown-it-image-figures-1.0.1.tgz#0c857918959847525fe21ae9899a1ab1d86d92e5"
+  integrity sha512-fq20DrziYQrwfgY6vTz51JUGUdkq9dyFSAFA9MDwjwpLXuWiT/7vA15Tgxoc7itZpm4wBsAewjw8tIyoMDtbZA==
+
 markdown-it-imsize@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/markdown-it-imsize/-/markdown-it-imsize-2.0.1.tgz#cca0427905d05338a247cb9ca9d968c5cddd5170"

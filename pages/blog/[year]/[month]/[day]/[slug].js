@@ -46,7 +46,7 @@ export default function Post({ content, title, params, disqus }) {
     />
 
     <Header />
-    <div className='container pt-4 pb-3 px-3'>
+    <div className='container pt-4 pb-3 px-3' style={{ maxWidth: 630 }}>
       <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
     </div>
     <SRLWrapper options={{
@@ -55,7 +55,7 @@ export default function Post({ content, title, params, disqus }) {
         slideTransitionSpeed: 0.3
       }
     }}>
-      <Markdown content={content} className='container pb-6 px-3' />
+      <Markdown content={content} className='container post-container pb-6 px-3' />
     </SRLWrapper>
     {
       disqus && <div className='container py-3 px-3'>
