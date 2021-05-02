@@ -13,7 +13,7 @@ export default function Blog({ posts }) {
 
       <Header />
 
-      <div className="d-block mx-auto markdown-body py-4 px-3" style={{ maxWidth: 700 }}>
+      <div className="d-block mx-auto markdown-body py-4 px-3" style={{ maxWidth: 680 }}>
         <div className="Box">
           {
             posts.map(

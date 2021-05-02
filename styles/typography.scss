@@ -1,0 +1,27 @@
+.post-container.markdown-body {
+  max-width: 630px;
+  font-size: 17px;
+  line-height: 1.7em;  
+
+  h1 {
+    border-width: 0;
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.3em;
+  }
+  
+  p, blockquote, ul, ol, dl, table, pre, details {
+    margin-bottom: 1.8em;
+  }
+  
+  p { 
+    text-align: justify; 
+    text-justify: inter-ideographic;
+  }
+}

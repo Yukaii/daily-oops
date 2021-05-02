@@ -6,7 +6,7 @@ class MyDocument extends Document {
     const isProduction = process.env.NODE_ENV === 'production'
 
     return (
-      <Html lang='zh-Hant-TW' data-dark-theme='dark_dimmed'>
+      <Html lang='zh-Hant-TW' data-dark-theme='dark'>
         <Head>
           <link
             rel="alternate"
