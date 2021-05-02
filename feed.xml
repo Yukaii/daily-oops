@@ -35,7 +35,7 @@ Vercel 提供個人免費版，但是如果你想要部屬 GitHub 組織的專�
 <h2 id="vercel-%26-next.js"><a class="anchor" href="#vercel-%26-next.js"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> Vercel &amp; Next.js</h2>
 <p><a href="https://nextjs.org/">Next.js</a> 這套框架讓你快速建構 React.js 的前端網站，甚至包含簡單的後端整合，SSR、SSG 等各項技術也都幫你整合好了。開發 Next.js 的公司就是 <a href="https://vercel.com/about">Vercel</a>，他們的同名服務 <a href="https://vercel.com/">Vercel</a> 就是幫你架設 Next.js 網站的最佳選擇。</p>
 <p>Vercel 提供個人免費版，但是如果你想要部屬 GitHub 組織的專案就一定得付錢：</p>
-<p><img src="https://i.imgur.com/V4PMopz.png" alt=""></p>
+<figure data-type="image"><img src="https://i.imgur.com/V4PMopz.png" alt=""></figure>
 <p>但有時專案一多，勢必要透過 GitHub 組織來管理專案，你又想免費使用 Vercel 時該怎麼做呢？</p>
 <h2 id="%E7%9B%B4%E8%A6%BA%EF%BC%9A%E5%90%8C%E6%AD%A5%E5%88%B0-github-%E5%80%8B%E4%BA%BA%E5%84%B2%E5%AD%98%E5%BA%AB"><a class="anchor" href="#%E7%9B%B4%E8%A6%BA%EF%BC%9A%E5%90%8C%E6%AD%A5%E5%88%B0-github-%E5%80%8B%E4%BA%BA%E5%84%B2%E5%AD%98%E5%BA%AB"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 直覺：同步到 GitHub 個人儲存庫</h2>
 <p>很簡單，Fork 一份程式碼儲存庫到個人帳號就可以了，然後用 git 新增一個 remote，把程式碼推上去：</p>
@@ -53,7 +53,7 @@ Vercel 提供個人免費版，但是如果你想要部屬 GitHub 組織的專�
 <li><code>20</code>: 到「同步管理儲存庫」的設定頁面加入 Secret，這裡填的是私鑰。建議可以 <a href="https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">產生一組新的 SSH 金鑰</a> 方便管理。記得加到帳號的 SSH 金鑰列表裡頭。</li>
 </ul>
 <h2 id="%E5%B0%B1%E9%80%99%E6%A8%A3%E4%BA%86"><a class="anchor" href="#%E5%B0%B1%E9%80%99%E6%A8%A3%E4%BA%86"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 就這樣了</h2>
-<p><img src="https://i.imgur.com/km7anw5.png" alt="" width="300"></p>
+<figure data-type="image"><img src="https://i.imgur.com/km7anw5.png" alt="" width="300"></figure>
 <p>Vercel 綁定等等不在本篇討論範圍，就不寫了。設定完成後可以到 GitHub Actions 的分頁手動觸發 Action，看看程式碼是否成功同步。（點上圖那個 <code>Run workflow</code>）</p>
 <p>GitHub Actions 模組的設定檔讓我們可以快速復用別人寫好的 Actions，我這次用的 Actions 是 <a href="https://github.com/wei/git-sync"><code>wei/git-sync</code></a>，可以看到整份設定檔根本沒改幾行，輕輕鬆鬆啊！</p>
 <blockquote>
@@ -118,15 +118,9 @@ TL;DR 我順利通過手排車駕照考試了！
 <p>輪到我準備上車時還是有點緊張，心裡一直想會不會等會腳一抖就熄火，還沒開始就先被扣分了。結果還好一切順利，最怕的道駕路邊停車也停在完美安全的距離。一完成路邊停車，剩下的就只是開回駕訓班了，我的腦袋裡一直反覆著卡特的 It’s over dunk 的 over 手勢，真的結束了，舒服！</p>
 <h2 id="%E5%8F%A3%E8%A8%A3%EF%BC%9A%E6%BB%BF%E8%A1%97%E7%9A%84%E4%B8%89%E5%AF%B6"><a class="anchor" href="#%E5%8F%A3%E8%A8%A3%EF%BC%9A%E6%BB%BF%E8%A1%97%E7%9A%84%E4%B8%89%E5%AF%B6"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 口訣：滿街的三寶</h2>
 <p>如果要我給還沒學車的朋友一個建議，竊以為下面這兩張圖最為適合：</p>
-<p><img src="https://i.imgur.com/BgwliLI.png" alt=""></p>
-<blockquote>
-<p>自豪貌</p>
-</blockquote>
+<figure data-type="image"><img src="https://i.imgur.com/BgwliLI.png" alt=""><figcaption>自豪貌</figcaption></figure>
 <p>既然是三寶所以才要來學車嘛，所以就找自己節奏慢慢學就好了。遇到比較愛碎碎唸的教練抱怨你進度慢，你也要有自知之明，因為你就三寶，所以只能慢慢練培養肌肉記憶。<s>教練的話就不用理他了</s></p>
-<p><img src="https://i.imgur.com/ByvvUO7.png" alt=""></p>
-<blockquote>
-<p>送給駕訓班的所有同學</p>
-</blockquote>
+<figure data-type="image"><img src="https://i.imgur.com/ByvvUO7.png" alt=""><figcaption>送給駕訓班的所有同學</figcaption></figure>
 <p>你可以把他解讀成防禦性駕駛。路上三寶就是這麼多，你自己也可能會失誤，既然如此就不要那麼貼彎，路線選擇安全點，預測一下前面三寶的行動，保持安全最重要。</p>
 <p>吹了這麼多，拿到駕照到現在我倒是還沒上過一次路。<s>還是來繼續考 L2 駕照實在</s></p>
 <h2 id="%E5%BE%8C%E9%81%BA%E7%97%87"><a class="anchor" href="#%E5%BE%8C%E9%81%BA%E7%97%87"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 後遺症</h2>
@@ -158,7 +152,7 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 1. 打開 [`chrome://net-export/`](]]></description>
             <content:encoded><![CDATA[<h1 id="%E4%BD%BF%E7%94%A8-chrome-netlog-%E8%A7%A3%E6%9E%90%E9%9A%B1%E8%97%8F%E5%9C%A8-devtools-%E4%B8%AD%E7%9A%84-header-%E8%B3%87%E8%A8%8A"><a class="anchor" href="#%E4%BD%BF%E7%94%A8-chrome-netlog-%E8%A7%A3%E6%9E%90%E9%9A%B1%E8%97%8F%E5%9C%A8-devtools-%E4%B8%AD%E7%9A%84-header-%E8%B3%87%E8%A8%8A"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 使用 Chrome NetLog 解析隱藏在 DevTools 中的 Header 資訊</h1>
 <p>在檢視 DevTools 網路頁的 Headers 資訊時，有時後會顯示下面這行警告訊息：</p>
-<p><img src="https://i.imgur.com/P7WZcYY.png" alt=""></p>
+<figure data-type="image"><img src="https://i.imgur.com/P7WZcYY.png" alt=""></figure>
 <blockquote>
 <p>Provisional headers are shown</p>
 </blockquote>
@@ -217,7 +211,7 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 值得一提的是這次用 TypeScript Generics 搭配 localforage 弄了一層簡單的 [ActiveModel-like API](https://github.com/Yukaii/kanahei-wallpapers]]></description>
             <content:encoded><![CDATA[<h1 id="chrome-extension---kabegami-new-page"><a class="anchor" href="#chrome-extension---kabegami-new-page"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> Chrome Extension - Kabegami New Page</h1>
 <h2 id="%E5%85%88%E7%9C%8B-demo"><a class="anchor" href="#%E5%85%88%E7%9C%8B-demo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 先看 Demo</h2>
-<p><img src="https://i.imgur.com/CW9l7iA.gif" alt="Imgur"></p>
+<figure data-type="image"><img src="https://i.imgur.com/CW9l7iA.gif" alt="Imgur"></figure>
 <p><strong>TL;DR</strong>，這是一個讓瀏覽器新分頁<strong>每次隨機顯示桌布</strong>的擴充功能。</p>
 <p>瀏覽器成為第二個桌面，我自幹這個功能也是相當合理的 =w=</p>
 <h2 id="%E5%88%B0%E5%93%AA%E4%B8%8B%E8%BC%89%EF%BC%9F"><a class="anchor" href="#%E5%88%B0%E5%93%AA%E4%B8%8B%E8%BC%89%EF%BC%9F"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 到哪下載？</h2>
@@ -261,21 +255,21 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 </li>
 <li>
 <p>複製擴充功能的 ID，在擴充功能 Web Store 網址的最後面，以 Unsplash Instant 為例，就是 <code>pejkokffkapolfffcgbmdmhdelanoaih</code>，也可以從 Opera 的擴充功能頁面拿到</p>
-<p><img src="https://i.imgur.com/MCcnznn.png" alt="ID"></p>
+<figure data-type="image"><img src="https://i.imgur.com/MCcnznn.png" alt="ID"></figure>
 </li>
 <li>
 <p>叫出 New Tab Start Page Pro 的設定頁，在 New Tab &amp; Start Page URL 欄位填入：<code>chrome-extension://pejkokffkapolfffcgbmdmhdelanoaih/index.html</code></p>
 </li>
 <li>
 <p>其它照截圖的選起來</p>
-<p><img src="https://i.imgur.com/07NcIOh.png" alt="options"></p>
+<figure data-type="image"><img src="https://i.imgur.com/07NcIOh.png" alt="options"></figure>
 </li>
 <li>
 <p>按 Save 存檔</p>
 </li>
 </ol>
 <p>效果如下圖，雖然開啟新分頁之後會閃一下，聊勝於無啦</p>
-<p><img src="https://i.imgur.com/Ctvff8y.gif" alt="gif"></p>
+<figure data-type="image"><img src="https://i.imgur.com/Ctvff8y.gif" alt="gif"></figure>
 <p>（完）</p>
 ]]></content:encoded>
         </item>
@@ -343,7 +337,7 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <p><a href="https://www.alfredapp.com/">Alfred</a> 除了能<strong>快速啟動/切換</strong>應用程式外，還能編寫自己的 workflow 腳本，來達成匯率轉換、<a href="https://github.com/zetavg/alfred-google-translate-workflow">翻譯</a>、即時顯示資訊等等。雖然理論上能透過 API 做到各種應用，但 UI 限制就擺在那，有些功能你硬要用 Alfred workflow 做就顯得彆鈕 😆。</p>
 <p>好，這樣就推廣完畢啦（逃）。接下來寫點我自己對 Alfred 做的修改和套件：</p>
 <h2 id="%E8%87%AA%E8%A3%BD%E7%9A%84-macos-%E9%A2%A8%E6%A0%BC%E4%B8%BB%E9%A1%8C-(macos-styled-alfred-theme)"><a class="anchor" href="#%E8%87%AA%E8%A3%BD%E7%9A%84-macos-%E9%A2%A8%E6%A0%BC%E4%B8%BB%E9%A1%8C-(macos-styled-alfred-theme)"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 自製的 macOS 風格主題 (macOS-styled alfred theme)</h2>
-<p><img src="https://i.imgur.com/zg25hcK.png" alt="mac-os-styled-alfred-theme"></p>
+<figure data-type="image"><img src="https://i.imgur.com/zg25hcK.png" alt="mac-os-styled-alfred-theme"></figure>
 <p><a href="https://www.alfredapp.com/extras/theme/R20A5tyTVc/">下載連結</a></p>
 <h3 id="%E7%89%B9%E8%89%B2"><a class="anchor" href="#%E7%89%B9%E8%89%B2"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 特色</h3>
 <ul>
@@ -356,7 +350,7 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <h2 id="%E8%87%AA%E5%B7%B1%E4%BE%86%E5%AF%AB-powerpack"><a class="anchor" href="#%E8%87%AA%E5%B7%B1%E4%BE%86%E5%AF%AB-powerpack"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 自己來寫 Powerpack</h2>
 <p>使用 JS Hero <a href="https://github.com/sindresorhus">sindresorhus</a> 大大的 <a href="https://github.com/sindresorhus/alfy">alfy</a> 套件，就可以輕鬆的用 Node.js 來寫 Alfred workflow，各種 <code>npm</code> 套件隨你用，還可以利用 <code>npm</code> 來發佈、安裝 workflow。</p>
 <p>像我就做了內部分機表速查的小工具，誰打電話來找麻煩，要接還是不接，一按就知道！❤️ （被揍）</p>
-<p><img src="https://i.imgur.com/9YzPPwQ.png" alt="alfred-contacts"></p>
+<figure data-type="image"><img src="https://i.imgur.com/9YzPPwQ.png" alt="alfred-contacts"></figure>
 <blockquote>
 <p>Skitch 馬賽克馬的好糾結</p>
 </blockquote>
@@ -411,7 +405,7 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <pre><code class="language-bash"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="far fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-comment"># run on remote machine</span></td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2">ssh -ND 0.0.0.0:8080 localhost -p 11111</td></tr></tbody></table></code></pre>
 <p>另一個參數 <code>-N</code> 讓指令純建立 tunnel，<code>0.0.0.0</code> 讓所有 IP 都能連到這臺機器，<code>8080</code> 是綁定的 port。<code>-p</code> 指令連接埠，也就是方才 forward 過來的 <code>11111</code>。</p>
 <p>這樣 SOCKS5 Proxy 就算跑起來了，最後來設定 Client 端。我另外開了一個 Chrome 的 Profile，裝上 <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega</a> 插件，方便隔離：</p>
-<p><img src="https://i.imgur.com/kOjwrdw.png" alt="image"></p>
+<figure data-type="image"><img src="https://i.imgur.com/kOjwrdw.png" alt="image"></figure>
 <p>Remote IP 就是遠端開發機的 IP。Bypass List 要檢查一下，<code>192.168.x.x</code> 也要 forward，記得從 List 刪掉。</p>
 <p>然後就可以在外網存取 <code>192.168.X.X</code> 的區網資源啦！太舒適啦！</p>
 <h2 id="%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><a class="anchor" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 參考資料</h2>
