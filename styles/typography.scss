@@ -24,4 +24,13 @@
     text-align: justify; 
     text-justify: inter-ideographic;
   }
+  
+  figure[data-type="image"] {
+    text-align: center;
+
+    figcaption {
+      color: var(--color-text-tertiary);
+      font-size: 14px;
+    }
+  }
 }
