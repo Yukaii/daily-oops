@@ -8,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
-    "@primer/css": "^16.1.2",
-    "@primer/octicons-react": "^12.1.0",
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "@primer/css": "16.3.0",
+    "@primer/octicons-react": "12.1.0",
     "@yukaii/github-highlightjs-themes": "^1.0.0",
     "bluebird": "^3.7.2",
     "cheerio": "^1.0.0-rc.5",
