@@ -58,7 +58,7 @@
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@fortawesome/fontawesome-free@^5.15.1":
+"@fortawesome/fontawesome-free@5.15.3":
   version "5.15.3"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
   integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
@@ -156,7 +156,7 @@
     "@primer/octicons" "13.0.0"
     "@primer/primitives" "4.2.1"
 
-"@primer/octicons-react@^12.1.0":
+"@primer/octicons-react@12.1.0":
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-12.1.0.tgz#7556450199e0c10e72e99dd02c59f1ac33544767"
   integrity sha512-eb/5Obsp6/pVkyzzGhobK6aPAkKqx6VleF/7HYeihGTYm3rGZc+prL/jhxD5Mo1P6U343YEkHjc2gKuvtENn1g==
@@ -1698,6 +1698,11 @@ markdown-it-anchor@^6.0.0:
   resolved "https://registry.npmjs.org/markdown-it-anchor/-/markdown-it-anchor-6.0.1.tgz"
   integrity sha512-8qX4r5R6AtXla9HKCouEQ40inw69O5jR4VUXlZySsBLxIXlsJ3Yi9JV6JWPU4ZdA8jWTGDDJjJYNLwQ0W4jCag==
 
+markdown-it-container@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-container/-/markdown-it-container-3.0.0.tgz#1d19b06040a020f9a827577bb7dbf67aa5de9a5b"
+  integrity sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==
+
 markdown-it-deflist@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/markdown-it-deflist/-/markdown-it-deflist-2.1.0.tgz"
@@ -1727,6 +1732,11 @@ markdown-it-mark@^3.0.0:
   version "3.0.1"
   resolved "https://registry.npmjs.org/markdown-it-mark/-/markdown-it-mark-3.0.1.tgz"
   integrity sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A==
+
+markdown-it-ruby@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-ruby/-/markdown-it-ruby-0.1.1.tgz#6e2050a9b2c3275afc2844920d53cdffbbe12f78"
+  integrity sha1-biBQqbLDJ1r8KESSDVPN/7vhL3g=
 
 markdown-it-sub@^1.0.0:
   version "1.0.0"
