@@ -2,11 +2,16 @@
   --fence-highlighted-color: #fffbdd;
 }
 
+body.dark-mode {
+  --fence-highlighted-color: #494843;
+}
+
 .markdown-body {
   table.fence-wrapper {
     width: 100%;
-    margin-top: 16px;
     display: table;
+    margin-top: .5em;
+    margin-bottom: .5em;    
 
     td {
       border: none;
@@ -75,8 +80,4 @@
       display: block;
     }
   }
-}
-
-body.dark-mode {
-  --fence-highlighted-color: #494843;
 }
