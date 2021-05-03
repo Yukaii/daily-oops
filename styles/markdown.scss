@@ -7,4 +7,15 @@
       margin-bottom: 0;
     }
   }
+
+  .task-list-item {
+    list-style-type: none;
+  }
+  
+  .task-list-item-checkbox {
+    float: left;
+    margin: .40em 0 .2em -1.3em !important;
+    vertical-align: middle;
+    cursor: default !important;    
+  }
 }
