@@ -1,11 +1,3 @@
-:root {
-  --fence-highlighted-color: #fffbdd;
-}
-
-body.dark-mode {
-  --fence-highlighted-color: #494843;
-}
-
 .markdown-body {
   table.fence-wrapper {
     width: 100%;
@@ -23,6 +15,7 @@ body.dark-mode {
         padding: 0 5px 0 16px;
         user-select: none;
         color: var(--color-scale-gray-4);
+        background-color: var(--color-bg-tertiary);
         width: 1%;
         position: sticky;
         left: 0;
@@ -42,7 +35,7 @@ body.dark-mode {
         padding-right: 16px;
 
         &.highlighted {
-          background-color: var(--fence-highlighted-color);
+          background-color: var(--color-auto-yellow-1);
         }
       }
     }
