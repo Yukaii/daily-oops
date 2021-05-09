@@ -36,7 +36,7 @@ jobs:
         NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
 
       run: |
-        yarn next build && yarn next export && touch out/.nojekyll
+        yarn build && yarn next export && touch out/.nojekyll
     - name: GitHub Pages
       if: success()
       # You may pin to the exact commit or the version.
