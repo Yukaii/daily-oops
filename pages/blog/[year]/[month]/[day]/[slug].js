@@ -51,9 +51,11 @@ export default function Post({ content, title, params, disqus }) {
     </div>
     <SRLWrapper options={{
       settings: {
-        lightboxTransitionSpeed: 0.3,
-        slideTransitionSpeed: 0.3
-      }
+        lightboxTransitionSpeed: 0.1,
+        slideAnimationType: 'both',
+        slideSpringValues: [350, 50],
+        slideTransitionTimingFunction: 'easeInOut'
+      },
     }}>
       <Markdown content={content} className='container post-container pb-6 px-3' />
     </SRLWrapper>

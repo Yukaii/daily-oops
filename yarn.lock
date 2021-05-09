@@ -2584,10 +2584,10 @@ shorthash@^0.0.2:
   resolved "https://registry.npmjs.org/shorthash/-/shorthash-0.0.2.tgz"
   integrity sha1-WbJo7sveWQOLMNogK8+93rLEpOs=
 
-simple-react-lightbox@^3.6.5:
-  version "3.6.5"
-  resolved "https://registry.npmjs.org/simple-react-lightbox/-/simple-react-lightbox-3.6.5.tgz"
-  integrity sha512-X0BgXAq+F4rVV5FKpDEIm0YVkuy/RlNm7o7g6FfH2Acnu4RhGfiEoUMtBfJB/qymao8LzmSLZx6eVSX+q/gRfA==
+simple-react-lightbox@3.6.6:
+  version "3.6.6"
+  resolved "https://registry.yarnpkg.com/simple-react-lightbox/-/simple-react-lightbox-3.6.6.tgz#4db673c168e3373389ab3c80be5868a437793b16"
+  integrity sha512-Uz5zpe3HZhci2LUAiiafFiEjxCMc7D5x8KmmP+F/6kdWwglOGuHC1+B9aRVtXnTgnhStL6k2pVkfS+vl7jOjTQ==
   dependencies:
     body-scroll-lock "^3.1.5"
     fast-deep-equal "^3.1.3"
