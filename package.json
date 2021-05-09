@@ -44,7 +44,7 @@
     "react-dom": "^17.0.1",
     "sass": "^1.26.11",
     "shorthash": "^0.0.2",
-    "simple-react-lightbox": "^3.6.5",
+    "simple-react-lightbox": "3.6.6",
     "slugify": "^1.4.5",
     "use-dark-mode": "^2.3.1",
     "yaml": "^1.10.0"
