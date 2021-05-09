@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import dayjs from 'lib/dayjs'
 import { DiscussionEmbed } from 'disqus-react'
@@ -11,7 +10,7 @@ import Header from 'components/Header'
 import Markdown from 'components/Markdown'
 import { useEffect, useState } from 'react'
 
-export default function Post({ content, title, params, disqus }) {
+export default function Post({ content, title, params, disqus, noteId }) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
@@ -25,6 +24,9 @@ export default function Post({ content, title, params, disqus }) {
       setLayoutDarkMode(darkMode.value)
     }, 100)
   }, [darkMode.value])
+
+  const hackmdLink = () => <a className='no-underline color-text-primary text-semibold' href='https://hackmd.io' target='_blank'><i className='fas fa-file-alt' /> HackMD</a>
+  const noteLink = `https://hackmd.io/s/${noteId}`
 
   return <section>
     <NextSeo
@@ -59,6 +61,20 @@ export default function Post({ content, title, params, disqus }) {
     }}>
       <Markdown content={content} className='container post-container pb-6 px-3' />
     </SRLWrapper>
+
+    <div className='container py-3 px-3' style={{ maxWidth: 630 }}>
+      <div className='container-block color-bg-info color-border-info rounded-2 p-3'>
+        本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink}>發佈</a>
+
+        {
+          /* For future i18n */
+          /*
+            This post is proudly <a target='_blank' href={noteLink}>published</a> with {hackmdLink()}
+          */
+        }
+      </div>
+    </div>
+
     {
       disqus && <div className='container py-3 px-3'>
         <DiscussionEmbed
@@ -77,14 +93,15 @@ export default function Post({ content, title, params, disqus }) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const { content, title } = await getPostData(params)
+  const { content, title, id } = await getPostData(params)
 
   return {
     props: {
       content,
       title,
       params,
-      disqus: getDisqusConfig()
+      disqus: getDisqusConfig(),
+      noteId: id
     }
   }
 }
