@@ -47,8 +47,8 @@ export default function Post({ content, title, params, disqus, noteId }) {
       }}
     />
 
-    <Header />
-    <div className='container pt-4 pb-3 px-3' style={{ maxWidth: 630 }}>
+    <Header small />
+    <div className='container pt-4 pb-3 px-3'>
       <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
     </div>
     <SRLWrapper options={{
@@ -59,10 +59,10 @@ export default function Post({ content, title, params, disqus, noteId }) {
         slideTransitionTimingFunction: 'easeInOut'
       },
     }}>
-      <Markdown content={content} className='container post-container pb-6 px-3' />
+      <Markdown content={content} className='container post-container px-3' />
     </SRLWrapper>
 
-    <div className='container py-3 px-3' style={{ maxWidth: 630 }}>
+    <div className='container py-3 px-3'>
       <div className='container-block color-bg-info color-border-info rounded-2 p-3'>
         本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink}>發佈</a>
 
