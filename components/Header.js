@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import NightSwitch from 'components/NightSwitch'
 
@@ -36,8 +35,8 @@ const Header = ({ small = false }) => {
     <div className='d-block text-center color-bg-secondary py-4 px-3'>
       {
         !small && <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
-          <div style={{ height: 'auto', maxHeight: '80%', maxWidth: '80%' }} className='user-select-none'>
-            <Image src='/logo-animated.gif' alt='Daily Oops' width={300} height={300} />
+          <div className='user-select-none'>
+            <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxHeight: '80%', maxWidth: '80%' }} />
           </div>
         </div>
       }
@@ -45,7 +44,7 @@ const Header = ({ small = false }) => {
       <h1 className='d-flex flex-items-center flex-justify-center'>
         {
           small && <>
-            <Image src='/logo-animated.gif' alt='Daily Oops' width={50} height={50} className='circle' />
+            <img src='/logo-animated.gif' alt='Daily Oops' width={50} height={50} className='circle' />
             &nbsp;
           </>
         }
