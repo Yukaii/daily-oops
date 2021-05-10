@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import NightSwitch from 'components/NightSwitch'
 
-import { OctofaceIcon, BookIcon, CodeIcon, InfoIcon } from '@primer/octicons-react'
+import { SquirrelIcon, BookIcon, RepoIcon, PersonIcon } from '@primer/octicons-react'
 
 const Header = ({ small = false }) => {
   const { pathname } = useRouter()
@@ -13,7 +13,7 @@ const Header = ({ small = false }) => {
     {
       text: 'Home',
       href: '/',
-      icon: OctofaceIcon
+      icon: SquirrelIcon
     },
     {
       text: 'Blog',
@@ -23,12 +23,12 @@ const Header = ({ small = false }) => {
     {
       text: 'Projects',
       href: '/projects',
-      icon: CodeIcon
+      icon: RepoIcon
     },
     {
       text: 'About',
       href: '/about',
-      icon: InfoIcon
+      icon: PersonIcon
     }
   ]
 
