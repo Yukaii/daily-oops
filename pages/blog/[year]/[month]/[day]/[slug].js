@@ -59,7 +59,7 @@ export default function Post({ content, title, params, disqus, noteId }) {
         slideTransitionTimingFunction: 'easeInOut'
       },
     }}>
-      <Markdown content={content} className='container post-container pb-6 px-3' />
+      <Markdown content={content} className='container post-container px-3' />
     </SRLWrapper>
 
     <div className='container py-3 px-3'>
