@@ -47,7 +47,7 @@ export default function Post({ content, title, params, disqus, noteId }) {
       }}
     />
 
-    <Header />
+    <Header small />
     <div className='container pt-4 pb-3 px-3' style={{ maxWidth: 630 }}>
       <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
     </div>
