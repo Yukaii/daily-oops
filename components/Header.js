@@ -52,9 +52,7 @@ const Header = ({ small = false }) => {
       </h1>
     </div>
 
-    <nav className='UnderlineNav color-bg-secondary px-3 position-sticky top-0 flex-items-center flex-justify-center' style={{ zIndex: 99 }}>
-      <NightSwitch />
-  
+    <nav className='UnderlineNav color-bg-secondary px-3 position-sticky top-0 flex-items-center flex-justify-center' style={{ zIndex: 99 }}>  
       <div className="UnderlineNav-body" role="tablist" style={{ maxWidth: '100%' }}>
         {
           items.map(item => (<Link href={item.href} key={item.href}>
@@ -70,7 +68,13 @@ const Header = ({ small = false }) => {
           </Link>))
         }
       </div>
+      <NightSwitch />
     </nav>
+    <style jsx scoped>{`
+      .UnderlineNav-body .UnderlineNav-item:last-child  {
+        padding-right: 50px;
+      }
+    `}</style>
   </>
 }
 
