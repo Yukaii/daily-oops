@@ -6,18 +6,20 @@
   h1 {
     border-width: 0;
     font-size: 1.6em;
+    margin-bottom: 1.1em;
   }
 
   h2 {
     font-size: 1.3em;
+    margin-bottom: 1em;
   }
   
-  h1, h2, h3, h4, h5, h6 {
+  h3, h4, h5, h6 {
     margin-bottom: 1.3em;
   }
   
   p, blockquote, dl, table, pre, details {
-    margin-bottom: 1.8em;
+    margin-bottom: 1.7em;
   }
   
   pre > code {
