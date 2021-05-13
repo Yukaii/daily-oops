@@ -25,7 +25,7 @@ export default function Post({ content, title, params, disqus, noteId }) {
     }, 100)
   }, [darkMode.value])
 
-  const hackmdLink = () => <a className='no-underline color-text-primary text-semibold' href='https://hackmd.io' target='_blank'><i className='fas fa-file-alt' /> HackMD</a>
+  const hackmdLink = () => <a className='no-underline color-text-primary text-semibold' href='https://hackmd.io' target='_blank' rel='noopener'><i className='fas fa-file-alt' /> HackMD</a>
   const noteLink = `https://hackmd.io/s/${noteId}`
 
   return <section>
@@ -64,7 +64,7 @@ export default function Post({ content, title, params, disqus, noteId }) {
 
     <div className='container py-3 px-3'>
       <div className='container-block color-bg-info color-border-info rounded-2 p-3'>
-        本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink}>發佈</a>
+        本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink} rel='noopener'>發佈</a>
 
         {
           /* For future i18n */
