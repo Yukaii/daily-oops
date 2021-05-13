@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import Router from 'next/router'
 import SimpleReactLightbox from 'simple-react-lightbox'
-import '@fortawesome/fontawesome-free/js/all'
-
 import { pageview } from 'lib/gtag'
 import { usePrimerDarkMode } from 'lib/usePrimerDarkMode'
 
