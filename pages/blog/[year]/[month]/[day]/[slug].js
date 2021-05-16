@@ -10,7 +10,7 @@ import Header from 'components/Header'
 import Markdown from 'components/Markdown'
 import { useEffect, useState } from 'react'
 
-export default function Post({ content, title, params, disqus, noteId }) {
+export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
@@ -46,8 +46,12 @@ export default function Post({ content, title, params, disqus, noteId }) {
         }        
       }}
     />
-
     <Header small />
+    {
+      meta?.image && <div className='container pt-4 pb-1 px-3'>
+        <img src={meta?.image} style={{ maxWidth: '100%', borderRadius: 6 }} />
+      </div>
+    }
     <div className='container pt-4 pb-3 px-3'>
       <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
     </div>
@@ -93,7 +97,7 @@ export default function Post({ content, title, params, disqus, noteId }) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const { content, title, id } = await getPostData(params)
+  const { content, title, id, meta } = await getPostData(params)
 
   return {
     props: {
@@ -101,7 +105,8 @@ export async function getStaticProps({ params, preview = false, previewData }) {
       title,
       params,
       disqus: getDisqusConfig(),
-      noteId: id
+      noteId: id,
+      meta
     }
   }
 }
