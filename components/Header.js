@@ -45,7 +45,7 @@ const Header = ({ small = false }) => {
         {
           small && <>
             <img src='/logo-animated.gif' alt='Daily Oops' width={50} height={50} className='circle' />
-            &nbsp;
+            &nbsp;&nbsp;
           </>
         }
         Daily Oops!
