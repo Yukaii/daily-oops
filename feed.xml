@@ -4,10 +4,133 @@
         <title>Blog | Daily Oops!</title>
         <link>https://yukai.dev/blog</link>
         <description>Daily Oops RSS Feed</description>
-        <lastBuildDate>Mon, 24 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[把 HackMD 當做部落格後臺 feat. Next.js]]></title>
+            <link>https://yukai.dev/blog/2021/05/16/hackmd-as-cms-blog-feat-next-js</link>
+            <guid>https://yukai.dev/blog/2021/05/16/hackmd-as-cms-blog-feat-next-js</guid>
+            <pubDate>Wed, 16 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 把 HackMD 當做部落格後臺 feat. Next.js
+
+:::success
+沒什麼主題能寫的時候，更新一下部落格版型準沒錯
+\- [我，2017](https://yukai.dev/blog/2017/03/29/new-primer-css-github-theme)
+:::
+
+就是這句話讓我現在又來發文 XD。
+
+時間過得飛快，距離上次更新也過了三年多，但部落格文章也沒多寫幾篇。老實說也不是沒有寫，但不是放在私人的 Evernote，就是散落在 [HackMD](https://hackmd.io/@yukai) 上的程式碼片段和指令操作記錄，要直接貼出來還是有些羞恥的。
+
+去年十月，突然覺得[舊部落格](https://yukaii.tw)版型實在用太久了，速度也有點慢、設計有點過時。發新文章時，還得在 HackMD 上寫完文章、在 GitHub Repo 建新檔案、再貼內容過去。若能打造一個更流暢愉快的工作流程，那我的文章產量一定能更高啊！~~（不要瞎掰好嗎）~~
+
+## 改版計劃
+
+這次的部落格改版有幾個需求：
+
+1. **速度**。原本舊的部落格是用 [J]]></description>
+            <content:encoded><![CDATA[<h1 id="%E6%8A%8A-hackmd-%E7%95%B6%E5%81%9A%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BE%8C%E8%87%BA-feat.-next.js"><a class="anchor" href="#%E6%8A%8A-hackmd-%E7%95%B6%E5%81%9A%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BE%8C%E8%87%BA-feat.-next.js"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 把 HackMD 當做部落格後臺 feat. Next.js</h1>
+<div class="container-block color-bg-success color-border-success rounded-2 p-3">
+<p>沒什麼主題能寫的時候，更新一下部落格版型準沒錯
+- <a href="https://yukai.dev/blog/2017/03/29/new-primer-css-github-theme">我，2017</a></p>
+</div class="container-block color-bg- color-border- rounded-2 p-3">
+<p>就是這句話讓我現在又來發文 XD。</p>
+<p>時間過得飛快，距離上次更新也過了三年多，但部落格文章也沒多寫幾篇。老實說也不是沒有寫，但不是放在私人的 Evernote，就是散落在 <a href="https://hackmd.io/@yukai">HackMD</a> 上的程式碼片段和指令操作記錄，要直接貼出來還是有些羞恥的。</p>
+<p>去年十月，突然覺得<a href="https://yukaii.tw">舊部落格</a>版型實在用太久了，速度也有點慢、設計有點過時。發新文章時，還得在 HackMD 上寫完文章、在 GitHub Repo 建新檔案、再貼內容過去。若能打造一個更流暢愉快的工作流程，那我的文章產量一定能更高啊！<s>（不要瞎掰好嗎）</s></p>
+<h2 id="%E6%94%B9%E7%89%88%E8%A8%88%E5%8A%83"><a class="anchor" href="#%E6%94%B9%E7%89%88%E8%A8%88%E5%8A%83"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 改版計劃</h2>
+<p>這次的部落格改版有幾個需求：</p>
+<ol>
+<li><strong>速度</strong>。原本舊的部落格是用 <a href="https://github.com/Yukaii/yukaii.github.io/">Jekyll 架設</a>，純靜態的網頁，換頁也使用了 <a href="https://github.com/turbolinks/turbolinks">Turbolinks</a> 這個 Pjax 技術加速，無論是載入時間以及換頁都十分順暢。新的部落格系統希望能達到同樣的速度，甚至在這之上。</li>
+<li><strong>構建的易用性</strong>。原本的部落格使用原生的 GitHub Pages，另外拆出成 <a href="https://github.com/Yukaii/octoflavor">octoflavor</a> Jekyll 主題。解釋一下「原生」和「非原生」GitHub Pages 的差別：
+<ul>
+<li><strong>原生</strong>的 GitHub Pages 就是 GitHub 幫你跑 Jekyll build，你只要推上 markdown 就好了，也不用綁什麼 CI 服務</li>
+<li><strong>非原生</strong>的 GitHub Pages，就是把網頁的原始碼上傳到 <code>gh-pages</code> 分支，剩下來的 GitHub 幫你搞定。</li>
+</ul>
+</li>
+<li><strong>Node.js 派</strong>。我只想 npm 裝好裝滿。</li>
+<li><strong>良好的開發體驗</strong>。如何方便的幫部落格擴充也是重要的一環。Jekyll 固然不錯，但是老舊的 Liquid 樣板語法，和沒有內建現代前端套件管理就輸了一大截。</li>
+<li><strong>在 HackMD 上寫作</strong>。業配 GOOD！</li>
+</ol>
+<p>至於我要如何達成這幾項需求呢？先讓我們進入頁配的環節吧 🤩</p>
+<h2 id="hackmd-%E7%9A%84%E5%9C%98%E9%9A%8A%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8-api"><a class="anchor" href="#hackmd-%E7%9A%84%E5%9C%98%E9%9A%8A%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8-api"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> HackMD 的團隊文章列表 API</h2>
+<figure data-type="image"><img src="https://i.imgur.com/QjF4EIL.png" alt="HackMD Public Team - DailyOops"><figcaption>HackMD 團隊 - Daily Oops!，存放文章的地方</figcaption></figure>
+<p>HackMD 有一個非公開的 API：<code>GET https://hackmd.io/api/@TEAM_PATH/overview</code>，回傳公開頁下所有能見的筆記。以我的部落格的團隊 <a href="https://hackmd.io/@DailyOops">@DailyOops</a> 為例：</p>
+<pre><code class="language-javascript"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1">GET https:<span class="hljs-comment">//hackmd.io/api/@dailyOops/overview</span></td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2"></td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3">{</td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4">  <span class="hljs-string">&quot;team&quot;</span>: ...,</td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5">  <span class="hljs-string">&quot;notes&quot;</span>: [</td></tr><tr><td class="hljs-line-number" data-line-number=6></td><td class="hljs-line" id="LC6">    {</td></tr><tr><td class="hljs-line-number" data-line-number=7></td><td class="hljs-line" id="LC7">      <span class="hljs-string">&quot;id&quot;</span>: ....,</td></tr><tr><td class="hljs-line-number" data-line-number=8></td><td class="hljs-line" id="LC8">      <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,</td></tr><tr><td class="hljs-line-number" data-line-number=9></td><td class="hljs-line" id="LC9">      <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,</td></tr><tr><td class="hljs-line-number" data-line-number=10></td><td class="hljs-line" id="LC10">      ...</td></tr><tr><td class="hljs-line-number" data-line-number=11></td><td class="hljs-line" id="LC11">    }</td></tr><tr><td class="hljs-line-number" data-line-number=12></td><td class="hljs-line" id="LC12">  ]</td></tr><tr><td class="hljs-line-number" data-line-number=13></td><td class="hljs-line" id="LC13">}</td></tr></tbody></table></code></pre>
+<p>有了這些資料，就可以繼續我的部落格改版計劃啦！</p>
+<h2 id="%E9%9A%86%E9%87%8D%E4%BB%8B%E7%B4%B9%EF%BC%9Adaily-oops-2.0-feat.-next.js"><a class="anchor" href="#%E9%9A%86%E9%87%8D%E4%BB%8B%E7%B4%B9%EF%BC%9Adaily-oops-2.0-feat.-next.js"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 隆重介紹：Daily Oops 2.0 feat. Next.js</h2>
+<p>我選擇 <a href="https://nextjs.org/">Next.js</a> 作為這次部落格改版的主要技術，最大的原因就是雖然它是 React.js 框架，但內建「靜態網站產生」功能 (簡稱 <strong>SSG</strong>, Static-site generation)。</p>
+<p>SSG 保有動態資料的彈性，以及靜態網站的簡潔與速度。你可以透過 API 取得的動態資料，來產生多個靜態頁面，而且是「預先渲染」好的靜態 HTML 網頁，不會有 Cilent side React，載入後才渲染的現象。在頁面切換時又能保有 React SPA 的順暢換頁，我全都要！</p>
+<p>對於部落格這種更新頻率相對不用即時，靜態頁面居多的場景，Next.js 可說是相當適合。會採用 Next.js 的另一個原因，是當時看到了 <a href="https://github.com/ijjk/notion-blog">notion-blog</a> 這個專案，在 Notion 還沒有公開 API 的當下反解出 API，把 Notion 當做 CMS 來用，同樣搭配的是 Next.js 的 SSG 功能。</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/HytiiZnu_.png" alt=""></figure>
+<p>上圖就是新部落格的資料流：</p>
+<ol>
+<li>從 HackMD 抓取文章資料</li>
+<li>交由 Next.js 建置</li>
+<li>完成靜態網站建置</li>
+</ol>
+<p>程式碼放在 <a href="https://github.com/Yukaii/daily-oops">GitHub</a>，接下來給各位帶來幾個值得一提的細節。</p>
+<h2 id="getstaticpaths-%E5%92%8C-getstaticprops-%E7%9A%84%E8%B3%87%E6%96%99%E4%B8%8D%E4%BA%92%E9%80%9A"><a class="anchor" href="#getstaticpaths-%E5%92%8C-getstaticprops-%E7%9A%84%E8%B3%87%E6%96%99%E4%B8%8D%E4%BA%92%E9%80%9A"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> <code>getStaticPaths</code> 和 <code>getStaticProps</code> 的資料不互通</h2>
+<p><code>getStaticPaths</code> 能拿到「靜態網站頁面列表」，<code>getStaticProps</code> 則是「靜態網站頁面資料」，但列表僅僅是列表。感覺還是有點抽象，我寫段簡化版的實作：</p>
+<pre><code class="language-typescript"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-keyword">const</span> pathData = getStaticPaths()</td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2">assert(pathData).deepEqual([</td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3">  { <span class="hljs-attr">params</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;1&#x27;</span> }},</td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4">  { <span class="hljs-attr">params</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;2&#x27;</span> }},</td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5">])</td></tr><tr><td class="hljs-line-number" data-line-number=6></td><td class="hljs-line" id="LC6"><span class="hljs-comment">// params 會用在 /posts/[id] 動態網址的參數</span></td></tr><tr><td class="hljs-line-number" data-line-number=7></td><td class="hljs-line" id="LC7"></td></tr><tr><td class="hljs-line-number" data-line-number=8></td><td class="hljs-line" id="LC8"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPostData</span> (<span class="hljs-params">postUUID: <span class="hljs-built_in">string</span></span>) </span>{</td></tr><tr><td class="hljs-line-number" data-line-number=9></td><td class="hljs-line" id="LC9">  <span class="hljs-comment">// 問題：我們只有 id 而沒有 postUUID</span></td></tr><tr><td class="hljs-line-number" data-line-number=10></td><td class="hljs-line" id="LC10">  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">`/api/<span class="hljs-subst">${postUUID}</span>`</span>)</td></tr><tr><td class="hljs-line-number" data-line-number=11></td><td class="hljs-line" id="LC11"> </td></tr><tr><td class="hljs-line-number" data-line-number=12></td><td class="hljs-line" id="LC12"></td></tr><tr><td class="hljs-line-number" data-line-number=13></td><td class="hljs-line" id="LC13"><span class="hljs-comment">// getStaticProps 只能拿到 params 當做參數</span></td></tr><tr><td class="hljs-line-number" data-line-number=14></td><td class="hljs-line" id="LC14"><span class="hljs-keyword">const</span> props = getStaticProps({ <span class="hljs-attr">params</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;1&#x27;</span> } })</td></tr><tr><td class="hljs-line-number" data-line-number=15></td><td class="hljs-line" id="LC15"></td></tr><tr><td class="hljs-line-number" data-line-number=16></td><td class="hljs-line" id="LC16"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStaticProps</span> (<span class="hljs-params">params</span>) </span>{</td></tr><tr><td class="hljs-line-number" data-line-number=17></td><td class="hljs-line" id="LC17">  getPostData(params.id) <span class="hljs-comment">// 無效</span></td></tr><tr><td class="hljs-line-number" data-line-number=18></td><td class="hljs-line" id="LC18">}</td></tr><tr><td class="hljs-line-number" data-line-number=19></td><td class="hljs-line" id="LC19"></td></tr><tr><td class="hljs-line-number" data-line-number=20></td><td class="hljs-line" id="LC20"></td></tr></tbody></table></code></pre>
+<p>有個問題是「<strong>getStaticProps 只能用網址參數當做函式參數</strong>」。以上面的程式碼為例，取得文章內容的函式 <code>getPostData</code> 需要文章的 UUID，但我們 <code>getStaticPaths</code> 想要拿來當做網址的是數字 ID，這樣就沒辦法直接在 <code>getStaticProps</code> 呼叫 API 取得文章資料了。</p>
+<p>我心目中理想的資料架構應該是這樣：</p>
+<pre><code class="language-javascript"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-keyword">const</span> data = getStaticData() <span class="hljs-comment">// new getStaticPath method</span></td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2">assert(data).deepEqual([{</td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3">  <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/slug-1&#x27;</span>,</td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4">  <span class="hljs-attr">data</span>: {</td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5">    <span class="hljs-attr">pageProp1</span>: <span class="hljs-string">&#x27;value&#x27;</span></td></tr><tr><td class="hljs-line-number" data-line-number=6></td><td class="hljs-line" id="LC6">  }</td></tr><tr><td class="hljs-line-number" data-line-number=7></td><td class="hljs-line" id="LC7">}])</td></tr><tr><td class="hljs-line-number" data-line-number=8></td><td class="hljs-line" id="LC8"></td></tr><tr><td class="hljs-line-number" data-line-number=9></td><td class="hljs-line" id="LC9"><span class="hljs-keyword">const</span> props = getStaticProps(<span class="hljs-string">&#x27;/slug1&#x27;</span>)</td></tr><tr><td class="hljs-line-number" data-line-number=10></td><td class="hljs-line" id="LC10">assert(props).deepEqual({</td></tr><tr><td class="hljs-line-number" data-line-number=11></td><td class="hljs-line" id="LC11">  <span class="hljs-attr">pageProp1</span>: <span class="hljs-string">&#x27;value&#x27;</span></td></tr><tr><td class="hljs-line-number" data-line-number=12></td><td class="hljs-line" id="LC12">})</td></tr></tbody></table></code></pre>
+<p><code>getStaticData</code> 是改版的 <code>getStaticPath</code>，你可以回傳除了 params 之外的參數，讓 <code>getStaticProps</code> 可以直接取用。</p>
+<p>這個問題在 Next.js 的討論區 <a href="https://github.com/vercel/next.js/discussions/11272">#11272</a> 有相當多的討論，目前 upvote 最高的解答是自己在硬碟上快取一份資料，在 <code>getStaticProps</code> 時透過快取過的 API 去抓資料。我也自己實作了一份： <a href="https://github.com/Yukaii/daily-oops/blob/main/lib/post.js"><code>lib/post.js</code></a></p>
+<h2 id="%E8%A8%AD%E8%A8%88%EF%BC%9Aprimer-%E8%A8%AD%E8%A8%88%E7%B3%BB%E7%B5%B1"><a class="anchor" href="#%E8%A8%AD%E8%A8%88%EF%BC%9Aprimer-%E8%A8%AD%E8%A8%88%E7%B3%BB%E7%B5%B1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 設計：Primer 設計系統</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://hackmd.io/_uploads/BJDq5jCdO.jpg" alt=""></th>
+<th><img src="https://hackmd.io/_uploads/Bys9qi0u_.jpg" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://hackmd.io/_uploads/B1WOqs0O_.png" alt=""></td>
+<td><img src="https://hackmd.io/_uploads/HJSFqsA_O.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>點擊圖片可看大圖。</p>
+<p>在設計方面，目前還是個工程師的我，這次一樣採用了 GitHub 的設計系統 Primer。Primer 近年來進展迅速，還多了暗色主題的設計，<a href="https://primer.style/css/support/color-system">色彩系統</a> 開箱即用，不用自己慢慢調色。</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/rkTiioAOd.png" alt=""><figcaption>Primer 的 Color System，直接套 class 就有暗色效果啦</figcaption></figure>
+<h2 id="site-logo"><a class="anchor" href="#site-logo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> Site Logo</h2>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/H1iqAs0_O.gif" alt=""><figcaption>這是一隻小貓熊，他很可愛，如果你沒看過，現在你看過了</figcaption></figure>
+<p>Logo 也是自己畫的，Google 了一張參考圖就直上了，反正小貓熊哪張圖片都很可愛，對吧（啾</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/SyWH13Cdu.png" alt=""><figcaption>附上 Figma 工作區</figcaption></figure>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/rkwIJhC_O.png" alt=""><figcaption>Gif 圖也是用 Figma Plugin - GiffyCanvas 做的</figcaption></figure>
+<h2 id="markdown-%E6%B8%B2%E6%9F%93"><a class="anchor" href="#markdown-%E6%B8%B2%E6%9F%93"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> Markdown 渲染</h2>
+<p>和 HackMD/CodiMD 一樣，繼續採用高度可擴充、社群套件豐富的 <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>。有興趣的朋友可以參考 <a href="https://github.com/Yukaii/daily-oops/blob/main/lib/markdown.js"><code>lib/markdown.js</code></a>。</p>
+<p>值得炫耀的是程式碼區塊的渲染整個從零開始，高仿 GitHub 採用 Table 排版，除了有複製到剪貼簿，還有<mark>行號標色</mark>，效果如下：</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://hackmd.io/_uploads/HJ0he3ROd.png" alt=""></th>
+<th><img src="https://hackmd.io/_uploads/HkVTe2R_u.png" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>為了讓程式碼區塊的標色和 GitHub 完全一致，還根據 Primer 顏色系統產生了 <a href="https://github.com/Yukaii/github-highlightjs-themes">GitHub 用的 Highlightjs 主題</a>，實作上則參考了 <a href="https://github.com/primer/github-vscode-theme">GitHub VSCode 的主題</a>。</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/BkarZ20O_.png" alt=""><figcaption>GitHub highlight.js Theme</figcaption></figure>
+<h2 id="%E5%BE%8C%E7%BA%8C%E8%A8%88%E5%8A%83"><a class="anchor" href="#%E5%BE%8C%E7%BA%8C%E8%A8%88%E5%8A%83"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 後續計劃</h2>
+<p>蛤不是改版改一改就好了哦？雖然整個網站大致已完成，但還是<a href="https://github.com/Yukaii/daily-oops/issues">少了些東西</a>，像是：</p>
+<ul>
+<li>站內搜尋</li>
+<li>舊站轉移</li>
+</ul>
+<p>也只能慢慢做啦！一如往常。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[我就免費仔：同步 GitHub 組織的儲存庫到個人帳號，達成 Vercel 的免費部屬]]></title>
             <link>https://yukai.dev/blog/2021/04/24/deploy-organization-repo-free-with-vercel-sync-repo</link>
@@ -451,54 +574,6 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <h2 id="%E7%84%B6%E5%BE%8C%E6%88%91%E5%B0%B1%E6%8B%BF%E5%9B%9E%E9%8C%A2%E5%95%A6"><a class="anchor" href="#%E7%84%B6%E5%BE%8C%E6%88%91%E5%B0%B1%E6%8B%BF%E5%9B%9E%E9%8C%A2%E5%95%A6"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 然後我就拿回錢啦</h2>
 <p>就在昨天，郵局的承辦小姐通知我的錢已經回來了，爽啦！雖然前前後後跑了郵局三次（加換卡），但比當初說的兩個月還快啊，<s>又可以大刷特刷敗家囉！</s></p>
 <p>這次也不知道是哪個網站洩漏卡號，之後要享受網路刷卡的便利前還是要做好準備，學學強者我朋友的作法：開另一個戶專門用來刷卡，只匯足夠的錢進去就好 :p</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[用 PowerShell 批次轉換 docx 到 pdf]]></title>
-            <link>https://yukai.dev/blog/2017/08/29/batch-convert-word-docx-to-pdf</link>
-            <guid>https://yukai.dev/blog/2017/08/29/batch-convert-word-docx-to-pdf</guid>
-            <pubDate>Fri, 29 Sep 2017 00:00:00 GMT</pubDate>
-            <description><![CDATA[
-# 用 PowerShell 批次轉換 docx 到 pdf
-
-## 近況
-
-內容與標題不符。
-
-我從今年的八月[開始登入](https://alive.yukaii.tw/)替代役 online。替代役自由多了，回想起成功嶺的那兩周，不僅餐餐吃不飽，還因為腸胃炎而再次掉了兩公斤多 Zzz，實在有夠悲劇。
-
-可能因為這麼悲慘的運氣補償機制吧(喂)，我來到了國訓中心開始了一年的役期，也多了些「閒暇時間」可以利用，無論如何都是非常幸運了 QAQ
-
-進入正題吧
-
-## 批次轉換 docx 成 pdf
-
-需求很簡單，也有現成軟體可以達成，不過身為一個開發者，連文書也要做的潮才行。以往一直沒什麼機會在 Windows 下進行自動化(多半是當時還太菜)，有了這個機會當然要好好利用。
-
-雖然沒寫過 PowerShell，不過 Google 第一項結果在 [StackOverFlow](https://stackoverflow.com/a/16537996) 就有了，輕鬆愉快。
-
-### 啟用腳本執行權限
-
-首先設定讓 powershell 可以執行腳本，以系統管理員身分執行 PowerShell]]></description>
-            <content:encoded><![CDATA[<h1 id="%E7%94%A8-powershell-%E6%89%B9%E6%AC%A1%E8%BD%89%E6%8F%9B-docx-%E5%88%B0-pdf"><a class="anchor" href="#%E7%94%A8-powershell-%E6%89%B9%E6%AC%A1%E8%BD%89%E6%8F%9B-docx-%E5%88%B0-pdf"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 用 PowerShell 批次轉換 docx 到 pdf</h1>
-<h2 id="%E8%BF%91%E6%B3%81"><a class="anchor" href="#%E8%BF%91%E6%B3%81"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 近況</h2>
-<p>內容與標題不符。</p>
-<p>我從今年的八月<a href="https://alive.yukaii.tw/">開始登入</a>替代役 online。替代役自由多了，回想起成功嶺的那兩周，不僅餐餐吃不飽，還因為腸胃炎而再次掉了兩公斤多 Zzz，實在有夠悲劇。</p>
-<p>可能因為這麼悲慘的運氣補償機制吧(喂)，我來到了國訓中心開始了一年的役期，也多了些「閒暇時間」可以利用，無論如何都是非常幸運了 QAQ</p>
-<p>進入正題吧</p>
-<h2 id="%E6%89%B9%E6%AC%A1%E8%BD%89%E6%8F%9B-docx-%E6%88%90-pdf"><a class="anchor" href="#%E6%89%B9%E6%AC%A1%E8%BD%89%E6%8F%9B-docx-%E6%88%90-pdf"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 批次轉換 docx 成 pdf</h2>
-<p>需求很簡單，也有現成軟體可以達成，不過身為一個開發者，連文書也要做的潮才行。以往一直沒什麼機會在 Windows 下進行自動化(多半是當時還太菜)，有了這個機會當然要好好利用。</p>
-<p>雖然沒寫過 PowerShell，不過 Google 第一項結果在 <a href="https://stackoverflow.com/a/16537996">StackOverFlow</a> 就有了，輕鬆愉快。</p>
-<h3 id="%E5%95%9F%E7%94%A8%E8%85%B3%E6%9C%AC%E5%9F%B7%E8%A1%8C%E6%AC%8A%E9%99%90"><a class="anchor" href="#%E5%95%9F%E7%94%A8%E8%85%B3%E6%9C%AC%E5%9F%B7%E8%A1%8C%E6%AC%8A%E9%99%90"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 啟用腳本執行權限</h3>
-<p>首先設定讓 powershell 可以執行腳本，以系統管理員身分執行 PowerShell 並跑起以下指令：</p>
-<pre><code class="language-powershell"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-built_in">Set-ExecutionPolicy</span> RemoteSigned</td></tr></tbody></table></code></pre>
-<h3 id="%E5%AF%AB-powershell-%E8%85%B3%E6%9C%AC"><a class="anchor" href="#%E5%AF%AB-powershell-%E8%85%B3%E6%9C%AC"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 寫 PowerShell 腳本</h3>
-<p>然後把以下腳本存成副檔名為 <code>.ps1</code>，比如 <code>word-to-pdf.ps1</code>。其中 <code>$documents_path</code> 改成目標資料夾路徑。</p>
-<pre><code class="language-powershell"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-comment"># From https://stackoverflow.com/a/16537996</span></td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2"></td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3"><span class="hljs-variable">$documents_path</span> = <span class="hljs-string">&#x27;C:\Users\user\Documents\blahblahblah&#x27;</span></td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4"><span class="hljs-variable">$word_app</span> = <span class="hljs-built_in">New-Object</span> <span class="hljs-literal">-ComObject</span> Word.Application</td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5"></td></tr><tr><td class="hljs-line-number" data-line-number=6></td><td class="hljs-line" id="LC6"><span class="hljs-comment"># This filter will find .doc as well as .docx documents</span></td></tr><tr><td class="hljs-line-number" data-line-number=7></td><td class="hljs-line" id="LC7"><span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-literal">-Path</span> <span class="hljs-variable">$documents_path</span> <span class="hljs-literal">-Filter</span> *.doc? <span class="hljs-literal">-Recurse</span> | <span class="hljs-built_in">ForEach-Object</span> {</td></tr><tr><td class="hljs-line-number" data-line-number=8></td><td class="hljs-line" id="LC8">    <span class="hljs-variable">$document</span> = <span class="hljs-variable">$word_app</span>.Documents.Open(<span class="hljs-variable">$_</span>.FullName)</td></tr><tr><td class="hljs-line-number" data-line-number=9></td><td class="hljs-line" id="LC9">    <span class="hljs-variable">$pdf_filename</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(<span class="hljs-variable">$_</span>.DirectoryName)\<span class="hljs-variable">$</span>(<span class="hljs-variable">$_</span>.BaseName).pdf&quot;</span></td></tr><tr><td class="hljs-line-number" data-line-number=10></td><td class="hljs-line" id="LC10">    <span class="hljs-variable">$document</span>.SaveAs([<span class="hljs-type">ref</span>] <span class="hljs-variable">$pdf_filename</span>, [<span class="hljs-type">ref</span>] <span class="hljs-number">17</span>)</td></tr><tr><td class="hljs-line-number" data-line-number=11></td><td class="hljs-line" id="LC11">    <span class="hljs-variable">$document</span>.Close()</td></tr><tr><td class="hljs-line-number" data-line-number=12></td><td class="hljs-line" id="LC12">}</td></tr><tr><td class="hljs-line-number" data-line-number=13></td><td class="hljs-line" id="LC13"></td></tr><tr><td class="hljs-line-number" data-line-number=14></td><td class="hljs-line" id="LC14"><span class="hljs-variable">$word_app</span>.Quit()</td></tr></tbody></table></code></pre>
-<p>注意的是在 <code>Get-ChildItem</code> 方法我加上了 <code>-Recurse</code> 遞迴參數，讓所有子目錄底下的 <code>docx</code> 都能被轉換到。</p>
-<p>點擊兩下執行，所有 pdf 就會慢慢產生在 <code>docx</code> 檔的旁邊啦，瞬間開始耍廢！(喂)</p>
-<p>之後若有更多的 PowerShell 輔助使用腳本，我都會放在 <a href="https://github.com/Yukaii/powershell-study">powershell-study</a> 這個 repo，歡迎自行取用 :p</p>
-<p>(完)</p>
 ]]></content:encoded>
         </item>
     </channel>
