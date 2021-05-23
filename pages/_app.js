@@ -3,6 +3,7 @@ import Router from 'next/router'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { pageview } from 'lib/gtag'
 import { usePrimerDarkMode } from 'lib/usePrimerDarkMode'
+import { AnimatePresence } from 'framer-motion'
 
 import '@primer/css/index.scss'
 import 'styles/globals.scss'
@@ -13,7 +14,7 @@ import '@yukaii/github-highlightjs-themes/themes/github-light-default.css'
 
 Router.events.on('routeChangeComplete', (url) => process.env.NODE_ENV === 'production' && pageview(url))
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   
   usePrimerDarkMode()
 
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }) {
       <meta name="color-scheme" content="dark light" />
     </Head>
     <SimpleReactLightbox>
-      <Component {...pageProps} />
+      <AnimatePresence>
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
     </SimpleReactLightbox>
   </>
 }
