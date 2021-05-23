@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
-import dayjs from 'lib/dayjs'
 import { DiscussionEmbed } from 'disqus-react'
 import useDarkMode from 'use-dark-mode'
 import { SRLWrapper } from 'simple-react-lightbox'
+import { motion } from 'framer-motion'
 
-import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
-import { getDisqusConfig } from 'lib/disqus'
 import Header from 'components/Header'
 import Markdown from 'components/Markdown'
-import { useEffect, useState } from 'react'
+
+import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
+import dayjs from 'lib/dayjs'
+import { getDisqusConfig } from 'lib/disqus'
+import { springSimple } from 'lib/transition'
 
 export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { year, month, day, slug } = params
@@ -47,52 +50,55 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
       }}
     />
     <Header small />
-    {
-      meta?.image && <div className='container pt-4 pb-1 px-3'>
-        <img src={meta?.image} style={{ maxWidth: '100%', borderRadius: 6 }} />
+    
+    <motion.div layoutId='blogPage' {...springSimple}>
+      {
+        meta?.image && <div className='container pt-4 pb-1 px-3'>
+          <img src={meta?.image} style={{ maxWidth: '100%', borderRadius: 6 }} />
+        </div>
+      }
+      <div className='container pt-4 pb-3 px-3'>
+        <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
       </div>
-    }
-    <div className='container pt-4 pb-3 px-3'>
-      <span className='text-mono color-text-tertiary'>{ date.format('LL') }</span>
-    </div>
-    <SRLWrapper options={{
-      settings: {
-        lightboxTransitionSpeed: 0.1,
-        slideAnimationType: 'both',
-        slideSpringValues: [350, 50],
-        slideTransitionTimingFunction: 'easeInOut'
-      },
-    }}>
-      <Markdown content={content} className='container post-container px-3' />
-    </SRLWrapper>
+      <SRLWrapper options={{
+        settings: {
+          lightboxTransitionSpeed: 0.1,
+          slideAnimationType: 'both',
+          slideSpringValues: [350, 50],
+          slideTransitionTimingFunction: 'easeInOut'
+        },
+      }}>
+        <Markdown content={content} className='container post-container px-3' />
+      </SRLWrapper>
 
-    <div className='container py-3 px-3'>
-      <div className='container-block color-bg-info color-border-info rounded-2 p-3'>
-        本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink} rel='noopener'>發佈</a>
+      <div className='container py-3 px-3'>
+        <div className='container-block color-bg-info color-border-info rounded-2 p-3'>
+          本篇文章驕傲的使用 {hackmdLink()} <a target='_blank' href={noteLink} rel='noopener'>發佈</a>
 
-        {
-          /* For future i18n */
-          /*
-            This post is proudly <a target='_blank' href={noteLink}>published</a> with {hackmdLink()}
-          */
-        }
+          {
+            /* For future i18n */
+            /*
+              This post is proudly <a target='_blank' href={noteLink}>published</a> with {hackmdLink()}
+            */
+          }
+        </div>
       </div>
-    </div>
 
-    {
-      disqus && <div className='container py-3 px-3'>
-        <DiscussionEmbed
-          shortname={disqus.shortname}
-          config={{
-            url: url,
-            identifier: url,
-            title: title,
-            language: 'zh_TW'
-          }}
-          darkmode={JSON.stringify(layoutDarkMode)}
-        />
-      </div>
-    }
+      {
+        disqus && <div className='container py-3 px-3'>
+          <DiscussionEmbed
+            shortname={disqus.shortname}
+            config={{
+              url: url,
+              identifier: url,
+              title: title,
+              language: 'zh_TW'
+            }}
+            darkmode={JSON.stringify(layoutDarkMode)}
+          />
+        </div>
+      }
+    </motion.div>
   </section>
 }
 

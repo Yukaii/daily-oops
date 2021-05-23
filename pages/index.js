@@ -1,10 +1,13 @@
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+import { motion } from 'framer-motion'
+
+import Header from 'components/Header'
+import PostRow from 'components/PostRow'
 
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
-import Header from 'components/Header'
-import PostRow from 'components/PostRow'
-import { NextSeo } from 'next-seo'
+import { springSimple } from 'lib/transition'
 
 export default function Home({ posts }) {
   return (
@@ -23,7 +26,12 @@ export default function Home({ posts }) {
 
       <Header />
 
-      <div className="d-block mx-auto container markdown-body py-4 px-3">
+
+      <motion.div
+        className="d-block mx-auto container markdown-body py-4 px-3"
+        layoutId='blogIndex'
+        {...springSimple}
+      >
         <h2>Hi</h2>
 
         <p>
@@ -57,7 +65,7 @@ export default function Home({ posts }) {
         <a href='/feed.xml'>
           <button className='mt-3 btn btn-primary' type='button'>Subscribe via RSS</button>
         </a>
-      </div>
+      </motion.div>
     </div>
   )
 }
