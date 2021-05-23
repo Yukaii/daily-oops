@@ -13,8 +13,6 @@ export default function Blog({ posts }) {
         <title>Blog | Daily Oops!</title>
       </Head>
 
-      <Header />
-
       <div
         className="d-block mx-auto markdown-body py-4 px-3"
         style={{ maxWidth: 680 }}

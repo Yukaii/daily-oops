@@ -49,7 +49,6 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         }        
       }}
     />
-    <Header small />
     
     <motion.div layoutId='blogPage' {...springSimple}>
       {

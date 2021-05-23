@@ -12,8 +12,6 @@ export default function Projects ({ projects }) {
       <title>Projects | Daily Oops!</title>
     </Head>
 
-    <Header />
-
     <motion.div className='markdown-body mx-auto pt-4 pb-6 px-3 container-lg' style={{ maxWidth: 700, columns: '6 250px', columnGap: '1rem' }} layoutId='project' {...springSimple}>
       { projects.map(project => {
         return <a className="Box d-inline-block ma-2 mb-5 overflow-hidden no-underline" href={project.link} target="_blank" style={{ width: 'calc(100% - 16px)', height: '100%' }}>

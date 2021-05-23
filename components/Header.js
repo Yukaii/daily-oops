@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { SquirrelIcon, BookIcon, RepoIcon, PersonIcon } from '@primer/octicons-react'
+import cx from 'classnames'
 
 import NightSwitch from 'components/NightSwitch'
 
-import { SquirrelIcon, BookIcon, RepoIcon, PersonIcon } from '@primer/octicons-react'
-
-const Header = ({ small = false }) => {
+const Header = () => {
   const { pathname } = useRouter()
 
   const items = [
@@ -30,24 +30,16 @@ const Header = ({ small = false }) => {
       icon: PersonIcon
     }
   ]
+  
+  const small = !items.map(i => i.href).includes(pathname)
 
   return <>
-    <div className='d-block text-center color-bg-secondary py-4 px-3'>
-      {
-        !small && <div className='CircleBadge CircleBadge--large mx-auto mb-3' style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
-          <div className='user-select-none'>
-            <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxHeight: '80%', maxWidth: '80%' }} />
-          </div>
-        </div>
-      }
+    <div className={cx('d-flex text-center color-bg-secondary py-4 px-3 header-block flex-items-center', { small, 'flex-column': !small, 'flex-justify-center': small })}>
+      <div className={cx('CircleBadge user-select-none', { 'CircleBadge--small': small, 'CircleBadge--large': !small, 'mr-1': small, 'mb-1': !small })} style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}>
+        <img src='/logo-animated.gif' alt='Daily Oops' style={{ height: 'auto', maxWidth: '90%' }} />
+      </div>
       
       <h1 className='d-flex flex-items-center flex-justify-center'>
-        {
-          small && <>
-            <img src='/logo-animated.gif' alt='Daily Oops' width={50} height={50} className='circle' />
-            &nbsp;&nbsp;
-          </>
-        }
         Daily Oops!
       </h1>
     </div>
@@ -70,11 +62,6 @@ const Header = ({ small = false }) => {
       </div>
       <NightSwitch />
     </nav>
-    <style jsx scoped>{`
-      .UnderlineNav-body .UnderlineNav-item:last-child  {
-        padding-right: 50px;
-      }
-    `}</style>
   </>
 }
 

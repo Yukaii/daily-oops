@@ -16,6 +16,7 @@
     "@yukaii/github-highlightjs-themes": "^1.0.0",
     "bluebird": "^3.7.2",
     "cheerio": "^1.0.0-rc.5",
+    "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.9.1",
     "disqus-react": "^1.0.10",

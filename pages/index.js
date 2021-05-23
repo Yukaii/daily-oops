@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 import { motion } from 'framer-motion'
 
-import Header from 'components/Header'
 import PostRow from 'components/PostRow'
 
 import { getAllPostsWithSlug } from 'lib/post'
@@ -23,9 +22,6 @@ export default function Home({ posts }) {
           site_name: 'Daily Oops!',
         }}
       />
-
-      <Header />
-
 
       <motion.div
         className="d-block mx-auto container markdown-body py-4 px-3"
