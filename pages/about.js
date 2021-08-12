@@ -7,16 +7,18 @@ import Markdown from 'components/Markdown'
 import { fetchPostData } from 'lib/post'
 import { springSimple } from 'lib/transition'
 
-export default function About ({ content }) {
-  return <div>
-    <Head>
-      <title>About me | Daily Oops!</title>
-    </Head>
-    
-    <motion.div {...springSimple} layoutId='about'>
-      <Markdown content={content} className='container pt-4 pb-6 px-3' />
-    </motion.div>
-  </div>
+export default function About({ content }) {
+  return (
+    <div>
+      <Head>
+        <title>About me | Daily Oops!</title>
+      </Head>
+
+      <motion.div {...springSimple} layoutId="about">
+        <Markdown content={content} className="container pt-4 pb-6 px-3" />
+      </motion.div>
+    </div>
+  )
 }
 
 export async function getStaticProps() {
@@ -24,7 +26,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      content
-    }
+      content,
+    },
   }
 }

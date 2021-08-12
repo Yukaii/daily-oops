@@ -1,12 +1,13 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { NEXT_PUBLIC_GA_TRACKING_ID } from 'lib/constants'
+import Script from 'next/script'
 
 class MyDocument extends Document {
   render() {
     const isProduction = process.env.NODE_ENV === 'production'
 
     return (
-      <Html lang='zh-Hant-TW' data-dark-theme='dark'>
+      <Html lang="zh-Hant-TW" data-dark-theme="dark">
         <Head>
           <link
             rel="alternate"
@@ -39,7 +40,7 @@ class MyDocument extends Document {
           )}
         </Head>
         <body>
-          <script src="/noflash.js" />
+          <Script src="/noflash.js" />
           <Main />
           <NextScript />
         </body>

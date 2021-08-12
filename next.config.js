@@ -11,8 +11,8 @@ module.exports = withBundleAnalyzer({
   webpack: (config, options) => {
     config.resolve.fallback = {
       path: false,
-      fs: false
+      fs: false,
     }
     return config
-  }
+  },
 })
