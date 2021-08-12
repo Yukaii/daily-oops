@@ -1,0 +1,40 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Lint & Build
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Yarn CLI
+      uses: CultureHQ/actions-yarn@v1.0.1
+    - run: yarn
+
+    - name: Run linter
+      run: yarn lint
+
+    - name: Run next build
+      env:
+        HACKMD_PROFILE: ${{ secrets.HACKMD_PROFILE }}
+        ABOUT_ME_NOTE_ID: ${{ secrets.ABOUT_ME_NOTE_ID }}
+        DISQUS_SHORTNAME: ${{ secrets.DISQUS_SHORTNAME }}
+        DISQUS_DOMAIN: ${{ secrets.DISQUS_DOMAIN }}
+        DOMAIN: ${{ secrets.DOMAIN }}
+        NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
+
+      run: |
+        yarn build
