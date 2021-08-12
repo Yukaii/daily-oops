@@ -26,6 +26,10 @@ jobs:
     - name: Yarn CLI
       uses: CultureHQ/actions-yarn@v1.0.1
     - run: yarn
+
+    - name: Run linter
+      run: yarn lint
+
     - name: Run next build
       env:
         HACKMD_PROFILE: ${{ secrets.HACKMD_PROFILE }}
