@@ -13,7 +13,8 @@
             <link>https://yukai.dev/blog/2022/01/26/figma-custom-css-dark-mode</link>
             <guid>https://yukai.dev/blog/2022/01/26/figma-custom-css-dark-mode</guid>
             <pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[# 啟用 Figma 桌面版的自訂 CSS 功能，以及關於暗黑模式
+            <description><![CDATA[
+# 啟用 Figma 桌面版的自訂 CSS 功能，以及關於暗黑模式
 
 ![](https://hackmd.io/_uploads/S1xujpC6t.png)
 
@@ -25,7 +26,7 @@
 
 ## 還是讓我們進入正題吧
 
-[Figma](https://www.figma.com/) 是我經常使用的向量設計工具，優點]]></description>
+[Figma](https://www.figma.com/) 是我經常使用的向量設計工具，優]]></description>
             <content:encoded><![CDATA[<h1 id="%E5%95%9F%E7%94%A8-figma-%E6%A1%8C%E9%9D%A2%E7%89%88%E7%9A%84%E8%87%AA%E8%A8%82-css-%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%97%9C%E6%96%BC%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F"><a class="anchor" href="#%E5%95%9F%E7%94%A8-figma-%E6%A1%8C%E9%9D%A2%E7%89%88%E7%9A%84%E8%87%AA%E8%A8%82-css-%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%97%9C%E6%96%BC%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 啟用 Figma 桌面版的自訂 CSS 功能，以及關於暗黑模式</h1>
 <figure data-type="image"><img src="https://hackmd.io/_uploads/S1xujpC6t.png" alt=""></figure>
 <p>昨天在推特看到有篇 <a href="https://twitter.com/joeyabanks/status/1485652780576608261">Figma 暗黑模式</a> 的貼文。</p>
