@@ -4,10 +4,86 @@
         <title>Blog | Daily Oops!</title>
         <link>https://yukai.dev/blog</link>
         <description>Daily Oops RSS Feed</description>
-        <lastBuildDate>Thu, 14 Apr 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Jun 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[寫給開發者的 Raycast 推坑指南]]></title>
+            <link>https://yukai.dev/blog/2022/05/20/raycast-for-developers</link>
+            <guid>https://yukai.dev/blog/2022/05/20/raycast-for-developers</guid>
+            <pubDate>Mon, 20 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+# 寫給開發者的 Raycast 推坑指南
+
+![](https://hackmd.io/_uploads/ByLinzBD5.png)
+
+## 推坑推推坑
+
+這次我要介紹的是 [Raycast](https://www.raycast.com/)，Raycast 是一套「啟動器」(Launcher) 類型的軟體。什麼是啟動器？啟動器提供一個文字輸入框，你只要在裡面輸入關鍵字，就能快速的啟動關鍵字搜尋到的軟體，或是任何找到的工作流程，比如**播放一首歌**、**開啟一份文件**、**切換電腦的黑暗模式**等。啊，是不是聽起來很像流行很久的 [Alfred](https://www.alfredapp.com/)？嘿對沒有錯，Raycast 可說是新一代版 Alfred，預設的界面設計比 Alfred 更為貼近目前 macOS 的設計語言。
+
+如果你用的是 Windows，你也許也用過 [Wox](https://github.com/Wox-launcher/Wox/) 這款啟動器軟體（現被 [Powertoys Run](https://docs.microsoft.com/zh-]]></description>
+            <content:encoded><![CDATA[<h1 id="%E5%AF%AB%E7%B5%A6%E9%96%8B%E7%99%BC%E8%80%85%E7%9A%84-raycast-%E6%8E%A8%E5%9D%91%E6%8C%87%E5%8D%97"><a class="anchor" href="#%E5%AF%AB%E7%B5%A6%E9%96%8B%E7%99%BC%E8%80%85%E7%9A%84-raycast-%E6%8E%A8%E5%9D%91%E6%8C%87%E5%8D%97"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 寫給開發者的 Raycast 推坑指南</h1>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/ByLinzBD5.png" alt=""></figure>
+<h2 id="%E6%8E%A8%E5%9D%91%E6%8E%A8%E6%8E%A8%E5%9D%91"><a class="anchor" href="#%E6%8E%A8%E5%9D%91%E6%8E%A8%E6%8E%A8%E5%9D%91"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 推坑推推坑</h2>
+<p>這次我要介紹的是 <a href="https://www.raycast.com/">Raycast</a>，Raycast 是一套「啟動器」(Launcher) 類型的軟體。什麼是啟動器？啟動器提供一個文字輸入框，你只要在裡面輸入關鍵字，就能快速的啟動關鍵字搜尋到的軟體，或是任何找到的工作流程，比如<strong>播放一首歌</strong>、<strong>開啟一份文件</strong>、<strong>切換電腦的黑暗模式</strong>等。啊，是不是聽起來很像流行很久的 <a href="https://www.alfredapp.com/">Alfred</a>？嘿對沒有錯，Raycast 可說是新一代版 Alfred，預設的界面設計比 Alfred 更為貼近目前 macOS 的設計語言。</p>
+<p>如果你用的是 Windows，你也許也用過 <a href="https://github.com/Wox-launcher/Wox/">Wox</a> 這款啟動器軟體（現被 <a href="https://docs.microsoft.com/zh-tw/windows/powertoys/run">Powertoys Run</a> 繼承）。這種啟動器類型的界面可以用「類 Spotlight」、「Command Palette」來稱呼，關於它的設計脈絡，可以參考<a href="https://capiche.com/e/consumer-dev-tools-command-palette">這篇文章</a>。近年隨著開發者生產力工具的蓬勃發展，Command Palette 更是成為了各 SaaS 的標配。彷彿少了這個功能就是不順手，不夠潮一樣 XD</p>
+<p>至於本篇文章為何要特別「寫給開發者」呢？原因無他，<a href="https://www.wikiwand.com/en/Unique_selling_proposition">USP</a> 而已，作為一個開發者，不對喜歡的軟體狠狠搗鼓一番實在說不過去（好啦就只是我個人的執念）。雖然我在 <a href="https://www.facebook.com/yukaihuangtw/posts/3904306446255611">2020 年底就開始使用了 Raycast</a>，不過還真像我在臉書貼文預告的一般，一直都是偷偷自己用，直到去年年底 <a href="https://www.raycast.com/changelog#1.25.0">Extension API 推出</a>後，我才開始全力把 Raycast 和自己的工作流程深度整合。</p>
+<p>話不多說，準備好接受推坑嗎 (Y/y)</p>
+<h2 id="%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A3%AF"><a class="anchor" href="#%E7%B2%97%E8%8C%B6%E6%B7%A1%E9%A3%AF"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 粗茶淡飯</h2>
+<p>先介紹幾個可能會讓你對 Raycast 有興趣的功能。Raycast 厲害的地方在於它<strong>內建的功能</strong>就已經足夠好用了，而且在每次更新，時不時就會再推出讓你幸福感加倍的小功能。</p>
+<h3 id="%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%89%87%E6%AE%B5%EF%BC%88snippet%EF%BC%89"><a class="anchor" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%89%87%E6%AE%B5%EF%BC%88snippet%EF%BC%89"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 程式碼片段（snippet）</h3>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/Bk8h3fSw9.png" alt=""></figure>
+<p><strong>▲ Snippets，圖取自 <a href="https://raycastapp.notion.site/Snippets-08478c751de8489194bc40fd35cdd033">Raycast Manual</a></strong></p>
+<p>程式碼片段讓你快速貼上一段文字，還可以設定<strong>關鍵字展開</strong>，輸入指定的關鍵字，就會自動幫你貼上片段內容。</p>
+<h3 id="%E5%89%AA%E8%B2%BC%E7%B0%BF%E7%AE%A1%E7%90%86"><a class="anchor" href="#%E5%89%AA%E8%B2%BC%E7%B0%BF%E7%AE%A1%E7%90%86"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 剪貼簿管理</h3>
+<p>界面其實和上面 Snippet 一樣就不貼了 XD。我原本就會裝剪貼簿管理工具，比如 <a href="https://github.com/p0deje/Maccy">Maccy</a> ，但有了 Raycast 後通通都不用了，一套抵多套，讚！</p>
+<h3 id="%E9%81%B8%E5%96%AE%E9%A0%85%E7%9B%AE%E6%90%9C%E5%B0%8B-(menu-item-search)"><a class="anchor" href="#%E9%81%B8%E5%96%AE%E9%A0%85%E7%9B%AE%E6%90%9C%E5%B0%8B-(menu-item-search)"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 選單項目搜尋 (Menu Item Search)</h3>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/BkXphfHPc.png" alt=""></figure>
+<p><img src="https://hackmd.io/_uploads/BJ1A3fBv9.png" alt="">
+<strong>▲ macOS 的選單搜尋設計</strong></p>
+<p>在 macOS 裡選單項目本身就可以透過「幫助」-&gt;「搜尋」項目來做查詢，但 Raycast 在 1.20.0 版推出了選單項目搜尋的功能，可以說 <strong>幫所有 App 都加上 Command Palette 的功能</strong>，相當實用。</p>
+<h3 id="%E8%A6%96%E7%AA%97%E7%AE%A1%E7%90%86-(window-management)"><a class="anchor" href="#%E8%A6%96%E7%AA%97%E7%AE%A1%E7%90%86-(window-management)"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 視窗管理 (Window Management)</h3>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/rJY02fHD5.png" alt=""></figure>
+<p><strong>▲ Raycast 視窗管理的部分指令</strong></p>
+<p>沒錯！Raycast 還內建了視窗管理的功能，常用的視窗放大縮小排列靠左一半分割靠右分割置中都可以，也可以綁上自己習慣的快速鍵，在涵蓋原本我常用的視窗管理工具 <a href="https://github.com/kasper/phoenix">Phoenix</a> 80% 功能後，我也刪除 Phoenix 了，把全部的視窗快速鍵都交由 Raycast 管理。</p>
+<h2 id="%E6%98%AF%E6%99%82%E5%80%99%E5%B1%95%E7%8F%BE%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%8A%80%E8%A1%93%E4%BA%86---%E6%93%B4%E5%85%85%E5%8A%9F%E8%83%BD-api"><a class="anchor" href="#%E6%98%AF%E6%99%82%E5%80%99%E5%B1%95%E7%8F%BE%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%8A%80%E8%A1%93%E4%BA%86---%E6%93%B4%E5%85%85%E5%8A%9F%E8%83%BD-api"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 是時候展現真正的技術了 - 擴充功能 API</h2>
+<p>講完了幾個 Raycast 內建的常用功能，接下來就帶各位看一下真正讓我興奮 Raycast 的殺手級功能：擴充功能 API (Extension API）。</p>
+<p>有了擴充功能，你幾乎可以讓 Raycast 完成任何事，唯一的限制就是<strong>使用者介面被 Raycast 規範</strong>，但想想，有適度的限制才能讓開發者專注在開發功能上：不用考慮使用者體驗，因為這點 Raycast 幫你規範好了，Raycast 的開發者還會給你建議；也不用想如何 Deliver，因為有中心化的擴充功能商店（Extension Store），你只管發 Pull Request 到 Raycast 擴充功能的 <a href="https://github.com/raycast/extensions">GitHub Repo</a>，PR 合併之後幾分鐘後擴充功能就會上架到<a href="https://raycast.com/store">商店</a>讓所有人可用。</p>
+<p>把擴充功能統一集中放在官方的 Repo 也有不少好處。一來開源授權統一，Raycast 官方運用起來清爽無負擔，自用送人兩相宜。二來生態系集中，所有擴充功能都在一個 Repo 裡面，隨時想<s>抄抄作業</s>也十分方便，不用在 GitHub 上漫天亂找（阿不過現在有了 <a href="https://cs.github.com/about">GitHub Code Search</a> 要跨 repo 抄作業也更方便了）。</p>
+<p>是說我還沒講到 Raycast 擴充功能 API 最厲害的地方 － React API。什麼意思？直接來點程式碼吧：</p>
+<pre><code class="language-javascript"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-keyword">import</span> { Detail } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@raycast/api&#x27;</span>;</td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2"></td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Command</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4">	<span class="hljs-keyword">return</span> &lt;Detail markdown=&quot;Hello World!&quot; /&gt;;</td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5">}</td></tr></tbody></table></code></pre>
+<p>以上是一段 Raycast 擴充功能的 Hello World 範例，跑起來會像這樣：</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/ry4yazHD9.png" alt=""></figure>
+<p>對就這麼簡單，才四行而已，連 Markdown 元件都幫你做好了。而且…明明是 macOS 原生桌面應用程式，竟然可以用 React 來寫？</p>
+<p>JavaScript 成為最常用的程式語言<a href="https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-programming-scripting-and-markup-languages">已經很久了</a>，俗話說<a href="https://www.theplayerstribune.com/articles/kevin-durant-nba-free-agency-announcement">打不贏就加入它</a> 也是有道理，沒有必要為了做擴充功能再創造一個 DSL 的輪子吧。JavaScript 有著最豐富的生態系，React Native 的 <a href="https://reactnative.dev/">Learn Once Write Anywhere</a> 哲學，選對語言和生態，馬上有一堆最 <a href="https://blog.daftcode.pl/hype-driven-development-3469fc2e9b22"><strong>Hype</strong></a> 的開發者，每天為你的生態系貢獻，何樂而不為。對沒錯，我也是其中一員就是了 XD</p>
+<p>熟悉的 React API、豐富的 JavaScript 套件生態系、<strong>優~~雅~~至~~極~~</strong>（Elegant，エレガント） 的界面，截止今天，已經有了 408 個擴充功能。沒錯，以下這兩張圖也是來自社群裡的開發者做的擴充功能：<a href="https://github.com/tonka3000/raycast-charts-extension">raycast-charts-extension</a>：</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/rkbeTGSP5.png" alt=""></figure>
+<p><strong>▲ 圖：擴充功能列表（依安裝數降冪排列）</strong></p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/HyvxaGSw9.png" alt=""></figure>
+<p><strong>▲ 圖：總安裝數位在 87 位的 me。87 位，不能再高了</strong></p>
+<h2 id="%E9%82%A3%EF%BC%8C%E6%88%91%E8%A9%B2%E6%80%8E%E9%BA%BD%E9%96%8B%E5%A7%8B%E9%96%8B%E7%99%BC-raycast-%E6%93%B4%E5%85%85%E5%8A%9F%E8%83%BD%E5%91%A2%EF%BC%9F"><a class="anchor" href="#%E9%82%A3%EF%BC%8C%E6%88%91%E8%A9%B2%E6%80%8E%E9%BA%BD%E9%96%8B%E5%A7%8B%E9%96%8B%E7%99%BC-raycast-%E6%93%B4%E5%85%85%E5%8A%9F%E8%83%BD%E5%91%A2%EF%BC%9F"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 那，我該怎麽開始開發 Raycast 擴充功能呢？</h2>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/SyTe6MHvq.jpg" alt=""></figure>
+<p>一開始當然是先「決定要幹嘛」啦，如果一時沒頭緒，除了從 <a href="https://github.com/raycast/extensions/issues">Issues 列表</a> 找靈感外，欸嘿，身為開坑怪，我這裡也有幾個現成的想法，可以讓你試試：</p>
+<ul>
+<li><a href="https://apps.ankiweb.net/">Anki</a> 擴充功能：Anki 在本機使用 SQLite3 作為資料庫，資料庫存取的方法可以參考 <a href="https://github.com/raycast/extensions/blob/7f77d2fdafbd877d90bc548f105e101abaed265b/extensions/visual-studio-code-recent-projects/src/db.ts#L24-L31">Raycast VSCode Recent Projects</a> 的做法</li>
+<li><a href="https://docs.microsoft.com/en-us/graph/api/resources/todo-overview?view=graph-rest-1.0">Microsoft TODO</a> 的擴充功能：Raycast 已經有數個 Todo List 相關的擴充功能了，比如 <a href="https://www.raycast.com/thomaslombart/todoist">Todoist</a>、<a href="https://www.raycast.com/loris/things">Things</a>、<a href="https://www.raycast.com/maggie/todo-list">Todo List</a>。所謂 Todo App 就是晉升 CRUD 工程師的第一步（？），那補齊 Raycast Todo 擴充功能的最後一角當然也是義不容辭（<s>我到底在寫啥</s>）</li>
+<li>潛伏在 <a href="https://raycastcommunity.slack.com/archives/C02HEMAF2SJ">Raycast Slack 社群</a> 尋找新想法</li>
+</ul>
+<p>有了題目，再來就是照著<a href="https://developers.raycast.com/">文件</a>一步一步做。<a href="https://developers.raycast.com/">Raycast 的開發文件</a>清晰明瞭又有截圖，若有問題，在 Slack 的 <a href="https://raycastcommunity.slack.com/archives/C02HEMAF2SJ"><code>#extensions</code></a> 或是 <a href="https://raycastcommunity.slack.com/archives/C028DTXTW3Y"><code>#help</code></a> 頻道發文，回應的速度也都相當快。</p>
+<h3 id="%E8%AC%9B%E5%80%8B%E7%A7%98%E8%A8%A3"><a class="anchor" href="#%E8%AC%9B%E5%80%8B%E7%A7%98%E8%A8%A3"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 講個秘訣</h3>
+<p>最後附上幾個在開發擴充功能時，可能會對你有點幫助的訣竅：</p>
+<ul>
+<li>使用 <a href="https://swr.vercel.app/">swr</a> 作為抓 API 資料的輔助。<a href="https://react-query.tanstack.com/"><code>react-query</code></a> 因為 API 設定時要另外包一層 Context，而在 Raycast 每個 Command 都可以被視為一個 App，可能是因為這樣設定起來很麻煩，所以沒人在用 XD</li>
+<li>用 <a href="https://www.raycast.com/koinzhang/capture-raycast-metadata">Capture Raycast Metadata</a> 來製作發佈用截圖。前不久 Raycast 在 Store 加上了截圖，針對截圖還訂定了特別的規範，比如 Raycast 視窗應該在哪個位置上，截圖畫面的大小應該是多少，還推出了 <a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#adding-screenshots">Figma 的 Template</a> 供大家使用，不過對於一般開發者來說還是有點麻煩。社群的開發者就推出了這個專門製作截圖的擴充功能，讓截圖製作一鍵完成 😍</li>
+<li>盡量遵照原生界面，真的想高度自定界面的話可以使用 <a href="https://github.com/raycast/extensions/blob/859e8a20a2/extensions/jwt-decode">SVG</a>。</li>
+<li>持續關注新 API 更新，缺少的 API 常常許願過後一陣子就會在更新出現，記得常常追蹤 Slack！</li>
+</ul>
+<p>預祝各位 Happy Hacking Raycast Extension 啦！</p>
+<p>我後附上<a href="https://www.raycast.com/Yukai">我在 Raycast Store 的個人頁面</a> ，對我開發的擴充功能有興趣也可以安裝試試~~</p>
+<figure data-type="image"><img src="https://hackmd.io/_uploads/Bkjb6Mrw9.jpg" alt=""></figure>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[來考大型重機駕照]]></title>
             <link>https://yukai.dev/blog/2022/03/14/heavy-motorcycle-drivers-license</link>
@@ -564,43 +640,6 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <p>效果如下圖，雖然開啟新分頁之後會閃一下，聊勝於無啦</p>
 <figure data-type="image"><img src="https://i.imgur.com/Ctvff8y.gif" alt="gif"></figure>
 <p>（完）</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能]]></title>
-            <link>https://yukai.dev/blog/2018/04/13/use-gmail-smtp-without-your-own-smtp-server</link>
-            <guid>https://yukai.dev/blog/2018/04/13/use-gmail-smtp-without-your-own-smtp-server</guid>
-            <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
-            <description><![CDATA[# 用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能
-
-## 你到底再工啥小
-
-在啦幹。解釋一下，敝單位由於歷史因素及安全考量，所以內部的郵件系統在外網時，只開放收信（IMAP）而沒有寄信（SMTP）功能。這摸不方便的狀況一定要來 workaround，免費 Gmail 就有 SMTP 寄信功能，我們就直接用吧。值得一提的是這方法是我成功之後才去 Google 驗證解法的，難得一波直覺流 <3
-
-## 設定步驟
-
-1. 設定電子郵件客戶端的寄信伺服器為 Gmail 的 SMTP，伺服器填：`smtp.gmail.com`，帳號：`xxx@gmail.com`，密碼為 gmail 密碼。若你有兩階段驗證，密碼就去[應用程式密碼][2-factor]產生
-2. 到 Gmail 的 **帳戶和匯入** -> **以這個地址寄送郵件** -> 點選 **新增另一個電子郵件地址**
-3. 把**視為別名**給取消勾選、填入你要用來寄信的 mail
-5. SMTP 伺服器欄位，填入 Gmail 的 SMTP（跟上面第一點填的一樣）
-6. 收信驗證 mail
-7. 搞定
-
-]]></description>
-            <content:encoded><![CDATA[<h1 id="%E7%94%A8-gmail-%E7%9A%84-smtp-%E4%BE%86%E5%AF%84%E4%BF%A1%EF%BC%8C%E4%BD%86%E4%BD%A0%E7%9A%84%E9%83%B5%E4%BB%B6%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%B2%92%E6%9C%89-smtp-%E5%8A%9F%E8%83%BD"><a class="anchor" href="#%E7%94%A8-gmail-%E7%9A%84-smtp-%E4%BE%86%E5%AF%84%E4%BF%A1%EF%BC%8C%E4%BD%86%E4%BD%A0%E7%9A%84%E9%83%B5%E4%BB%B6%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%B2%92%E6%9C%89-smtp-%E5%8A%9F%E8%83%BD"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 用 Gmail 的 SMTP 來寄信，但你的郵件伺服器沒有 SMTP 功能</h1>
-<h2 id="%E4%BD%A0%E5%88%B0%E5%BA%95%E5%86%8D%E5%B7%A5%E5%95%A5%E5%B0%8F"><a class="anchor" href="#%E4%BD%A0%E5%88%B0%E5%BA%95%E5%86%8D%E5%B7%A5%E5%95%A5%E5%B0%8F"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 你到底再工啥小</h2>
-<p>在啦幹。解釋一下，敝單位由於歷史因素及安全考量，所以內部的郵件系統在外網時，只開放收信（IMAP）而沒有寄信（SMTP）功能。這摸不方便的狀況一定要來 workaround，免費 Gmail 就有 SMTP 寄信功能，我們就直接用吧。值得一提的是這方法是我成功之後才去 Google 驗證解法的，難得一波直覺流 ❤️</p>
-<h2 id="%E8%A8%AD%E5%AE%9A%E6%AD%A5%E9%A9%9F"><a class="anchor" href="#%E8%A8%AD%E5%AE%9A%E6%AD%A5%E9%A9%9F"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 設定步驟</h2>
-<ol>
-<li>設定電子郵件客戶端的寄信伺服器為 Gmail 的 SMTP，伺服器填：<code>smtp.gmail.com</code>，帳號：<code>xxx@gmail.com</code>，密碼為 gmail 密碼。若你有兩階段驗證，密碼就去<a href="https://myaccount.google.com/apppasswords">應用程式密碼</a>產生</li>
-<li>到 Gmail 的 <strong>帳戶和匯入</strong> -&gt; <strong>以這個地址寄送郵件</strong> -&gt; 點選 <strong>新增另一個電子郵件地址</strong></li>
-<li>把<strong>視為別名</strong>給取消勾選、填入你要用來寄信的 mail</li>
-<li>SMTP 伺服器欄位，填入 Gmail 的 SMTP（跟上面第一點填的一樣）</li>
-<li>收信驗證 mail</li>
-<li>搞定</li>
-</ol>
-<p>最近 Gmail 準備要推出改版了，希望這部分的 UI 不要差太多。另外本篇就先不截圖了，非開發者比較需要 XD</p>
-<p>via <a href="https://webapps.stackexchange.com/a/72975">https://webapps.stackexchange.com/a/72975</a></p>
 ]]></content:encoded>
         </item>
     </channel>
