@@ -4,10 +4,65 @@
         <title>Blog | Daily Oops!</title>
         <link>https://yukai.dev/blog</link>
         <description>Daily Oops RSS Feed</description>
-        <lastBuildDate>Mon, 20 Jun 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 28 Jun 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[在 Obsidian 設定免費的拼字檢查：使用開源軟體 LanguageTool 並部屬至 Railway.app]]></title>
+            <link>https://yukai.dev/blog/2022/05/28/free-spellcheck-with-obsidian-languagetool-railway</link>
+            <guid>https://yukai.dev/blog/2022/05/28/free-spellcheck-with-obsidian-languagetool-railway</guid>
+            <pubDate>Tue, 28 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+
+# 在 Obsidian 設定免費的拼字檢查：使用開源軟體 LanguageTool 並部屬至 Railway.app
+
+> TL;DR
+> 1. fork 我修改的 [LanguageTool Docker](https://github.com/Yukaii/docker-languagetool)
+> 2. 去 Railway 部屬這個 Repo
+> 3. 更新 Obsidian LanguageTool 的伺服器設定
+
+最近想試著調高點發文頻率，原因還是堆積的草稿太多了。以前不能接受未完成的東西出品，但想想，程式碼都可以 **Release early, release often** 了，同樣對待寫作也未嘗不可，這裡也只是我個人的部落格罷了，也沒走什麼 Launch 流程，比如發送電子報、到臉書社團發文貼連結等。
+
+## 在 Obsidian 使用免費的 LanguageTool 來做拼字檢查
+
+回歸標題，身為一個專業免費仔，該如何在 Obsidian 裡使用拼字檢查呢？平常有在用 Grammarly 做簡單文法檢查的我，馬上搜尋到這篇官方論壇的討論：[Any way t]]></description>
+            <content:encoded><![CDATA[<h1 id="%E5%9C%A8-obsidian-%E8%A8%AD%E5%AE%9A%E5%85%8D%E8%B2%BB%E7%9A%84%E6%8B%BC%E5%AD%97%E6%AA%A2%E6%9F%A5%EF%BC%9A%E4%BD%BF%E7%94%A8%E9%96%8B%E6%BA%90%E8%BB%9F%E9%AB%94-languagetool-%E4%B8%A6%E9%83%A8%E5%B1%AC%E8%87%B3-railway.app"><a class="anchor" href="#%E5%9C%A8-obsidian-%E8%A8%AD%E5%AE%9A%E5%85%8D%E8%B2%BB%E7%9A%84%E6%8B%BC%E5%AD%97%E6%AA%A2%E6%9F%A5%EF%BC%9A%E4%BD%BF%E7%94%A8%E9%96%8B%E6%BA%90%E8%BB%9F%E9%AB%94-languagetool-%E4%B8%A6%E9%83%A8%E5%B1%AC%E8%87%B3-railway.app"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 在 Obsidian 設定免費的拼字檢查：使用開源軟體 LanguageTool 並部屬至 Railway.app</h1>
+<blockquote>
+<p>TL;DR</p>
+<ol>
+<li>fork 我修改的 <a href="https://github.com/Yukaii/docker-languagetool">LanguageTool Docker</a></li>
+<li>去 Railway 部屬這個 Repo</li>
+<li>更新 Obsidian LanguageTool 的伺服器設定</li>
+</ol>
+</blockquote>
+<p>最近想試著調高點發文頻率，原因還是堆積的草稿太多了。以前不能接受未完成的東西出品，但想想，程式碼都可以 <strong>Release early, release often</strong> 了，同樣對待寫作也未嘗不可，這裡也只是我個人的部落格罷了，也沒走什麼 Launch 流程，比如發送電子報、到臉書社團發文貼連結等。</p>
+<h2 id="%E5%9C%A8-obsidian-%E4%BD%BF%E7%94%A8%E5%85%8D%E8%B2%BB%E7%9A%84-languagetool-%E4%BE%86%E5%81%9A%E6%8B%BC%E5%AD%97%E6%AA%A2%E6%9F%A5"><a class="anchor" href="#%E5%9C%A8-obsidian-%E4%BD%BF%E7%94%A8%E5%85%8D%E8%B2%BB%E7%9A%84-languagetool-%E4%BE%86%E5%81%9A%E6%8B%BC%E5%AD%97%E6%AA%A2%E6%9F%A5"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 在 Obsidian 使用免費的 LanguageTool 來做拼字檢查</h2>
+<p>回歸標題，身為一個專業免費仔，該如何在 Obsidian 裡使用拼字檢查呢？平常有在用 Grammarly 做簡單文法檢查的我，馬上搜尋到這篇官方論壇的討論：<a href="https://forum.obsidian.md/t/any-way-to-integrate-grammarly-as-plugin/19050">Any way to integrate Grammarly as plugin?</a> ，裡面這張 LanguageTool 的截圖馬上引起我的注意：</p>
+<p><img src="https://hackmd.io/_uploads/SJgp8H1dq.jpg" alt="">
+<strong><a href="https://forum.obsidian.md/t/any-way-to-integrate-grammarly-as-plugin/19050/3">Screenshot of Obsidian LanguageTool plugin</a></strong></p>
+<p>搜尋了一下 LanguageTool，卻發現有以下<a href="https://dev.languagetool.org/public-http-api">限制</a>：</p>
+<blockquote>
+<ul>
+<li>20 requests per IP per minute (this is supposed to be a peak value - don’t constantly send this many requests or we would have to block you)</li>
+<li>75KB text per IP per minute</li>
+<li>20KB text per request</li>
+<li>Only up to 30 misspelled words will have suggestions.</li>
+</ul>
+</blockquote>
+<p>雖然限制挺寬鬆的，簡單寫些文件應該不容易超過限制，但<strong>身為一個專業免費仔</strong>，當然要解除限制，並且還不能花到任何一毛錢，這才是所謂的<s>專業</s>。</p>
+<figure data-type="image"><img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1586341731827.jpg" alt=""></figure>
+<h2 id="%E9%83%A8%E5%B1%AC-languagetool-%E5%88%B0-railway.app"><a class="anchor" href="#%E9%83%A8%E5%B1%AC-languagetool-%E5%88%B0-railway.app"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 部屬 LanguageTool 到 Railway.app</h2>
+<p>前陣子 Heroku <a href="https://status.heroku.com/incidents/2413">大逃難</a>時，<a href="https://hackmd.io">敝司</a>也參了一腳，當時研究了幾個 Heroku 的替代品，除了很多人推的 <a href="https://render.com/">Render</a>，另一個呼聲也很高的服務就是 <a href="https://railway.app">Railway</a> （同樣以 R 為開頭，所以現在是要抱團跟 <a href="https://yukai.dev/blog/2022/05/20/raycast-for-developers">Raycast</a> 組一個 R-League ㄇ）。</p>
+<p>LanguageTool 已經有貢獻者打包了自己的 <a href="https://github.com/Erikvl87/docker-languagetool">Dockerfile</a>，不過像 Railway 這種 PaaS 平臺，服務跑起來的 Port 都是執行時才會指定，一般也會用 <code>$PORT</code> 這個環境變數來指定（<a href="https://12factor.net/">12 factor</a> 留下來的優秀傳統），所以這裡就要來修改一下 Dockerfile 啦。</p>
+<p>詳細請看 fork repo 的 commit <a href="https://github.com/Yukaii/docker-languagetool/commit/fb9b812406fcffcb1049a036ad09dda1c8f8edbc"><code>fb9b812</code></a>，就是把 Port 拆出來而已，也有參考 <a href="https://docs.railway.app/deploy/docker">Railway 的文件</a>，裡面提到 Railway 會把環境變數用 <code>ARG</code> 傳入。</p>
+<p>修改完之後接續<strong>異常順暢</strong>的 Railway 部屬流程，設定好 Repository 到我 fork 的 <a href="https://github.com/Yukaii/docker-languagetool">LanguageTool Docker Repository</a>（需要的人請自己 fork 一份），跑起來服務，並在 <a href="obsidian://show-plugin?id=obsidian-languagetool-plugin">Obsidian LanguageTool Integration Plugin</a> 裡設定好新的伺服器位址，就可以免費用自架的 LanguageTool 啦！</p>
+<p><img src="https://hackmd.io/_uploads/HkYRUrk_c.png" alt="">
+<strong>LanguageTool 在 Railway 跑起來的 Log，不得不說 Railway 界面體驗也是 Top-tier 的</strong></p>
+<p><img src="https://hackmd.io/_uploads/S1bJwH1uq.png" alt="">
+<strong>在 Obsidian 裡使用 LanguageTool</strong></p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[寫給開發者的 Raycast 推坑指南]]></title>
             <link>https://yukai.dev/blog/2022/05/20/raycast-for-developers</link>
@@ -594,52 +649,6 @@ NetLog 顧名思義，是一套 Chromium Project 內建的網路事件記錄系�
 <p>值得一提的是這次用 TypeScript Generics 搭配 localforage 弄了一層簡單的 <a href="https://github.com/Yukaii/kanahei-wallpapers/blob/master/src/app/lib/store.ts#L26">ActiveModel-like API</a>，莫名的成就感啊 😂</p>
 <h2 id="show-me-the-code"><a class="anchor" href="#show-me-the-code"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> Show me the code</h2>
 <p>按照慣例一向開源開爆的，GitHub repo 在 <a href="https://github.com/Yukaii/kanahei-wallpapers">https://github.com/Yukaii/kanahei-wallpapers</a>。為何名字裡有 kanahei？原因是一開始純粹想做他們家限定的桌布，沒想到回饋不錯只好一般化，讓大家可以上傳自己想用的桌布。之後可能會改名吧，再說。</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[更改 Opera 的新分頁]]></title>
-            <link>https://yukai.dev/blog/2018/06/06/how-to-change-opera-new-start-page</link>
-            <guid>https://yukai.dev/blog/2018/06/06/how-to-change-opera-new-start-page</guid>
-            <pubDate>Fri, 06 Jul 2018 00:00:00 GMT</pubDate>
-            <description><![CDATA[
-# 更改 Opera 的新分頁
-
-我從去年起開始使用 Opera，原因有二：基於 Chromium 以及內建的暗色主題。不過這不是本篇的主題，就讓我輕輕帶過吧 XD
-
-現在的 Opera 既然是基於 Chromium 改的，當然支援 Google Chrome 的瀏覽器擴充功能，只要安裝 Opera 官方出的 [Install Chrome Extensions](https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/) 擴充套件，就能無縫直接在 Chrome Web Store 下載了，不過還是有些限制，比如 Chrome Apps 和主題就不支援，修改新分頁的擴充功能也沒辦法直接使用。
-
-接下來教你怎麽啟用 Opera 修改新分頁的擴充功能 😝
-
-1. 安裝完上面提到的 [Install Chrome Extensions](https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/) 之]]></description>
-            <content:encoded><![CDATA[<h1 id="%E6%9B%B4%E6%94%B9-opera-%E7%9A%84%E6%96%B0%E5%88%86%E9%A0%81"><a class="anchor" href="#%E6%9B%B4%E6%94%B9-opera-%E7%9A%84%E6%96%B0%E5%88%86%E9%A0%81"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 更改 Opera 的新分頁</h1>
-<p>我從去年起開始使用 Opera，原因有二：基於 Chromium 以及內建的暗色主題。不過這不是本篇的主題，就讓我輕輕帶過吧 XD</p>
-<p>現在的 Opera 既然是基於 Chromium 改的，當然支援 Google Chrome 的瀏覽器擴充功能，只要安裝 Opera 官方出的 <a href="https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> 擴充套件，就能無縫直接在 Chrome Web Store 下載了，不過還是有些限制，比如 Chrome Apps 和主題就不支援，修改新分頁的擴充功能也沒辦法直接使用。</p>
-<p>接下來教你怎麽啟用 Opera 修改新分頁的擴充功能 😝</p>
-<ol>
-<li>
-<p>安裝完上面提到的 <a href="https://addons.opera.com/zh-tw/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> 之後，到 <a href="https://chrome.google.com/webstore/detail/new-tab-start-page-pro/mjfahldkpjhcnfbbmdhpjolcjpcfhcpj">Chrome Web Store</a> 頁面安裝 New Tab Start Page Pro</p>
-</li>
-<li>
-<p>安裝修改新分頁的功能，以 <a href="https://chrome.google.com/webstore/detail/unsplash-instant/pejkokffkapolfffcgbmdmhdelanoaih">Unplash Instant</a> 為例，一樣先到 Chrome Web Store 安裝</p>
-</li>
-<li>
-<p>複製擴充功能的 ID，在擴充功能 Web Store 網址的最後面，以 Unsplash Instant 為例，就是 <code>pejkokffkapolfffcgbmdmhdelanoaih</code>，也可以從 Opera 的擴充功能頁面拿到</p>
-<figure data-type="image"><img src="https://i.imgur.com/MCcnznn.png" alt="ID"></figure>
-</li>
-<li>
-<p>叫出 New Tab Start Page Pro 的設定頁，在 New Tab &amp; Start Page URL 欄位填入：<code>chrome-extension://pejkokffkapolfffcgbmdmhdelanoaih/index.html</code></p>
-</li>
-<li>
-<p>其它照截圖的選起來</p>
-<figure data-type="image"><img src="https://i.imgur.com/07NcIOh.png" alt="options"></figure>
-</li>
-<li>
-<p>按 Save 存檔</p>
-</li>
-</ol>
-<p>效果如下圖，雖然開啟新分頁之後會閃一下，聊勝於無啦</p>
-<figure data-type="image"><img src="https://i.imgur.com/Ctvff8y.gif" alt="gif"></figure>
-<p>（完）</p>
 ]]></content:encoded>
         </item>
     </channel>
