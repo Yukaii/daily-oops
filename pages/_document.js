@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { NEXT_PUBLIC_GA_TRACKING_ID } from 'lib/constants'
-import Script from 'next/script'
 
 class MyDocument extends Document {
   render() {
@@ -40,7 +39,6 @@ class MyDocument extends Document {
           )}
         </Head>
         <body>
-          <Script src="/noflash.js" />
           <Main />
           <NextScript />
         </body>

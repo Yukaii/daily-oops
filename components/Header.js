@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import {
   SquirrelIcon,
   BookIcon,
@@ -8,7 +9,9 @@ import {
 } from '@primer/octicons-react'
 import cx from 'classnames'
 
-import NightSwitch from 'components/NightSwitch'
+const NightSwitch = dynamic(() => import('components/NightSwitch'), {
+  ssr: false,
+})
 
 const Header = () => {
   const { pathname } = useRouter()

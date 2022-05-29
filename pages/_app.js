@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Router from 'next/router'
 import SimpleReactLightbox from 'simple-react-lightbox'
+import { ThemeProvider } from 'next-themes'
 
 import Header from 'components/Header'
 
 import { pageview } from 'lib/gtag'
-import { usePrimerDarkMode } from 'lib/usePrimerDarkMode'
 
 import '@primer/css/index.scss'
 import 'styles/globals.scss'
@@ -19,8 +19,6 @@ Router.events.on(
 )
 
 function MyApp({ Component, pageProps, router }) {
-  usePrimerDarkMode()
-
   return (
     <>
       <Head>
@@ -30,10 +28,13 @@ function MyApp({ Component, pageProps, router }) {
         />
         <meta name="color-scheme" content="dark light" />
       </Head>
-      <SimpleReactLightbox>
-        <Header />
-        <Component {...pageProps} key={router.route} />
-      </SimpleReactLightbox>
+
+      <ThemeProvider attribute="data-color-mode">
+        <SimpleReactLightbox>
+          <Header />
+          <Component {...pageProps} key={router.route} />
+        </SimpleReactLightbox>
+      </ThemeProvider>
     </>
   )
 }

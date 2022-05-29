@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import { motion } from 'framer-motion'
 
-import Header from 'components/Header'
 import Markdown from 'components/Markdown'
 
 import { fetchPostData } from 'lib/post'
-import { springSimple } from 'lib/transition'
 
 export default function About({ content }) {
   return (
@@ -14,9 +11,7 @@ export default function About({ content }) {
         <title>About me | Daily Oops!</title>
       </Head>
 
-      <motion.div {...springSimple} layoutId="about">
-        <Markdown content={content} className="container pt-4 pb-6 px-3" />
-      </motion.div>
+      <Markdown content={content} className="container pt-4 pb-6 px-3" />
     </div>
   )
 }
