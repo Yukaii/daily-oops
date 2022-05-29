@@ -1,5 +1,5 @@
-import { render } from 'lib/markdown'
 import useCopySnippet from 'lib/hooks/useCopySnippet'
+import { render } from 'lib/markdown'
 
 const Markdown = ({ content, className, ...props }) => {
   useCopySnippet()

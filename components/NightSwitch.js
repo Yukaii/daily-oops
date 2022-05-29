@@ -1,16 +1,18 @@
-import useDarkMode from 'use-dark-mode'
-import { SunIcon, MoonIcon } from '@primer/octicons-react'
+import { MoonIcon, SunIcon } from '@primer/octicons-react'
+import { useTheme } from 'next-themes'
 
 export default function NightSwitch() {
-  const darkMode = useDarkMode()
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <button
       className="night-switch-button btn position-fixed top-2 right-2 px-2"
       type="button"
-      onClick={darkMode.toggle}
+      onClick={() => {
+        setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+      }}
     >
-      {darkMode.value ? <MoonIcon /> : <SunIcon />}
+      {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
     </button>
   )
 }

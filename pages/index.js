@@ -1,12 +1,8 @@
-import Link from 'next/link'
-import { NextSeo } from 'next-seo'
-import { motion } from 'framer-motion'
-
 import PostRow from 'components/PostRow'
-
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
-import { springSimple } from 'lib/transition'
+import Link from 'next/link'
+import { NextSeo } from 'next-seo'
 
 export default function Home({ posts }) {
   return (
@@ -23,11 +19,7 @@ export default function Home({ posts }) {
         }}
       />
 
-      <motion.div
-        className="d-block mx-auto container markdown-body py-4 px-3"
-        layoutId="blogIndex"
-        {...springSimple}
-      >
+      <div className="d-block mx-auto container markdown-body py-4 px-3">
         <h2>Hi</h2>
 
         <p>This is Yukai Huang&apos;s personal website.</p>
@@ -64,7 +56,7 @@ export default function Home({ posts }) {
             Subscribe via RSS
           </button>
         </a>
-      </motion.div>
+      </div>
     </div>
   )
 }

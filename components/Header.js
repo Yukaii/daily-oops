@@ -1,14 +1,17 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import {
-  SquirrelIcon,
   BookIcon,
-  RepoIcon,
   PersonIcon,
+  RepoIcon,
+  SquirrelIcon,
 } from '@primer/octicons-react'
 import cx from 'classnames'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import NightSwitch from 'components/NightSwitch'
+const NightSwitch = dynamic(() => import('components/NightSwitch'), {
+  ssr: false,
+})
 
 const Header = () => {
   const { pathname } = useRouter()

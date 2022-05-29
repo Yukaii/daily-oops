@@ -1,10 +1,6 @@
-import Head from 'next/head'
-import { motion } from 'framer-motion'
-
-import { getAllPostsWithSlug } from 'lib/post'
-import Header from 'components/Header'
 import PostRow from 'components/PostRow'
-import { springSimple } from 'lib/transition'
+import { getAllPostsWithSlug } from 'lib/post'
+import Head from 'next/head'
 
 export default function Blog({ posts }) {
   return (
@@ -17,7 +13,7 @@ export default function Blog({ posts }) {
         className="d-block mx-auto markdown-body py-4 px-3"
         style={{ maxWidth: 680 }}
       >
-        <motion.div className="Box" layoutId="blogList" {...springSimple}>
+        <div className="Box">
           {posts.map((post, index) => (
             <PostRow
               post={post}
@@ -26,7 +22,7 @@ export default function Blog({ posts }) {
               totalCount={posts.length}
             />
           ))}
-        </motion.div>
+        </div>
 
         <a href="/feed.xml">
           <button className="mt-3 btn btn-primary" type="button">

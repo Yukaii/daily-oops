@@ -1,10 +1,5 @@
-import Head from 'next/head'
-import { motion } from 'framer-motion'
-
-import Header from 'components/Header'
-
 import { loadProjects } from 'lib/project'
-import { springSimple } from 'lib/transition'
+import Head from 'next/head'
 
 export default function Projects({ projects }) {
   return (
@@ -13,11 +8,9 @@ export default function Projects({ projects }) {
         <title>Projects | Daily Oops!</title>
       </Head>
 
-      <motion.div
+      <div
         className="markdown-body mx-auto pt-4 pb-6 px-3 container-lg"
         style={{ maxWidth: 700, columns: '6 250px', columnGap: '1rem' }}
-        layoutId="project"
-        {...springSimple}
       >
         {projects.map((project) => {
           return (
@@ -39,7 +32,7 @@ export default function Projects({ projects }) {
             </a>
           )
         })}
-      </motion.div>
+      </div>
     </div>
   )
 }
