@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import {
-  SquirrelIcon,
   BookIcon,
-  RepoIcon,
   PersonIcon,
+  RepoIcon,
+  SquirrelIcon,
 } from '@primer/octicons-react'
 import cx from 'classnames'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const NightSwitch = dynamic(() => import('components/NightSwitch'), {
   ssr: false,

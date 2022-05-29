@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
-import { DiscussionEmbed } from 'disqus-react'
-import { useTheme } from 'next-themes'
-import { SRLWrapper } from 'simple-react-lightbox'
-
 import Markdown from 'components/Markdown'
-
-import { getAllPostsWithSlug, formatPostsAsParams, getPostData } from 'lib/post'
+import { DiscussionEmbed } from 'disqus-react'
 import dayjs from 'lib/dayjs'
 import { getDisqusConfig } from 'lib/disqus'
+import { formatPostsAsParams, getAllPostsWithSlug, getPostData } from 'lib/post'
+import { NextSeo } from 'next-seo'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
+import { SRLWrapper } from 'simple-react-lightbox'
 
 export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { year, month, day, slug } = params

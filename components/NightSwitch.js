@@ -1,5 +1,5 @@
+import { MoonIcon, SunIcon } from '@primer/octicons-react'
 import { useTheme } from 'next-themes'
-import { SunIcon, MoonIcon } from '@primer/octicons-react'
 
 export default function NightSwitch() {
   const { resolvedTheme, setTheme } = useTheme()

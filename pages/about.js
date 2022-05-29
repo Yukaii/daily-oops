@@ -1,8 +1,6 @@
-import Head from 'next/head'
-
 import Markdown from 'components/Markdown'
-
 import { fetchPostData } from 'lib/post'
+import Head from 'next/head'
 
 export default function About({ content }) {
   return (

@@ -1,7 +1,6 @@
-import Head from 'next/head'
-
-import { getAllPostsWithSlug } from 'lib/post'
 import PostRow from 'components/PostRow'
+import { getAllPostsWithSlug } from 'lib/post'
+import Head from 'next/head'
 
 export default function Blog({ posts }) {
   return (

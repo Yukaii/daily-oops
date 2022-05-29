@@ -1,10 +1,8 @@
-import Link from 'next/link'
-import { NextSeo } from 'next-seo'
-
 import PostRow from 'components/PostRow'
-
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
+import Link from 'next/link'
+import { NextSeo } from 'next-seo'
 
 export default function Home({ posts }) {
   return (

@@ -1,6 +1,6 @@
+import { NorthStarIcon } from '@primer/octicons-react'
 import dayjs from 'lib/dayjs'
 import Link from 'next/link'
-import { NorthStarIcon } from '@primer/octicons-react'
 
 export default function PostRow({ post, index, totalCount }) {
   const {
