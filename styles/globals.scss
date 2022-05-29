@@ -58,9 +58,8 @@ html {
 
 .header-block {
   height: 240px;
-  transition: max-height 150ms ease-in-out;
   max-height: 240px;
-  
+
   &.small {
     max-height: 100px;
   }
