@@ -58,6 +58,12 @@
 <p>修改完之後接續<strong>異常順暢</strong>的 Railway 部屬流程，設定好 Repository 到我 fork 的 <a href="https://github.com/Yukaii/docker-languagetool">LanguageTool Docker Repository</a>（需要的人請自己 fork 一份），跑起來服務，並在 <a href="obsidian://show-plugin?id=obsidian-languagetool-plugin">Obsidian LanguageTool Integration Plugin</a> 裡設定好新的伺服器位址，就可以免費用自架的 LanguageTool 啦！</p>
 <figure data-type="image"><img src="https://hackmd.io/_uploads/HkYRUrk_c.png" alt=""><figcaption>LanguageTool 在 Railway 跑起來的 Log，不得不說 Railway 界面體驗也是 Top-tier 的</figcaption></figure>
 <figure data-type="image"><img src="https://hackmd.io/_uploads/S1bJwH1uq.png" alt=""><figcaption>在 Obsidian 裡使用 LanguageTool</figcaption></figure>
+<h3 id="%E5%82%99%E8%A8%BB"><a class="anchor" href="#%E5%82%99%E8%A8%BB"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 備註</h3>
+<ol>
+<li>Railway Starter Plan 其實有 500hr 的限制，如果一直開機換算時數只有 20 天而已</li>
+<li>不知為何 LanguageTool Service 常常會自己 Crash，可以把 Auto-Restart 開啟。不過就要注意前面一點時數的問題
+<img src="https://hackmd.io/_uploads/SktiaWaAq.png" alt=""></li>
+</ol>
 ]]></content:encoded>
         </item>
         <item>
