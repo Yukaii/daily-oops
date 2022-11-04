@@ -48,6 +48,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           title,
           description,
           site_name: 'Daily Oops!',
+          image: meta?.image,
           article: {
             publishedTime: time,
             modifiedTime: time,
