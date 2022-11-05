@@ -8,6 +8,8 @@ import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import LogoAnimated from '../public/logo-animated.gif'
 
 const NightSwitch = dynamic(() => import('components/NightSwitch'), {
   ssr: false,
@@ -53,13 +55,13 @@ const Header = () => {
           className={cx('CircleBadge user-select-none', {
             'CircleBadge--small': small,
             'CircleBadge--large': !small,
-            'mr-1': small,
+            'mr-2': small,
             'mb-1': !small,
           })}
           style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}
         >
-          <img
-            src="/logo-animated.gif"
+          <Image
+            src={LogoAnimated}
             alt="Daily Oops"
             style={{ height: 'auto', maxWidth: '90%' }}
           />
@@ -99,6 +101,7 @@ const Header = () => {
             </Link>
           ))}
         </div>
+
         <NightSwitch />
       </nav>
     </>

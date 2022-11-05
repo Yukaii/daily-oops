@@ -19,9 +19,7 @@ export default function PostRow({ post, index, totalCount }) {
       </div>
       <div className="flex-auto">
         <Link href={`/blog/${year}/${month}/${day}/${slug}`}>
-          <a>
-            <strong>{post.title}</strong>
-          </a>
+          <strong>{post.title}</strong>
         </Link>
 
         <div className="text-small color-text-secondary">

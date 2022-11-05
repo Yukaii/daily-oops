@@ -1,6 +1,7 @@
 import PostRow from 'components/PostRow'
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
+import omit from 'lodash/omit'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
@@ -68,7 +69,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts,
+      posts: posts.map((post) => omit(post, ['content'])),
     },
   }
 }
