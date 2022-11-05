@@ -6,9 +6,10 @@ import {
 } from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
+
 import LogoAnimated from '../public/logo-animated.gif'
 
 const NightSwitch = dynamic(() => import('components/NightSwitch'), {
