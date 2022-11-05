@@ -4,7 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withBundleAnalyzer({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'node_modules')],
   },
@@ -18,4 +19,6 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ['hackmd.io', 'i.imgur.com', 'rawcdn.githack.com'],
   },
-})
+}
+
+module.exports = withBundleAnalyzer(nextConfig)
