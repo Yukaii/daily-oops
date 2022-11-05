@@ -55,7 +55,7 @@ const Header = () => {
           className={cx('CircleBadge user-select-none', {
             'CircleBadge--small': small,
             'CircleBadge--large': !small,
-            'mr-1': small,
+            'mr-2': small,
             'mb-1': !small,
           })}
           style={{ overflow: 'hidden', backgroundColor: '#F5CC7F' }}
@@ -101,6 +101,7 @@ const Header = () => {
             </Link>
           ))}
         </div>
+
         <NightSwitch />
       </nav>
     </>
