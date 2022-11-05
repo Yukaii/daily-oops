@@ -25,9 +25,19 @@ export default function Home({ posts }) {
         <p>This is Yukai Huang&apos;s personal website.</p>
 
         <p>
-          Here you can read my <Link href="/blog">recent posts</Link>, play with{' '}
-          <Link href="/projects">my side projects before</Link>, or{' '}
-          <Link href="/about">get to know me more</Link>.
+          Here you can read my{' '}
+          <Link href="/blog" legacyBehavior>
+            recent posts
+          </Link>
+          , play with{' '}
+          <Link href="/projects" legacyBehavior>
+            my side projects before
+          </Link>
+          , or{' '}
+          <Link href="/about" legacyBehavior>
+            get to know me more
+          </Link>
+          .
         </p>
 
         <p>安久吧！</p>
@@ -45,7 +55,7 @@ export default function Home({ posts }) {
           ))}
         </div>
 
-        <Link href="/blog" passHref>
+        <Link href="/blog" passHref legacyBehavior>
           <button className="mt-3 btn mr-2" type="button">
             Read More
           </button>
