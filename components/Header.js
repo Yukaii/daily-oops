@@ -80,7 +80,7 @@ const Header = () => {
           style={{ maxWidth: '100%' }}
         >
           {items.map((item) => (
-            <Link href={item.href} key={item.href} legacyBehavior>
+            <Link href={item.href} key={item.href}>
               <button
                 className="UnderlineNav-item"
                 role="tab"

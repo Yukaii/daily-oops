@@ -18,10 +18,8 @@ export default function PostRow({ post, index, totalCount }) {
         <NorthStarIcon />
       </div>
       <div className="flex-auto">
-        <Link href={`/blog/${year}/${month}/${day}/${slug}`} legacyBehavior>
-          <a>
-            <strong>{post.title}</strong>
-          </a>
+        <Link href={`/blog/${year}/${month}/${day}/${slug}`}>
+          <strong>{post.title}</strong>
         </Link>
 
         <div className="text-small color-text-secondary">
