@@ -15,4 +15,7 @@ module.exports = withBundleAnalyzer({
     }
     return config
   },
+  images: {
+    domains: ['hackmd.io', 'i.imgur.com', 'rawcdn.githack.com'],
+  },
 })

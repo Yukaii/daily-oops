@@ -5,6 +5,7 @@ import { getDisqusConfig } from 'lib/disqus'
 import { formatPostsAsParams, getAllPostsWithSlug, getPostData } from 'lib/post'
 import { NextSeo } from 'next-seo'
 import { useTheme } from 'next-themes'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { SRLWrapper } from 'simple-react-lightbox'
 
@@ -65,9 +66,12 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
       <div>
         {meta?.image && (
           <div className="container pt-4 pb-1 px-3">
-            <img
-              src={meta?.image}
-              style={{ maxWidth: '100%', borderRadius: 6 }}
+            <Image
+              src={meta.image}
+              style={{ maxWidth: '100%', borderRadius: 6, width: '100%' }}
+              alt="cover image"
+              width={820}
+              height={312}
             />
           </div>
         )}
