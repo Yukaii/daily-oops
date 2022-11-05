@@ -12,8 +12,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
     "@next/bundle-analyzer": "^10.2.0",
-    "@primer/css": "17.0.1",
-    "@primer/octicons-react": "12.1.0",
+    "@primer/css": "20.5.1",
+    "@primer/octicons-react": "17.9.0",
     "@yukaii/github-highlightjs-themes": "^1.0.0",
     "bluebird": "^3.7.2",
     "cheerio": "^1.0.0-rc.5",

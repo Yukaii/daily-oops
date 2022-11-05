@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@fortawesome/fontawesome-free': 5.15.3
   '@next/bundle-analyzer': ^10.2.0
-  '@primer/css': 17.0.1
-  '@primer/octicons-react': 12.1.0
+  '@primer/css': 20.5.1
+  '@primer/octicons-react': 17.9.0
   '@yukaii/github-highlightjs-themes': ^1.0.0
   babel-plugin-module-resolver: ^4.0.0
   bluebird: ^3.7.2
@@ -58,8 +58,8 @@ specifiers:
 dependencies:
   '@fortawesome/fontawesome-free': 5.15.3
   '@next/bundle-analyzer': 10.2.3
-  '@primer/css': 17.0.1
-  '@primer/octicons-react': 12.1.0_react@18.2.0
+  '@primer/css': 20.5.1
+  '@primer/octicons-react': 17.9.0_react@18.2.0
   '@yukaii/github-highlightjs-themes': 1.0.0
   bluebird: 3.7.2
   cheerio: 1.0.0-rc.12
@@ -347,14 +347,15 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: false
 
-  /@primer/css/17.0.1:
-    resolution: {integrity: sha512-qA0WOfkGthJVoUUqFpsaD3m2aeuGuVSZwMWsxZFUUufB3pfGfIG+vkpAqaJTGFJzbKD9ZfXyt1wfJwtyMcsVfg==}
+  /@primer/css/20.5.1:
+    resolution: {integrity: sha512-kMjlYzXqE0k6xIKC0BCZEDlngYZUcvbTgDWqUVbOk9IM19EYTMgHxME5i8wHpVGH22fQb8jnMbShdIq03uCWJw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
-      '@primer/primitives': 4.3.2
+      '@primer/primitives': 7.10.0
     dev: false
 
-  /@primer/octicons-react/12.1.0_react@18.2.0:
-    resolution: {integrity: sha512-eb/5Obsp6/pVkyzzGhobK6aPAkKqx6VleF/7HYeihGTYm3rGZc+prL/jhxD5Mo1P6U343YEkHjc2gKuvtENn1g==}
+  /@primer/octicons-react/17.9.0_react@18.2.0:
+    resolution: {integrity: sha512-fx2abdGfzzHqB8DOSq6FqNgusjkeDHfPFTa8DjSaugCFccEO2vIfM2ZY1sg4c5SpOQEQAbOEC4/gqWDulIRHzA==}
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=15'
@@ -362,8 +363,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@primer/primitives/4.3.2:
-    resolution: {integrity: sha512-5qBEQVchd2Vd2K2IT9mbQdI9E4IGiDVoLITlQXE2HIW9sWHREULSE4xg3W51i/XlDUIgnycELCI+Ept8V7v+og==}
+  /@primer/primitives/7.10.0:
+    resolution: {integrity: sha512-DdLHq21e93R9qDHyRuRpytBLY0Up9IwNWMOUgPNW6lRSng4N4+IdUlLS3Ekbasmxfs8Z8vKS8aezeYovQ5qsxQ==}
     dev: false
 
   /@rushstack/eslint-patch/1.2.0:
