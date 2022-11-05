@@ -11,6 +11,7 @@ export default function NightSwitch() {
       onClick={() => {
         setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
       }}
+      aria-label="Toggle Night Mode"
     >
       {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
     </button>
