@@ -17,6 +17,7 @@ const nextConfig = {
     return config
   },
   images: {
+    unoptimized: true,
     domains: ['hackmd.io', 'i.imgur.com', 'rawcdn.githack.com'],
   },
 }
