@@ -294,10 +294,25 @@
 <p>有了題目，再來就是照著<a href="https://developers.raycast.com/">文件</a>一步一步做。<a href="https://developers.raycast.com/">Raycast 的開發文件</a>清晰明瞭又有截圖，若有問題，在 Slack 的 <a href="https://raycastcommunity.slack.com/archives/C02HEMAF2SJ"><code>#extensions</code></a> 或是 <a href="https://raycastcommunity.slack.com/archives/C028DTXTW3Y"><code>#help</code></a> 頻道發文，回應的速度也都相當快。</p>
 <h3 id="%E8%AC%9B%E5%80%8B%E7%A7%98%E8%A8%A3"><a class="anchor" href="#%E8%AC%9B%E5%80%8B%E7%A7%98%E8%A8%A3"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a> 講個秘訣</h3>
 <p>最後附上幾個在開發擴充功能時，可能會對你有點幫助的訣竅：</p>
+<p><strong>（2023/2/9 更新）</strong></p>
 <ul>
-<li>使用 <a href="https://swr.vercel.app/">swr</a> 作為抓 API 資料的輔助。<a href="https://react-query.tanstack.com/"><code>react-query</code></a> 因為 API 設定時要另外包一層 Context，而在 Raycast 每個 Command 都可以被視為一個 App，可能是因為這樣設定起來很麻煩，所以沒人在用 XD</li>
-<li>用 <a href="https://www.raycast.com/koinzhang/capture-raycast-metadata">Capture Raycast Metadata</a> 來製作發佈用截圖。前不久 Raycast 在 Store 加上了截圖，針對截圖還訂定了特別的規範，比如 Raycast 視窗應該在哪個位置上，截圖畫面的大小應該是多少，還推出了 <a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#adding-screenshots">Figma 的 Template</a> 供大家使用，不過對於一般開發者來說還是有點麻煩。社群的開發者就推出了這個專門製作截圖的擴充功能，讓截圖製作一鍵完成 😍</li>
-<li>盡量遵照原生界面，真的想高度自定界面的話可以使用 <a href="https://github.com/raycast/extensions/blob/859e8a20a2/extensions/jwt-decode">SVG</a>。</li>
+<li>用 <code>git sparse-checkout</code> 以及 <code>shallow clone</code> 來存取開發倉庫，具體如下：<pre><code class="language-bash"><button class="btn copy-snippet-button position-absolute top-1 right-1"><i class="fas fa-clipboard"></i><i class="fas fa-check"></i></button><table class="fence-wrapper"><tbody><tr><td class="hljs-line-number" data-line-number=1></td><td class="hljs-line" id="LC1"><span class="hljs-comment"># 雙重 buff，depth 1 + filter</span></td></tr><tr><td class="hljs-line-number" data-line-number=2></td><td class="hljs-line" id="LC2">git <span class="hljs-built_in">clone</span> --filter=blob:none --sparse --depth=1 git@github.com:username/extensions.git</td></tr><tr><td class="hljs-line-number" data-line-number=3></td><td class="hljs-line" id="LC3"></td></tr><tr><td class="hljs-line-number" data-line-number=4></td><td class="hljs-line" id="LC4"><span class="hljs-comment"># and cd</span></td></tr><tr><td class="hljs-line-number" data-line-number=5></td><td class="hljs-line" id="LC5"><span class="hljs-built_in">cd</span> extensions</td></tr><tr><td class="hljs-line-number" data-line-number=6></td><td class="hljs-line" id="LC6">git sparse-checkout add extensions/curator-bio</td></tr></tbody></table></code></pre>
+<ul>
+<li>更多 <code>sparse-checkout</code> 用法再自己查一下</li>
+</ul>
+</li>
+<li>使用 <a href="https://developers.raycast.com/utilities/getting-started">@raycast/utils</a>。除了抓 API 資料外，Raycast utils 也提供各種好用的函式</li>
+<li><s>使用 <a href="https://swr.vercel.app/">swr</a> 作為抓 API 資料的輔助。<a href="https://react-query.tanstack.com/"><code>react-query</code></a> 因為 API 設定時要另外包一層 Context，而在 Raycast 每個 Command 都可以被視為一個 App，可能是因為這樣設定起來很麻煩，所以沒人在用 XD</s></li>
+<li>用 <a href="https://www.raycast.com/koinzhang/capture-raycast-metadata">Capture Raycast Metadata</a> 來製作發佈用截圖。前不久 Raycast 在 Store 加上了截圖，針對截圖還訂定了特別的規範，比如 Raycast 視窗應該在哪個位置上，截圖畫面的大小應該是多少，還推出了 <a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#adding-screenshots">Figma 的 Template</a> 供大家使用，不過對於一般開發者來說還是有點麻煩。社群的開發者就推出了這個專門製作截圖的擴充功能，讓截圖製作一鍵完成 😍
+<ul>
+<li><strong>更新</strong>：要注意解析度問題。一定要在 MacBook 的螢幕截圖才會輸出高解析度圖片，在外接螢幕截圖如果解析度不夠是會被退件的（aka validator 不會過）</li>
+</ul>
+</li>
+<li>盡量遵照原生界面，真的想高度自定界面的話可以使用 <a href="https://github.com/raycast/extensions/blob/859e8a20a2/extensions/jwt-decode">SVG</a>。
+<ul>
+<li><strong>更新</strong>：不太建議，會變複雜很多</li>
+</ul>
+</li>
 <li>持續關注新 API 更新，缺少的 API 常常許願過後一陣子就會在更新出現，記得常常追蹤 Slack！</li>
 </ul>
 <p>預祝各位 Happy Hacking Raycast Extension 啦！</p>
