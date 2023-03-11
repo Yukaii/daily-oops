@@ -1,5 +1,6 @@
 import Markdown from 'components/Markdown'
 import { DiscussionEmbed } from 'disqus-react'
+import { config } from 'lib/config'
 import dayjs from 'lib/dayjs'
 import { getDisqusConfig } from 'lib/disqus'
 import { formatPostsAsParams, getAllPostsWithSlug, getPostData } from 'lib/post'
@@ -27,14 +28,14 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
   const hackmdLink = () => (
     <a
       className="no-underline color-text-primary text-semibold"
-      href="https://hackmd.io"
+      href={config.hackmdBaseUrl}
       target="_blank"
       rel="noopener noreferrer"
     >
       <i className="fas fa-file-alt" /> HackMD
     </a>
   )
-  const noteLink = `https://hackmd.io/s/${noteId}`
+  const noteLink = `${config.hackmdBaseUrl}/s/${noteId}`
 
   return (
     <section>
