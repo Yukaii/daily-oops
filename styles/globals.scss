@@ -64,3 +64,10 @@ html {
     max-height: 100px;
   }
 }
+
+audio,
+canvas,
+progress,
+video {
+  max-width: 100%;
+}
