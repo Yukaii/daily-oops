@@ -2,6 +2,14 @@ import fs from 'fs'
 import https from 'https'
 import path from 'path'
 
+function toBase64(input) {
+  return Buffer.from(input, 'utf8').toString('base64')
+}
+
+function fromBase64(input) {
+  return Buffer.from(input, 'base64').toString('utf8')
+}
+
 export const onBuild = function ({ utils, netlifyConfig }) {
   const postsDir = path.join(process.cwd(), '.next/cache/posts')
   const postFiles = fs.readdirSync(postsDir)
@@ -30,11 +38,21 @@ export const onBuild = function ({ utils, netlifyConfig }) {
     return
   }
 
-  netlifyConfig.latestPost = latestPost
+  netlifyConfig.build.environment.LATEST_POST_DATA = toBase64(
+    JSON.stringify(latestPost)
+  )
 }
 
 export const onEnd = async function ({ utils, netlifyConfig }) {
-  const { latestPost } = netlifyConfig
+  const base64LatestPostData = netlifyConfig.build.environment.LATEST_POST_DATA
+
+  if (!base64LatestPostData) {
+    console.error('Failed to find latest post data from env')
+    utils.build.failPlugin('Failed to find latest post data from env')
+    return
+  }
+
+  const latestPost = JSON.parse(fromBase64(base64LatestPostData))
 
   if (!latestPost) {
     console.error('Failed to find latest post')
