@@ -25,21 +25,16 @@ export const onBuild = function ({ utils, netlifyConfig }) {
     }
   }
 
+  if (!latestPost) {
+    utils.build.failPlugin('Failed to find latest post')
+    return
+  }
+
   netlifyConfig.latestPost = latestPost
 }
 
 export const onEnd = async function ({ utils, netlifyConfig }) {
-  const latestPost = netlifyConfig.latestPost
-
-  // If there is no latest post, return early
-  if (!latestPost) {
-    utils.status.show({
-      title: 'Triggering webmention',
-      summary: 'No latest post found',
-    })
-
-    return
-  }
+  const { latestPost } = netlifyConfig
 
   // Create the post URL
   const url = `https://${process.env.DOMAIN}/blog/${latestPost.date.year}/${latestPost.date.month}/${latestPost.date.day}/${latestPost.slug}`
