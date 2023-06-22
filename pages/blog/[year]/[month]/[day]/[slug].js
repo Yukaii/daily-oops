@@ -90,7 +90,9 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         <a className="u-bridgy-fed" href="https://fed.brid.gy/">
           https://fed.brid.gy/
         </a>
-        <a className="u-url" href="https://fed.brid.gy/"></a>
+        <a className="u-url" href="https://fed.brid.gy/">
+          https://fed.brid.gy/
+        </a>
       </div>
 
       <div>
