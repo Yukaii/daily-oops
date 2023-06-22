@@ -68,7 +68,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
 
       {/* h-entry attributes */}
       <div style={{ display: 'none' }}>
-        <time className="dt-published" dateTime="YYYY-MM-DD HH:MM:SS">
+        <time className="dt-published" dateTime="YYYY-MM-DD HH:mm:ss">
           {/* ISO-8601 */}
           {date.format('YYYY-MM-DD HH:mm:ss')}
         </time>
@@ -79,15 +79,13 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
 
         <span className="p-name">{title}</span>
 
-        <div className="h-card">
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a rel="author" className="p-author" href="/">
-            Yukai Huang
-          </a>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a rel="author" className="p-author h-card" href="/">
+          Yukai Huang
+        </a>
 
-          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-          <img className="u-photo" src="/avatar.jpg" />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+        <img className="u-photo" src="/avatar.jpg" />
       </div>
 
       <div>
