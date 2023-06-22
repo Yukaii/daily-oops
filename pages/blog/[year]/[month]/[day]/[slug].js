@@ -68,9 +68,9 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
 
       {/* h-entry attributes */}
       <div style={{ display: 'none' }}>
-        <time className="dt-published" dateTime="YYYY-MM-DD HH:mm:ss">
+        <time className="dt-published">
           {/* ISO-8601 */}
-          {date.format('YYYY-MM-DD HH:mm:ss')}
+          {date.format()}
         </time>
 
         <a className="u-url" href={canonicalUrl}>
