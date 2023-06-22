@@ -1,4 +1,5 @@
 import {
+  NEXT_PUBLIC_DOMAIN,
   NEXT_PUBLIC_GA_TRACKING_ID,
   NEXT_PUBLIC_GITHUB_USERNAME,
 } from 'lib/constants'
@@ -23,6 +24,10 @@ export default function Document() {
         >
           github.com/{NEXT_PUBLIC_GITHUB_USERNAME}
         </a>
+        <link
+          rel="webmention"
+          href={'https://webmention.io/{NEXT_PUBLIC_DOMAIN}/webmention'}
+        />
 
         {isProduction && (
           <div>
