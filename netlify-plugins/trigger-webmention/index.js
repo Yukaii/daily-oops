@@ -10,6 +10,47 @@ function fromBase64(input) {
   return Buffer.from(input, 'base64').toString('utf8')
 }
 
+const sendWebmention = (url) => {
+  const data = `source=${encodeURIComponent(url)}&target=${encodeURIComponent(
+    'https://fed.brid.gy/'
+  )}`
+  const options = {
+    hostname: 'fed.brid.gy',
+    port: 443,
+    path: '/webmention',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': data.length,
+    },
+  }
+
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      let responseData = ''
+
+      res.on('data', (chunk) => {
+        responseData += chunk
+      })
+
+      res.on('end', () => {
+        resolve(responseData)
+      })
+
+      res.on('error', (error) => {
+        reject(error)
+      })
+    })
+
+    req.on('error', (error) => {
+      reject(error)
+    })
+
+    req.write(data)
+    req.end()
+  })
+}
+
 export const onBuild = function ({ utils, netlifyConfig }) {
   const postsDir = path.join(process.cwd(), '.next/cache/posts')
   const postFiles = fs.readdirSync(postsDir)
@@ -92,53 +133,15 @@ export const onEnd = async function ({ utils, netlifyConfig }) {
     summary: `Triggering webmention for ${url}`,
   })
 
-  // Now, let's send the webmention
-  const postData = JSON.stringify({
-    token: process.env.TELEGRAPH_API_KEY,
-    source: url,
-    target_domain: 'https://fed.brid.gy/',
-  })
+  try {
+    await sendWebmention(url)
 
-  const options = {
-    hostname: 'telegraph.p3k.io',
-    port: 443,
-    path: '/webmention',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': postData.length,
-    },
+    utils.status.show({
+      title: 'Triggered webmention',
+      summary: `Triggered webmention for ${url}`,
+    })
+  } catch (error) {
+    console.error(error)
+    utils.build.failPlugin('Failed to trigger webmention')
   }
-
-  return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      let responseData = ''
-
-      res.on('data', (d) => {
-        responseData += d
-      })
-
-      res.on('end', () => {
-        utils.status.show({
-          title: 'Triggered webmention',
-          summary: `Triggered webmention for ${url}`,
-        })
-        console.log(responseData)
-        resolve(responseData)
-      })
-
-      res.on('error', (err) => {
-        reject(err)
-      })
-    })
-
-    req.on('error', (error) => {
-      console.error(error)
-      utils.build.failPlugin('Failed to trigger webmention')
-      reject(error)
-    })
-
-    req.write(postData)
-    req.end()
-  })
 }
