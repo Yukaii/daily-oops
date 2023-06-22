@@ -90,11 +90,6 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         <a className="u-bridgy-fed" href="https://fed.brid.gy/">
           https://fed.brid.gy/
         </a>
-        <a className="u-url" href="https://fed.brid.gy/">
-          https://fed.brid.gy/
-        </a>
-
-        <a href="https://fed.brid.gy/">https://fed.brid.gy/</a>
       </div>
 
       <div>
@@ -159,13 +154,6 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           </div>
         )}
       </div>
-
-      <footer className="container py-3 px-3">
-        {/* test section for webmention */}
-        <div className="container-block color-bg-info color-border-info rounded-2 p-3">
-          <a href="https://fed.brid.gy/">https://fed.brid.gy/</a>
-        </div>
-      </footer>
     </section>
   )
 }
