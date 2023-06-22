@@ -72,15 +72,15 @@ export default function Document() {
 
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages, @next/next/no-img-element, jsx-a11y/alt-text */}
             <img className="u-photo" src="/avatar.jpg" />
+
+            <a
+              className="u-bridgy-fed"
+              href="https://fed.brid.gy/"
+              rel="bridgy"
+            >
+              https://fed.brid.gy/
+            </a>
           </span>
-
-          <a className="u-bridgy-fed" href="https://fed.brid.gy/">
-            https://fed.brid.gy/
-          </a>
-
-          <a className="u-url" href="https://fed.brid.gy/">
-            https://fed.brid.gy/
-          </a>
         </div>
       </body>
     </Html>
