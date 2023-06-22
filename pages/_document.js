@@ -62,7 +62,9 @@ export default function Document() {
             <a rel="me" href="/" className="p-name">
               Yukai Huang
             </a>
-            <a rel="me" className="u-url">
+
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a rel="me" className="u-url" href="/">
               https://{NEXT_PUBLIC_DOMAIN}
             </a>
             {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
@@ -72,6 +74,10 @@ export default function Document() {
             <img className="u-photo" src="/avatar.jpg" />
 
             <a className="u-bridgy-fed" href="https://fed.brid.gy/">
+              https://fed.brid.gy/
+            </a>
+
+            <a className="u-url" href="https://fed.brid.gy/">
               https://fed.brid.gy/
             </a>
           </span>
