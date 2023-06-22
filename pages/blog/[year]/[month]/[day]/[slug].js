@@ -68,11 +68,12 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
 
       {/* h-entry attributes */}
       <div style={{ display: 'none' }}>
-        <time className="dt-published" datetime="YYYY-MM-DD HH:MM:SS">
-          {date.format('LL')}
+        <time className="dt-published" dateTime="YYYY-MM-DD HH:MM:SS">
+          {/* ISO-8601 */}
+          {time}
         </time>
 
-        <a class="u-url" href={canonicalUrl}>
+        <a className="u-url" href={canonicalUrl}>
           {canonicalUrl}
         </a>
 
@@ -80,6 +81,9 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         <a rel="author" className="p-author h-card" href="/">
           Yukai Huang
         </a>
+
+        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+        <img className="u-photo" src="/avatar.jpg" />
       </div>
 
       <div>

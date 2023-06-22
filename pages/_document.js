@@ -57,7 +57,7 @@ export default function Document() {
         <NextScript />
 
         <div style={{ display: 'none' }}>
-          <span class="h-card">
+          <span className="h-card">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a rel="me" href="/" className="p-name">
               Yukai Huang
@@ -66,10 +66,10 @@ export default function Document() {
               https://{NEXT_PUBLIC_DOMAIN}
             </a>
             {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-            <img class="u-featured" src="/cover.png" />
+            <img className="u-featured" src="/cover.png" />
 
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages, @next/next/no-img-element, jsx-a11y/alt-text */}
-            <img class="u-photo" src="/avatar.jpg" />
+            <img className="u-photo" src="/avatar.jpg" />
           </span>
         </div>
       </body>
