@@ -77,13 +77,15 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           {canonicalUrl}
         </a>
 
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a rel="author" className="p-author h-card" href="/">
-          Yukai Huang
-        </a>
+        <div className="h-card">
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a rel="author" className="p-author" href="/">
+            Yukai Huang
+          </a>
 
-        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-        <img className="u-photo" src="/avatar.jpg" />
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+          <img className="u-photo" src="/avatar.jpg" />
+        </div>
       </div>
 
       <div>
