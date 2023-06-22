@@ -55,6 +55,20 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+
+        <div style={{ display: 'none' }}>
+          <span class="h-card">
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a rel="me" href="/">
+              Yukai Huang
+            </a>
+            {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+            <img class="u-featured" src="/cover.png" />
+
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages, @next/next/no-img-element, jsx-a11y/alt-text */}
+            <img class="u-photo" src="/avatar.jpg" />
+          </span>
+        </div>
       </body>
     </Html>
   )
