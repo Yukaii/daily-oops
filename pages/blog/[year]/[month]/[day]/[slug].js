@@ -71,6 +71,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
               src={meta.image}
               style={{ maxWidth: '100%', borderRadius: 6, width: '100%' }}
               alt="cover image"
+              className="u-photo"
               width={820}
               height={312}
             />
