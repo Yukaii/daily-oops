@@ -2,7 +2,7 @@ import fs from 'fs'
 import https from 'https'
 import path from 'path'
 
-export const onEnd = async function ({ utils }) {
+export const onBuild = function ({ utils, netlifyConfig }) {
   const postsDir = path.join(process.cwd(), '.next/cache/posts')
   const postFiles = fs.readdirSync(postsDir)
 
@@ -25,8 +25,19 @@ export const onEnd = async function ({ utils }) {
     }
   }
 
+  netlifyConfig.latestPost = latestPost
+}
+
+export const onEnd = async function ({ utils, netlifyConfig }) {
+  const latestPost = netlifyConfig.latestPost
+
   // If there is no latest post, return early
   if (!latestPost) {
+    utils.status.show({
+      title: 'Triggering webmention',
+      summary: 'No latest post found',
+    })
+
     return
   }
 
