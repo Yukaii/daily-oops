@@ -7,7 +7,7 @@ import { NextSeo } from 'next-seo'
 
 export default function Home({ posts }) {
   return (
-    <div>
+    <div className="h-entry">
       <NextSeo
         title="Daily Oops!"
         titleTemplate="%s"
@@ -20,7 +20,7 @@ export default function Home({ posts }) {
         }}
       />
 
-      <div className="d-block mx-auto container markdown-body py-4 px-3">
+      <div className="d-block mx-auto container markdown-body py-4 px-3 e-content">
         <h2>Hi</h2>
 
         <p>This is Yukai Huang&apos;s personal website.</p>
