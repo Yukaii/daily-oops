@@ -87,7 +87,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
         <img className="u-photo" src="/avatar.jpg" />
 
-        <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
+        <a className="u-bridgy-fed" href="https://fed.brid.gy/"></a>
       </div>
 
       <div>
