@@ -15,6 +15,11 @@ const Markdown = ({ content, className, ...props }) => {
         dangerouslySetInnerHTML={{ __html: render(content) }}
         {...props}
       />
+
+      {/* workaround for webmention to bridgy */}
+      <a href="https://fed.brid.gy/" style={{ display: 'none' }}>
+        https://fed.brid.gy/
+      </a>
     </main>
   )
 }
