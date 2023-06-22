@@ -1,4 +1,7 @@
-import { NEXT_PUBLIC_GA_TRACKING_ID } from 'lib/constants'
+import {
+  NEXT_PUBLIC_GA_TRACKING_ID,
+  NEXT_PUBLIC_GITHUB_USERNAME,
+} from 'lib/constants'
 import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -13,6 +16,13 @@ export default function Document() {
           title="RSS feed for blog posts"
           href={`https://${process.env.DOMAIN}/feed.xml`}
         />
+        <a
+          href={`https://github.com/${NEXT_PUBLIC_GITHUB_USERNAME}`}
+          rel="me"
+          style={{ display: 'none' }}
+        >
+          github.com/{NEXT_PUBLIC_GITHUB_USERNAME}
+        </a>
 
         {isProduction && (
           <div>
