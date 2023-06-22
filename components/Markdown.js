@@ -5,13 +5,13 @@ const Markdown = ({ content, className, ...props }) => {
   useCopySnippet()
 
   return (
-    <main id="main" property="schema:mainEntity">
+    <main id="main" property="schema:mainEntity" className="e-content ">
       <article
         itemScope
         itemProp="post"
         typeof="schema:Article schema:BlogPosting"
         property="schema:articleBody"
-        className={`markdown-body e-content ${className}`}
+        className={`markdown-body ${className}`}
         dangerouslySetInnerHTML={{ __html: render(content) }}
         {...props}
       />
