@@ -36,6 +36,12 @@ export const onBuild = function ({ utils, netlifyConfig }) {
 export const onEnd = async function ({ utils, netlifyConfig }) {
   const { latestPost } = netlifyConfig
 
+  if (!latestPost) {
+    console.error('Failed to find latest post')
+    utils.build.failPlugin('Failed to find latest post')
+    return
+  }
+
   // Create the post URL
   const url = `https://${process.env.DOMAIN}/blog/${latestPost.date.year}/${latestPost.date.month}/${latestPost.date.day}/${latestPost.slug}`
   console.log(`Triggering webmention for ${url}`)
