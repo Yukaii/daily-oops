@@ -77,6 +77,8 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           {canonicalUrl}
         </a>
 
+        <span className="p-name">{title}</span>
+
         <div className="h-card">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a rel="author" className="p-author" href="/">
