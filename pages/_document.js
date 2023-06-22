@@ -26,7 +26,7 @@ export default function Document() {
         </a>
         <link
           rel="webmention"
-          href={'https://webmention.io/{NEXT_PUBLIC_DOMAIN}/webmention'}
+          href={`https://webmention.io/${NEXT_PUBLIC_DOMAIN}/webmention`}
         />
 
         {isProduction && (
