@@ -5,7 +5,7 @@ const Markdown = ({ content, className, ...props }) => {
   useCopySnippet()
 
   return (
-    <main id="main" property="schema:mainEntity" className="h-entry">
+    <main id="main" property="schema:mainEntity">
       <article
         itemScope
         itemProp="post"

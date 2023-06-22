@@ -1,6 +1,7 @@
 import Markdown from 'components/Markdown'
 import { DiscussionEmbed } from 'disqus-react'
 import { config } from 'lib/config'
+import { NEXT_PUBLIC_DOMAIN } from 'lib/constants'
 import dayjs from 'lib/dayjs'
 import { getDisqusConfig } from 'lib/disqus'
 import { formatPostsAsParams, getAllPostsWithSlug, getPostData } from 'lib/post'
@@ -14,6 +15,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
+  const canonicalUrl = `https://${NEXT_PUBLIC_DOMAIN}/blog/${year}/${month}/${day}/${slug}`
   const description = content.slice(0, 150)
   const time = date.format()
 
@@ -38,7 +40,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
   const noteLink = `${config.hackmdBaseUrl}/s/${noteId}`
 
   return (
-    <section>
+    <section className="h-entry">
       <NextSeo
         title={title}
         description={description}
@@ -63,6 +65,22 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           },
         }}
       />
+
+      {/* h-entry attributes */}
+      <div style={{ display: 'none' }}>
+        <time className="dt-published" datetime="YYYY-MM-DD HH:MM:SS">
+          {date.format('LL')}
+        </time>
+
+        <a class="u-url" href={canonicalUrl}>
+          {canonicalUrl}
+        </a>
+
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a rel="author" className="p-author h-card" href="/">
+          Yukai Huang
+        </a>
+      </div>
 
       <div>
         {meta?.image && (
