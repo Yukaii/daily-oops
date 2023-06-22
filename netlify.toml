@@ -17,3 +17,6 @@ package = "@netlify/plugin-nextjs"
   from = "/.well-known/webfinger*"
   to = "https://fed.brid.gy/.well-known/webfinger"
   status = 302
+
+[[plugins]]
+package = "/netlify-plugins/trigger-webmention"
