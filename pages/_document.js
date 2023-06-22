@@ -59,10 +59,10 @@ export default function Document() {
         <div style={{ display: 'none' }}>
           <span class="h-card">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a rel="me" href="/">
+            <a rel="me" href="/" className="p-name">
               Yukai Huang
             </a>
-            <a rel="me" class="u-url">
+            <a rel="me" className="u-url">
               https://{NEXT_PUBLIC_DOMAIN}
             </a>
             {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
