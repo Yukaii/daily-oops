@@ -33,6 +33,11 @@ export default function Home({ posts }) {
 
         <p>安久吧！</p>
 
+        {/* workaround for webmention to bridgy */}
+        <a href="https://fed.brid.gy/" style={{ display: 'none' }}>
+          https://fed.brid.gy/
+        </a>
+
         <h2>Recent posts</h2>
 
         <div className="Box">
