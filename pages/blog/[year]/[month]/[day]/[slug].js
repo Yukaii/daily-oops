@@ -70,7 +70,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
       <div style={{ display: 'none' }}>
         <time className="dt-published" dateTime="YYYY-MM-DD HH:MM:SS">
           {/* ISO-8601 */}
-          {time}
+          {date.format('YYYY-MM-DD HH:mm:ss')}
         </time>
 
         <a className="u-url" href={canonicalUrl}>
