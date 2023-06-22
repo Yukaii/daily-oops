@@ -62,6 +62,9 @@ export default function Document() {
             <a rel="me" href="/">
               Yukai Huang
             </a>
+            <a rel="me" class="u-url">
+              https://{NEXT_PUBLIC_DOMAIN}
+            </a>
             {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
             <img class="u-featured" src="/cover.png" />
 
