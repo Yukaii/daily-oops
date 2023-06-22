@@ -1,3 +1,4 @@
+import Intro from 'components/Intro'
 import {
   NEXT_PUBLIC_DOMAIN,
   NEXT_PUBLIC_GA_TRACKING_ID,
@@ -72,6 +73,10 @@ export default function Document() {
 
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages, @next/next/no-img-element, jsx-a11y/alt-text */}
             <img className="u-photo" src="/avatar.jpg" />
+
+            <p class="p-note">
+              <Intro />
+            </p>
 
             <a
               className="u-bridgy-fed"

@@ -1,3 +1,4 @@
+import Intro from 'components/Intro'
 import PostRow from 'components/PostRow'
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
@@ -21,17 +22,7 @@ export default function Home({ posts }) {
       />
 
       <div className="d-block mx-auto container markdown-body py-4 px-3 e-content">
-        <h2>Hi</h2>
-
-        <p>This is Yukai Huang&apos;s personal website.</p>
-
-        <p>
-          Here you can read my <Link href="/blog">recent posts</Link>, play with{' '}
-          <Link href="/projects">my side projects before</Link>, or{' '}
-          <Link href="/about">get to know me more</Link>.
-        </p>
-
-        <p>安久吧！</p>
+        <Intro />
 
         {/* workaround for webmention to bridgy */}
         <a href="https://fed.brid.gy/" style={{ display: 'none' }}>
