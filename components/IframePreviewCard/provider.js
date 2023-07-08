@@ -15,6 +15,31 @@ function isExternalLink(url) {
   }
 }
 
+const LOCAL_STORAGE_KEY = 'iframe-preview-card-size'
+
+function saveSize(size) {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(size))
+}
+
+function safeJSONParse(str) {
+  try {
+    return JSON.parse(str)
+  } catch (e) {
+    return null
+  }
+}
+
+function loadSize() {
+  const defaultCoordinates = { width: 400, height: 300, x: 0, y: 0 }
+
+  const size = localStorage.getItem(LOCAL_STORAGE_KEY)
+  if (size) {
+    return safeJSONParse(size) || defaultCoordinates
+  }
+
+  return defaultCoordinates
+}
+
 const useHoldingShiftKey = () => {
   const [, setIsHoldingShift, isHoldingShiftRef] = useStateRef(false)
 
@@ -91,6 +116,8 @@ export const IframePreviewCardProvider = ({ children }) => {
         <IframePreviewCard
           url={previewUrl}
           onClose={() => setShowPreview(false)}
+          onMoveOrResize={(size) => saveSize(size)}
+          defaultCoordinates={loadSize()}
         />
       )}
     </>

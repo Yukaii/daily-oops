@@ -21,7 +21,13 @@ const Portal = ({ children }) => {
   return ReactDOM.createPortal(children, findOrCreatePortalContainer())
 }
 
-export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
+export const IframePreviewCard = ({
+  url,
+  onIframeError,
+  onClose,
+  onMoveOrResize,
+  defaultCoordinates,
+}) => {
   /** @type {React.RefObject<HTMLIFrameElement>} */
   const iframeRef = React.useRef(null)
   const [title, setTitle] = React.useState('Loading...')
@@ -52,18 +58,20 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
     verticalResizeElementRef,
     getOnResizeElementMouseDown,
     isResizing,
-  } = useDraggableResizable()
+  } = useDraggableResizable({
+    defaultWidth: defaultCoordinates.width,
+    defaultHeight: defaultCoordinates.height,
+    defaultX: defaultCoordinates.x,
+    defaultY: defaultCoordinates.y,
+  })
+
+  onMoveOrResize(transformProps)
 
   // force render a new iframe component when url changes
   const iframeComponent = React.useMemo(() => {
     return (
       <>
-        <iframe
-          src={'http://localhost:3000/blog'}
-          // src={url}
-          ref={iframeRef}
-          onLoad={onLoad}
-        />
+        <iframe src={url} ref={iframeRef} onLoad={onLoad} />
         <style jsx>{`
           iframe {
             width: 100%;
@@ -73,7 +81,7 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
         `}</style>
       </>
     )
-  }, [onLoad])
+  }, [onLoad, url])
 
   return (
     <Portal>
@@ -135,10 +143,6 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
       <style jsx scoped>{`
         .iframe-preview-card {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 300px;
-          height: 400px;
           z-index: 999;
 
           padding-right: 2px;
