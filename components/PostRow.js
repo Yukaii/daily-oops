@@ -22,7 +22,7 @@ export default function PostRow({ post, index, totalCount }) {
           <strong>{post.title}</strong>
         </Link>
 
-        <div className="text-small color-text-secondary">
+        <div className="text-small color-fg-muted">
           #{totalCount - index} posted on {date.format('LL')}
         </div>
       </div>

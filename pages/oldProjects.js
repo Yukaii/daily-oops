@@ -26,8 +26,8 @@ export default function Projects({ projects }) {
                 <img src={project.image} style={{ borderRadius: 0 }} />
               )}
               <div className="px-3 pa-2">
-                <h3 className="color-text-primary">{project.title}</h3>
-                <p className="color-text-secondary">{project.description}</p>
+                <h3 className="color-fg-default">{project.title}</h3>
+                <p className="color-fg-muted">{project.description}</p>
               </div>
             </a>
           )

@@ -1,7 +1,7 @@
 .markdown-body {
   .container-block {
     margin-bottom: 1.8em;
-    border-left: 6px solid var(--color-border-primary);
+    border-left: 6px solid var(--color-border-default);
 
     p {
       margin-bottom: 0;
@@ -11,11 +11,11 @@
   .task-list-item {
     list-style-type: none;
   }
-  
+
   .task-list-item-checkbox {
     float: left;
     margin: .40em 0 .2em -1.3em !important;
     vertical-align: middle;
-    cursor: default !important;    
+    cursor: default !important;
   }
 }
