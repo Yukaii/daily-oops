@@ -1,4 +1,4 @@
-import { NorthStarIcon } from '@primer/octicons-react'
+import { DotFillIcon } from '@primer/octicons-react'
 import dayjs from 'lib/dayjs'
 import Link from 'next/link'
 
@@ -13,9 +13,9 @@ export default function PostRow({ post, index, totalCount }) {
     <div className="Box-row Box-row--hover-gray d-flex flex-items-start">
       <div
         className="mr-2 mt-1 d-flex flex-items-start"
-        style={{ color: 'var(--color-scale-red-2 )' }}
+        style={{ color: 'var(--color-scale-orange-3)' }}
       >
-        <NorthStarIcon />
+        <DotFillIcon />
       </div>
       <div className="flex-auto">
         <Link href={`/blog/${year}/${month}/${day}/${slug}`}>

@@ -1,9 +1,4 @@
-import {
-  BookIcon,
-  PersonIcon,
-  RepoIcon,
-  SquirrelIcon,
-} from '@primer/octicons-react'
+import { BookIcon, CodeIcon, HomeIcon, InfoIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -23,7 +18,7 @@ const Header = () => {
     {
       text: 'Home',
       href: '/',
-      icon: SquirrelIcon,
+      icon: HomeIcon,
     },
     {
       text: 'Blog',
@@ -33,12 +28,12 @@ const Header = () => {
     {
       text: 'Projects',
       href: '/projects',
-      icon: RepoIcon,
+      icon: CodeIcon,
     },
     {
       text: 'About',
       href: '/about',
-      icon: PersonIcon,
+      icon: InfoIcon,
     },
   ]
 
