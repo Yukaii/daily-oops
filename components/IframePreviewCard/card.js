@@ -70,7 +70,7 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
   return (
     <Portal>
       <div
-        className="iframe-preview-card color-bg-default"
+        className="iframe-preview-card color-bg-default rounded-3 border color-shadow-small overflow-hidden"
         ref={dragContainerRef}
         style={{
           top: transformProps.y,
@@ -78,7 +78,7 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
         }}
       >
         {/* iframe modal navbar */}
-        <div className="d-flex flex-justify-between color-bg-default">
+        <div className="d-flex flex-justify-between color-bg-default border-bottom">
           <div className="p-2 d-flex">
             <span className="grabber" {...dragProps} ref={dragElementRef}>
               <GrabberIcon />
@@ -87,7 +87,7 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
           </div>
 
           <div className="p-2">
-            <span className="close" onClick={onClose}>
+            <span className="close color-fg-subtle" onClick={onClose}>
               <XCircleFillIcon />
             </span>
           </div>
@@ -113,6 +113,10 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
 
         .iframe-preview-card .close {
           cursor: pointer;
+        }
+
+        .iframe-preview-card .close:hover {
+          color: var(--color-fg-muted);
         }
       `}</style>
     </Portal>
