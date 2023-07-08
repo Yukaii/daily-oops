@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@fortawesome/fontawesome-free': 5.15.3
   '@next/bundle-analyzer': ^10.2.0
-  '@primer/css': 17.0.1
-  '@primer/octicons-react': 12.1.0
+  '@primer/css': 21.0.7
+  '@primer/octicons-react': 19.4.0
   '@types/react': 18.0.28
   '@types/simple-react-lightbox': ^3.6.1
   '@yukaii/github-highlightjs-themes': ^1.0.0
@@ -65,8 +65,8 @@ specifiers:
 dependencies:
   '@fortawesome/fontawesome-free': 5.15.3
   '@next/bundle-analyzer': 10.2.3
-  '@primer/css': 17.0.1
-  '@primer/octicons-react': 12.1.0_react@18.2.0
+  '@primer/css': 21.0.7
+  '@primer/octicons-react': 19.4.0_react@18.2.0
   '@yukaii/github-highlightjs-themes': 1.0.0
   bluebird: 3.7.2
   cheerio: 1.0.0-rc.12
@@ -200,6 +200,54 @@ packages:
     resolution: {integrity: sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==}
     engines: {node: '>=6'}
     requiresBuild: true
+    dev: false
+
+  /@github/auto-check-element/5.4.1:
+    resolution: {integrity: sha512-AJeHV1ifpby5Hp2wJIzcsdIB5YAq869F7ilNv2GygTVpHOSCfYSS29/hJ5GGTLgfKpPRgTmJcMi5OetKR8eH1g==}
+    dependencies:
+      '@github/mini-throttle': 2.1.0
+    dev: false
+
+  /@github/auto-complete-element/3.5.1:
+    resolution: {integrity: sha512-7/g6Nz6Zz4/k0m/L0n+OEO29WZcXgXwLJn7Ql02UbIMR2ClFEZIwIvvzb+3fEECOyLpFrZC/JH7Svz9RYPc+wA==}
+    dependencies:
+      '@github/combobox-nav': 2.1.7
+    dev: false
+
+  /@github/catalyst/1.6.0:
+    resolution: {integrity: sha512-u8A+DameixqpeyHzvnJWTGj+wfiskQOYHzSiJscCWVfMkIT3rxnbHMtGh3lMthaRY21nbUOK71WcsCnCrXhBJQ==}
+    dev: false
+
+  /@github/clipboard-copy-element/1.2.1:
+    resolution: {integrity: sha512-PLccyUCnzmOQ6zrRsH66rr67iumJyP5r7ij17ezprFQAK/oA8CXhlC8LTG+xpW3cYAvnp2zCgRNTfXS8wk09Lg==}
+    dev: false
+
+  /@github/combobox-nav/2.1.7:
+    resolution: {integrity: sha512-Webx0W5iTpkk5Chy9dB/1BEUORQ0qrwui8HaaVBiy75W2VOJg96WTuKj1rXENAJ3XTMhdEF53bn0LYfvP0EKvg==}
+    dev: false
+
+  /@github/details-menu-element/1.0.13:
+    resolution: {integrity: sha512-gMkii86w/oUP5dq8yOWZn1sgbgtFj3AYETxxtpsqRggZktgd8te4+npAn4Hm+936c/lxmEzXqfjARL/CzGR4+w==}
+    dev: false
+
+  /@github/image-crop-element/5.0.0:
+    resolution: {integrity: sha512-Vgm2OwWAs1ESoib/t5sjxsAYo6YTOxxAjWDRxswX7qrqoyCejTZ3hshdo4Ep5e+Mz/GVTZC3rdMtg06dk/eT4g==}
+    dev: false
+
+  /@github/include-fragment-element/6.3.0:
+    resolution: {integrity: sha512-BJTt8ZE/arsbC9lQtTH8c1hZS0ZigiN+kzH54ffQ6MhHLT83h0OpSdS9NEVocPl2uuO6w3qxnEKTDzUGMQ5rdQ==}
+    dev: false
+
+  /@github/mini-throttle/2.1.0:
+    resolution: {integrity: sha512-iEeR2OdVCPkdIPUszL8gJnKNu4MR8ANh7y0u/LPyaatYezgaWxUZEzhFntloqQq+HE6MZkFy+cl+xzCNuljOdw==}
+    dev: false
+
+  /@github/relative-time-element/4.3.0:
+    resolution: {integrity: sha512-+tFjX9//HRS1HnBa5cNgfEtE52arwiutYg1TOF+Trk40SPxst9Q8Rtc3BKD6aKsvfbtub68vfhipgchGjj9o7g==}
+    dev: false
+
+  /@github/tab-container-element/3.3.0:
+    resolution: {integrity: sha512-vHlN/GXgaJFJhh4oUYRh1pc4RAqduKlQOrEjVgSxR4JhLXsQcZ/hKWfCsRZAuZbSPzUGEYvggdieamS4FRSe4g==}
     dev: false
 
   /@humanwhocodes/config-array/0.5.0:
@@ -357,6 +405,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
+  /@oddbird/popover-polyfill/0.1.1:
+    resolution: {integrity: sha512-X9gxiwKtN1ZumOoe9KRLpe37nshLtwHm/IJflIxgjanXz/FqKb0DQ7BlWu+iqUn/O0/jWYgkKnTLtsC9JlgwQg==}
+    dev: false
+
   /@pkgr/utils/2.3.1:
     resolution: {integrity: sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
@@ -373,23 +425,46 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: false
 
-  /@primer/css/17.0.1:
-    resolution: {integrity: sha512-qA0WOfkGthJVoUUqFpsaD3m2aeuGuVSZwMWsxZFUUufB3pfGfIG+vkpAqaJTGFJzbKD9ZfXyt1wfJwtyMcsVfg==}
-    dependencies:
-      '@primer/primitives': 4.3.2
+  /@primer/behaviors/1.3.5:
+    resolution: {integrity: sha512-HWwz+6MrfK5NTWcg9GdKFpMBW/yrAV937oXiw2eDtsd88P3SRwoCt6ZO6QmKp9RP3nDU9cbqmuGZ0xBh0eIFeg==}
     dev: false
 
-  /@primer/octicons-react/12.1.0_react@18.2.0:
-    resolution: {integrity: sha512-eb/5Obsp6/pVkyzzGhobK6aPAkKqx6VleF/7HYeihGTYm3rGZc+prL/jhxD5Mo1P6U343YEkHjc2gKuvtENn1g==}
+  /@primer/css/21.0.7:
+    resolution: {integrity: sha512-Iq0VkpLVZqHZTo2JOIv+RPVu3bWj/BU/MIZrNZ4GRTJTY0YFQ/YCmUYKY1swgiCiPF/RKew5xIkf1cWaqtkQEA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@primer/primitives': 7.11.13
+      '@primer/view-components': 0.1.9
+    dev: false
+
+  /@primer/octicons-react/19.4.0_react@18.2.0:
+    resolution: {integrity: sha512-6zFbvbQYQdGd9cIgNscnofSe0LkV28PvcL4mWPoKFV1u7Mdn3MlOjgawzuA2oXB18LLkMadTJ4Ky77FybUlrBg==}
     engines: {node: '>=8'}
     peerDependencies:
-      react: '>=15'
+      react: '>=16.3'
     dependencies:
       react: 18.2.0
     dev: false
 
-  /@primer/primitives/4.3.2:
-    resolution: {integrity: sha512-5qBEQVchd2Vd2K2IT9mbQdI9E4IGiDVoLITlQXE2HIW9sWHREULSE4xg3W51i/XlDUIgnycELCI+Ept8V7v+og==}
+  /@primer/primitives/7.11.13:
+    resolution: {integrity: sha512-W3RtWXpVmXqD/+6MBJG/5wJzDzY80BvUhp8HrbRK0vg83F9i+VDaQ1CiCeVn3fFuTH8HZxoJeSlhwKOHUtorWg==}
+    dev: false
+
+  /@primer/view-components/0.1.9:
+    resolution: {integrity: sha512-LtqJBkTMS+odYXqKhOZxBvyAAlXTA+C6o3eXDQN8Nwmja48SKAlFrwb+HpXLvgpbbDg1eY2LKmypokv44dl0Uw==}
+    dependencies:
+      '@github/auto-check-element': 5.4.1
+      '@github/auto-complete-element': 3.5.1
+      '@github/catalyst': 1.6.0
+      '@github/clipboard-copy-element': 1.2.1
+      '@github/details-menu-element': 1.0.13
+      '@github/image-crop-element': 5.0.0
+      '@github/include-fragment-element': 6.3.0
+      '@github/mini-throttle': 2.1.0
+      '@github/relative-time-element': 4.3.0
+      '@github/tab-container-element': 3.3.0
+      '@oddbird/popover-polyfill': 0.1.1
+      '@primer/behaviors': 1.3.5
     dev: false
 
   /@rushstack/eslint-patch/1.2.0:

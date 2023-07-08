@@ -1,9 +1,4 @@
-import {
-  BookIcon,
-  PersonIcon,
-  RepoIcon,
-  SquirrelIcon,
-} from '@primer/octicons-react'
+import { BookIcon, CodeIcon, HomeIcon, InfoIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -23,7 +18,7 @@ const Header = () => {
     {
       text: 'Home',
       href: '/',
-      icon: SquirrelIcon,
+      icon: HomeIcon,
     },
     {
       text: 'Blog',
@@ -33,12 +28,12 @@ const Header = () => {
     {
       text: 'Projects',
       href: '/projects',
-      icon: RepoIcon,
+      icon: CodeIcon,
     },
     {
       text: 'About',
       href: '/about',
-      icon: PersonIcon,
+      icon: InfoIcon,
     },
   ]
 
@@ -48,7 +43,7 @@ const Header = () => {
     <>
       <div
         className={cx(
-          'd-flex text-center color-bg-secondary py-4 px-3 header-block flex-items-center',
+          'd-flex text-center color-bg-subtle py-4 px-3 header-block flex-items-center',
           { small, 'flex-column': !small, 'flex-justify-center': small }
         )}
       >
@@ -74,7 +69,7 @@ const Header = () => {
       </div>
 
       <nav
-        className="UnderlineNav color-bg-secondary px-3 position-sticky top-0 flex-items-center flex-justify-center"
+        className="UnderlineNav color-bg-subtle px-3 position-sticky top-0 flex-items-center flex-justify-center"
         style={{ zIndex: 99 }}
       >
         <div
@@ -83,22 +78,21 @@ const Header = () => {
           style={{ maxWidth: '100%' }}
         >
           {items.map((item) => (
-            <Link href={item.href} key={item.href}>
-              <button
-                className="UnderlineNav-item"
-                role="tab"
-                type="button"
-                aria-selected={item.href === pathname}
-              >
-                {item.icon ? (
-                  <>
-                    <item.icon className="UnderlineNav-octicon" />
-                    <span>{item.text}</span>
-                  </>
-                ) : (
-                  item.text
-                )}
-              </button>
+            <Link
+              href={item.href}
+              key={item.href}
+              className={cx('UnderlineNav-item', {
+                selected: item.href === pathname,
+              })}
+            >
+              {item.icon ? (
+                <>
+                  <item.icon className="UnderlineNav-octicon" />
+                  <span>{item.text}</span>
+                </>
+              ) : (
+                item.text
+              )}
             </Link>
           ))}
         </div>

@@ -10,7 +10,7 @@ export default function Document() {
   const isProduction = process.env.NODE_ENV === 'production'
 
   return (
-    <Html lang="zh-Hant-TW" data-dark-theme="dark">
+    <Html lang="zh-Hant-TW" data-dark-theme="dark" data-light-theme="light">
       <Head>
         <link
           rel="alternate"

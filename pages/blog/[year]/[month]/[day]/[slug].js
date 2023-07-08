@@ -29,7 +29,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
 
   const hackmdLink = () => (
     <a
-      className="no-underline color-text-primary text-semibold"
+      className="no-underline color-fg-default text-semibold"
       href={config.hackmdBaseUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -106,9 +106,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           </div>
         )}
         <div className="container pt-4 pb-3 px-3">
-          <span className="text-mono color-text-tertiary">
-            {date.format('LL')}
-          </span>
+          <span className="text-mono color-fg-muted">{date.format('LL')}</span>
         </div>
         <SRLWrapper
           options={{
@@ -127,7 +125,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         </SRLWrapper>
 
         <div className="container py-3 px-3">
-          <div className="container-block color-bg-info color-border-info rounded-2 p-3">
+          <div className="container-block color-bg-accent color-border-accent-emphasis rounded-2 p-3">
             本篇文章驕傲的使用 {hackmdLink()}{' '}
             <a target="_blank" href={noteLink} rel="noopener noreferrer">
               發佈
