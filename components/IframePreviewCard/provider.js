@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import useStateRef from 'lib/hooks/useStateRef'
+import useViewport from 'lib/hooks/useViewport'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import IframePreviewCard from './card'
 
@@ -9,8 +11,21 @@ export const IframePreviewCardProvider = ({ children }) => {
   const [showPreview, setShowPreview] = useState(false)
   const [previewUrl, setPreviewUrl] = useState('')
 
+  const { width } = useViewport()
+  const [, setPreviewCardEnabled, previewCardEnabledRef] = useStateRef(
+    width > 768
+  )
+
+  useMemo(() => {
+    setPreviewCardEnabled(width > 768)
+  }, [setPreviewCardEnabled, width])
+
   useEffect(() => {
     const handlePreview = (e) => {
+      if (!previewCardEnabledRef.current) {
+        return
+      }
+
       const { target } = e
       if (target.tagName === 'A' && target.href) {
         e.preventDefault()
