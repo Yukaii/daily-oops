@@ -54,10 +54,10 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           site_name: 'Daily Oops!',
           images: meta?.image
             ? [
-              {
-                url: meta.image,
-              },
-            ]
+                {
+                  url: meta.image,
+                },
+              ]
             : [],
           article: {
             publishedTime: time,
@@ -106,9 +106,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           </div>
         )}
         <div className="container pt-4 pb-3 px-3">
-          <span className="text-mono color-fg-muted">
-            {date.format('LL')}
-          </span>
+          <span className="text-mono color-fg-muted">{date.format('LL')}</span>
         </div>
         <SRLWrapper
           options={{
