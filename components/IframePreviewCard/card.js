@@ -43,8 +43,15 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
     }
   }, [onIframeError])
 
-  const { dragProps, dragContainerRef, dragElementRef, transformProps } =
-    useDraggableResizable()
+  const {
+    dragProps,
+    dragContainerRef,
+    dragElementRef,
+    transformProps,
+    horizontalResizeElementRef,
+    verticalResizeElementRef,
+    resizeProps,
+  } = useDraggableResizable()
 
   // force render a new iframe component when url changes
   const iframeComponent = React.useMemo(() => {
@@ -75,6 +82,8 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
         style={{
           top: transformProps.y,
           left: transformProps.x,
+          width: transformProps.width,
+          height: transformProps.height,
         }}
       >
         {/* iframe modal navbar */}
@@ -97,8 +106,16 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
         {iframeComponent}
 
         {/* resize handles */}
-        <div className="resize-handle resize-handle--right" />
-        <div className="resize-handle resize-handle--bottom" />
+        <div
+          className="resize-handle resize-handle--right"
+          {...resizeProps}
+          ref={horizontalResizeElementRef}
+        />
+        <div
+          className="resize-handle resize-handle--bottom"
+          {...resizeProps}
+          ref={verticalResizeElementRef}
+        />
       </div>
 
       <style jsx scoped>{`
