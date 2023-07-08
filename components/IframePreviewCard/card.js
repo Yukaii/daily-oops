@@ -50,7 +50,8 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
     transformProps,
     horizontalResizeElementRef,
     verticalResizeElementRef,
-    resizeProps,
+    getOnResizeElementMouseDown,
+    isResizing,
   } = useDraggableResizable()
 
   // force render a new iframe component when url changes
@@ -105,15 +106,28 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
         {/* iframe */}
         {iframeComponent}
 
+        {/* show resizing overlay */}
+        {isResizing && (
+          <div
+            className="position-absolute"
+            style={{
+              height: 'calc(100% - 38px)',
+              width: 'calc(100% - 4px)',
+              bottom: 2,
+              right: 2,
+            }}
+          />
+        )}
+
         {/* resize handles */}
         <div
           className="resize-handle resize-handle--right"
-          {...resizeProps}
+          onMouseDown={getOnResizeElementMouseDown('horizontal')}
           ref={horizontalResizeElementRef}
         />
         <div
           className="resize-handle resize-handle--bottom"
-          {...resizeProps}
+          onMouseDown={getOnResizeElementMouseDown('vertical')}
           ref={verticalResizeElementRef}
         />
       </div>
