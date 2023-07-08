@@ -26,7 +26,12 @@ export const IframePreviewCardProvider = ({ children }) => {
   return (
     <>
       {children}
-      {showPreview && <IframePreviewCard url={previewUrl} />}
+      {showPreview && (
+        <IframePreviewCard
+          url={previewUrl}
+          onClose={() => setShowPreview(false)}
+        />
+      )}
     </>
   )
 }

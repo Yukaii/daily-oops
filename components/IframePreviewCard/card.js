@@ -1,5 +1,9 @@
+import { GrabberIcon, XCircleFillIcon } from '@primer/octicons-react'
 import React from 'react'
+import { useCallback } from 'react'
 import ReactDOM from 'react-dom'
+
+import useResizableAndDraggable from '../../lib/hooks/useResizableAndDraggable'
 
 const portalContainerClassName = 'iframe-preview-card-portal'
 
@@ -17,12 +21,12 @@ const Portal = ({ children }) => {
   return ReactDOM.createPortal(children, findOrCreatePortalContainer())
 }
 
-export const IframePreviewCard = ({ url, onIframeError }) => {
+export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
   /** @type {React.RefObject<HTMLIFrameElement>} */
   const iframeRef = React.useRef(null)
   const [title, setTitle] = React.useState('Loading...')
 
-  const onLoad = () => {
+  const onLoad = useCallback(() => {
     try {
       if (!iframeRef.current) {
         return
@@ -37,17 +41,60 @@ export const IframePreviewCard = ({ url, onIframeError }) => {
         onIframeError(e)
       }
     }
-  }
+  }, [onIframeError])
+
+  const { dragProps, dragContainerRef, dragElementRef, transformProps } =
+    useResizableAndDraggable()
+
+  // force render a new iframe component when url changes
+  const iframeComponent = React.useMemo(() => {
+    return (
+      <>
+        <iframe
+          src={'http://localhost:3000/blog'}
+          // src={url}
+          ref={iframeRef}
+          onLoad={onLoad}
+        />
+        <style jsx>{`
+          iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+          }
+        `}</style>
+      </>
+    )
+  }, [onLoad])
 
   return (
     <Portal>
-      <div className="iframe-preview-card">
+      <div
+        className="iframe-preview-card color-bg-default"
+        ref={dragContainerRef}
+        style={{
+          top: transformProps.y,
+          left: transformProps.x,
+        }}
+      >
         {/* iframe modal navbar */}
-        <div className="d-flex justify-content-between">
-          <div className="p-2">{title}</div>
+        <div className="d-flex flex-justify-between color-bg-default">
+          <div className="p-2 d-flex">
+            <span className="grabber" {...dragProps} ref={dragElementRef}>
+              <GrabberIcon />
+            </span>
+            {title}
+          </div>
+
+          <div className="p-2">
+            <span className="close" onClick={onClose}>
+              <XCircleFillIcon />
+            </span>
+          </div>
         </div>
 
-        <iframe src={url} ref={iframeRef} onLoad={onLoad} />
+        {/* iframe */}
+        {iframeComponent}
       </div>
 
       <style jsx scoped>{`
@@ -59,11 +106,13 @@ export const IframePreviewCard = ({ url, onIframeError }) => {
           height: 400px;
           z-index: 999;
         }
-        .iframe-preview-card iframe {
-          width: 100%;
-          height: 100%;
-          border: none;
-          resize: both;
+
+        .iframe-preview-card .grabber {
+          cursor: grab;
+        }
+
+        .iframe-preview-card .close {
+          cursor: pointer;
         }
       `}</style>
     </Portal>
