@@ -94,7 +94,7 @@ export const IframePreviewCardProvider = ({ children }) => {
       if (
         !isHoldingAltRef.current ||
         !previewCardEnabledRef.current ||
-        !isExternalLink(url)
+        isExternalLink(url)
       ) {
         return
       }
