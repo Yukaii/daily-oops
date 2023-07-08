@@ -28,7 +28,7 @@ export default function PostRow({ post, index, totalCount }) {
         {readStatus ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
-          <DotFillIcon />
+          <DotFillIcon title="You haven't read this article yet." />
         )}
       </div>
       <div className="flex-auto">
