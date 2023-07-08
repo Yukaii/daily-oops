@@ -1,7 +1,8 @@
 .markdown-body {
   .container-block {
     margin-bottom: 1.8em;
-    border-left: 6px solid var(--color-border-default);
+    border-left-width: 6px;
+    border-left-style: solid;
 
     p {
       margin-bottom: 0;
