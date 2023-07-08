@@ -3,7 +3,7 @@ import React from 'react'
 import { useCallback } from 'react'
 import ReactDOM from 'react-dom'
 
-import useResizableAndDraggable from '../../lib/hooks/useResizableAndDraggable'
+import useDraggableResizable from '../../lib/hooks/useDraggableResizable'
 
 const portalContainerClassName = 'iframe-preview-card-portal'
 
@@ -44,7 +44,7 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
   }, [onIframeError])
 
   const { dragProps, dragContainerRef, dragElementRef, transformProps } =
-    useResizableAndDraggable()
+    useDraggableResizable()
 
   // force render a new iframe component when url changes
   const iframeComponent = React.useMemo(() => {
@@ -95,6 +95,10 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
 
         {/* iframe */}
         {iframeComponent}
+
+        {/* resize handles */}
+        <div className="resize-handle resize-handle--right" />
+        <div className="resize-handle resize-handle--bottom" />
       </div>
 
       <style jsx scoped>{`
@@ -105,6 +109,9 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
           width: 300px;
           height: 400px;
           z-index: 999;
+
+          padding-right: 2px;
+          padding-bottom: 2px;
         }
 
         .iframe-preview-card .grabber {
@@ -117,6 +124,31 @@ export const IframePreviewCard = ({ url, onIframeError, onClose }) => {
 
         .iframe-preview-card .close:hover {
           color: var(--color-fg-muted);
+        }
+
+        .iframe-preview-card .resize-handle {
+          position: absolute;
+          width: 2px;
+          cursor: col-resize;
+        }
+
+        .iframe-preview-card .resize-handle:hover {
+          background-color: var(--color-accent-emphasis);
+        }
+
+        .iframe-preview-card .resize-handle--right {
+          top: 0;
+          right: 0;
+          height: 100%;
+        }
+
+        .iframe-preview-card .resize-handle--bottom {
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+
+          cursor: row-resize;
         }
       `}</style>
     </Portal>
