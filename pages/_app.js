@@ -4,6 +4,7 @@ import 'styles/primer-dark.scss'
 import 'styles/linegutter.scss'
 import '@yukaii/github-highlightjs-themes/themes/github-light-default.css'
 
+import Footer from 'components/Footer'
 import Header from 'components/Header'
 import { pageview } from 'lib/gtag'
 import Head from 'next/head'
@@ -28,10 +29,10 @@ function MyApp({ Component, pageProps, router }) {
         <SimpleReactLightbox>
           <Header />
           <Component {...pageProps} key={router.route} />
+          <Footer />
         </SimpleReactLightbox>
       </ThemeProvider>
     </>
   )
 }
-
 export default MyApp
