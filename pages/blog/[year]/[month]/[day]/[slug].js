@@ -1,3 +1,4 @@
+import { IframePreviewCardProvider } from 'components/IframePreviewCard'
 import Markdown from 'components/Markdown'
 import { DiscussionEmbed } from 'disqus-react'
 import { config } from 'lib/config'
@@ -108,21 +109,23 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
         <div className="container pt-4 pb-3 px-3">
           <span className="text-mono color-fg-muted">{date.format('LL')}</span>
         </div>
-        <SRLWrapper
-          options={{
-            settings: {
-              lightboxTransitionSpeed: 0.1,
-              slideAnimationType: 'both',
-              slideSpringValues: [350, 50],
-              slideTransitionTimingFunction: 'easeInOut',
-            },
-          }}
-        >
-          <Markdown
-            content={content}
-            className="container post-container px-3"
-          />
-        </SRLWrapper>
+        <IframePreviewCardProvider>
+          <SRLWrapper
+            options={{
+              settings: {
+                lightboxTransitionSpeed: 0.1,
+                slideAnimationType: 'both',
+                slideSpringValues: [350, 50],
+                slideTransitionTimingFunction: 'easeInOut',
+              },
+            }}
+          >
+            <Markdown
+              content={content}
+              className="container post-container px-3"
+            />
+          </SRLWrapper>
+        </IframePreviewCardProvider>
 
         <div className="container py-3 px-3">
           <div className="container-block color-bg-accent color-border-accent-emphasis rounded-2 p-3">
