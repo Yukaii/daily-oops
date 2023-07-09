@@ -91,12 +91,14 @@ export const IframePreviewCardProvider = ({ children }) => {
       const { target } = e
       const url = target.href
 
-      if (
-        !isHoldingAltRef.current ||
-        !previewCardEnabledRef.current ||
-        isExternalLink(url)
-      ) {
-        return
+      if (process.env.NODE_ENV === 'production') {
+        if (
+          !isHoldingAltRef.current ||
+          !previewCardEnabledRef.current ||
+          isExternalLink(url)
+        ) {
+          return
+        }
       }
 
       if (target.tagName === 'A' && url) {
