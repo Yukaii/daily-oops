@@ -113,12 +113,23 @@ export const IframePreviewCardProvider = ({ children }) => {
 
   useEffect(() => {
     const handlePreview = async (e) => {
+      e.preventDefault()
+
       const { target } = e
       const url = parseHref(target.href)
 
+      const openUrl = () => {
+        const openTarget = target.getAttribute('target')
+        if (openTarget) {
+          window.open(url, openTarget)
+        } else {
+          window.location.href = url
+        }
+      }
+
       // test if the url is valid and can be iframe embedded
       if (url && !(await headRequest(url))) {
-        return
+        return openUrl()
       }
 
       if (process.env.NODE_ENV === 'production') {
@@ -127,12 +138,11 @@ export const IframePreviewCardProvider = ({ children }) => {
           !previewCardEnabledRef.current ||
           isExternalLink(url)
         ) {
-          return
+          return openUrl()
         }
       }
 
       if (target.tagName === 'A' && url) {
-        e.preventDefault()
         setPreviewUrl(target.href)
         setShowPreview(true)
       }
