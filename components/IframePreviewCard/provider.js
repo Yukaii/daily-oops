@@ -147,10 +147,12 @@ export const IframePreviewCardProvider = ({ children }) => {
     }
 
     const handlePreview = (e) => {
-      e.preventDefault()
-
-      handleOpenPreview(e)
+      if (e.target?.tagName === 'A' && e.target.href) {
+        e.preventDefault()
+        handleOpenPreview(e)
+      }
     }
+
     document.addEventListener('click', handlePreview)
     return () => document.removeEventListener('click', handlePreview)
   }, [isHoldingShiftRef, previewCardEnabledRef])
