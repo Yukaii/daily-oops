@@ -6,6 +6,8 @@ import '@yukaii/github-highlightjs-themes/themes/github-light-default.css'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import ScrollPgoress from 'components/ScrollProgress'
+import WithMounted from 'components/WithMounted'
 import { pageview } from 'lib/gtag'
 import Head from 'next/head'
 import Router from 'next/router'
@@ -30,6 +32,10 @@ function MyApp({ Component, pageProps, router }) {
           <Header />
           <Component {...pageProps} key={router.route} />
           <Footer />
+
+          <WithMounted>
+            {({ mounted }) => mounted && <ScrollPgoress />}
+          </WithMounted>
         </SimpleReactLightbox>
       </ThemeProvider>
     </>
