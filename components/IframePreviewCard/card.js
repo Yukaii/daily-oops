@@ -109,7 +109,11 @@ export const IframePreviewCard = ({
           </div>
 
           <div className="p-2">
-            <span className="close color-fg-subtle" onClick={onClose}>
+            <span
+              className="close color-fg-subtle"
+              onClick={onClose}
+              title="Close"
+            >
               <XCircleFillIcon />
             </span>
           </div>
@@ -186,6 +190,7 @@ export const IframePreviewCard = ({
         .iframe-preview-card .resize-handle:hover,
         .iframe-preview-card .resize-handle.is-resizing {
           background-color: var(--color-accent-emphasis);
+          transition: background-color 0.2s ease-in-out;
         }
 
         .iframe-preview-card .resize-handle--right {
