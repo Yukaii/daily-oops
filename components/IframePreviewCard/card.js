@@ -100,7 +100,10 @@ export const IframePreviewCard = ({
         }}
       >
         {/* iframe modal navbar */}
-        <div className="d-flex flex-justify-between color-bg-default border-bottom">
+        <div
+          className="d-flex flex-justify-between color-bg-default border-bottom"
+          style={{ height: 38 }}
+        >
           <div className="p-2 d-flex">
             <span className="grabber" {...dragProps} ref={dragElementRef}>
               <GrabberIcon />
