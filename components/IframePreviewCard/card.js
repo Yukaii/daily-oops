@@ -4,7 +4,7 @@ import React from 'react'
 import { useCallback } from 'react'
 import ReactDOM from 'react-dom'
 
-import useDraggableResizable from '../../lib/hooks/useDraggableResizable'
+import { useDraggableResizable } from '../../lib/hooks/useDraggableResizable'
 
 const portalContainerClassName = 'iframe-preview-card-portal'
 
@@ -51,10 +51,11 @@ export const IframePreviewCard = ({
   }, [onIframeError])
 
   const {
-    dragProps,
-    dragContainerRef,
-    dragElementRef,
-    transformProps,
+    resizableRef: dragContainerRef,
+    draggableRef: dragElementRef,
+    onDragElementMouseDown,
+    position,
+    size,
     horizontalResizeElementRef,
     verticalResizeElementRef,
     bothResizeElementRef,
@@ -62,13 +63,20 @@ export const IframePreviewCard = ({
     getOnResizeElementMouseDown,
     isResizing,
   } = useDraggableResizable({
-    defaultWidth: defaultCoordinates.width,
-    defaultHeight: defaultCoordinates.height,
-    defaultX: defaultCoordinates.x,
-    defaultY: defaultCoordinates.y,
+    defaultSize: {
+      width: defaultCoordinates.width,
+      height: defaultCoordinates.height,
+    },
+    defaultPosition: {
+      x: defaultCoordinates.x,
+      y: defaultCoordinates.y,
+    },
   })
 
-  onMoveOrResize(transformProps)
+  onMoveOrResize({
+    ...position,
+    ...size,
+  })
 
   // force render a new iframe component when url changes
   const iframeComponent = React.useMemo(() => {
@@ -93,10 +101,10 @@ export const IframePreviewCard = ({
         className="iframe-preview-card color-bg-default rounded-3 border color-shadow-small overflow-hidden"
         ref={dragContainerRef}
         style={{
-          top: transformProps.y,
-          left: transformProps.x,
-          width: transformProps.width,
-          height: transformProps.height,
+          top: position.y,
+          left: position.x,
+          width: size.width,
+          height: size.height,
         }}
       >
         {/* iframe modal navbar */}
@@ -105,7 +113,11 @@ export const IframePreviewCard = ({
           style={{ height: 38 }}
         >
           <div className="p-2 d-flex">
-            <span className="grabber" {...dragProps} ref={dragElementRef}>
+            <span
+              className="grabber"
+              ref={dragElementRef}
+              onMouseDown={onDragElementMouseDown}
+            >
               <GrabberIcon />
             </span>
             {title}
