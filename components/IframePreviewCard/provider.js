@@ -76,8 +76,6 @@ async function headRequest(url) {
       mode: 'no-cors',
     })
 
-    console.log(res)
-
     return res.ok
   } catch (e) {
     console.error(e)
