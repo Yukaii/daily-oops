@@ -1,4 +1,5 @@
 import { GrabberIcon, XCircleFillIcon } from '@primer/octicons-react'
+import cx from 'classnames'
 import React from 'react'
 import { useCallback } from 'react'
 import ReactDOM from 'react-dom'
@@ -56,6 +57,8 @@ export const IframePreviewCard = ({
     transformProps,
     horizontalResizeElementRef,
     verticalResizeElementRef,
+    bothResizeElementRef,
+    resizeDirection,
     getOnResizeElementMouseDown,
     isResizing,
   } = useDraggableResizable({
@@ -106,7 +109,11 @@ export const IframePreviewCard = ({
           </div>
 
           <div className="p-2">
-            <span className="close color-fg-subtle" onClick={onClose}>
+            <span
+              className="close color-fg-subtle"
+              onClick={onClose}
+              title="Close"
+            >
               <XCircleFillIcon />
             </span>
           </div>
@@ -130,12 +137,24 @@ export const IframePreviewCard = ({
 
         {/* resize handles */}
         <div
-          className="resize-handle resize-handle--right"
+          className="resize-handle resize-handle--bottom-right"
+          onMouseDown={getOnResizeElementMouseDown('both')}
+          ref={bothResizeElementRef}
+        />
+
+        <div
+          className={cx('resize-handle resize-handle--right', {
+            'is-resizing':
+              isResizing && ['both', 'horizontal'].includes(resizeDirection),
+          })}
           onMouseDown={getOnResizeElementMouseDown('horizontal')}
           ref={horizontalResizeElementRef}
         />
         <div
-          className="resize-handle resize-handle--bottom"
+          className={cx('resize-handle resize-handle--bottom', {
+            'is-resizing':
+              isResizing && ['both', 'vertical'].includes(resizeDirection),
+          })}
           onMouseDown={getOnResizeElementMouseDown('vertical')}
           ref={verticalResizeElementRef}
         />
@@ -168,8 +187,10 @@ export const IframePreviewCard = ({
           cursor: col-resize;
         }
 
-        .iframe-preview-card .resize-handle:hover {
+        .iframe-preview-card .resize-handle:hover,
+        .iframe-preview-card .resize-handle.is-resizing {
           background-color: var(--color-accent-emphasis);
+          transition: background-color 0.2s ease-in-out;
         }
 
         .iframe-preview-card .resize-handle--right {
@@ -185,6 +206,28 @@ export const IframePreviewCard = ({
           height: 2px;
 
           cursor: row-resize;
+        }
+
+        .iframe-preview-card .resize-handle--bottom-right {
+          bottom: 0px;
+          right: 0px;
+          width: 5px;
+          height: 5px;
+          cursor: nwse-resize;
+          z-index: 1;
+        }
+
+        .iframe-preview-card .resize-handle--bottom-right:hover {
+          background-color: transparent;
+        }
+
+        .iframe-preview-card
+          .resize-handle--bottom-right:hover
+          ~ .resize-handle--bottom,
+        .iframe-preview-card
+          .resize-handle--bottom-right:hover
+          ~ .resize-handle--right {
+          background-color: var(--color-accent-emphasis);
         }
       `}</style>
     </Portal>

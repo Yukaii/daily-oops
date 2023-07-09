@@ -68,6 +68,33 @@ const useHoldingShiftKey = () => {
   return isHoldingShiftRef
 }
 
+// Test if the url is valid and can be iframe embedded
+async function headRequest(url) {
+  try {
+    const res = await fetch(url, {
+      method: 'HEAD',
+      mode: 'no-cors',
+    })
+
+    console.log(res)
+
+    return res.ok
+  } catch (e) {
+    console.error(e)
+    return false
+  }
+}
+
+// href might be a relative url or a full url
+function parseHref(href) {
+  try {
+    const url = new URL(href, window.location.origin)
+    return url.href
+  } catch (e) {
+    return href
+  }
+}
+
 // Note: This is a provider for the IframePreviewCard component
 // It should register the clicking event of any external link
 // and bring up the IframePreviewCard component
@@ -80,23 +107,30 @@ export const IframePreviewCardProvider = ({ children }) => {
     width > 768
   )
 
-  const isHoldingAltRef = useHoldingShiftKey()
+  const isHoldingShiftRef = useHoldingShiftKey()
 
   useMemo(() => {
     setPreviewCardEnabled(width > 768)
   }, [setPreviewCardEnabled, width])
 
   useEffect(() => {
-    const handlePreview = (e) => {
+    const handlePreview = async (e) => {
       const { target } = e
-      const url = target.href
+      const url = parseHref(target.href)
 
-      if (
-        !isHoldingAltRef.current ||
-        !previewCardEnabledRef.current ||
-        isExternalLink(url)
-      ) {
+      // test if the url is valid and can be iframe embedded
+      if (url && !(await headRequest(url))) {
         return
+      }
+
+      if (process.env.NODE_ENV === 'production') {
+        if (
+          !isHoldingShiftRef.current ||
+          !previewCardEnabledRef.current ||
+          isExternalLink(url)
+        ) {
+          return
+        }
       }
 
       if (target.tagName === 'A' && url) {
@@ -107,7 +141,7 @@ export const IframePreviewCardProvider = ({ children }) => {
     }
     document.addEventListener('click', handlePreview)
     return () => document.removeEventListener('click', handlePreview)
-  }, [isHoldingAltRef, previewCardEnabledRef])
+  }, [isHoldingShiftRef, previewCardEnabledRef])
 
   return (
     <>
