@@ -71,6 +71,10 @@ export const IframePreviewCard = ({
       x: defaultCoordinates.x,
       y: defaultCoordinates.y,
     },
+    minimalSize: {
+      width: 200,
+      height: 200,
+    },
   })
 
   onMoveOrResize({
@@ -112,7 +116,7 @@ export const IframePreviewCard = ({
           className="d-flex flex-justify-between color-bg-default border-bottom"
           style={{ height: 38 }}
         >
-          <div className="p-2 d-flex">
+          <div className="p-2 d-flex Truncate">
             <span
               className="grabber"
               ref={dragElementRef}
@@ -120,15 +124,11 @@ export const IframePreviewCard = ({
             >
               <GrabberIcon />
             </span>
-            {title}
+            <span className="Truncate-text">{title}</span>
           </div>
 
           <div className="p-2">
-            <span
-              className="close color-fg-subtle"
-              onClick={onClose}
-              title="Close"
-            >
+            <span className="close" onClick={onClose} title="Close">
               <XCircleFillIcon />
             </span>
           </div>
@@ -190,6 +190,7 @@ export const IframePreviewCard = ({
 
         .iframe-preview-card .close {
           cursor: pointer;
+          color: var(--color-fg-subtle);
         }
 
         .iframe-preview-card .close:hover {
