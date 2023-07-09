@@ -78,7 +78,7 @@ export const IframePreviewCard = ({
         <style jsx>{`
           iframe {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 38px);
             border: none;
             background-color: var(--color-bg-default);
           }

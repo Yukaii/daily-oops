@@ -126,7 +126,11 @@ export const IframePreviewCardProvider = ({ children }) => {
       }
 
       // test if the url is valid and can be iframe embedded
-      if (url && !(await headRequest(url))) {
+      if (
+        process.env.NODE_ENV === 'production' &&
+        url &&
+        !(await headRequest(url))
+      ) {
         return openUrl()
       }
 
