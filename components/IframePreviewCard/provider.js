@@ -119,9 +119,9 @@ export const IframePreviewCardProvider = ({ children }) => {
       const openUrl = () => {
         const openTarget = target.getAttribute('target')
         if (openTarget) {
-          window.open(url, openTarget)
+          window.open(target.href, openTarget)
         } else {
-          window.location.href = url
+          window.location.href = target.href
         }
       }
 
