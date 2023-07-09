@@ -112,9 +112,7 @@ export const IframePreviewCardProvider = ({ children }) => {
   }, [setPreviewCardEnabled, width])
 
   useEffect(() => {
-    const handlePreview = async (e) => {
-      e.preventDefault()
-
+    const handleOpenPreview = async (e) => {
       const { target } = e
       const url = parseHref(target.href)
 
@@ -146,6 +144,12 @@ export const IframePreviewCardProvider = ({ children }) => {
         setPreviewUrl(target.href)
         setShowPreview(true)
       }
+    }
+
+    const handlePreview = (e) => {
+      e.preventDefault()
+
+      handleOpenPreview(e)
     }
     document.addEventListener('click', handlePreview)
     return () => document.removeEventListener('click', handlePreview)
