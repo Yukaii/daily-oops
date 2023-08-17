@@ -49,6 +49,7 @@ export const ScrollPgoress = () => {
           right: 0;
           height: 3px;
           z-index: 999999;
+          background-color: var(--color-bg-subtle);
         }
 
         .scroll-progress {
