@@ -13,7 +13,7 @@ export default function PostRow({ post, index, totalCount }) {
 
   const fullSlug = `/blog/${year}/${month}/${day}/${slug}`
 
-  const [readStatus, setReadStatus] = useReadStatus(fullSlug)
+  const [readStatus, setReadStatus, isLoaded] = useReadStatus(fullSlug)
 
   const onLinkClick = () => {
     setReadStatus(true)
@@ -22,10 +22,10 @@ export default function PostRow({ post, index, totalCount }) {
   return (
     <div className="Box-row Box-row--hover-gray d-flex flex-items-start">
       <div
-        className="mr-2 mt-1 d-flex flex-items-start"
+        className="mt-1 mr-2 d-flex flex-items-start"
         style={{ color: 'var(--color-scale-orange-3)' }}
       >
-        {readStatus ? (
+        {readStatus || !isLoaded ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
           <DotFillIcon title="You haven't read this article yet." />
