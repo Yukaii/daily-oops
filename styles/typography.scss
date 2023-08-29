@@ -41,6 +41,14 @@
       color: var(--color-fg-muted);
       font-size: 14px;
     }
+
+    @media (min-width: 710px) {
+      margin: 1em -1.5em;
+    }
+
+    @media (max-width: 709px) {
+      margin: 1em 10px;
+    }
   }
 
   mark {
