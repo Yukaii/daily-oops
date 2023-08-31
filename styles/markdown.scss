@@ -15,8 +15,12 @@
 
   .task-list-item-checkbox {
     float: left;
-    margin: .40em 0 .2em -1.3em !important;
+    margin: 0.4em 0 0.2em -1.3em !important;
     vertical-align: middle;
     cursor: default !important;
+  }
+
+  s {
+    color: var(--color-fg-muted);
   }
 }
