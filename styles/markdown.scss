@@ -38,6 +38,10 @@
       border: none;
       background-color: transparent;
       color: var(--color-fg-default);
+
+      p {
+        margin: 0;
+      }
     }
 
     &::before {
