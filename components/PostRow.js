@@ -3,6 +3,7 @@ import dayjs from 'lib/dayjs'
 import Link from 'next/link'
 
 import useReadStatus from '../lib/hooks/useReadStatus'
+import styles from './PostRow.module.css'
 
 export default function PostRow({ post, index, totalCount }) {
   const {
@@ -35,6 +36,7 @@ export default function PostRow({ post, index, totalCount }) {
         <Link
           href={`/blog/${year}/${month}/${day}/${slug}`}
           onClick={onLinkClick}
+          className={styles.postLink}
         >
           <strong>{post.title}</strong>
         </Link>
