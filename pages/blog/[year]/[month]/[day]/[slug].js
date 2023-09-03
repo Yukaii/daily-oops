@@ -23,6 +23,8 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { resolvedTheme } = useTheme()
   const [layoutDarkMode, setLayoutDarkMode] = useState(resolvedTheme)
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     window.setTimeout(() => {
       setLayoutDarkMode(resolvedTheme)
     }, 100)
