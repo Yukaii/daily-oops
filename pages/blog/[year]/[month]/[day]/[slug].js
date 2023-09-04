@@ -1,6 +1,7 @@
+import Giscus from '@giscus/react'
 import { IframePreviewCardProvider } from 'components/IframePreviewCard'
 import Markdown from 'components/Markdown'
-import { DiscussionEmbed } from 'disqus-react'
+// import { DiscussionEmbed } from 'disqus-react'
 import { config } from 'lib/config'
 import { NEXT_PUBLIC_DOMAIN } from 'lib/constants'
 import dayjs from 'lib/dayjs'
@@ -142,20 +143,38 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
           </div>
         </div>
 
-        {disqus && (
-          <div className="container py-3 px-3">
-            <DiscussionEmbed
-              shortname={disqus.shortname}
-              config={{
-                url: url,
-                identifier: url,
-                title: title,
-                language: 'zh_TW',
-              }}
-              darkmode={JSON.stringify(layoutDarkMode)}
-            />
-          </div>
-        )}
+        <div className="container py-3 px-3">
+          <Giscus
+            id="comments"
+            repo="Yukaii/daily-oops"
+            repoId="MDEwOlJlcG9zaXRvcnkzMDExNTExNTI="
+            category="Comments"
+            categoryId="DIC_kwDOEfMzsM4CZEHc"
+            mapping="pathname"
+            term="Welcome to Daily Oops"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme={layoutDarkMode === 'dark' ? 'dark' : 'light'}
+            lang="en"
+            loading="lazy"
+          />
+        </div>
+
+        {/* {disqus && ( */}
+        {/*   <div className="container py-3 px-3"> */}
+        {/*     <DiscussionEmbed */}
+        {/*       shortname={disqus.shortname} */}
+        {/*       config={{ */}
+        {/*         url: url, */}
+        {/*         identifier: url, */}
+        {/*         title: title, */}
+        {/*         language: 'zh_TW', */}
+        {/*       }} */}
+        {/*       darkmode={JSON.stringify(layoutDarkMode)} */}
+        {/*     /> */}
+        {/*   </div> */}
+        {/* )} */}
       </div>
     </section>
   )
