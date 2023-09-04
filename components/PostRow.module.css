@@ -9,3 +9,7 @@
 .read .postLink {
   color: var(--color-fg-muted);
 }
+
+.read .postLink:hover {
+  color: var(--color-accent-fg);
+}
