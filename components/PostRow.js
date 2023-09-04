@@ -23,11 +23,7 @@ export default function PostRow({ post, index, totalCount }) {
   }
 
   return (
-    <div
-      className={cx('Box-row Box-row--hover-gray d-flex flex-items-start', {
-        [styles.read]: isRead,
-      })}
-    >
+    <div className="Box-row Box-row--hover-gray d-flex flex-items-start">
       <div
         className="mt-1 mr-2 d-flex flex-items-start"
         style={{ color: 'var(--color-scale-orange-3)' }}
