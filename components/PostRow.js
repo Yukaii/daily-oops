@@ -1,4 +1,5 @@
 import { DotFillIcon } from '@primer/octicons-react'
+import cx from 'classnames'
 import dayjs from 'lib/dayjs'
 import Link from 'next/link'
 
@@ -15,18 +16,23 @@ export default function PostRow({ post, index, totalCount }) {
   const fullSlug = `/blog/${year}/${month}/${day}/${slug}`
 
   const [readStatus, setReadStatus, isLoaded] = useReadStatus(fullSlug)
+  const isRead = readStatus || !isLoaded
 
   const onLinkClick = () => {
     setReadStatus(true)
   }
 
   return (
-    <div className="Box-row Box-row--hover-gray d-flex flex-items-start">
+    <div
+      className={cx('Box-row Box-row--hover-gray d-flex flex-items-start', {
+        [styles.read]: isRead,
+      })}
+    >
       <div
         className="mt-1 mr-2 d-flex flex-items-start"
         style={{ color: 'var(--color-scale-orange-3)' }}
       >
-        {readStatus || !isLoaded ? (
+        {isRead ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
           <DotFillIcon title="You haven't read this article yet." />

@@ -5,3 +5,7 @@
 .postLink:hover {
   color: var(--color-accent-fg);
 }
+
+.read .postLink {
+  color: var(--color-fg-muted);
+}
