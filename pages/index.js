@@ -44,7 +44,7 @@ export default function Home({ posts }) {
 
         <Link href="/blog" passHref>
           <button className="mt-3 btn mr-2" type="button">
-            Read More
+            More posts
           </button>
         </Link>
 
