@@ -1,20 +1,9 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "simple-import-sort"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "plugins": ["simple-import-sort"],
   "rules": {
-    "semi-style": [
-      2,
-      "last"
-    ],
-    "quotes": [
-      2,
-      "single"
-    ],
+    "semi-style": [2, "last"],
+    "quotes": [2, "single"],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"
   }
