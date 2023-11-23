@@ -59,13 +59,13 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  // const posts = await getAllPostsWithSlug()
+  const posts = await getAllPostsWithSlug()
 
-  // writeRSS(posts.slice(0, 10))
+  writeRSS(posts.slice(0, 10))
 
   return {
     props: {
-      // posts: posts.map((post) => omit(post, ['content'])),
+      posts: posts.map((post) => omit(post, ['content'])),
     },
   }
 }
