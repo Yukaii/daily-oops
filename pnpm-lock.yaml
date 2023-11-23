@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@fortawesome/fontawesome-free':
-    specifier: 5.15.3
-    version: 5.15.3
+    specifier: 5.15.4
+    version: 5.15.4
   '@giscus/react':
     specifier: ^2.3.0
     version: 2.3.0(react-dom@18.2.0)(react@18.2.0)
@@ -259,8 +259,8 @@ packages:
       - supports-color
     dev: true
 
-  /@fortawesome/fontawesome-free@5.15.3:
-    resolution: {integrity: sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==}
+  /@fortawesome/fontawesome-free@5.15.4:
+    resolution: {integrity: sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==}
     engines: {node: '>=6'}
     requiresBuild: true
     dev: false
