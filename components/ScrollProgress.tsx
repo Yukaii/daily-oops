@@ -17,7 +17,7 @@ const Portal = ({ children }) => {
   return ReactDOM.createPortal(children, findOrCreatePortalContainer())
 }
 
-export const ScrollPgoress = () => {
+export const ScrollProgress = () => {
   const [progress, setProgress] = React.useState(0)
 
   const onScroll = React.useCallback(() => {
@@ -61,4 +61,4 @@ export const ScrollPgoress = () => {
   )
 }
 
-export default ScrollPgoress
+export default ScrollProgress
