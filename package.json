@@ -47,7 +47,7 @@
     "markdown-it-toc-done-right": "^4.2.0",
     "next": "^14.0.3",
     "next-seo": "^4.29.0",
-    "next-superjson-plugin": "^0.5.9",
+    "next-superjson-plugin": "^0.5.10",
     "next-themes": "^0.2.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
