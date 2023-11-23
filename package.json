@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "5.15.3",
+    "@fortawesome/fontawesome-free": "5.15.4",
     "@giscus/react": "^2.3.0",
     "@next/bundle-analyzer": "^10.2.3",
     "@primer/css": "21.0.7",
