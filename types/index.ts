@@ -11,6 +11,7 @@ export interface Post {
   id: string
   meta: {
     date: string
+    image?: string
   }
   title: string
   content: string

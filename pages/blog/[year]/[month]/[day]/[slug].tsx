@@ -28,11 +28,13 @@ type PostProps = {
     slug: string
   }
   disqus: {
+    shortname: string
     domain: string
   }
   noteId: number
   meta: {
-    image: string
+    date: string
+    image?: string
   }
 }
 
