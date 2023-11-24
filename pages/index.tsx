@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash-es'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 

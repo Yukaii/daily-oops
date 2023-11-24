@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash-es'
 import Head from 'next/head'
 
 import PostRow from '@/components/PostRow'
