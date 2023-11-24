@@ -1,8 +1,9 @@
 import Head from 'next/head'
 
 import { loadProjects } from '@/lib/project'
+import { OldProjects as ProjectsProps } from '@/types/post'
 
-export default function Projects({ projects }) {
+export default function Projects({ projects }: ProjectsProps) {
   return (
     <div>
       <Head>
@@ -24,7 +25,12 @@ export default function Projects({ projects }) {
               key={project.link}
             >
               {project.image && (
-                <img src={project.image} style={{ borderRadius: 0 }} />
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={project.image}
+                  style={{ borderRadius: 0 }}
+                  alt={project.image}
+                />
               )}
               <div className="px-3 pa-2">
                 <h3 className="color-fg-default">{project.title}</h3>

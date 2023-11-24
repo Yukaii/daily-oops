@@ -1,10 +1,14 @@
-import PostRow from 'components/PostRow'
 import omit from 'lodash/omit'
 import Head from 'next/head'
 
+import PostRow from '@/components/PostRow'
 import { getAllPostsWithSlug } from '@/lib/post'
+import {
+  Posts as PostsProps,
+  PostsWithoutContent as BlogProps,
+} from '@/types/post'
 
-export default function Blog({ posts }) {
+export default function Blog({ posts }: BlogProps) {
   return (
     <article>
       <Head>
@@ -41,7 +45,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: posts.map((post) => omit(post, ['content'])),
+      posts: posts.map((post: PostsProps) => omit(post, ['content'])),
     },
   }
 }

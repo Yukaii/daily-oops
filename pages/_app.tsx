@@ -4,15 +4,15 @@ import 'styles/primer-dark.scss'
 import 'styles/linegutter.scss'
 import '@yukaii/github-highlightjs-themes/themes/github-light-default.css'
 
-import Footer from 'components/Footer'
-import Header from 'components/Header'
-import ScrollProgress from 'components/ScrollProgress'
-import WithMounted from 'components/WithMounted'
 import Head from 'next/head'
-import Router from 'next/router'
+import Router, { NextRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import SimpleReactLightbox from 'simple-react-lightbox'
 
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import ScrollProgress from '@/components/ScrollProgress'
+import WithMounted from '@/components/WithMounted'
 import { pageview } from '@/lib/gtag'
 
 Router.events.on(
@@ -20,7 +20,13 @@ Router.events.on(
   (url) => process.env.NODE_ENV === 'production' && pageview(url)
 )
 
-function MyApp({ Component, pageProps, router }) {
+type MyAppProps = {
+  Component: React.ElementType
+  pageProps: Record<string, unknown>
+  router: NextRouter
+}
+
+function MyApp({ Component, pageProps, router }: MyAppProps) {
   return (
     <>
       <Head>
