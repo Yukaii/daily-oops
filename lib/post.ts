@@ -1,8 +1,10 @@
 import * as Promise from 'bluebird'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
-import { config } from 'lib/config'
 import path from 'path'
+
+import { config } from '@/lib/config'
+import { Post } from '@/types'
 
 const shorthash = require('shorthash')
 
@@ -20,11 +22,16 @@ const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
 fs.ensureDirSync(cachedDir)
 fs.ensureDirSync(notesCachedDir)
 
-const getHashedKey = (year, month, day, slug) => {
+const getHashedKey = (
+  year: string,
+  month: string,
+  day: string,
+  slug: string
+) => {
   return shorthash.unique(`${year}-${month}-${day}-${slug}`)
 }
 
-export const fetchPostData = async (noteId) => {
+export const fetchPostData = async (noteId: number) => {
   if (!noteId) {
     return
   }
@@ -65,34 +72,35 @@ export const getAllPostsWithSlug = async () => {
     { next: { revalidate: 300 } }
   ).then((r) => r.json())
 
-  const posts = (
-    await Promise.map(data.notes || [], async (note) => {
-      const fullContent = await fetchPostData(note.id)
-      if (!fullContent) {
-        return null
-      }
+  //@ts-ignore // TODO: TS support
+  const posts = await Promise.map(data.notes || [], async (note) => {
+    const fullContent = await fetchPostData(note.id)
+    if (!fullContent) {
+      return null
+    }
 
-      const { data: meta, content } = parseMeta(fullContent)
-      note.content = content
-      const slug = getSlugFromNote(note, meta)
+    const { data: meta, content } = parseMeta(fullContent)
+    note.content = content
+    //@ts-ignore // TODO: TS support
+    const slug = getSlugFromNote(note, meta)
 
-      return {
-        id: note.id,
-        meta,
-        content,
-        note,
-        title: note.title,
-        date: getDateFromNote(note, meta),
-        slug,
-        tags: note.tags,
-        publishedAt: note.publishedAt,
-      }
-    })
-  )
+    return {
+      id: note.id,
+      meta,
+      content,
+      note,
+      title: note.title,
+      //@ts-ignore // TODO: TS support
+      date: getDateFromNote(note, meta),
+      slug,
+      tags: note.tags,
+      publishedAt: note.publishedAt,
+    }
+  })
     .filter(Boolean)
     .filter(filterNotDraft)
 
-  posts.forEach((post) => {
+  posts.forEach((post: Post) => {
     const { date } = post
     const filename = getHashedKey(date.year, date.month, date.day, post.slug)
 
@@ -121,7 +129,7 @@ export const getAllPostsWithSlug = async () => {
   return posts.sort(sortPostByDate)
 }
 
-export const formatPostsAsParams = (posts) => {
+export const formatPostsAsParams = (posts: Post[]) => {
   return posts.map((post) => ({
     params: {
       ...post.date,
@@ -130,7 +138,12 @@ export const formatPostsAsParams = (posts) => {
   }))
 }
 
-export const getPostData = async (params) => {
+export const getPostData = async (params: {
+  year: string
+  month: string
+  day: string
+  slug: string
+}) => {
   const filename = getHashedKey(
     params.year,
     params.month,

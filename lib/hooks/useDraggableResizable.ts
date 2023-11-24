@@ -9,7 +9,8 @@ export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
   const clickOffsetRef = useRef({ x: 0, y: 0 })
 
   const onDragElementMouseDown = useCallback(
-    (e: MouseEvent) => {
+    // TODO: TS support @/components/IframePreviewCard/card
+    (e: MouseEvent | React.MouseEvent) => {
       const { clientX, clientY } = e
       const { top, left } = dragElementRef.current?.getBoundingClientRect()
 
@@ -70,8 +71,9 @@ export const useResizable = ({
   minimalHeight = 100,
 } = {}) => {
   const [isResizing, setIsResizing, isResizingRef] = useStateRef(false)
-  const [resizeDirection, setResizeDirection, resizeDirectionRef] =
-    useStateRef(null)
+  const [resizeDirection, setResizeDirection, resizeDirectionRef] = useStateRef<
+    null | string
+  >(null)
   const [size, setSize] = useStateRef({
     width: defaultWidth,
     height: defaultHeight,
@@ -83,8 +85,8 @@ export const useResizable = ({
   const bothResizeElementRef = useRef(null)
 
   const getOnResizeElementMouseDown = useCallback(
-    // TODO: TS support
-    (dir: any) => (e: MouseEvent) => {
+    // TODO: TS support @/components/IframePreviewCard/card
+    (dir: string) => (e: MouseEvent | React.MouseEvent) => {
       e.preventDefault()
       setIsResizing(true)
       setResizeDirection(dir)

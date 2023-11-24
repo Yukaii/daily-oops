@@ -18,8 +18,21 @@ const findOrCreatePortalContainer = () => {
   return portalContainer
 }
 
-const Portal = ({ children }) => {
+const Portal = ({ children }: { children: React.ReactNode }) => {
   return ReactDOM.createPortal(children, findOrCreatePortalContainer())
+}
+
+type IframePreviewCardProps = {
+  url: string
+  onIframeError?: Function
+  onClose: () => void
+  onMoveOrResize: (size: { x: number; y: number }) => void
+  defaultCoordinates: {
+    width: number
+    height: number
+    x: number
+    y: number
+  }
 }
 
 export const IframePreviewCard = ({
@@ -28,9 +41,9 @@ export const IframePreviewCard = ({
   onClose,
   onMoveOrResize,
   defaultCoordinates,
-}) => {
+}: IframePreviewCardProps) => {
   /** @type {React.RefObject<HTMLIFrameElement>} */
-  const iframeRef = React.useRef(null)
+  const iframeRef = React.useRef(null) as any // TODO: TS support
   const [title, setTitle] = React.useState('Loading...')
 
   const onLoad = useCallback(() => {
@@ -160,7 +173,7 @@ export const IframePreviewCard = ({
         <div
           className={cx('resize-handle resize-handle--right', {
             'is-resizing':
-              isResizing && ['both', 'horizontal'].includes(resizeDirection),
+              isResizing && ['both', 'horizontal'].includes(resizeDirection!),
           })}
           onMouseDown={getOnResizeElementMouseDown('horizontal')}
           ref={horizontalResizeElementRef}
@@ -168,7 +181,7 @@ export const IframePreviewCard = ({
         <div
           className={cx('resize-handle resize-handle--bottom', {
             'is-resizing':
-              isResizing && ['both', 'vertical'].includes(resizeDirection),
+              isResizing && ['both', 'vertical'].includes(resizeDirection!),
           })}
           onMouseDown={getOnResizeElementMouseDown('vertical')}
           ref={verticalResizeElementRef}
