@@ -1,7 +1,8 @@
 import PostRow from 'components/PostRow'
-import { getAllPostsWithSlug } from 'lib/post'
 import omit from 'lodash/omit'
 import Head from 'next/head'
+
+import { getAllPostsWithSlug } from '@/lib/post'
 
 export default function Blog({ posts }) {
   return (

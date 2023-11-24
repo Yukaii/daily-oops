@@ -151,9 +151,15 @@ dependencies:
     version: 1.10.2
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.9.5
+    version: 20.9.5
   '@types/react':
-    specifier: 18.0.28
-    version: 18.0.28
+    specifier: ^18.2.38
+    version: 18.2.38
+  '@types/react-dom':
+    specifier: ^18.2.17
+    version: 18.2.17
   '@types/simple-react-lightbox':
     specifier: ^3.6.2
     version: 3.6.2
@@ -533,7 +539,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.1
       '@types/keyv': 3.1.4
-      '@types/node': 20.5.0
+      '@types/node': 20.9.5
       '@types/responselike': 1.0.0
     dev: false
 
@@ -552,19 +558,26 @@ packages:
   /@types/keyv@3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 20.5.0
+      '@types/node': 20.9.5
     dev: false
 
-  /@types/node@20.5.0:
-    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
-    dev: false
+  /@types/node@20.9.5:
+    resolution: {integrity: sha512-Uq2xbNq0chGg+/WQEU0LJTSs/1nKxz6u1iemLcGomkSnKokbW1fbLqc3HOqCf2JP7KjlL4QkS7oZZTrOQHQYgQ==}
+    dependencies:
+      undici-types: 5.26.5
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react@18.0.28:
-    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
+  /@types/react-dom@18.2.17:
+    resolution: {integrity: sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==}
+    dependencies:
+      '@types/react': 18.2.38
+    dev: true
+
+  /@types/react@18.2.38:
+    resolution: {integrity: sha512-cBBXHzuPtQK6wNthuVMV6IjHAFkdl/FOPFIlkd81/Cd1+IqkHu/A+w4g43kaQQoYHik/ruaQBDL72HyCy1vuMw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -574,7 +587,7 @@ packages:
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 20.5.0
+      '@types/node': 20.9.5
     dev: false
 
   /@types/scheduler@0.16.3:
@@ -584,7 +597,7 @@ packages:
   /@types/simple-react-lightbox@3.6.2:
     resolution: {integrity: sha512-NDmGVt7ww6UD2l2tNBg9ZGRXeRO9iCAY/kV+nOF7cxI1hk/KP6sqMtqHucP2JGEVS16M8WVH9SRZDIMmZT894Q==}
     dependencies:
-      '@types/react': 18.0.28
+      '@types/react': 18.2.38
     dev: true
 
   /@types/trusted-types@2.0.3:
@@ -3733,6 +3746,9 @@ packages:
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
     dev: true
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}

@@ -1,17 +1,22 @@
 import Giscus from '@giscus/react'
 import { IframePreviewCardProvider } from 'components/IframePreviewCard'
 import Markdown from 'components/Markdown'
-// import { DiscussionEmbed } from 'disqus-react'
-import { config } from 'lib/config'
-import { NEXT_PUBLIC_DOMAIN } from 'lib/constants'
-import dayjs from 'lib/dayjs'
-import { getDisqusConfig } from 'lib/disqus'
-import { formatPostsAsParams, getAllPostsWithSlug, getPostData } from 'lib/post'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { SRLWrapper } from 'simple-react-lightbox'
+
+// import { DiscussionEmbed } from 'disqus-react'
+import { config } from '@/lib/config'
+import { NEXT_PUBLIC_DOMAIN } from '@/lib/constants'
+import dayjs from '@/lib/dayjs'
+import { getDisqusConfig } from '@/lib/disqus'
+import {
+  formatPostsAsParams,
+  getAllPostsWithSlug,
+  getPostData,
+} from '@/lib/post'
 
 export default function Post({ content, title, params, disqus, noteId, meta }) {
   const { year, month, day, slug } = params

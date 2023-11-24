@@ -1,6 +1,7 @@
 import Markdown from 'components/Markdown'
-import { loadProjectMarkdown } from 'lib/project'
 import Head from 'next/head'
+
+import { loadProjectMarkdown } from '@/lib/project'
 
 export default function Projects({ content }) {
   return (

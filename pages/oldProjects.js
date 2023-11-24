@@ -1,5 +1,6 @@
-import { loadProjects } from 'lib/project'
 import Head from 'next/head'
+
+import { loadProjects } from '@/lib/project'
 
 export default function Projects({ projects }) {
   return (
