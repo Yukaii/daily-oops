@@ -13,7 +13,7 @@ const findOrCreatePortalContainer = () => {
   return portalContainer
 }
 
-const Portal = ({ children }) => {
+const Portal = ({ children }: { children: React.ReactNode }) => {
   return ReactDOM.createPortal(children, findOrCreatePortalContainer())
 }
 
