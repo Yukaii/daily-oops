@@ -1,14 +1,39 @@
-import { useEffect, useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react'
 
-export const useStateRef = (initialState) => {
+const isFunction = <S>(
+  setStateAction: SetStateAction<S>
+): setStateAction is (prevState: S) => S => typeof setStateAction === 'function'
+
+type ReadOnlyRefObject<T> = {
+  readonly current: T
+}
+
+type UseStateRef = {
+  <S>(initialState: S | (() => S)): [
+    S,
+    Dispatch<SetStateAction<S>>,
+    ReadOnlyRefObject<S>
+  ]
+  <S = undefined>(): [
+    S | undefined,
+    Dispatch<SetStateAction<S | undefined>>,
+    ReadOnlyRefObject<S | undefined>
+  ]
+}
+
+const useStateRef: UseStateRef = <S>(initialState?: S | (() => S)) => {
   const [state, setState] = useState(initialState)
   const ref = useRef(state)
 
-  useEffect(() => {
-    ref.current = state
-  }, [state])
+  const dispatch: typeof setState = useCallback((setStateAction: any) => {
+    ref.current = isFunction(setStateAction)
+      ? setStateAction(ref.current)
+      : setStateAction
 
-  return [state, setState, ref]
+    setState(ref.current)
+  }, [])
+
+  return [state, dispatch, ref]
 }
 
 export default useStateRef
