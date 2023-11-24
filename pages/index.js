@@ -2,7 +2,7 @@ import Intro from 'components/Intro'
 import PostRow from 'components/PostRow'
 import { getAllPostsWithSlug } from 'lib/post'
 import { writeRSS } from 'lib/rss'
-import omit from 'lodash/omit'
+import { omit } from 'lodash-es'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
