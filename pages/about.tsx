@@ -20,7 +20,7 @@ export default function About({ content }: AboutProps) {
 }
 
 export async function getStaticProps() {
-  const content = await fetchPostData(process.env.ABOUT_ME_NOTE_ID)
+  const content = await fetchPostData(process.env.ABOUT_ME_NOTE_ID!)
 
   return {
     props: {

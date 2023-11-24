@@ -31,7 +31,7 @@ const getHashedKey = (
   return shorthash.unique(`${year}-${month}-${day}-${slug}`)
 }
 
-export const fetchPostData = async (noteId: number) => {
+export const fetchPostData = async (noteId: string) => {
   if (!noteId) {
     return
   }
@@ -110,9 +110,9 @@ export const getAllPostsWithSlug = async () => {
       path.join(cachedDir, `${filename}.json`),
       JSON.stringify(
         {
-          id: post.note.id,
+          id: post.note!.id,
           meta: post.meta,
-          title: post.note.title,
+          title: post.note!.title,
           content: post?.content,
           date: post.date,
           slug: post.slug,

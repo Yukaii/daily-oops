@@ -23,6 +23,10 @@ export interface Post {
   slug: string
   tags: string[]
   publishedAt: string
+  note?: {
+    id: string
+    title: string
+  }
 }
 
 export interface Posts {
