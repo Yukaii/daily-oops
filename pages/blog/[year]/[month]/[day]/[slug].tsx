@@ -1,12 +1,12 @@
 import Giscus from '@giscus/react'
-import { IframePreviewCardProvider } from 'components/IframePreviewCard'
-import Markdown from 'components/Markdown'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { SRLWrapper } from 'simple-react-lightbox'
 
+import { IframePreviewCardProvider } from '@/components/IframePreviewCard'
+import Markdown from '@/components/Markdown'
 // import { DiscussionEmbed } from 'disqus-react'
 import { config } from '@/lib/config'
 import { NEXT_PUBLIC_DOMAIN } from '@/lib/constants'
@@ -18,7 +18,32 @@ import {
   getPostData,
 } from '@/lib/post'
 
-export default function Post({ content, title, params, disqus, noteId, meta }) {
+type PostProps = {
+  content: string
+  title: string
+  params: {
+    year: string
+    month: string
+    day: string
+    slug: string
+  }
+  disqus: {
+    domain: string
+  }
+  noteId: number
+  meta: {
+    image: string
+  }
+}
+
+export default function Post({
+  content,
+  title,
+  params,
+  disqus,
+  noteId,
+  meta,
+}: PostProps) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
   const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
@@ -185,7 +210,7 @@ export default function Post({ content, title, params, disqus, noteId, meta }) {
   )
 }
 
-export async function getStaticProps({ params, preview = false, previewData }) {
+export async function getStaticProps({ params }: PostProps) {
   const { content, title, id, meta } = await getPostData(params)
 
   return {

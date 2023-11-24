@@ -6,10 +6,7 @@ import Intro from '@/components/Intro'
 import PostRow from '@/components/PostRow'
 import { getAllPostsWithSlug } from '@/lib/post'
 import { writeRSS } from '@/lib/rss'
-import {
-  Posts as PostsProps,
-  PostsWithoutContent as HomeProps,
-} from '@/types/post'
+import { Posts as PostsProps, PostsWithoutContent as HomeProps } from '@/types'
 
 export default function Home({ posts }: HomeProps) {
   return (

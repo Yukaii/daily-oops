@@ -3,10 +3,7 @@ import Head from 'next/head'
 
 import PostRow from '@/components/PostRow'
 import { getAllPostsWithSlug } from '@/lib/post'
-import {
-  Posts as PostsProps,
-  PostsWithoutContent as BlogProps,
-} from '@/types/post'
+import { Posts as PostsProps, PostsWithoutContent as BlogProps } from '@/types'
 
 export default function Blog({ posts }: BlogProps) {
   return (

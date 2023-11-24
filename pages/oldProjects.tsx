@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { loadProjects } from '@/lib/project'
-import { OldProjects as ProjectsProps } from '@/types/post'
+import { OldProjects as ProjectsProps } from '@/types'
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
