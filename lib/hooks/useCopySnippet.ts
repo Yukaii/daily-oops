@@ -1,12 +1,14 @@
 import copy from 'copy-to-clipboard'
 import { useEffect } from 'react'
 
-const isCopyButton = (button) =>
+// TODO: TS support
+const isCopyButton = (button: any) =>
   button &&
   button.classList.contains('copy-snippet-button') &&
   !button.classList.contains('copied')
 
-const isButtonChildren = (elem) => {
+// TODO: TS support
+const isButtonChildren = (elem: any) => {
   const button = elem.closest('.copy-snippet-button')
 
   return button && button.contains(elem) && button
@@ -14,8 +16,8 @@ const isButtonChildren = (elem) => {
 
 export const useCopySnippet = () => {
   useEffect(() => {
-    const onClick = function (e) {
-      let copyButton
+    const onClick = function (e: Event) {
+      let copyButton: any
       if (isCopyButton(e.target)) {
         copyButton = e.target
       } else {

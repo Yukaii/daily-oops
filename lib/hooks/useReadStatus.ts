@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 
 const READ_STATUS_KEY = 'read-status'
 
-const useLocalStorage = (key, initialValue) => {
+// TODO: TS support
+const useLocalStorage = (key: string, initialValue: any) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === 'undefined') return initialValue
@@ -35,14 +36,14 @@ const useLocalStorage = (key, initialValue) => {
   return [storedValue, setStoredValue, isLoaded]
 }
 
-export const useReadStatus = (slug) => {
+export const useReadStatus = (slug: string) => {
   const [readStatuses, setReadStatuses, isLoaded] = useLocalStorage(
     READ_STATUS_KEY,
     {}
   )
   const readStatus = readStatuses[slug] || false
 
-  const setReadStatus = (value) => {
+  const setReadStatus = (value: string) => {
     setReadStatuses({
       ...readStatuses,
       [slug]: value,
