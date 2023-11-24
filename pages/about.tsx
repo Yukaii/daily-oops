@@ -1,9 +1,13 @@
-import Markdown from 'components/Markdown'
 import Head from 'next/head'
 
+import Markdown from '@/components/Markdown'
 import { fetchPostData } from '@/lib/post'
 
-export default function About({ content }) {
+type AboutProps = {
+  content: string
+}
+
+export default function About({ content }: AboutProps) {
   return (
     <div>
       <Head>

@@ -1,9 +1,17 @@
-import Markdown from 'components/Markdown'
 import Head from 'next/head'
 
+import Markdown from '@/components/Markdown'
 import { loadProjectMarkdown } from '@/lib/project'
 
-export default function Projects({ content }) {
+type ProjectsProps = {
+  content: string
+}
+
+const olderProjectAnnouncement = `# Projects
+Here are some of my projects that I've worked on.\n
+For older projects, please visit my [GitHub](https://github.com/Yukaii), or take a look at [here](./oldProjects).`
+
+export default function Projects({ content }: ProjectsProps) {
   return (
     <div>
       <Head>
@@ -11,11 +19,7 @@ export default function Projects({ content }) {
       </Head>
 
       <Markdown
-        content={`# Projects
-Here are some of my projects that I've worked on.
-
-For older peojcts, please visit my [GitHub](https://github.com/Yukaii), or take a look at [here](./oldProjects).
-`}
+        content={olderProjectAnnouncement}
         className="container pt-4 pb-2 px-3"
       />
 
