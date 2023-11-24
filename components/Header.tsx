@@ -1,9 +1,11 @@
+'use client'
+
 import { BookIcon, CodeIcon, HomeIcon, InfoIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 import LogoAnimated from '../public/logo-animated.gif'
 
@@ -12,7 +14,8 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
 })
 
 const Header = () => {
-  const { pathname } = useRouter()
+  const pathname = usePathname()
+  if (!pathname) return null
 
   const items = [
     {

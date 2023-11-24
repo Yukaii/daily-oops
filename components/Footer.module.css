@@ -1,0 +1,9 @@
+.footerLinksContainer {
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .footerLinksContainer {
+    gap: 0.5rem;
+  }
+}
