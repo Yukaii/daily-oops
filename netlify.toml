@@ -1,0 +1,22 @@
+[build]
+command = "npm run build"
+base = "."
+publish = ".next"
+
+[build.environment]
+NEXT_USE_NETLIFY_EDGE = "true"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/.well-known/host-meta*"
+  to = "https://fed.brid.gy/.well-known/host-meta:splat"
+  status = 302
+[[redirects]]
+  from = "/.well-known/webfinger*"
+  to = "https://fed.brid.gy/.well-known/webfinger"
+  status = 302
+
+[[plugins]]
+package = "/netlify-plugins/trigger-webmention"

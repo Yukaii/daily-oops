@@ -1,0 +1,8 @@
+.postLink {
+  color: var(--color-fg-default);
+}
+
+.postLink:hover {
+  color: var(--color-accent-fg);
+}
+

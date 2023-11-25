@@ -1,7 +1,7 @@
 .post-container.markdown-body {
   max-width: 630px;
   font-size: 17px;
-  line-height: 1.7em;  
+  line-height: 1.7em;
 
   h1 {
     border-width: 0;
@@ -13,28 +13,44 @@
     font-size: 1.3em;
     margin-bottom: 1em;
   }
-  
-  h3, h4, h5, h6 {
+
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-bottom: 1.3em;
   }
-  
-  p, blockquote, dl, table, pre, details {
+
+  p,
+  blockquote,
+  dl,
+  table,
+  pre,
+  details {
     margin-bottom: 1.7em;
   }
-  
-  pre > code {
+
+  pre>code {
     font-size: 14px;
   }
-  
+
   figure[data-type="image"] {
     text-align: center;
 
     figcaption {
-      color: var(--color-text-tertiary);
+      color: var(--color-fg-muted);
       font-size: 14px;
     }
+
+    @media (min-width: 710px) {
+      margin: 1em -1.5em;
+    }
+
+    @media (max-width: 709px) {
+      margin: 1em 10px;
+    }
   }
-  
+
   mark {
     background-color: var(--color-auto-yellow-2);
   }

@@ -1,5 +1,6 @@
 @import '@fortawesome/fontawesome-free/css/fontawesome.css';
 @import '@fortawesome/fontawesome-free/css/solid.css';
+@import '@fortawesome/fontawesome-free/css/brands.css';
 @import './typography';
 @import './markdown';
 
@@ -30,7 +31,7 @@ html {
 
   .fa-check {
     display: none;
-    color: var(--color-bg-success-inverse);
+    color: var(--color-success-fg);
   }
 
   .fa-clipboard {
@@ -63,4 +64,11 @@ html {
   &.small {
     max-height: 100px;
   }
+}
+
+audio,
+canvas,
+progress,
+video {
+  max-width: 100%;
 }

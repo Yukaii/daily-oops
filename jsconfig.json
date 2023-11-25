@@ -7,5 +7,5 @@
     "jsx": "react-jsx",
     "baseUrl": "./"
   },
-  "exclude": ["node_modules", "out", ".next"],
+  "exclude": ["node_modules", "out", ".next"]
 }

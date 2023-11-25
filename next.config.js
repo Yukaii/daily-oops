@@ -20,6 +20,16 @@ const nextConfig = {
     unoptimized: true,
     domains: ['hackmd.io', 'i.imgur.com', 'rawcdn.githack.com'],
   },
+  experimental: {
+    swcPlugins: [
+      [
+        'next-superjson-plugin',
+        {
+          excluded: [],
+        },
+      ],
+    ],
+  },
 }
 
 module.exports = withBundleAnalyzer(nextConfig)

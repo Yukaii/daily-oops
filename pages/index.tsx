@@ -1,13 +1,16 @@
-import PostRow from 'components/PostRow'
-import { getAllPostsWithSlug } from 'lib/post'
-import { writeRSS } from 'lib/rss'
-import omit from 'lodash/omit'
+import { omit } from 'lodash-es'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
-export default function Home({ posts }) {
+import Intro from '@/components/Intro'
+import PostRow from '@/components/PostRow'
+import { getAllPostsWithSlug } from '@/lib/post'
+import { writeRSS } from '@/lib/rss'
+import { Posts as PostsProps, PostsWithoutContent as HomeProps } from '@/types'
+
+export default function Home({ posts }: HomeProps) {
   return (
-    <div>
+    <div className="h-entry">
       <NextSeo
         title="Daily Oops!"
         titleTemplate="%s"
@@ -20,18 +23,13 @@ export default function Home({ posts }) {
         }}
       />
 
-      <div className="d-block mx-auto container markdown-body py-4 px-3">
-        <h2>Hi</h2>
+      <div className="d-block mx-auto container markdown-body py-4 px-3 e-content">
+        <Intro />
 
-        <p>This is Yukai Huang&apos;s personal website.</p>
-
-        <p>
-          Here you can read my <Link href="/blog">recent posts</Link>, play with{' '}
-          <Link href="/projects">my side projects before</Link>, or{' '}
-          <Link href="/about">get to know me more</Link>.
-        </p>
-
-        <p>安久吧！</p>
+        {/* workaround for webmention to bridgy */}
+        <a href="https://fed.brid.gy/" style={{ display: 'none' }}>
+          https://fed.brid.gy/
+        </a>
 
         <h2>Recent posts</h2>
 
@@ -48,7 +46,7 @@ export default function Home({ posts }) {
 
         <Link href="/blog" passHref>
           <button className="mt-3 btn mr-2" type="button">
-            Read More
+            More posts
           </button>
         </Link>
 
@@ -69,7 +67,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: posts.map((post) => omit(post, ['content'])),
+      posts: posts.map((post: PostsProps) => omit(post, ['content'])),
     },
   }
 }

@@ -1,15 +1,17 @@
 import { Feed } from 'feed'
 import fs from 'fs'
-import { render } from 'lib/markdown'
 import path from 'path'
+
+import { render } from '@/lib/markdown'
+import { Post } from '@/types'
 
 import { getDayjs } from './noteHelper'
 
-const getPostDate = (post) => {
+const getPostDate = (post: Post) => {
   return getDayjs(post.date).toDate()
 }
 
-export const generateRss = (posts) => {
+export const generateRss = (posts: Post[]) => {
   const date = getPostDate(posts[0])
 
   const feed = new Feed({
@@ -22,6 +24,7 @@ export const generateRss = (posts) => {
     feedLinks: {
       atom: `https://${process.env.DOMAIN}/feed.xml`,
     },
+    copyright: 'Yukai Huang',
   })
 
   posts.forEach((post) => {
@@ -46,7 +49,7 @@ export const generateRss = (posts) => {
   return feed.rss2()
 }
 
-export function writeRSS(posts) {
+export function writeRSS(posts: Post[]) {
   const rss = generateRss(posts)
 
   fs.writeFileSync(path.join(process.cwd(), './public/feed.xml'), rss)
