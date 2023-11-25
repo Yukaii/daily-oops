@@ -60,7 +60,13 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "@types/react": "18.0.28",
+    "@types/bluebird": "^3.5.42",
+    "@types/fs-extra": "^11.0.4",
+    "@types/gtag.js": "^0.0.18",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.9.5",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.17",
     "@types/simple-react-lightbox": "^3.6.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "7.32.0",
@@ -72,6 +78,6 @@
     "next-sitemap": "^1.9.12",
     "prettier": "^2.8.8",
     "rimraf": "^4.4.1",
-    "typescript": "4.9.5"
+    "typescript": "5.3.2"
   }
 }

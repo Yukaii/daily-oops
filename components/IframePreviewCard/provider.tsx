@@ -1,10 +1,11 @@
-import useStateRef from 'lib/hooks/useStateRef'
-import useViewport from 'lib/hooks/useViewport'
 import React, { useEffect, useMemo, useState } from 'react'
+
+import useStateRef from '@/lib/hooks/useStateRef'
+import useViewport from '@/lib/hooks/useViewport'
 
 import IframePreviewCard from './card'
 
-function isExternalLink(url) {
+function isExternalLink(url: string) {
   // compare with current location
   try {
     const urlObj = new URL(url)
@@ -17,11 +18,11 @@ function isExternalLink(url) {
 
 const LOCAL_STORAGE_KEY = 'iframe-preview-card-size'
 
-function saveSize(size) {
+function saveSize(size: { x: number; y: number }) {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(size))
 }
 
-function safeJSONParse(str) {
+function safeJSONParse(str: string) {
   try {
     return JSON.parse(str)
   } catch (e) {
@@ -44,13 +45,13 @@ const useHoldingShiftKey = () => {
   const [, setIsHoldingShift, isHoldingShiftRef] = useStateRef(false)
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Shift') {
         setIsHoldingShift(true)
       }
     }
 
-    const handleKeyUp = (e) => {
+    const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === 'Shift') {
         setIsHoldingShift(false)
       }
@@ -69,7 +70,7 @@ const useHoldingShiftKey = () => {
 }
 
 // Test if the url is valid and can be iframe embedded
-async function headRequest(url) {
+async function headRequest(url: string) {
   try {
     const res = await fetch(url, {
       method: 'HEAD',
@@ -84,7 +85,7 @@ async function headRequest(url) {
 }
 
 // href might be a relative url or a full url
-function parseHref(href) {
+function parseHref(href: string) {
   try {
     const url = new URL(href, window.location.origin)
     return url.href
@@ -96,7 +97,11 @@ function parseHref(href) {
 // Note: This is a provider for the IframePreviewCard component
 // It should register the clicking event of any external link
 // and bring up the IframePreviewCard component
-export const IframePreviewCardProvider = ({ children }) => {
+export const IframePreviewCardProvider = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => {
   const [showPreview, setShowPreview] = useState(false)
   const [previewUrl, setPreviewUrl] = useState('')
 
@@ -112,7 +117,8 @@ export const IframePreviewCardProvider = ({ children }) => {
   }, [setPreviewCardEnabled, width])
 
   useEffect(() => {
-    const handleOpenPreview = async (e) => {
+    // TODO: TS support
+    const handleOpenPreview = async (e: any) => {
       const { target } = e
       const url = parseHref(target.href)
 
@@ -150,7 +156,8 @@ export const IframePreviewCardProvider = ({ children }) => {
       }
     }
 
-    const handlePreview = (e) => {
+    // TODO: TS support
+    const handlePreview = (e: any) => {
       if (e.target?.tagName === 'A' && e.target.href) {
         e.preventDefault()
         handleOpenPreview(e)

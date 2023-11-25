@@ -1,7 +1,12 @@
-import useCopySnippet from 'lib/hooks/useCopySnippet'
-import { render } from 'lib/markdown'
+import useCopySnippet from '@/lib/hooks/useCopySnippet'
+import { render } from '@/lib/markdown'
 
-const Markdown = ({ content, className, ...props }) => {
+type MarkdownProps = {
+  content: string
+  className: string
+}
+
+const Markdown = ({ content, className, ...props }: MarkdownProps) => {
   useCopySnippet()
 
   return (

@@ -1,14 +1,16 @@
-import useStateRef from 'lib/hooks/useStateRef'
-import React, { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+
+import useStateRef from '@/lib/hooks/useStateRef'
 
 export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
   const [isDragging, setIsDragging, isDraggingRef] = useStateRef(false)
   const [position, setPosition] = useState({ x: defaultX, y: defaultY })
-  const dragElementRef = React.useRef(null)
+  const dragElementRef = useRef(null) as any // TODO: TS support
   const clickOffsetRef = useRef({ x: 0, y: 0 })
 
-  const onDragElementMouseDown = React.useCallback(
-    (e) => {
+  const onDragElementMouseDown = useCallback(
+    // TODO: TS support @/components/IframePreviewCard/card
+    (e: MouseEvent | React.MouseEvent) => {
       const { clientX, clientY } = e
       const { top, left } = dragElementRef.current?.getBoundingClientRect()
 
@@ -23,8 +25,8 @@ export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
     [setIsDragging]
   )
 
-  const onMouseMove = React.useCallback(
-    (e) => {
+  const onMouseMove = useCallback(
+    (e: MouseEvent) => {
       if (!isDraggingRef.current) {
         return
       }
@@ -39,11 +41,11 @@ export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
     [isDraggingRef, setPosition]
   )
 
-  const stopDragging = React.useCallback(() => {
+  const stopDragging = useCallback(() => {
     setIsDragging(false)
   }, [setIsDragging])
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('mousemove', onMouseMove)
     document.addEventListener('mouseup', stopDragging)
 
@@ -69,20 +71,22 @@ export const useResizable = ({
   minimalHeight = 100,
 } = {}) => {
   const [isResizing, setIsResizing, isResizingRef] = useStateRef(false)
-  const [resizeDirection, setResizeDirection, resizeDirectionRef] =
-    useStateRef(null)
+  const [resizeDirection, setResizeDirection, resizeDirectionRef] = useStateRef<
+    null | string
+  >(null)
   const [size, setSize] = useStateRef({
     width: defaultWidth,
     height: defaultHeight,
   })
 
-  const dragContainerRef = React.useRef(null)
+  const dragContainerRef = useRef(null) as any // TODO: TS support
   const horizontalResizeElementRef = useRef(null)
   const verticalResizeElementRef = useRef(null)
   const bothResizeElementRef = useRef(null)
 
-  const getOnResizeElementMouseDown = React.useCallback(
-    (dir) => (e) => {
+  const getOnResizeElementMouseDown = useCallback(
+    // TODO: TS support @/components/IframePreviewCard/card
+    (dir: string) => (e: MouseEvent | React.MouseEvent) => {
       e.preventDefault()
       setIsResizing(true)
       setResizeDirection(dir)
@@ -90,8 +94,8 @@ export const useResizable = ({
     [setIsResizing, setResizeDirection]
   )
 
-  const onMouseMove = React.useCallback(
-    (e) => {
+  const onMouseMove = useCallback(
+    (e: MouseEvent) => {
       if (!isResizingRef.current) {
         return
       }
@@ -123,11 +127,11 @@ export const useResizable = ({
     [isResizingRef, minimalHeight, minimalWidth, resizeDirectionRef, setSize]
   )
 
-  const stopResizing = React.useCallback(() => {
+  const stopResizing = useCallback(() => {
     setIsResizing(false)
   }, [setIsResizing])
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('mousemove', onMouseMove)
     document.addEventListener('mouseup', stopResizing)
 

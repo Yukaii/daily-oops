@@ -1,12 +1,19 @@
 import { DotFillIcon } from '@primer/octicons-react'
-import cx from 'classnames'
-import dayjs from 'lib/dayjs'
 import Link from 'next/link'
+
+import dayjs from '@/lib/dayjs'
+import { Post } from '@/types'
 
 import useReadStatus from '../lib/hooks/useReadStatus'
 import styles from './PostRow.module.css'
 
-export default function PostRow({ post, index, totalCount }) {
+type PostRowProps = {
+  post: Post
+  index: number
+  totalCount: number
+}
+
+export default function PostRow({ post, index, totalCount }: PostRowProps) {
   const {
     date: { year, month, day },
     slug,
@@ -31,6 +38,7 @@ export default function PostRow({ post, index, totalCount }) {
         {isRead ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
+          //@ts-ignore // TODO: TS support
           <DotFillIcon title="You haven't read this article yet." />
         )}
       </div>

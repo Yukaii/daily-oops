@@ -10,7 +10,7 @@ export function loadProjects() {
   )
 }
 
-function parseGitHubFileLink(url) {
+function parseGitHubFileLink(url: string) {
   const regex =
     /https:\/\/github.com\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.+)/
 
@@ -20,12 +20,12 @@ function parseGitHubFileLink(url) {
     throw new Error(`Invalid GitHub file link: ${url}`)
   }
 
-  const { owner, repo, branch, path } = match.groups
+  const { owner, repo, branch, path } = match.groups!
 
   return { owner, repo, branch, path }
 }
 
-function decodeBase64(str) {
+function decodeBase64(str: string) {
   return Buffer.from(str, 'base64').toString('utf8')
 }
 
@@ -60,5 +60,5 @@ export async function loadProjectMarkdown() {
     throw new Error(`Invalid GitHub file content: ${content}`)
   }
 
-  return match.groups.content.trim()
+  return match.groups!.content.trim()
 }

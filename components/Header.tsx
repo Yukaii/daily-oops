@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 import LogoAnimated from '../public/logo-animated.gif'
 
-const NightSwitch = dynamic(() => import('components/NightSwitch'), {
+const NightSwitch = dynamic(() => import('./NightSwitch'), {
   ssr: false,
 })
 

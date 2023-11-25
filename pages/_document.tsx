@@ -1,10 +1,11 @@
-import Intro from 'components/Intro'
+import { Head, Html, Main, NextScript } from 'next/document'
+
+import Intro from '@/components/Intro'
 import {
   NEXT_PUBLIC_DOMAIN,
   NEXT_PUBLIC_GA_TRACKING_ID,
   NEXT_PUBLIC_GITHUB_USERNAME,
-} from 'lib/constants'
-import { Head, Html, Main, NextScript } from 'next/document'
+} from '@/lib/constants'
 
 export default function Document() {
   const isProduction = process.env.NODE_ENV === 'production'

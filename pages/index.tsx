@@ -1,12 +1,14 @@
-import Intro from 'components/Intro'
-import PostRow from 'components/PostRow'
-import { getAllPostsWithSlug } from 'lib/post'
-import { writeRSS } from 'lib/rss'
 import { omit } from 'lodash-es'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
-export default function Home({ posts }) {
+import Intro from '@/components/Intro'
+import PostRow from '@/components/PostRow'
+import { getAllPostsWithSlug } from '@/lib/post'
+import { writeRSS } from '@/lib/rss'
+import { Posts as PostsProps, PostsWithoutContent as HomeProps } from '@/types'
+
+export default function Home({ posts }: HomeProps) {
   return (
     <div className="h-entry">
       <NextSeo
@@ -65,7 +67,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: posts.map((post) => omit(post, ['content'])),
+      posts: posts.map((post: PostsProps) => omit(post, ['content'])),
     },
   }
 }

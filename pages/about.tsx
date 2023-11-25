@@ -1,8 +1,13 @@
-import Markdown from 'components/Markdown'
-import { fetchPostData } from 'lib/post'
 import Head from 'next/head'
 
-export default function About({ content }) {
+import Markdown from '@/components/Markdown'
+import { fetchPostData } from '@/lib/post'
+
+type AboutProps = {
+  content: string
+}
+
+export default function About({ content }: AboutProps) {
   return (
     <div>
       <Head>
@@ -15,7 +20,7 @@ export default function About({ content }) {
 }
 
 export async function getStaticProps() {
-  const content = await fetchPostData(process.env.ABOUT_ME_NOTE_ID)
+  const content = await fetchPostData(process.env.ABOUT_ME_NOTE_ID!)
 
   return {
     props: {
