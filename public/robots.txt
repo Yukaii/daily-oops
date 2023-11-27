@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://yukai.dev
+
+# Sitemaps
+Sitemap: https://yukai.dev/sitemap.xml
+Sitemap: https://yukai.dev/server-sitemap.xml
