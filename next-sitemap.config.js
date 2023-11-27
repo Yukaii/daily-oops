@@ -4,11 +4,8 @@ module.exports = {
   changefreq: 'monthly',
   priority: 1.0,
   generateRobotsTxt: true,
-  exclude: ['/server-sitemap-index.xml', '/server-sitemap.xml'],
+  exclude: ['/server-sitemap.xml'],
   robotsTxtOptions: {
-    additionalSitemaps: [
-      `https://${process.env.DOMAIN}/server-sitemap-index.xml`,
-      `https://${process.env.DOMAIN}/server-sitemap.xml`,
-    ],
+    additionalSitemaps: [`https://${process.env.DOMAIN}/server-sitemap.xml`],
   },
 }
