@@ -39,9 +39,9 @@ export const fetchPostData = async (noteId: string) => {
   const encodedId = encodeURIComponent(noteId)
   const notePath = path.join(notesCachedDir, `${encodedId}.md`)
 
-  if (fs.existsSync(notePath)) {
-    return fs.readFileSync(notePath, 'utf8')
-  }
+  // if (fs.existsSync(notePath)) {
+  //   return fs.readFileSync(notePath, 'utf8')
+  // }
 
   const fullContent = await fetch(
     `${config.hackmdBaseUrl}/${noteId}/download`,
@@ -57,15 +57,15 @@ export const fetchPostData = async (noteId: string) => {
 
 export const getAllPostsWithSlug = async () => {
   // cached json results
-  const currentEntries = await fg(`${cachedDir}/*.json`)
-  if (currentEntries.length > 0) {
-    return currentEntries
-      .map((entry) => {
-        return JSON.parse(fs.readFileSync(entry, 'utf-8'))
-      })
-      .filter(filterNotDraft)
-      .sort(sortPostByDate)
-  }
+  // const currentEntries = await fg(`${cachedDir}/*.json`)
+  // if (currentEntries.length > 0) {
+  //   return currentEntries
+  //     .map((entry) => {
+  //       return JSON.parse(fs.readFileSync(entry, 'utf-8'))
+  //     })
+  //     .filter(filterNotDraft)
+  //     .sort(sortPostByDate)
+  // }
 
   const data = await fetch(
     `${config.hackmdBaseUrl}/api/@${process.env.HACKMD_PROFILE}/overview`,
