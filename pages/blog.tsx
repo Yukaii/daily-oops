@@ -44,5 +44,6 @@ export async function getStaticProps() {
     props: {
       posts: posts.map((post: PostsProps) => omit(post, ['content'])),
     },
+    revalidate: 300,
   }
 }
