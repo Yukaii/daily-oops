@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "rimraf .next/cache/posts && rimraf .next/cache/notes && next build",
+    "build": "rimraf .next/cache/posts && rimraf .next/cache/notes && next build && next-sitemap",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"

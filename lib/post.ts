@@ -1,5 +1,5 @@
 import * as Promise from 'bluebird'
-import fg from 'fast-glob'
+// import fg from 'fast-glob'
 import fs from 'fs-extra'
 import path from 'path'
 
@@ -16,11 +16,11 @@ import {
   sortPostByDate,
 } from './noteHelper'
 
-const cachedDir = path.join(process.cwd(), './.next/cache/posts')
-const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
+// const cachedDir = path.join(process.cwd(), './.next/cache/posts')
+// const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
 
-fs.ensureDirSync(cachedDir)
-fs.ensureDirSync(notesCachedDir)
+// fs.ensureDirSync(cachedDir)
+// fs.ensureDirSync(notesCachedDir)
 
 const getHashedKey = (
   year: string,
@@ -36,12 +36,12 @@ export const fetchPostData = async (noteId: string) => {
     return
   }
 
-  const encodedId = encodeURIComponent(noteId)
-  const notePath = path.join(notesCachedDir, `${encodedId}.md`)
+  // const encodedId = encodeURIComponent(noteId)
+  // const notePath = path.join(notesCachedDir, `${encodedId}.md`)
 
-  if (fs.existsSync(notePath)) {
-    return fs.readFileSync(notePath, 'utf8')
-  }
+  // if (fs.existsSync(notePath)) {
+  //   return fs.readFileSync(notePath, 'utf8')
+  // }
 
   const fullContent = await fetch(
     `${config.hackmdBaseUrl}/${noteId}/download`,
@@ -50,22 +50,22 @@ export const fetchPostData = async (noteId: string) => {
     }
   ).then((r) => r.text())
 
-  fs.writeFileSync(notePath, fullContent, 'utf8')
+  // fs.writeFileSync(notePath, fullContent, 'utf8')
 
   return fullContent
 }
 
 export const getAllPostsWithSlug = async () => {
   // cached json results
-  const currentEntries = await fg(`${cachedDir}/*.json`)
-  if (currentEntries.length > 0) {
-    return currentEntries
-      .map((entry) => {
-        return JSON.parse(fs.readFileSync(entry, 'utf-8'))
-      })
-      .filter(filterNotDraft)
-      .sort(sortPostByDate)
-  }
+  // const currentEntries = await fg(`${cachedDir}/*.json`)
+  // if (currentEntries.length > 0) {
+  //   return currentEntries
+  //     .map((entry) => {
+  //       return JSON.parse(fs.readFileSync(entry, 'utf-8'))
+  //     })
+  //     .filter(filterNotDraft)
+  //     .sort(sortPostByDate)
+  // }
 
   const data = await fetch(
     `${config.hackmdBaseUrl}/api/@${process.env.HACKMD_PROFILE}/overview`,
@@ -100,31 +100,31 @@ export const getAllPostsWithSlug = async () => {
     .filter(Boolean)
     .filter(filterNotDraft)
 
-  posts.forEach((post: Post) => {
-    const { date } = post
-    const filename = getHashedKey(date.year, date.month, date.day, post.slug)
+  // posts.forEach((post: Post) => {
+  // const { date } = post
+  // const filename = getHashedKey(date.year, date.month, date.day, post.slug)
 
-    // console.log(post.date)
+  // console.log(post.date)
 
-    fs.writeFileSync(
-      path.join(cachedDir, `${filename}.json`),
-      JSON.stringify(
-        {
-          id: post.note!.id,
-          meta: post.meta,
-          title: post.note!.title,
-          content: post?.content,
-          date: post.date,
-          slug: post.slug,
-          tags: post.tags,
-          publishedAt: post.publishedAt,
-        },
-        null,
-        2
-      ),
-      'utf-8'
-    )
-  })
+  //   fs.writeFileSync(
+  //     path.join(cachedDir, `${filename}.json`),
+  //     JSON.stringify(
+  //       {
+  //         id: post.note!.id,
+  //         meta: post.meta,
+  //         title: post.note!.title,
+  //         content: post?.content,
+  //         date: post.date,
+  //         slug: post.slug,
+  //         tags: post.tags,
+  //         publishedAt: post.publishedAt,
+  //       },
+  //       null,
+  //       2
+  //     ),
+  //     'utf-8'
+  //   )
+  // })
 
   return posts.sort(sortPostByDate)
 }
@@ -144,22 +144,22 @@ export const getPostData = async (params: {
   day: string
   slug: string
 }) => {
-  const filename = getHashedKey(
-    params.year,
-    params.month,
-    params.day,
-    params.slug
-  )
+  // const filename = getHashedKey(
+  //   params.year,
+  //   params.month,
+  //   params.day,
+  //   params.slug
+  // )
 
-  // const posts = await getAllPostsWithSlug()
+  const posts = await getAllPostsWithSlug()
 
-  // const post = posts.find((post) => {
-  //   return post.slug === params.slug
-  // })
+  const post = posts.find((post: Post) => {
+    return post.slug === params.slug
+  })
 
-  const post = JSON.parse(
-    fs.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8')
-  )
+  // const post = JSON.parse(
+  //   fs.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8')
+  // )
 
   return {
     id: post.id,

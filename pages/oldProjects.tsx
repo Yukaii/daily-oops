@@ -49,5 +49,6 @@ export async function getStaticProps() {
     props: {
       projects: loadProjects(),
     },
+    revalidate: 300,
   }
 }
