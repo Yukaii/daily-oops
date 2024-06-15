@@ -123,8 +123,8 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))
       next-superjson-plugin:
-        specifier: ^0.5.10
-        version: 0.5.10(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(superjson@1.13.1)
+        specifier: 0.6.3
+        version: 0.6.3(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(superjson@2.2.1)
       next-themes:
         specifier: ^0.2.1
         version: 0.2.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -150,8 +150,8 @@ importers:
         specifier: ^1.6.6
         version: 1.6.6
       superjson:
-        specifier: ^1.13.1
-        version: 1.13.1
+        specifier: 2.2.1
+        version: 2.2.1
       yaml:
         specifier: ^1.10.2
         version: 1.10.2
@@ -1655,11 +1655,11 @@ packages:
     peerDependencies:
       next: '*'
 
-  next-superjson-plugin@0.5.10:
-    resolution: {integrity: sha512-y3vAKlZfZP6iEDb0R+XQ6UQ7YYDxbsZ0iZlV50/Hvw0Fzl+ScQJj+CbXdcl+ETugK9JbhCS7G7hMCGIjiGkgXQ==}
+  next-superjson-plugin@0.6.3:
+    resolution: {integrity: sha512-gipGROzbbn1Koq84AZQodIvBdORp9dytIDv07SguwXdxnJb6v05KCmHVNU9L6AWqxjP14qNIWCNdKRDhnGRZrg==}
     peerDependencies:
       next: ^13.0 || ^14.0
-      superjson: ^1
+      superjson: ^1 || ^2
 
   next-themes@0.2.1:
     resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
@@ -2132,9 +2132,9 @@ packages:
   subscribe-event@1.1.1:
     resolution: {integrity: sha512-ffuMVOFvhc+HSfW/Q9xSQJikswqnT7sd39EjAXi7gneZWg7XYwq/ee9rcn66ZxZEXOLXew0rJXA1GU1gH5/nzw==}
 
-  superjson@1.13.1:
-    resolution: {integrity: sha512-AVH2eknm9DEd3qvxM4Sq+LTCkSXE2ssfh1t11MHMXyYXFQyQ1HLgVvV+guLTsaQnJU3gnaVo34TohHPulY/wLg==}
-    engines: {node: '>=10'}
+  superjson@2.2.1:
+    resolution: {integrity: sha512-8iGv75BYOa0xRJHK5vRLEjE2H/i4lulTjzpUXic3Eg8akftYjkmQDa8JARQ42rlczXyFR3IeRoeFCc7RxHsYZA==}
+    engines: {node: '>=16'}
 
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
@@ -3927,11 +3927,11 @@ snapshots:
       minimist: 1.2.8
       next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1)
 
-  next-superjson-plugin@0.5.10(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(superjson@1.13.1):
+  next-superjson-plugin@0.6.3(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(superjson@2.2.1):
     dependencies:
       hoist-non-react-statics: 3.3.2
       next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1)
-      superjson: 1.13.1
+      superjson: 2.2.1
 
   next-themes@0.2.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.65.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
@@ -4435,7 +4435,7 @@ snapshots:
 
   subscribe-event@1.1.1: {}
 
-  superjson@1.13.1:
+  superjson@2.2.1:
     dependencies:
       copy-anything: 3.0.5
 

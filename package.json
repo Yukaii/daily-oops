@@ -48,7 +48,7 @@
     "next": "14.2.4",
     "next-seo": "^4.29.0",
     "next-sitemap": "^4.2.3",
-    "next-superjson-plugin": "^0.5.10",
+    "next-superjson-plugin": "0.6.3",
     "next-themes": "^0.2.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -57,7 +57,7 @@
     "shorthash": "^0.0.2",
     "simple-react-lightbox": "3.6.6",
     "slugify": "^1.6.6",
-    "superjson": "^1.13.1",
+    "superjson": "2.2.1",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
