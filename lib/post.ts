@@ -20,8 +20,12 @@ import {
 const cachedDir = path.join(process.cwd(), './.next/cache/posts')
 const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
 
-fs.mkdirSync(cachedDir, { recursive: true })
-fs.mkdirSync(notesCachedDir, { recursive: true })
+try {
+  fs.mkdirSync(cachedDir, { recursive: true })
+  fs.mkdirSync(notesCachedDir, { recursive: true })
+} catch (err) {
+  console.error(err)
+}
 
 const getHashedKey = (
   year: string,
