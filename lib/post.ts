@@ -1,6 +1,7 @@
 import * as Promise from 'bluebird'
 import fg from 'fast-glob'
-import fs from 'fs-extra'
+import * as fs from 'fs'
+import fsExtra from 'fs-extra'
 import path from 'path'
 
 import { config } from '@/lib/config'
@@ -19,8 +20,8 @@ import {
 const cachedDir = path.join(process.cwd(), './.next/cache/posts')
 const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
 
-fs.ensureDirSync(cachedDir)
-fs.ensureDirSync(notesCachedDir)
+fs.mkdirSync(cachedDir, { recursive: true })
+fs.mkdirSync(notesCachedDir, { recursive: true })
 
 const getHashedKey = (
   year: string,
@@ -39,8 +40,8 @@ export const fetchPostData = async (noteId: string) => {
   const encodedId = encodeURIComponent(noteId)
   const notePath = path.join(notesCachedDir, `${encodedId}.md`)
 
-  if (fs.existsSync(notePath)) {
-    return fs.readFileSync(notePath, 'utf8')
+  if (fsExtra.existsSync(notePath)) {
+    return fsExtra.readFileSync(notePath, 'utf8')
   }
 
   const fullContent = await fetch(
@@ -50,7 +51,7 @@ export const fetchPostData = async (noteId: string) => {
     }
   ).then((r) => r.text())
 
-  fs.writeFileSync(notePath, fullContent, 'utf8')
+  fsExtra.writeFileSync(notePath, fullContent, 'utf8')
 
   return fullContent
 }
@@ -61,7 +62,7 @@ export const getAllPostsWithSlug = async () => {
   if (currentEntries.length > 0) {
     return currentEntries
       .map((entry) => {
-        return JSON.parse(fs.readFileSync(entry, 'utf-8'))
+        return JSON.parse(fsExtra.readFileSync(entry, 'utf-8'))
       })
       .filter(filterNotDraft)
       .sort(sortPostByDate)
@@ -106,7 +107,7 @@ export const getAllPostsWithSlug = async () => {
 
     // console.log(post.date)
 
-    fs.writeFileSync(
+    fsExtra.writeFileSync(
       path.join(cachedDir, `${filename}.json`),
       JSON.stringify(
         {
@@ -158,7 +159,7 @@ export const getPostData = async (params: {
   // })
 
   const post = JSON.parse(
-    fs.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8')
+    fsExtra.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8')
   )
 
   return {
