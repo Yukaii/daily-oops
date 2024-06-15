@@ -6,9 +6,6 @@ publish = ".next"
 [build.environment]
 NEXT_USE_NETLIFY_EDGE = "true"
 
-[[plugins]]
-package = "@netlify/plugin-nextjs"
-
 [[redirects]]
   from = "/.well-known/host-meta*"
   to = "https://fed.brid.gy/.well-known/host-meta:splat"
@@ -20,3 +17,6 @@ package = "@netlify/plugin-nextjs"
 
 [[plugins]]
 package = "/netlify-plugins/trigger-webmention"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
