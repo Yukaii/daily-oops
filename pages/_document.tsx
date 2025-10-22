@@ -2,6 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document'
 
 import Intro from '@/components/Intro'
 import {
+  NEXT_PUBLIC_ADSENSE_ID,
   NEXT_PUBLIC_DOMAIN,
   NEXT_PUBLIC_GA_TRACKING_ID,
   NEXT_PUBLIC_GITHUB_USERNAME,
@@ -44,7 +45,7 @@ export default function Document() {
                     function gtag(){dataLayer.push(arguments);}
                     window.gtag = gtag
                     gtag('js', new Date());
-  
+
                     gtag('config', '${NEXT_PUBLIC_GA_TRACKING_ID}', {
                       page_path: window.location.pathname,
                     });
@@ -52,6 +53,14 @@ export default function Document() {
               }}
             />
           </div>
+        )}
+
+        {isProduction && NEXT_PUBLIC_ADSENSE_ID && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${NEXT_PUBLIC_ADSENSE_ID}`}
+            crossOrigin="anonymous"
+          />
         )}
       </Head>
       <body>

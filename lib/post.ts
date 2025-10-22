@@ -17,8 +17,8 @@ import {
   sortPostByDate,
 } from './noteHelper'
 
-const cachedDir = path.join(process.cwd(), './.next/cache/posts')
-const notesCachedDir = path.join(process.cwd(), './.next/cache/notes')
+const cachedDir = path.join(process.cwd(), './.next/cache/posts/')
+const notesCachedDir = path.join(process.cwd(), './.next/cache/notes/')
 
 try {
   fs.mkdirSync(cachedDir, { recursive: true })
