@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-ads-txt.js",
     "build": "rimraf .next/cache/posts && rimraf .next/cache/notes && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
