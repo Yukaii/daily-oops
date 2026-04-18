@@ -72,29 +72,14 @@ html {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
 
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
-.site-nav-side {
-  flex: 0 0 72px;
-  display: flex;
-  align-items: center;
-}
-
-.site-nav-side-left {
-  justify-content: flex-start;
-}
-
-.site-nav-side-right {
-  justify-content: flex-end;
-}
-
 .site-nav-tabs {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   justify-content: center;
   min-width: 0;
   overflow-x: auto;
@@ -102,27 +87,29 @@ html {
   white-space: nowrap;
 }
 
+.site-chrome-button {
+  position: fixed;
+  top: 0.5rem;
+  z-index: 101;
+}
+
+.site-chrome-button-left {
+  left: 0.5rem;
+}
+
+.site-chrome-button-right {
+  right: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .site-nav {
-    flex-wrap: wrap;
-    justify-content: center;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-  }
-
-  .site-nav-side {
-    flex-basis: auto;
   }
 
   .site-nav-tabs {
     width: 100%;
     justify-content: flex-start;
-    order: 1;
-  }
-
-  .site-nav-side-left,
-  .site-nav-side-right {
-    order: 2;
   }
 }
 

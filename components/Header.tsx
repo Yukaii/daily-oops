@@ -79,18 +79,6 @@ const Header = () => {
         style={{ zIndex: 99 }}
       >
         <div className="site-nav">
-          <div className="site-nav-side site-nav-side-left">
-            <Link
-              href={{ pathname, query }}
-              locale={nextLocale}
-              className="btn btn-sm"
-              aria-label={copy.languageSwitch}
-              title={copy.languageSwitch}
-            >
-              {nextLocaleLabel}
-            </Link>
-          </div>
-
           <div
             className="UnderlineNav-body site-nav-tabs"
             role="tablist"
@@ -115,12 +103,22 @@ const Header = () => {
               </Link>
             ))}
           </div>
-
-          <div className="site-nav-side site-nav-side-right">
-            <NightSwitch label={copy.themeToggle} />
-          </div>
         </div>
       </nav>
+
+      <Link
+        href={{ pathname, query }}
+        locale={nextLocale}
+        className="btn btn-sm site-chrome-button site-chrome-button-left"
+        aria-label={copy.languageSwitch}
+        title={copy.languageSwitch}
+      >
+        {nextLocaleLabel}
+      </Link>
+
+      <div className="site-chrome-button site-chrome-button-right">
+        <NightSwitch label={copy.themeToggle} />
+      </div>
     </>
   )
 }
