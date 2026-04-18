@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { getMessages, normalizeLocale } from '@/lib/i18n'
+
 import LogoAnimated from '../public/logo-animated.gif'
 
 const NightSwitch = dynamic(() => import('./NightSwitch'), {
@@ -12,26 +14,30 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
 })
 
 const Header = () => {
-  const { pathname } = useRouter()
+  const { locale, pathname, query } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
+  const nextLocale = currentLocale === 'en' ? 'zh-TW' : 'en'
+  const nextLocaleLabel = nextLocale === 'en' ? 'En' : '中'
 
   const items = [
     {
-      text: 'Home',
+      text: copy.nav.home,
       href: '/',
       icon: HomeIcon,
     },
     {
-      text: 'Blog',
+      text: copy.nav.blog,
       href: '/blog',
       icon: BookIcon,
     },
     {
-      text: 'Projects',
+      text: copy.nav.projects,
       href: '/projects',
       icon: CodeIcon,
     },
     {
-      text: 'About',
+      text: copy.nav.about,
       href: '/about',
       icon: InfoIcon,
     },
@@ -69,35 +75,51 @@ const Header = () => {
       </div>
 
       <nav
-        className="UnderlineNav color-bg-subtle px-3 position-sticky top-0 flex-items-center flex-justify-center"
+        className="UnderlineNav color-bg-subtle px-3 position-sticky top-0"
         style={{ zIndex: 99 }}
       >
-        <div
-          className="UnderlineNav-body"
-          role="tablist"
-          style={{ maxWidth: '100%' }}
-        >
-          {items.map((item) => (
+        <div className="site-nav">
+          <div className="site-nav-side site-nav-side-left">
             <Link
-              href={item.href}
-              key={item.href}
-              className={cx('UnderlineNav-item', {
-                selected: item.href === pathname,
-              })}
+              href={{ pathname, query }}
+              locale={nextLocale}
+              className="btn btn-sm"
+              aria-label={copy.languageSwitch}
+              title={copy.languageSwitch}
             >
-              {item.icon ? (
-                <>
-                  <item.icon className="UnderlineNav-octicon" />
-                  <span>{item.text}</span>
-                </>
-              ) : (
-                item.text
-              )}
+              {nextLocaleLabel}
             </Link>
-          ))}
-        </div>
+          </div>
 
-        <NightSwitch />
+          <div
+            className="UnderlineNav-body site-nav-tabs"
+            role="tablist"
+            style={{ maxWidth: '100%' }}
+          >
+            {items.map((item) => (
+              <Link
+                href={item.href}
+                key={item.href}
+                className={cx('UnderlineNav-item', {
+                  selected: item.href === pathname,
+                })}
+              >
+                {item.icon ? (
+                  <>
+                    <item.icon className="UnderlineNav-octicon" />
+                    <span>{item.text}</span>
+                  </>
+                ) : (
+                  item.text
+                )}
+              </Link>
+            ))}
+          </div>
+
+          <div className="site-nav-side site-nav-side-right">
+            <NightSwitch label={copy.themeToggle} />
+          </div>
+        </div>
       </nav>
     </>
   )

@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Markdown from '@/components/Markdown'
+import { getMessages, normalizeLocale } from '@/lib/i18n'
 import { fetchPostData } from '@/lib/post'
 
 type AboutProps = {
@@ -8,10 +10,14 @@ type AboutProps = {
 }
 
 export default function About({ content }: AboutProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
+
   return (
     <div>
       <Head>
-        <title>About me | Daily Oops!</title>
+        <title>{copy.pages.aboutTitle} | Daily Oops!</title>
       </Head>
 
       <Markdown content={content} className="container pt-4 pb-6 px-3" />

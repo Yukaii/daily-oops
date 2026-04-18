@@ -1,5 +1,6 @@
 import Giscus from '@giscus/react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -11,6 +12,12 @@ import Markdown from '@/components/Markdown'
 import { config } from '@/lib/config'
 import { NEXT_PUBLIC_DOMAIN } from '@/lib/constants'
 import dayjs from '@/lib/dayjs'
+import {
+  getDayjsLocale,
+  getLocalizedPath,
+  getMessages,
+  normalizeLocale,
+} from '@/lib/i18n'
 import {
   formatPostsAsParams,
   getAllPostsWithSlug,
@@ -38,9 +45,16 @@ export default function Post({
   noteId,
   meta,
 }: PostProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
-  const canonicalUrl = `https://${NEXT_PUBLIC_DOMAIN}/blog/${year}/${month}/${day}/${slug}`
+  const localizedDate = date.locale(getDayjsLocale(currentLocale)).format('LL')
+  const canonicalUrl = `https://${NEXT_PUBLIC_DOMAIN}${getLocalizedPath(
+    `/blog/${year}/${month}/${day}/${slug}`,
+    currentLocale,
+  )}`
   const description = content.slice(0, 150)
   const time = date.format()
 
@@ -74,7 +88,7 @@ export default function Post({
         titleTemplate="%s | Daily Oops!"
         openGraph={{
           type: 'article',
-          locale: 'zh-Hant-TW',
+          locale: copy.openGraphLocale,
           url: canonicalUrl,
           title,
           description,
@@ -125,7 +139,7 @@ export default function Post({
             <Image
               src={meta.image}
               style={{ maxWidth: '100%', borderRadius: 6, width: '100%' }}
-              alt="cover image"
+              alt={copy.post.coverImageAlt}
               className="u-photo"
               width={820}
               height={312}
@@ -133,7 +147,7 @@ export default function Post({
           </div>
         )}
         <div className="container pt-4 pb-3 px-3">
-          <span className="text-mono color-fg-muted">{date.format('LL')}</span>
+          <span className="text-mono color-fg-muted">{localizedDate}</span>
         </div>
         <IframePreviewCardProvider>
           <SRLWrapper
@@ -155,14 +169,22 @@ export default function Post({
 
         <div className="container py-3 px-3">
           <div className="container-block color-bg-accent color-border-accent-emphasis rounded-2 p-3">
-            本篇文章驕傲的使用 {hackmdLink()}{' '}
-            <a target="_blank" href={noteLink} rel="noopener noreferrer">
-              發佈
-            </a>
-            {/* For future i18n */
-            /*
-              This post is proudly <a target='_blank' href={noteLink}>published</a> with {hackmdLink()}
-            */}
+            {currentLocale === 'zh-TW' ? (
+              <>
+                本篇文章驕傲的使用 {hackmdLink()}{' '}
+                <a target="_blank" href={noteLink} rel="noopener noreferrer">
+                  {copy.post.publishedWithLabel}
+                </a>
+              </>
+            ) : (
+              <>
+                This post is proudly{' '}
+                <a target="_blank" href={noteLink} rel="noopener noreferrer">
+                  {copy.post.publishedWithLabel}
+                </a>{' '}
+                {hackmdLink()}.
+              </>
+            )}
           </div>
         </div>
 
@@ -179,7 +201,7 @@ export default function Post({
             emitMetadata="0"
             inputPosition="top"
             theme={layoutDarkMode === 'dark' ? 'dark' : 'light'}
-            lang="en"
+            lang={copy.post.giscusLang}
             loading="lazy"
           />
         </div>

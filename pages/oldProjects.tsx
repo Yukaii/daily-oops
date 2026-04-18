@@ -1,13 +1,19 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
+import { getMessages, normalizeLocale } from '@/lib/i18n'
 import { loadProjects } from '@/lib/project'
 import { OldProjects as ProjectsProps } from '@/types'
 
 export default function Projects({ projects }: ProjectsProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
+
   return (
     <div>
       <Head>
-        <title>Projects | Daily Oops!</title>
+        <title>{copy.pages.projectsTitle} | Daily Oops!</title>
       </Head>
 
       <div

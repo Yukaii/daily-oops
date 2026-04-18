@@ -1,7 +1,9 @@
 import { DotFillIcon } from '@primer/octicons-react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import dayjs from '@/lib/dayjs'
+import { getDayjsLocale, getMessages, normalizeLocale } from '@/lib/i18n'
 import { PostPreview } from '@/types'
 
 import useReadStatus from '../lib/hooks/useReadStatus'
@@ -14,11 +16,16 @@ type PostRowProps = {
 }
 
 export default function PostRow({ post, index, totalCount }: PostRowProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
   const {
     date: { year, month, day },
     slug,
   } = post
   const date = dayjs(`${year}-${month}-${day}`)
+    .locale(getDayjsLocale(currentLocale))
+    .format('LL')
 
   const fullSlug = `/blog/${year}/${month}/${day}/${slug}`
 
@@ -38,7 +45,7 @@ export default function PostRow({ post, index, totalCount }: PostRowProps) {
         {isRead ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
-          <DotFillIcon aria-label="You haven't read this article yet." />
+          <DotFillIcon aria-label={copy.postRow.unreadLabel} />
         )}
       </div>
       <div className="flex-auto">
@@ -51,7 +58,7 @@ export default function PostRow({ post, index, totalCount }: PostRowProps) {
         </Link>
 
         <div className="text-small color-fg-muted">
-          #{totalCount - index} posted on {date.format('LL')}
+          {copy.postRow.postedOn(totalCount - index, date)}
         </div>
       </div>
     </div>

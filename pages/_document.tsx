@@ -7,12 +7,13 @@ import {
   NEXT_PUBLIC_GA_TRACKING_ID,
   NEXT_PUBLIC_GITHUB_USERNAME,
 } from '@/lib/constants'
+import { DEFAULT_LOCALE } from '@/lib/i18n'
 
 export default function Document() {
   const isProduction = process.env.NODE_ENV === 'production'
 
   return (
-    <Html lang="zh-Hant-TW" data-dark-theme="dark" data-light-theme="light">
+    <Html lang="en" data-dark-theme="dark" data-light-theme="light">
       <Head>
         <link
           rel="alternate"
@@ -85,7 +86,7 @@ export default function Document() {
             <img className="u-photo" src="/avatar.jpg" />
 
             <div className="p-note">
-              <Intro />
+              <Intro locale={DEFAULT_LOCALE} />
             </div>
 
             <a

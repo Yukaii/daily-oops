@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import PostRow from '@/components/PostRow'
+import { getMessages, normalizeLocale } from '@/lib/i18n'
 import {
   getAllPostsWithSlug,
   POSTS_REVALIDATE_SECONDS,
@@ -9,10 +11,14 @@ import {
 import { PostsWithoutContent as BlogProps } from '@/types'
 
 export default function Blog({ posts }: BlogProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
+
   return (
     <article>
       <Head>
-        <title>Blog | Daily Oops!</title>
+        <title>{copy.pages.blogTitle} | Daily Oops!</title>
       </Head>
 
       <div
@@ -32,7 +38,7 @@ export default function Blog({ posts }: BlogProps) {
 
         <a href="/feed.xml">
           <button className="mt-3 btn btn-primary" type="button">
-            Subscribe via RSS
+            {copy.home.subscribeViaRss}
           </button>
         </a>
       </div>
