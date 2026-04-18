@@ -11,7 +11,6 @@ import Markdown from '@/components/Markdown'
 import { config } from '@/lib/config'
 import { NEXT_PUBLIC_DOMAIN } from '@/lib/constants'
 import dayjs from '@/lib/dayjs'
-import { getDisqusConfig } from '@/lib/disqus'
 import {
   formatPostsAsParams,
   getAllPostsWithSlug,
@@ -27,10 +26,6 @@ type PostProps = {
     day: string
     slug: string
   }
-  disqus: {
-    shortname: string
-    domain: string
-  }
   noteId: number
   meta: {
     date: string
@@ -42,13 +37,11 @@ export default function Post({
   content,
   title,
   params,
-  disqus,
   noteId,
   meta,
 }: PostProps) {
   const { year, month, day, slug } = params
   const date = dayjs(`${year}-${month}-${day}`)
-  const url = `https://${disqus?.domain}/blog/${year}/${month}/${day}/${slug}`
   const canonicalUrl = `https://${NEXT_PUBLIC_DOMAIN}/blog/${year}/${month}/${day}/${slug}`
   const description = content.slice(0, 150)
   const time = date.format()
@@ -84,7 +77,7 @@ export default function Post({
         openGraph={{
           type: 'article',
           locale: 'zh-Hant-TW',
-          url,
+          url: canonicalUrl,
           title,
           description,
           site_name: 'Daily Oops!',
@@ -220,7 +213,6 @@ export async function getStaticProps({ params }: PostProps) {
       content,
       title,
       params,
-      disqus: getDisqusConfig(),
       noteId: id,
       meta,
     },

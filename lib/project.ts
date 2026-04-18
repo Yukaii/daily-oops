@@ -6,7 +6,7 @@ import { PROJECTS_MARKDOWN_URL } from './constants'
 
 export function loadProjects() {
   return YAML.parse(
-    fs.readFileSync(path.join(process.cwd(), './data/projects.yml'), 'utf-8')
+    fs.readFileSync(path.join(process.cwd(), './data/projects.yml'), 'utf-8'),
   )
 }
 
@@ -36,7 +36,7 @@ export async function loadProjectMarkdown() {
 
   // https://github.com/Yukaii/Yukaii/blob/master/README.md
   const { owner, repo, branch, path } = parseGitHubFileLink(
-    PROJECTS_MARKDOWN_URL
+    PROJECTS_MARKDOWN_URL,
   )
 
   // https://api.github.com/repos/OWNER/REPO/contents/PATH?ref=BRANCH
@@ -47,7 +47,7 @@ export async function loadProjectMarkdown() {
         Content: 'application/vnd.github+json',
         'X-GitHub-Api-Version': '2022-11-28',
       },
-    }
+    },
   ).then((res) => res.json())
 
   const content = decodeBase64(data.content)
