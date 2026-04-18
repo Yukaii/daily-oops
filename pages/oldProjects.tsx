@@ -50,10 +50,10 @@ export default function Projects({ projects }: ProjectsProps) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: { locale?: string }) {
   return {
     props: {
-      projects: loadProjects(),
+      projects: loadProjects(locale),
     },
   }
 }
