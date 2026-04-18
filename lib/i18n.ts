@@ -36,6 +36,7 @@ type Messages = {
     blogTitle: string
     projectsTitle: string
   }
+  aboutMarkdown: string
   projectsAnnouncement: string
   postRow: {
     unreadLabel: string
@@ -84,6 +85,17 @@ const messages: Record<AppLocale, Messages> = {
       blogTitle: 'Blog',
       projectsTitle: 'Projects',
     },
+    aboutMarkdown: `# About me
+
+Hello there, this is Yukai Huang.
+
+I'm an editor maniac, an indie software developer, and a jazz enthusiast.
+
+Co-founded <a href="https://hackmd.io" target="_blank" rel="noreferrer noopener">HackMD</a>, working as a full time developer based in Taiwan.
+
+Love making [side projects](/projects) and exploring [new ideas](https://github.com/users/Yukaii/projects/1).
+
+You can find me on <a href="https://github.com/Yukaii" target="_blank" rel="noreferrer noopener">GitHub</a> and <a href="https://twitter.com/yukaii_h" target="_blank" rel="noreferrer noopener">Twitter</a>.`,
     projectsAnnouncement: `# Projects
 
 Here are some of the projects that I've worked on.
@@ -134,6 +146,17 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       blogTitle: '文章',
       projectsTitle: '專案',
     },
+    aboutMarkdown: `# 關於我
+
+你好，我是 Yukai Huang。
+
+我是個編輯器狂熱者、獨立軟體開發者，也是爵士樂愛好者。
+
+我是 <a href="https://hackmd.io" target="_blank" rel="noreferrer noopener">HackMD</a> 共同創辦人，目前在台灣擔任全職開發者。
+
+喜歡做 [side projects](/projects)，也喜歡探索[新點子](https://github.com/users/Yukaii/projects/1)。
+
+你可以在 <a href="https://github.com/Yukaii" target="_blank" rel="noreferrer noopener">GitHub</a> 和 <a href="https://twitter.com/yukaii_h" target="_blank" rel="noreferrer noopener">Twitter</a> 找到我。`,
     projectsAnnouncement: `# 專案
 
 這裡整理了我做過的一些專案。
