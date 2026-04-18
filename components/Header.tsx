@@ -1,9 +1,16 @@
-import { BookIcon, CodeIcon, HomeIcon, InfoIcon } from '@primer/octicons-react'
+import {
+  BookIcon,
+  CodeIcon,
+  HomeIcon,
+  InfoIcon,
+  KebabHorizontalIcon,
+} from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 
 import { getMessages, normalizeLocale } from '@/lib/i18n'
 
@@ -18,7 +25,9 @@ const Header = () => {
   const currentLocale = normalizeLocale(locale)
   const copy = getMessages(currentLocale)
   const nextLocale = currentLocale === 'en' ? 'zh-TW' : 'en'
-  const nextLocaleLabel = nextLocale === 'en' ? 'En' : '中'
+  const nextLocaleLabel = copy.languageNames[nextLocale]
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   const items = [
     {
@@ -44,6 +53,46 @@ const Header = () => {
   ]
 
   const small = !items.map((i) => i.href).includes(pathname)
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname, locale])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      return
+    }
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target
+
+      if (!(target instanceof Node)) {
+        return
+      }
+
+      if (mobileMenuRef.current?.contains(target)) {
+        return
+      }
+
+      setIsMobileMenuOpen(false)
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('touchstart', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('touchstart', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <>
@@ -75,7 +124,7 @@ const Header = () => {
       </div>
 
       <nav
-        className="UnderlineNav color-bg-subtle px-3 position-sticky top-0"
+        className="UnderlineNav site-header-nav color-bg-subtle px-3 position-sticky top-0"
         style={{ zIndex: 99 }}
       >
         <div className="site-nav">
@@ -102,6 +151,54 @@ const Header = () => {
                 )}
               </Link>
             ))}
+          </div>
+
+          <div className="site-mobile-menu" ref={mobileMenuRef}>
+            <button
+              type="button"
+              className={cx('UnderlineNav-item site-mobile-menu-trigger', {
+                selected: isMobileMenuOpen,
+              })}
+              aria-expanded={isMobileMenuOpen}
+              aria-haspopup="menu"
+              aria-controls="site-mobile-menu-panel"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+            >
+              <KebabHorizontalIcon className="UnderlineNav-octicon" />
+              <span>{copy.nav.more}</span>
+            </button>
+
+            {isMobileMenuOpen ? (
+              <div
+                className="site-mobile-menu-panel"
+                id="site-mobile-menu-panel"
+                role="menu"
+                aria-label={copy.nav.more}
+              >
+                <Link
+                  href={{ pathname, query }}
+                  locale={nextLocale}
+                  className="site-mobile-menu-item"
+                  role="menuitem"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="site-mobile-menu-item-label">
+                    {copy.languageSwitch}
+                  </span>
+                  <span className="site-mobile-menu-item-value">
+                    {nextLocaleLabel}
+                  </span>
+                </Link>
+
+                <NightSwitch
+                  label={copy.themeToggle}
+                  className="site-mobile-menu-item"
+                  role="menuitem"
+                  showText
+                  onPress={() => setIsMobileMenuOpen(false)}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </nav>

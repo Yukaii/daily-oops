@@ -1,10 +1,15 @@
 import { MoonIcon, SunIcon } from '@primer/octicons-react'
+import cx from 'classnames'
 import { useTheme } from 'next-themes'
-import type { MouseEvent } from 'react'
+import type { AriaRole, MouseEvent } from 'react'
 import { useRef } from 'react'
 
 type NightSwitchProps = {
   label: string
+  className?: string
+  role?: AriaRole
+  showText?: boolean
+  onPress?: () => void
 }
 
 const prefersReducedMotion = () =>
@@ -125,7 +130,13 @@ const createThemeSnapshot = (theme: string, zIndex = 999) => {
   return snapshot
 }
 
-export default function NightSwitch({ label }: NightSwitchProps) {
+export default function NightSwitch({
+  label,
+  className,
+  role,
+  showText = false,
+  onPress,
+}: NightSwitchProps) {
   const { resolvedTheme, setTheme } = useTheme()
   const isAnimatingRef = useRef(false)
 
@@ -135,6 +146,8 @@ export default function NightSwitch({ label }: NightSwitchProps) {
     if (isAnimatingRef.current) {
       return
     }
+
+    onPress?.()
 
     if (!resolvedTheme || prefersReducedMotion()) {
       setTheme(nextTheme)
@@ -232,13 +245,17 @@ export default function NightSwitch({ label }: NightSwitchProps) {
 
   return (
     <button
-      className="night-switch-button btn px-2"
+      className={cx('night-switch-button btn px-2', className)}
       type="button"
       onClick={handleClick}
+      role={role}
       aria-label={label}
       title={label}
     >
       {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
+      {showText ? (
+        <span className="night-switch-button-label">{label}</span>
+      ) : null}
     </button>
   )
 }

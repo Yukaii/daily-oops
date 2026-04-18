@@ -16,6 +16,7 @@ type Messages = {
     blog: string
     projects: string
     about: string
+    more: string
   }
   home: {
     greeting: string
@@ -66,6 +67,7 @@ const messages: Record<AppLocale, Messages> = {
       blog: 'Blog',
       projects: 'Projects',
       about: 'About',
+      more: 'More',
     },
     home: {
       greeting: 'Hi',
@@ -128,6 +130,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       blog: '文章',
       projects: '專案',
       about: '關於',
+      more: '更多',
     },
     home: {
       greeting: '哈囉',
