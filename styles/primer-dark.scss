@@ -1,6 +1,7 @@
 @use 'sass:meta';
 
-html[data-color-mode='dark'] {
+html[data-color-mode='dark'],
+.theme-transition-snapshot[data-color-mode='dark'] {
   .markdown-body {
 
     h1,

@@ -101,6 +101,36 @@ html {
   right: 0.5rem;
 }
 
+.night-switch-button {
+  transform-origin: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.theme-transition-snapshot {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  overflow: auto;
+  pointer-events: none;
+  scrollbar-width: none;
+  will-change: clip-path, opacity;
+  contain: paint;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .site-nav {
     padding-top: 0.5rem;
