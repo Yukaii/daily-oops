@@ -1,36 +1,48 @@
+export interface OldProject {
+  title: string
+  description: string
+  link: string
+  image: string
+}
+
 export interface OldProjects {
-  projects: {
-    title: string
-    description: string
-    link: string
-    image: string
-  }[]
+  projects: OldProject[]
+}
+
+export interface PostDate {
+  year: string
+  month: string
+  day: string
+}
+
+export interface PostMeta {
+  date: string
+  image?: string
+}
+
+export interface PostNote {
+  id: string
+  title: string
 }
 
 export interface Post {
   id: string
-  meta: {
-    date: string
-    image?: string
-  }
+  meta: PostMeta
   title: string
   content: string
-  date: {
-    year: string
-    month: string
-    day: string
-  }
+  date: PostDate
   slug: string
   tags: string[]
   publishedAt: string
-  note?: {
-    id: string
-    title: string
-  }
+  note?: PostNote
 }
 
 export interface Posts {
   posts: Post[]
 }
 
-export interface PostsWithoutContent extends Omit<Posts, 'content'> {}
+export type PostPreview = Omit<Post, 'content'>
+
+export interface PostsWithoutContent {
+  posts: PostPreview[]
+}

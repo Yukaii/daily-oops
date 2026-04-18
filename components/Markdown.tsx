@@ -1,12 +1,21 @@
+import type { ComponentPropsWithoutRef } from 'react'
+
 import useCopySnippet from '@/lib/hooks/useCopySnippet'
 import { render } from '@/lib/markdown'
 
-type MarkdownProps = {
+type MarkdownProps = Omit<
+  ComponentPropsWithoutRef<'article'>,
+  'children' | 'dangerouslySetInnerHTML'
+> & {
   content: string
-  className: string
+  className?: string
 }
 
-const Markdown = ({ content, className, ...props }: MarkdownProps) => {
+const Markdown = ({
+  content,
+  className = '',
+  ...articleProps
+}: MarkdownProps) => {
   useCopySnippet()
 
   return (
@@ -18,7 +27,7 @@ const Markdown = ({ content, className, ...props }: MarkdownProps) => {
         property="schema:articleBody"
         className={`markdown-body ${className}`}
         dangerouslySetInnerHTML={{ __html: render(content) }}
-        {...props}
+        {...articleProps}
       />
 
       {/* workaround for webmention to bridgy */}

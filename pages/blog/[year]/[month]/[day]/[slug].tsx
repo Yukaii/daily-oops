@@ -17,21 +17,18 @@ import {
   getPostData,
   POSTS_REVALIDATE_SECONDS,
 } from '@/lib/post'
+import { PostDate, PostMeta } from '@/types'
+
+type PostPageParams = PostDate & {
+  slug: string
+}
 
 type PostProps = {
   content: string
   title: string
-  params: {
-    year: string
-    month: string
-    day: string
-    slug: string
-  }
-  noteId: number
-  meta: {
-    date: string
-    image?: string
-  }
+  params: PostPageParams
+  noteId: string
+  meta: PostMeta
 }
 
 export default function Post({
@@ -206,7 +203,7 @@ export default function Post({
   )
 }
 
-export async function getStaticProps({ params }: PostProps) {
+export async function getStaticProps({ params }: { params: PostPageParams }) {
   const post = await getPostData(params)
 
   if (!post) {
