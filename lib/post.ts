@@ -4,7 +4,7 @@ import * as fs from 'fs'
 import fsExtra from 'fs-extra'
 import path from 'path'
 
-import { config } from '@/lib/config'
+import { getHackMDClient } from '@/lib/hackmd'
 import { Post } from '@/types'
 
 const shorthash = require('shorthash')
@@ -20,7 +20,6 @@ import {
 const cachedDir = path.join(process.cwd(), './.next/cache/posts/')
 const notesCachedDir = path.join(process.cwd(), './.next/cache/notes/')
 export const POSTS_REVALIDATE_SECONDS = 300
-const FETCH_RETRY_ATTEMPTS = 3
 
 try {
   fs.mkdirSync(cachedDir, { recursive: true })
@@ -38,31 +37,11 @@ const getHashedKey = (
   return shorthash.unique(`${year}-${month}-${day}-${slug}`)
 }
 
-const sleep = (ms: number) => {
-  return new globalThis.Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
-}
+const normalizePublishedAt = (publishedAt: string | null) => publishedAt || ''
 
-const withRetry = async <T>(
-  callback: () => Promise<T>,
-  attempts = FETCH_RETRY_ATTEMPTS,
-): Promise<T> => {
-  let lastError: unknown
-
-  for (let attempt = 1; attempt <= attempts; attempt += 1) {
-    try {
-      return await callback()
-    } catch (error) {
-      lastError = error
-
-      if (attempt < attempts) {
-        await sleep(attempt * 250)
-      }
-    }
-  }
-
-  throw lastError
+const getNoteContent = async (noteId: string) => {
+  const note = await getHackMDClient().getNote(noteId)
+  return note.content
 }
 
 export const fetchPostData = async (noteId: string) => {
@@ -74,19 +53,7 @@ export const fetchPostData = async (noteId: string) => {
   const notePath = path.join(notesCachedDir, `${encodedId}.md`)
 
   try {
-    const fullContent = await withRetry(() =>
-      fetch(`${config.hackmdBaseUrl}/${noteId}/download`, {
-        next: { revalidate: POSTS_REVALIDATE_SECONDS },
-      }).then((r) => {
-        if (!r.ok) {
-          throw new Error(
-            `Failed to fetch note ${noteId}: ${r.status} ${r.statusText}`,
-          )
-        }
-
-        return r.text()
-      }),
-    )
+    const fullContent = await getNoteContent(noteId)
 
     fsExtra.writeFileSync(notePath, fullContent, 'utf8')
 
@@ -168,33 +135,15 @@ export const getAllPostsWithSlug = async (): Promise<Post[]> => {
   const cachedPosts = await readCachedPosts()
 
   try {
-    const data = await withRetry(() =>
-      fetch(
-        `${config.hackmdBaseUrl}/api/@${process.env.HACKMD_PROFILE}/overview`,
-        {
-          next: { revalidate: POSTS_REVALIDATE_SECONDS },
-        },
-      ).then((r) => {
-        if (!r.ok) {
-          throw new Error(
-            `Failed to fetch post overview: ${r.status} ${r.statusText}`,
-          )
-        }
+    const notes = await getHackMDClient().getNoteList()
 
-        return r.json()
-      }),
-    )
-
-    //@ts-ignore // TODO: TS support
-    const posts = await Bluebird.map(data.notes || [], async (note) => {
+    const posts = await Bluebird.map(notes, async (note) => {
       const fullContent = await fetchPostData(note.id)
       if (!fullContent) {
         return null
       }
 
       const { data: meta, content } = parseMeta(fullContent)
-      note.content = content
-      //@ts-ignore // TODO: TS support
       const slug = getSlugFromNote(note, meta)
 
       return {
@@ -203,11 +152,10 @@ export const getAllPostsWithSlug = async (): Promise<Post[]> => {
         content,
         note,
         title: note.title,
-        //@ts-ignore // TODO: TS support
         date: getDateFromNote(note, meta),
         slug,
         tags: note.tags,
-        publishedAt: note.publishedAt,
+        publishedAt: normalizePublishedAt(note.publishedAt),
       }
     })
       .filter(Boolean)
