@@ -22,7 +22,6 @@
     "@primer/css": "21.0.7",
     "@primer/octicons-react": "19.4.0",
     "@yukaii/github-highlightjs-themes": "^1.0.0",
-    "bluebird": "^3.7.2",
     "classnames": "^2.3.2",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.9",
@@ -62,7 +61,6 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.42",
     "@types/fs-extra": "^11.0.4",
     "@types/gtag.js": "^0.0.18",
     "@types/lodash-es": "^4.17.12",

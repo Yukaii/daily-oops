@@ -27,5 +27,3 @@ This project now uses the official [`@hackmd/api`](https://github.com/hackmdio/a
 - `HACKMD_ACCESS_TOKEN` is required for builds and local development that fetch notes.
 - `HACKMD_API_BASEURL` is optional and defaults to `https://api.hackmd.io/v1`.
 - `HACKMD_BASEURL` is optional and defaults to `https://hackmd.io` for public links.
-
-The previous public profile overview flow no longer needs `HACKMD_PROFILE`.

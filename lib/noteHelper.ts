@@ -3,25 +3,39 @@ import slugify from 'slugify'
 
 import { Post } from '@/types'
 
-type NoteProps = {
-  title: string
-  createdAt: string
-  publishedAt: string
-  permalink: string
-}
-
-type DateType = {
+export type DateType = {
   year: string
   month: string
   day: string
 }
 
-type DateProps = {
-  date: DateType | Date
-  slug: string
+const isDateType = (value: unknown): value is DateType => {
+  if (!value || typeof value !== 'object') {
+    return false
+  }
+
+  const candidate = value as Record<string, unknown>
+
+  return (
+    typeof candidate.year === 'string' &&
+    typeof candidate.month === 'string' &&
+    typeof candidate.day === 'string'
+  )
 }
 
-export function getDateFromNote(note: NoteProps, meta: DateProps) {
+type NoteProps = {
+  title: string
+  createdAt: string
+  publishedAt?: string | null
+  permalink?: string | null
+}
+
+type NoteMeta = {
+  date?: DateType | Date | string
+  slug?: string | null
+}
+
+export function getDateFromNote(note: NoteProps, meta: NoteMeta): DateType {
   const p = (dayjs: dayjs.Dayjs) => {
     const [year, month, day] = dayjs.format('YYYY/MM/DD').split('/')
     return {
@@ -32,8 +46,11 @@ export function getDateFromNote(note: NoteProps, meta: DateProps) {
   }
 
   if (meta.date) {
-    //@ts-ignore
-    return p(dayjs(meta.date)) // TODO: TS support
+    if (isDateType(meta.date)) {
+      return meta.date
+    }
+
+    return p(dayjs(meta.date))
   } else if (note.publishedAt) {
     return p(dayjs(note.publishedAt))
   } else {
@@ -49,7 +66,7 @@ export function sortPostByDate(a: { date: DateType }, b: { date: DateType }) {
   return getDayjs(b.date).isAfter(getDayjs(a.date)) ? 1 : -1
 }
 
-export function getSlugFromNote(note: NoteProps, meta: DateProps) {
+export function getSlugFromNote(note: NoteProps, meta: NoteMeta) {
   return meta.slug || note.permalink || slugify(note.title)
 }
 

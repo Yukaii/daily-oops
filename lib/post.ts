@@ -1,4 +1,3 @@
-import * as Bluebird from 'bluebird'
 import fg from 'fast-glob'
 import * as fs from 'fs'
 import fsExtra from 'fs-extra'
@@ -11,6 +10,7 @@ const shorthash = require('shorthash')
 
 import { parseMeta } from './markdown'
 import {
+  DateType,
   filterNotDraft,
   getDateFromNote,
   getSlugFromNote,
@@ -37,7 +37,45 @@ const getHashedKey = (
   return shorthash.unique(`${year}-${month}-${day}-${slug}`)
 }
 
-const normalizePublishedAt = (publishedAt: string | null) => publishedAt || ''
+type NoteFrontmatter = {
+  date?: string | Date | DateType
+  image?: string
+  slug?: string | null
+}
+
+type PostMeta = Post['meta'] & {
+  slug?: string | null
+}
+
+const isPost = (post: Post | null): post is Post => {
+  return post !== null
+}
+
+const normalizeMetaDate = (date: NoteFrontmatter['date']): string => {
+  if (typeof date === 'string') {
+    return date
+  }
+
+  if (date instanceof Date) {
+    return date.toISOString()
+  }
+
+  if (date) {
+    return `${date.year}-${date.month}-${date.day}`
+  }
+
+  return ''
+}
+
+const normalizePostMeta = (frontmatter: NoteFrontmatter): PostMeta => {
+  return {
+    date: normalizeMetaDate(frontmatter.date),
+    image: frontmatter.image,
+    slug: frontmatter.slug,
+  }
+}
+
+const normalizePublishedAt = (publishedAt?: string | null) => publishedAt || ''
 
 const getNoteContent = async (noteId: string) => {
   const note = await getHackMDClient().getNote(noteId)
@@ -137,28 +175,34 @@ export const getAllPostsWithSlug = async (): Promise<Post[]> => {
   try {
     const notes = await getHackMDClient().getNoteList()
 
-    const posts = await Bluebird.map(notes, async (note) => {
-      const fullContent = await fetchPostData(note.id)
-      if (!fullContent) {
-        return null
-      }
+    const posts = (
+      await Promise.all(
+        notes.map(async (note): Promise<Post | null> => {
+          const fullContent = await fetchPostData(note.id)
+          if (!fullContent) {
+            return null
+          }
 
-      const { data: meta, content } = parseMeta(fullContent)
-      const slug = getSlugFromNote(note, meta)
+          const { data, content } = parseMeta(fullContent)
+          const frontmatter = data as NoteFrontmatter
+          const meta = normalizePostMeta(frontmatter)
+          const slug = getSlugFromNote(note, frontmatter)
 
-      return {
-        id: note.id,
-        meta,
-        content,
-        note,
-        title: note.title,
-        date: getDateFromNote(note, meta),
-        slug,
-        tags: note.tags,
-        publishedAt: normalizePublishedAt(note.publishedAt),
-      }
-    })
-      .filter(Boolean)
+          return {
+            id: note.id,
+            meta,
+            content,
+            note,
+            title: note.title,
+            date: getDateFromNote(note, frontmatter),
+            slug,
+            tags: note.tags,
+            publishedAt: normalizePublishedAt(note.publishedAt),
+          }
+        }),
+      )
+    )
+      .filter(isPost)
       .filter(filterNotDraft)
 
     const sortedPosts = posts.sort(sortPostByDate)
