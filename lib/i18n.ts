@@ -20,6 +20,7 @@ type Messages = {
   home: {
     greeting: string
     description: string
+    signoff: string
     recentPosts: string
     morePosts: string
     subscribeViaRss: string
@@ -69,6 +70,7 @@ const messages: Record<AppLocale, Messages> = {
     home: {
       greeting: 'Hi',
       description: "This is Yukai Huang's personal website.",
+      signoff: 'Enjoy!',
       recentPosts: 'Recent posts',
       morePosts: 'More posts',
       subscribeViaRss: 'Subscribe via RSS',
@@ -130,6 +132,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     home: {
       greeting: '哈囉',
       description: '這裡是 Yukai Huang 的個人網站。',
+      signoff: '安久吧！',
       recentPosts: '最新文章',
       morePosts: '更多文章',
       subscribeViaRss: '透過 RSS 訂閱',

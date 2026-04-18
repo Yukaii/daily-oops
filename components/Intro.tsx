@@ -25,7 +25,7 @@ export default function Intro({ locale }: IntroProps) {
         {copy.home.introAfterAbout}
       </p>
 
-      <p>安久吧！</p>
+      <p>{copy.home.signoff}</p>
     </>
   )
 }
