@@ -2,13 +2,13 @@ import { DotFillIcon } from '@primer/octicons-react'
 import Link from 'next/link'
 
 import dayjs from '@/lib/dayjs'
-import { Post } from '@/types'
+import { PostPreview } from '@/types'
 
 import useReadStatus from '../lib/hooks/useReadStatus'
 import styles from './PostRow.module.css'
 
 type PostRowProps = {
-  post: Post
+  post: PostPreview
   index: number
   totalCount: number
 }
@@ -38,8 +38,7 @@ export default function PostRow({ post, index, totalCount }: PostRowProps) {
         {isRead ? (
           <div style={{ width: 16, height: 16 }} />
         ) : (
-          //@ts-ignore // TODO: TS support
-          <DotFillIcon title="You haven't read this article yet." />
+          <DotFillIcon aria-label="You haven't read this article yet." />
         )}
       </div>
       <div className="flex-auto">
