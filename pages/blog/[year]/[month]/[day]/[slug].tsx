@@ -15,6 +15,7 @@ import {
   formatPostsAsParams,
   getAllPostsWithSlug,
   getPostData,
+  POSTS_REVALIDATE_SECONDS,
 } from '@/lib/post'
 
 type PostProps = {
@@ -206,7 +207,16 @@ export default function Post({
 }
 
 export async function getStaticProps({ params }: PostProps) {
-  const { content, title, id, meta } = await getPostData(params)
+  const post = await getPostData(params)
+
+  if (!post) {
+    return {
+      notFound: true,
+      revalidate: POSTS_REVALIDATE_SECONDS,
+    }
+  }
+
+  const { content, title, id, meta } = post
 
   return {
     props: {
@@ -216,6 +226,7 @@ export async function getStaticProps({ params }: PostProps) {
       noteId: id,
       meta,
     },
+    revalidate: POSTS_REVALIDATE_SECONDS,
   }
 }
 
@@ -224,6 +235,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }

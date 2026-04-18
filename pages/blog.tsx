@@ -2,8 +2,8 @@ import { omit } from 'lodash-es'
 import Head from 'next/head'
 
 import PostRow from '@/components/PostRow'
-import { getAllPostsWithSlug } from '@/lib/post'
-import { Posts as PostsProps, PostsWithoutContent as BlogProps } from '@/types'
+import { getAllPostsWithSlug, POSTS_REVALIDATE_SECONDS } from '@/lib/post'
+import { Post, PostsWithoutContent as BlogProps } from '@/types'
 
 export default function Blog({ posts }: BlogProps) {
   return (
@@ -42,7 +42,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: posts.map((post: PostsProps) => omit(post, ['content'])),
+      posts: posts.map((post: Post) => omit(post, ['content'])),
     },
+    revalidate: POSTS_REVALIDATE_SECONDS,
   }
 }
