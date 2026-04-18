@@ -1,17 +1,22 @@
 import { MoonIcon, SunIcon } from '@primer/octicons-react'
 import { useTheme } from 'next-themes'
 
-export default function NightSwitch() {
+type NightSwitchProps = {
+  label: string
+}
+
+export default function NightSwitch({ label }: NightSwitchProps) {
   const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <button
-      className="night-switch-button btn position-fixed top-2 right-2 px-2"
+      className="night-switch-button btn px-2"
       type="button"
       onClick={() => {
         setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
       }}
-      aria-label="Toggle Night Mode"
+      aria-label={label}
+      title={label}
     >
       {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
     </button>

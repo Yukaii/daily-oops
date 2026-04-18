@@ -2,12 +2,23 @@ import fs from 'fs'
 import path from 'path'
 import YAML from 'yaml'
 
+import { normalizeLocale } from '@/lib/i18n'
+import { OldProject, OldProjectSource } from '@/types'
+
 import { PROJECTS_MARKDOWN_URL } from './constants'
 
-export function loadProjects() {
-  return YAML.parse(
+export function loadProjects(locale?: string): OldProject[] {
+  const currentLocale = normalizeLocale(locale)
+  const projects = YAML.parse(
     fs.readFileSync(path.join(process.cwd(), './data/projects.yml'), 'utf-8'),
-  )
+  ) as OldProjectSource[]
+
+  return projects.map((project) => ({
+    title: project.title[currentLocale],
+    description: project.description[currentLocale],
+    link: project.link,
+    ...(project.image ? { image: project.image } : {}),
+  }))
 }
 
 function parseGitHubFileLink(url: string) {

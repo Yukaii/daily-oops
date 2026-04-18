@@ -1,25 +1,27 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Markdown from '@/components/Markdown'
+import { getMessages, normalizeLocale } from '@/lib/i18n'
 import { loadProjectMarkdown } from '@/lib/project'
 
 type ProjectsProps = {
   content: string
 }
 
-const olderProjectAnnouncement = `# Projects
-Here are some of my projects that I've worked on.\n
-For older projects, please visit my [GitHub](https://github.com/Yukaii), or take a look at [here](./oldProjects).`
-
 export default function Projects({ content }: ProjectsProps) {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
+
   return (
     <div>
       <Head>
-        <title>Projects | Daily Oops!</title>
+        <title>{copy.pages.projectsTitle} | Daily Oops!</title>
       </Head>
 
       <Markdown
-        content={olderProjectAnnouncement}
+        content={copy.projectsAnnouncement}
         className="container pt-4 pb-2 px-3"
       />
 

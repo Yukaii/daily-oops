@@ -1,30 +1,24 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Markdown from '@/components/Markdown'
-import { fetchPostData } from '@/lib/post'
+import { getMessages, normalizeLocale } from '@/lib/i18n'
 
-type AboutProps = {
-  content: string
-}
+export default function About() {
+  const { locale } = useRouter()
+  const currentLocale = normalizeLocale(locale)
+  const copy = getMessages(currentLocale)
 
-export default function About({ content }: AboutProps) {
   return (
     <div>
       <Head>
-        <title>About me | Daily Oops!</title>
+        <title>{copy.pages.aboutTitle} | Daily Oops!</title>
       </Head>
 
-      <Markdown content={content} className="container pt-4 pb-6 px-3" />
+      <Markdown
+        content={copy.aboutMarkdown}
+        className="container pt-4 pb-6 px-3"
+      />
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const content = await fetchPostData(process.env.ABOUT_ME_NOTE_ID!)
-
-  return {
-    props: {
-      content,
-    },
-  }
 }

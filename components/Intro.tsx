@@ -1,19 +1,31 @@
 import Link from 'next/link'
 
-export default function Intro() {
+import { getMessages } from '@/lib/i18n'
+
+type IntroProps = {
+  locale?: string
+}
+
+export default function Intro({ locale }: IntroProps) {
+  const copy = getMessages(locale)
+
   return (
     <>
-      <h2>Hi</h2>
+      <h2>{copy.home.greeting}</h2>
 
-      <p>This is Yukai Huang&apos;s personal website.</p>
+      <p>{copy.home.description}</p>
 
       <p>
-        Here you can read my <Link href="/blog">recent posts</Link>, play with{' '}
-        <Link href="/projects">my side projects before</Link>, or{' '}
-        <Link href="/about">get to know me more</Link>.
+        {copy.home.introBeforeBlog}
+        <Link href="/blog">{copy.home.introBlog}</Link>
+        {copy.home.introBetweenBlogAndProjects}
+        <Link href="/projects">{copy.home.introProjects}</Link>
+        {copy.home.introBetweenProjectsAndAbout}
+        <Link href="/about">{copy.home.introAbout}</Link>
+        {copy.home.introAfterAbout}
       </p>
 
-      <p>安久吧！</p>
+      <p>{copy.home.signoff}</p>
     </>
   )
 }

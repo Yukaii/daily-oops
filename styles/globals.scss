@@ -66,6 +66,53 @@ html {
   }
 }
 
+.site-nav {
+  width: 100%;
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.site-nav-tabs {
+  flex: 0 1 auto;
+  justify-content: center;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.site-chrome-button {
+  position: fixed;
+  top: 0.5rem;
+  z-index: 101;
+}
+
+.site-chrome-button-left {
+  left: 0.5rem;
+}
+
+.site-chrome-button-right {
+  right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .site-nav-tabs {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
 audio,
 canvas,
 progress,

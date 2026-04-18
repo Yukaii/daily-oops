@@ -1,8 +1,19 @@
+import type { AppLocale } from '@/lib/i18n'
+
+export type LocalizedText = Record<AppLocale, string>
+
+export interface OldProjectSource {
+  title: LocalizedText
+  description: LocalizedText
+  link: string
+  image?: string
+}
+
 export interface OldProject {
   title: string
   description: string
   link: string
-  image: string
+  image?: string
 }
 
 export interface OldProjects {
