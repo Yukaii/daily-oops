@@ -4,7 +4,9 @@ const path = require('path')
 const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID
 
 if (!adsenseId) {
-  console.warn('Warning: NEXT_PUBLIC_ADSENSE_ID not found in environment variables. Skipping ads.txt generation.')
+  console.warn(
+    'Warning: NEXT_PUBLIC_ADSENSE_ID not found in environment variables. Skipping ads.txt generation.',
+  )
   process.exit(0)
 }
 

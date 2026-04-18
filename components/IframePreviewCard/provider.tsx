@@ -107,7 +107,7 @@ export const IframePreviewCardProvider = ({
 
   const { width } = useViewport()
   const [, setPreviewCardEnabled, previewCardEnabledRef] = useStateRef(
-    width > 768
+    width > 768,
   )
 
   const isHoldingShiftRef = useHoldingShiftKey()

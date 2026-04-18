@@ -44,7 +44,7 @@ const Header = () => {
       <div
         className={cx(
           'd-flex text-center color-bg-subtle py-4 px-3 header-block flex-items-center',
-          { small, 'flex-column': !small, 'flex-justify-center': small }
+          { small, 'flex-column': !small, 'flex-justify-center': small },
         )}
       >
         <div

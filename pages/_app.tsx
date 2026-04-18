@@ -17,7 +17,7 @@ import { pageview } from '@/lib/gtag'
 
 Router.events.on(
   'routeChangeComplete',
-  (url) => process.env.NODE_ENV === 'production' && pageview(url)
+  (url) => process.env.NODE_ENV === 'production' && pageview(url),
 )
 
 type MyAppProps = {

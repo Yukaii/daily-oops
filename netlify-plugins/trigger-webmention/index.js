@@ -12,7 +12,7 @@ function fromBase64(input) {
 
 const sendWebmention = (url) => {
   const data = `source=${encodeURIComponent(url)}&target=${encodeURIComponent(
-    'https://fed.brid.gy/'
+    'https://fed.brid.gy/',
   )}`
   const options = {
     hostname: 'fed.brid.gy',
@@ -80,7 +80,7 @@ export const onBuild = function ({ utils, netlifyConfig }) {
   }
 
   netlifyConfig.build.environment.LATEST_POST_DATA = toBase64(
-    JSON.stringify(latestPost)
+    JSON.stringify(latestPost),
   )
 }
 
@@ -123,7 +123,7 @@ export const onEnd = async function ({ utils, netlifyConfig }) {
   } catch (error) {
     console.error(error)
     utils.build.failPlugin(
-      'Failed to trigger webmention, URL is not accessible'
+      'Failed to trigger webmention, URL is not accessible',
     )
     return
   }

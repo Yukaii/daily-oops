@@ -22,7 +22,7 @@ export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
       e.preventDefault()
       setIsDragging(true)
     },
-    [setIsDragging]
+    [setIsDragging],
   )
 
   const onMouseMove = useCallback(
@@ -38,7 +38,7 @@ export const useDraggable = ({ defaultX = 0, defaultY = 0 } = {}) => {
         y: clientY - clickOffsetRef.current.y,
       })
     },
-    [isDraggingRef, setPosition]
+    [isDraggingRef, setPosition],
   )
 
   const stopDragging = useCallback(() => {
@@ -91,7 +91,7 @@ export const useResizable = ({
       setIsResizing(true)
       setResizeDirection(dir)
     },
-    [setIsResizing, setResizeDirection]
+    [setIsResizing, setResizeDirection],
   )
 
   const onMouseMove = useCallback(
@@ -124,7 +124,7 @@ export const useResizable = ({
 
       setSize(targetSize)
     },
-    [isResizingRef, minimalHeight, minimalWidth, resizeDirectionRef, setSize]
+    [isResizingRef, minimalHeight, minimalWidth, resizeDirectionRef, setSize],
   )
 
   const stopResizing = useCallback(() => {

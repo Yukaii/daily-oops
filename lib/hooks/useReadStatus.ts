@@ -25,7 +25,7 @@ const useLocalStorage = (key: string, initialValue: any) => {
       } catch (error) {
         console.log(error)
       }
-    }, 300)
+    }, 300),
   )
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const useLocalStorage = (key: string, initialValue: any) => {
 export const useReadStatus = (slug: string) => {
   const [readStatuses, setReadStatuses, isLoaded] = useLocalStorage(
     READ_STATUS_KEY,
-    {}
+    {},
   )
   const readStatus = readStatuses[slug] || false
 

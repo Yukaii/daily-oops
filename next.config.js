@@ -18,16 +18,19 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['hackmd.io', 'i.imgur.com', 'rawcdn.githack.com'],
-  },
-  experimental: {
-    swcPlugins: [
-      [
-        'next-superjson-plugin',
-        {
-          excluded: [],
-        },
-      ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'hackmd.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'rawcdn.githack.com',
+      },
     ],
   },
 }

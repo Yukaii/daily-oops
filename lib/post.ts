@@ -31,7 +31,7 @@ const getHashedKey = (
   year: string,
   month: string,
   day: string,
-  slug: string
+  slug: string,
 ) => {
   return shorthash.unique(`${year}-${month}-${day}-${slug}`)
 }
@@ -52,7 +52,7 @@ export const fetchPostData = async (noteId: string) => {
     `${config.hackmdBaseUrl}/${noteId}/download`,
     {
       next: { revalidate: 300 },
-    }
+    },
   ).then((r) => r.text())
 
   fsExtra.writeFileSync(notePath, fullContent, 'utf8')
@@ -74,7 +74,7 @@ export const getAllPostsWithSlug = async () => {
 
   const data = await fetch(
     `${config.hackmdBaseUrl}/api/@${process.env.HACKMD_PROFILE}/overview`,
-    { next: { revalidate: 300 } }
+    { next: { revalidate: 300 } },
   ).then((r) => r.json())
 
   //@ts-ignore // TODO: TS support
@@ -125,9 +125,9 @@ export const getAllPostsWithSlug = async () => {
           publishedAt: post.publishedAt,
         },
         null,
-        2
+        2,
       ),
-      'utf-8'
+      'utf-8',
     )
   })
 
@@ -153,7 +153,7 @@ export const getPostData = async (params: {
     params.year,
     params.month,
     params.day,
-    params.slug
+    params.slug,
   )
 
   // const posts = await getAllPostsWithSlug()
@@ -163,7 +163,7 @@ export const getPostData = async (params: {
   // })
 
   const post = JSON.parse(
-    fsExtra.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8')
+    fsExtra.readFileSync(path.join(cachedDir, `${filename}.json`), 'utf-8'),
   )
 
   return {
