@@ -59,7 +59,7 @@ const messages: Record<AppLocale, Messages> = {
     languageSwitch: 'Language',
     languageNames: {
       en: 'EN',
-      'zh-TW': '繁中',
+      'zh-TW': '中',
     },
     themeToggle: 'Toggle color theme',
     nav: {
@@ -122,7 +122,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     languageSwitch: '語言',
     languageNames: {
       en: 'EN',
-      'zh-TW': '繁中',
+      'zh-TW': '中',
     },
     themeToggle: '切換佈景主題',
     nav: {

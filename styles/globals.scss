@@ -89,7 +89,9 @@ html {
   justify-content: center;
   min-width: 0;
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
+  padding-bottom: 3px;
+  margin-bottom: -3px;
   white-space: nowrap;
 }
 
@@ -99,7 +101,7 @@ html {
   left: 0;
   right: 0;
   bottom: -3px;
-  height: 3px;
+  height: 2px;
   width: auto;
   transform: none;
 }
@@ -221,8 +223,8 @@ html {
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 2px;
-    margin-bottom: -2px;
+    padding-bottom: 3px;
+    margin-bottom: -3px;
     white-space: nowrap;
     scrollbar-width: none;
     -ms-overflow-style: none;
