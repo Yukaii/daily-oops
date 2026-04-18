@@ -6,7 +6,7 @@ import Intro from '@/components/Intro'
 import PostRow from '@/components/PostRow'
 import { getAllPostsWithSlug } from '@/lib/post'
 import { writeRSS } from '@/lib/rss'
-import { Posts as PostsProps, PostsWithoutContent as HomeProps } from '@/types'
+import { Post, PostsWithoutContent as HomeProps } from '@/types'
 
 export default function Home({ posts }: HomeProps) {
   return (
@@ -67,7 +67,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: posts.map((post: PostsProps) => omit(post, ['content'])),
+      posts: posts.map((post: Post) => omit(post, ['content'])),
     },
   }
 }
