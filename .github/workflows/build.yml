@@ -1,58 +1,36 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Lint & Build
 
 on: [push, workflow_dispatch]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 18
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18
+      - uses: actions/checkout@v6.0.2
 
-    - uses: pnpm/action-setup@v2
-      name: Install pnpm
-      id: pnpm-install
-      with:
-        version: 8
-        run_install: false
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5.0.0
+        with:
+          run_install: false
 
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: Use Node.js
+        uses: actions/setup-node@v6.3.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Run linter
+        run: pnpm lint
 
-
-    - name: Run linter
-      run: pnpm lint
-
-    - name: Run next build
-      env:
-        HACKMD_PROFILE: ${{ secrets.HACKMD_PROFILE }}
-        ABOUT_ME_NOTE_ID: ${{ secrets.ABOUT_ME_NOTE_ID }}
-        DISQUS_SHORTNAME: ${{ secrets.DISQUS_SHORTNAME }}
-        DISQUS_DOMAIN: ${{ secrets.DISQUS_DOMAIN }}
-        DOMAIN: ${{ secrets.DOMAIN }}
-        NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
-
-      run: |
-        pnpm build
+      - name: Run next build
+        env:
+          HACKMD_PROFILE: ${{ secrets.HACKMD_PROFILE }}
+          ABOUT_ME_NOTE_ID: ${{ secrets.ABOUT_ME_NOTE_ID }}
+          DOMAIN: ${{ secrets.DOMAIN }}
+          NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
+        run: pnpm build
