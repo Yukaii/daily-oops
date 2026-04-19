@@ -108,6 +108,14 @@ html {
   margin-left: 0.5rem;
 }
 
+.site-mobile-actions {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
 .site-mobile-menu-trigger {
   background: transparent;
   border: 0;
@@ -255,6 +263,11 @@ html {
 
   .site-mobile-menu {
     display: block;
+    margin-left: 0;
+  }
+
+  .site-mobile-actions {
+    display: inline-flex;
     margin-left: 0;
   }
 

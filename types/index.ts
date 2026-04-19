@@ -58,6 +58,10 @@ export interface Posts {
 
 export type PostPreview = Omit<Post, 'content'>
 
+export type SearchablePostPreview = PostPreview & {
+  searchText: string
+}
+
 export interface PostsWithoutContent {
   posts: PostPreview[]
 }

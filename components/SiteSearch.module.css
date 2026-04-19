@@ -1,0 +1,133 @@
+.desktopRoot {
+  position: relative;
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.desktopButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.desktopPanel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(24rem, calc(100vw - 2rem));
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 0.75rem;
+  background: var(--color-canvas-overlay);
+  box-shadow: var(--color-shadow-large);
+  z-index: 130;
+}
+
+.mobileRoot {
+  position: static;
+  flex: 0 0 auto;
+  display: none;
+  align-items: center;
+}
+
+.mobileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.mobileInline {
+  width: min(12rem, calc(100vw - 8rem));
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.results {
+  margin-top: 0.5rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 0.75rem;
+  background: var(--color-canvas-overlay);
+  box-shadow: var(--color-shadow-large);
+  overflow: hidden;
+}
+
+.mobileResults {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  left: auto;
+  width: min(20rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  z-index: 130;
+}
+
+.resultsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resultLink {
+  display: block;
+  padding: 0.75rem 0.875rem;
+  color: inherit;
+  text-decoration: none;
+  border-top: 1px solid var(--color-border-muted);
+}
+
+.resultLink:hover,
+.resultLink:focus-visible {
+  background: var(--color-neutral-muted);
+  text-decoration: none;
+}
+
+.resultsList li:first-child .resultLink {
+  border-top: 0;
+}
+
+.resultMeta {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--color-fg-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resultTitle {
+  display: block;
+  color: var(--color-fg-default);
+  font-weight: 600;
+}
+
+.emptyState {
+  padding: 0.75rem 0.875rem;
+  color: var(--color-fg-muted);
+}
+
+@media (min-width: 769px) {
+  .desktopRoot {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileRoot {
+    display: inline-flex;
+  }
+}

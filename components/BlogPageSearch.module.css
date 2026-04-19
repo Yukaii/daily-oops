@@ -1,0 +1,14 @@
+.desktopOnly {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none;
+  }
+}

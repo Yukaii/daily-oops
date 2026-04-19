@@ -1,7 +1,13 @@
 import { cache } from 'react'
 
 import { config } from '@/lib/config'
-import { Post, PostMeta, PostParams, PostPreview } from '@/types'
+import {
+  Post,
+  PostMeta,
+  PostParams,
+  PostPreview,
+  SearchablePostPreview,
+} from '@/types'
 
 import { parseMeta } from './markdown'
 import {
@@ -191,6 +197,27 @@ export const getAllPostsWithSlug = cache(async (): Promise<Post[]> => {
 export const toPostPreview = (post: Post): PostPreview => {
   const { content: _content, ...postPreview } = post
   return postPreview
+}
+
+const SEARCH_TEXT_LIMIT = 320
+
+const toSearchText = (content: string): string => {
+  return content
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]*`/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)]\([^)]*\)/g, ' $1 ')
+    .replace(/[#>*_~-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, SEARCH_TEXT_LIMIT)
+}
+
+export const toSearchablePostPreview = (post: Post): SearchablePostPreview => {
+  return {
+    ...toPostPreview(post),
+    searchText: toSearchText(post.content),
+  }
 }
 
 export const formatPostsAsParams = (posts: Post[]): PostParams[] => {

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import BlogPageSearch from '@/components/BlogPageSearch'
 import { IframePreviewCardProvider } from '@/components/IframePreviewCard'
 import Intro from '@/components/Intro'
 import Lightbox from '@/components/Lightbox'
@@ -23,6 +24,7 @@ import {
   getAllPostsWithSlug,
   getPostData,
   toPostPreview,
+  toSearchablePostPreview,
 } from '@/lib/post'
 import { loadProjectMarkdown, loadProjects } from '@/lib/project'
 import { PostParams } from '@/types'
@@ -122,7 +124,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
 export async function BlogPage({ locale }: { locale: AppLocale }) {
   const copy = getMessages(locale)
-  const posts = (await getAllPostsWithSlug()).map(toPostPreview)
+  const posts = (await getAllPostsWithSlug()).map(toSearchablePostPreview)
 
   return (
     <article>
@@ -132,17 +134,7 @@ export async function BlogPage({ locale }: { locale: AppLocale }) {
       >
         <h2>{copy.home.allPosts}</h2>
 
-        <div className="Box">
-          {posts.map((post, index) => (
-            <PostRow
-              post={post}
-              index={index}
-              key={post.id}
-              locale={locale}
-              totalCount={posts.length}
-            />
-          ))}
-        </div>
+        <BlogPageSearch locale={locale} posts={posts} />
 
         <a href="/feed.xml">
           <button className="mt-3 btn btn-primary" type="button">

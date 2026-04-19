@@ -6,7 +6,10 @@ import { createPortal } from 'react-dom'
 
 import { getMessages } from '@/lib/i18n'
 import { AppLocale, getLocalizedPath, stripLocalePrefix } from '@/lib/i18n'
-import { OPEN_SHORTCUTS_HELP_EVENT } from '@/lib/keyboardShortcuts'
+import {
+  OPEN_SHORTCUTS_HELP_EVENT,
+  openSiteSearch,
+} from '@/lib/keyboardShortcuts'
 
 import styles from './KeyboardShortcuts.module.css'
 
@@ -49,6 +52,26 @@ function getActivePostLink(): HTMLAnchorElement | null {
   return document.activeElement.matches(POST_LINK_SELECTOR)
     ? document.activeElement
     : null
+}
+
+function getVisibleSearchInput(): HTMLInputElement | null {
+  const candidates = Array.from(
+    document.querySelectorAll<HTMLInputElement>(
+      '[data-blog-search-input="true"], [data-site-search-input="true"]',
+    ),
+  )
+
+  return (
+    candidates.find((input) => {
+      const styles = window.getComputedStyle(input)
+
+      return (
+        styles.display !== 'none' &&
+        styles.visibility !== 'hidden' &&
+        input.getClientRects().length > 0
+      )
+    }) ?? null
+  )
 }
 
 export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
@@ -113,6 +136,21 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
     const closeHelp = () => {
       clearSequence()
       setIsHelpOpen(false)
+    }
+
+    const focusSearch = () => {
+      clearSequence()
+
+      const input = getVisibleSearchInput()
+
+      if (input) {
+        input.focus()
+        input.select()
+        return true
+      }
+
+      openSiteSearch()
+      return true
     }
 
     const focusPostLink = (direction: 'next' | 'previous') => {
@@ -240,6 +278,11 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
             event.preventDefault()
           }
           return
+        case '/':
+          if (focusSearch()) {
+            event.preventDefault()
+          }
+          return
         case 'h':
         case 'Backspace':
           clearSequence()
@@ -359,6 +402,12 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
                             <span className={styles.kbd}>?</span>
                           </th>
                           <td>{copy.shortcuts.openHelp}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span className={styles.kbd}>/</span>
+                          </th>
+                          <td>{copy.shortcuts.focusSearch}</td>
                         </tr>
                       </tbody>
                     </table>

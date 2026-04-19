@@ -52,6 +52,13 @@ type Messages = {
     publishedLinkLabel: string
     giscusLang: string
   }
+  siteSearch: {
+    open: string
+    placeholder: string
+    pageLabel: string
+    postLabel: string
+    empty: (query: string) => string
+  }
   shortcuts: {
     openHelp: string
     title: string
@@ -68,6 +75,7 @@ type Messages = {
     focusNextPost: string
     focusPreviousPost: string
     openFocusedPost: string
+    focusSearch: string
     goBack: string
     closeHelp: string
     scopeNote: string
@@ -140,6 +148,13 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       publishedLinkLabel: 'published',
       giscusLang: 'en',
     },
+    siteSearch: {
+      open: 'Search',
+      placeholder: 'Search posts and pages',
+      pageLabel: 'Page',
+      postLabel: 'Post',
+      empty: (query) => `No results matched "${query}".`,
+    },
     shortcuts: {
       openHelp: 'Keyboard shortcuts',
       title: 'Keyboard shortcuts',
@@ -156,9 +171,11 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       focusNextPost: 'Focus next post',
       focusPreviousPost: 'Focus previous post',
       openFocusedPost: 'Open focused post',
+      focusSearch: 'Focus search',
       goBack: 'Go back',
       closeHelp: 'Close help',
-      scopeNote: 'Post list shortcuts work on the home page and blog index.',
+      scopeNote:
+        'Post list shortcuts work on the home page and blog index. Search focuses the visible page search when available, otherwise it opens site search.',
     },
   },
   'zh-TW': {
@@ -226,6 +243,13 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       publishedLinkLabel: '發佈',
       giscusLang: 'zh-TW',
     },
+    siteSearch: {
+      open: '搜尋',
+      placeholder: '搜尋文章與頁面',
+      pageLabel: '頁面',
+      postLabel: '文章',
+      empty: (query) => `找不到符合「${query}」的結果。`,
+    },
     shortcuts: {
       openHelp: '鍵盤快捷鍵',
       title: '鍵盤快捷鍵',
@@ -242,9 +266,11 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       focusNextPost: '移動到下一篇文章',
       focusPreviousPost: '移動到上一篇文章',
       openFocusedPost: '開啟目前文章',
+      focusSearch: '聚焦搜尋',
       goBack: '返回上一頁',
       closeHelp: '關閉說明',
-      scopeNote: '文章列表快捷鍵可在首頁與文章列表頁使用。',
+      scopeNote:
+        '文章列表快捷鍵可在首頁與文章列表頁使用。搜尋快捷鍵會優先聚焦目前可見的頁面搜尋欄，否則開啟站內搜尋。',
     },
   },
 }

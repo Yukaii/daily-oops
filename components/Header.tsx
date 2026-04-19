@@ -24,8 +24,10 @@ import {
   switchLocalePath,
 } from '@/lib/i18n'
 import { openShortcutsHelp } from '@/lib/keyboardShortcuts'
+import { SearchablePostPreview } from '@/types'
 
 import LogoAnimated from '../public/logo-animated.gif'
+import SiteSearch from './SiteSearch'
 
 const NightSwitch = dynamic(() => import('./NightSwitch'), {
   ssr: false,
@@ -33,9 +35,10 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
 
 type HeaderProps = {
   locale: AppLocale
+  posts: SearchablePostPreview[]
 }
 
-const Header = ({ locale }: HeaderProps) => {
+const Header = ({ locale, posts }: HeaderProps) => {
   const router = useRouter()
   const pathname = usePathname() ?? '/'
   const currentPath = stripLocalePrefix(pathname)
@@ -177,71 +180,77 @@ const Header = ({ locale }: HeaderProps) => {
             ))}
           </div>
 
-          <div className="site-mobile-menu" ref={mobileMenuRef}>
-            <button
-              type="button"
-              className={cx('UnderlineNav-item site-mobile-menu-trigger', {
-                selected: isMobileMenuOpen,
-              })}
-              aria-expanded={isMobileMenuOpen}
-              aria-haspopup="menu"
-              aria-controls="site-mobile-menu-panel"
-              onClick={() => setIsMobileMenuOpen((open) => !open)}
-            >
-              <KebabHorizontalIcon className="UnderlineNav-octicon" />
-              <span>{copy.nav.more}</span>
-            </button>
+          <SiteSearch locale={locale} posts={posts} variant="nav-desktop" />
 
-            {isMobileMenuOpen ? (
-              <div
-                className="site-mobile-menu-panel"
-                id="site-mobile-menu-panel"
-                role="menu"
-                aria-label={copy.nav.more}
+          <div className="site-mobile-actions">
+            <SiteSearch locale={locale} posts={posts} variant="nav-mobile" />
+
+            <div className="site-mobile-menu" ref={mobileMenuRef}>
+              <button
+                type="button"
+                className={cx('UnderlineNav-item site-mobile-menu-trigger', {
+                  selected: isMobileMenuOpen,
+                })}
+                aria-expanded={isMobileMenuOpen}
+                aria-haspopup="menu"
+                aria-controls="site-mobile-menu-panel"
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
               >
-                <button
-                  type="button"
-                  className="site-mobile-menu-item"
-                  role="menuitem"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false)
-                    switchLocale()
-                  }}
-                >
-                  <span className="site-mobile-menu-item-label">
-                    <GlobeIcon className="UnderlineNav-octicon" />
-                    <span>{copy.languageSwitch}</span>
-                  </span>
-                  <span className="site-mobile-menu-item-value">
-                    {nextLocaleLabel}
-                  </span>
-                </button>
+                <KebabHorizontalIcon className="UnderlineNav-octicon" />
+                <span>{copy.nav.more}</span>
+              </button>
 
-                <NightSwitch
-                  label={copy.themeToggle}
-                  className="site-mobile-menu-item"
-                  role="menuitem"
-                  variant="menu"
-                  onPress={() => setIsMobileMenuOpen(false)}
-                />
-
-                <button
-                  type="button"
-                  className="site-mobile-menu-item"
-                  role="menuitem"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false)
-                    openShortcutsHelp()
-                  }}
+              {isMobileMenuOpen ? (
+                <div
+                  className="site-mobile-menu-panel"
+                  id="site-mobile-menu-panel"
+                  role="menu"
+                  aria-label={copy.nav.more}
                 >
-                  <span className="site-mobile-menu-item-label">
-                    <QuestionIcon className="UnderlineNav-octicon" />
-                    <span>{copy.shortcuts.openHelp}</span>
-                  </span>
-                  <span className="site-mobile-menu-item-value">?</span>
-                </button>
-              </div>
-            ) : null}
+                  <button
+                    type="button"
+                    className="site-mobile-menu-item"
+                    role="menuitem"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false)
+                      switchLocale()
+                    }}
+                  >
+                    <span className="site-mobile-menu-item-label">
+                      <GlobeIcon className="UnderlineNav-octicon" />
+                      <span>{copy.languageSwitch}</span>
+                    </span>
+                    <span className="site-mobile-menu-item-value">
+                      {nextLocaleLabel}
+                    </span>
+                  </button>
+
+                  <NightSwitch
+                    label={copy.themeToggle}
+                    className="site-mobile-menu-item"
+                    role="menuitem"
+                    variant="menu"
+                    onPress={() => setIsMobileMenuOpen(false)}
+                  />
+
+                  <button
+                    type="button"
+                    className="site-mobile-menu-item"
+                    role="menuitem"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false)
+                      openShortcutsHelp()
+                    }}
+                  >
+                    <span className="site-mobile-menu-item-label">
+                      <QuestionIcon className="UnderlineNav-octicon" />
+                      <span>{copy.shortcuts.openHelp}</span>
+                    </span>
+                    <span className="site-mobile-menu-item-value">?</span>
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </nav>
