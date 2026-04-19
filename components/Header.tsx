@@ -21,7 +21,8 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
 })
 
 const Header = () => {
-  const { locale, pathname, query } = useRouter()
+  const router = useRouter()
+  const { asPath, locale, pathname, query } = router
   const currentLocale = normalizeLocale(locale)
   const copy = getMessages(currentLocale)
   const nextLocale = currentLocale === 'en' ? 'zh-TW' : 'en'
@@ -93,6 +94,12 @@ const Header = () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isMobileMenuOpen])
+
+  const switchLocale = () => {
+    document.cookie = `NEXT_LOCALE=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`
+
+    router.push({ pathname, query }, asPath, { locale: nextLocale })
+  }
 
   return (
     <>
@@ -175,12 +182,14 @@ const Header = () => {
                 role="menu"
                 aria-label={copy.nav.more}
               >
-                <Link
-                  href={{ pathname, query }}
-                  locale={nextLocale}
+                <button
+                  type="button"
                   className="site-mobile-menu-item"
                   role="menuitem"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    switchLocale()
+                  }}
                 >
                   <span className="site-mobile-menu-item-label">
                     {copy.languageSwitch}
@@ -188,7 +197,7 @@ const Header = () => {
                   <span className="site-mobile-menu-item-value">
                     {nextLocaleLabel}
                   </span>
-                </Link>
+                </button>
 
                 <NightSwitch
                   label={copy.themeToggle}
@@ -203,15 +212,15 @@ const Header = () => {
         </div>
       </nav>
 
-      <Link
-        href={{ pathname, query }}
-        locale={nextLocale}
+      <button
+        type="button"
         className="btn btn-sm site-chrome-button site-chrome-button-left"
         aria-label={copy.languageSwitch}
         title={copy.languageSwitch}
+        onClick={switchLocale}
       >
         {nextLocaleLabel}
-      </Link>
+      </button>
 
       <div className="site-chrome-button site-chrome-button-right">
         <NightSwitch label={copy.themeToggle} />

@@ -249,8 +249,15 @@ export async function getStaticProps({ params }: { params: PostPageParams }) {
   }
 }
 
-export async function getStaticPaths() {
-  const paths = formatPostsAsParams(await getAllPostsWithSlug())
+export async function getStaticPaths({ locales }: { locales?: string[] }) {
+  const posts = formatPostsAsParams(await getAllPostsWithSlug())
+  const paths =
+    locales?.flatMap((locale) =>
+      posts.map((path) => ({
+        ...path,
+        locale,
+      })),
+    ) ?? posts
 
   return {
     paths,
