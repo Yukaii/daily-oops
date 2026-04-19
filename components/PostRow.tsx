@@ -1,9 +1,15 @@
+'use client'
+
 import { DotFillIcon } from '@primer/octicons-react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import dayjs from '@/lib/dayjs'
-import { getDayjsLocale, getMessages, normalizeLocale } from '@/lib/i18n'
+import {
+  AppLocale,
+  getDayjsLocale,
+  getLocalizedPath,
+  getMessages,
+} from '@/lib/i18n'
 import { PostPreview } from '@/types'
 
 import useReadStatus from '../lib/hooks/useReadStatus'
@@ -12,19 +18,23 @@ import styles from './PostRow.module.css'
 type PostRowProps = {
   post: PostPreview
   index: number
+  locale: AppLocale
   totalCount: number
 }
 
-export default function PostRow({ post, index, totalCount }: PostRowProps) {
-  const { locale } = useRouter()
-  const currentLocale = normalizeLocale(locale)
-  const copy = getMessages(currentLocale)
+export default function PostRow({
+  post,
+  index,
+  locale,
+  totalCount,
+}: PostRowProps) {
+  const copy = getMessages(locale)
   const {
     date: { year, month, day },
     slug,
   } = post
   const date = dayjs(`${year}-${month}-${day}`)
-    .locale(getDayjsLocale(currentLocale))
+    .locale(getDayjsLocale(locale))
     .format('LL')
 
   const fullSlug = `/blog/${year}/${month}/${day}/${slug}`
@@ -50,7 +60,10 @@ export default function PostRow({ post, index, totalCount }: PostRowProps) {
       </div>
       <div className="flex-auto">
         <Link
-          href={`/blog/${year}/${month}/${day}/${slug}`}
+          href={getLocalizedPath(
+            `/blog/${year}/${month}/${day}/${slug}`,
+            locale,
+          )}
           onClick={onLinkClick}
           className={styles.postLink}
         >

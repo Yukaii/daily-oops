@@ -1,3 +1,5 @@
+'use client'
+
 import { GrabberIcon, XCircleFillIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import React from 'react'
@@ -90,10 +92,12 @@ export const IframePreviewCard = ({
     },
   })
 
-  onMoveOrResize({
-    ...position,
-    ...size,
-  })
+  React.useEffect(() => {
+    onMoveOrResize({
+      ...position,
+      ...size,
+    })
+  }, [onMoveOrResize, position, size])
 
   // force render a new iframe component when url changes
   const iframeComponent = React.useMemo(() => {

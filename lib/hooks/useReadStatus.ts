@@ -1,3 +1,5 @@
+'use client'
+
 import { debounce } from 'lodash-es'
 import { useEffect, useRef, useState } from 'react'
 
@@ -43,7 +45,7 @@ export const useReadStatus = (slug: string) => {
   )
   const readStatus = readStatuses[slug] || false
 
-  const setReadStatus = (value: string) => {
+  const setReadStatus = (value: boolean) => {
     setReadStatuses({
       ...readStatuses,
       [slug]: value,

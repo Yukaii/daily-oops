@@ -208,10 +208,30 @@ export function getDayjsLocale(locale?: string): string {
 
 export function getLocalizedPath(path: string, locale?: string): string {
   const currentLocale = normalizeLocale(locale)
+  const normalizedPath =
+    path === '' ? '/' : path.startsWith('/') ? path : `/${path}`
 
   if (currentLocale === DEFAULT_LOCALE) {
-    return path
+    return normalizedPath
   }
 
-  return path === '/' ? `/${currentLocale}` : `/${currentLocale}${path}`
+  return normalizedPath === '/'
+    ? `/${currentLocale}`
+    : `/${currentLocale}${normalizedPath}`
+}
+
+export function stripLocalePrefix(path: string): string {
+  if (path === '/zh-TW' || path.startsWith('/zh-TW/')) {
+    return path.slice('/zh-TW'.length) || '/'
+  }
+
+  if (path === '/en' || path.startsWith('/en/')) {
+    return path.slice('/en'.length) || '/'
+  }
+
+  return path || '/'
+}
+
+export function switchLocalePath(path: string, locale?: string): string {
+  return getLocalizedPath(stripLocalePrefix(path), locale)
 }

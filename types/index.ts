@@ -26,6 +26,10 @@ export interface PostDate {
   day: string
 }
 
+export interface PostParams extends PostDate {
+  slug: string
+}
+
 export interface PostMeta {
   date: string
   image?: string

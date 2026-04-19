@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 // get the viewport width and height
 export const useViewport = () => {

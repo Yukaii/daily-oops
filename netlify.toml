@@ -16,7 +16,4 @@ NEXT_USE_NETLIFY_EDGE = "true"
   status = 302
 
 [[plugins]]
-package = "/netlify-plugins/trigger-webmention"
-
-[[plugins]]
 package = "@netlify/plugin-nextjs"

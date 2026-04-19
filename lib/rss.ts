@@ -1,6 +1,4 @@
 import { Feed } from 'feed'
-import fs from 'fs'
-import path from 'path'
 
 import { render } from '@/lib/markdown'
 import { Post } from '@/types'
@@ -47,10 +45,4 @@ export const generateRss = (posts: Post[]) => {
   })
 
   return feed.rss2()
-}
-
-export function writeRSS(posts: Post[]) {
-  const rss = generateRss(posts)
-
-  fs.writeFileSync(path.join(process.cwd(), './public/feed.xml'), rss)
 }
