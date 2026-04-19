@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import useStateRef from '@/lib/hooks/useStateRef'
 import useViewport from '@/lib/hooks/useViewport'
@@ -104,6 +104,7 @@ export const IframePreviewCardProvider = ({
 }: {
   children: React.ReactNode
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null)
   const [showPreview, setShowPreview] = useState(false)
   const [previewUrl, setPreviewUrl] = useState('')
 
@@ -118,61 +119,80 @@ export const IframePreviewCardProvider = ({
     setPreviewCardEnabled(width > 768)
   }, [setPreviewCardEnabled, width])
 
-  useEffect(() => {
-    // TODO: TS support
-    const handleOpenPreview = async (e: any) => {
-      const { target } = e
-      const url = parseHref(target.href)
+  const handleOpenPreview = async (target: HTMLAnchorElement) => {
+    const url = parseHref(target.href)
 
-      const openUrl = () => {
-        const openTarget = target.getAttribute('target')
-        if (openTarget) {
-          window.open(target.href, openTarget)
-        } else {
-          window.location.href = target.href
-        }
+    const openUrl = () => {
+      const openTarget = target.getAttribute('target')
+      if (openTarget) {
+        window.open(target.href, openTarget)
+      } else {
+        window.location.href = target.href
       }
+    }
 
-      // test if the url is valid and can be iframe embedded
+    if (
+      process.env.NODE_ENV === 'production' &&
+      url &&
+      !(await headRequest(url))
+    ) {
+      openUrl()
+      return
+    }
+
+    if (process.env.NODE_ENV === 'production') {
       if (
-        process.env.NODE_ENV === 'production' &&
-        url &&
-        !(await headRequest(url))
+        !isHoldingShiftRef.current ||
+        !previewCardEnabledRef.current ||
+        isExternalLink(url)
       ) {
-        return openUrl()
-      }
-
-      if (process.env.NODE_ENV === 'production') {
-        if (
-          !isHoldingShiftRef.current ||
-          !previewCardEnabledRef.current ||
-          isExternalLink(url)
-        ) {
-          return openUrl()
-        }
-      }
-
-      if (target.tagName === 'A' && url) {
-        setPreviewUrl(target.href)
-        setShowPreview(true)
+        openUrl()
+        return
       }
     }
 
-    // TODO: TS support
-    const handlePreview = (e: any) => {
-      if (e.target?.tagName === 'A' && e.target.href) {
-        e.preventDefault()
-        handleOpenPreview(e)
-      }
+    if (url) {
+      setPreviewUrl(target.href)
+      setShowPreview(true)
+    }
+  }
+
+  const handlePreview = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey
+    ) {
+      return
     }
 
-    document.addEventListener('click', handlePreview)
-    return () => document.removeEventListener('click', handlePreview)
-  }, [isHoldingShiftRef, previewCardEnabledRef])
+    const target = event.target
+
+    if (!(target instanceof HTMLElement)) {
+      return
+    }
+
+    const anchor = target.closest('a')
+
+    if (
+      !(anchor instanceof HTMLAnchorElement) ||
+      !anchor.href ||
+      !containerRef.current?.contains(anchor)
+    ) {
+      return
+    }
+
+    event.preventDefault()
+    void handleOpenPreview(anchor)
+  }
 
   return (
     <>
-      {children}
+      <div ref={containerRef} onClickCapture={handlePreview}>
+        {children}
+      </div>
       {showPreview && (
         <IframePreviewCard
           url={previewUrl}
