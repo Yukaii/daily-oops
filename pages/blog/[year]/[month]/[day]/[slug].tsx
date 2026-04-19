@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { SRLWrapper } from 'simple-react-lightbox'
 
 import { IframePreviewCardProvider } from '@/components/IframePreviewCard'
+import Lightbox from '@/components/Lightbox'
 import Markdown from '@/components/Markdown'
 // import { DiscussionEmbed } from 'disqus-react'
 import { config } from '@/lib/config'
@@ -150,21 +150,12 @@ export default function Post({
           <span className="text-mono color-fg-muted">{localizedDate}</span>
         </div>
         <IframePreviewCardProvider>
-          <SRLWrapper
-            options={{
-              settings: {
-                lightboxTransitionSpeed: 0.1,
-                slideAnimationType: 'both',
-                slideSpringValues: [350, 50],
-                slideTransitionTimingFunction: 'easeInOut',
-              },
-            }}
-          >
+          <Lightbox>
             <Markdown
               content={content}
               className="container post-container px-3"
             />
-          </SRLWrapper>
+          </Lightbox>
         </IframePreviewCardProvider>
 
         <div className="container py-3 px-3">
