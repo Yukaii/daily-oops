@@ -1,3 +1,5 @@
+'use client'
+
 import { MoonIcon, SunIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import { useTheme } from 'next-themes'
@@ -85,7 +87,7 @@ const withTemporaryTheme = <T,>(theme: string, callback: () => T) => {
 }
 
 const createThemeSnapshot = (theme: string, zIndex = 999) => {
-  const appRoot = document.getElementById('__next')
+  const appRoot = document.getElementById('app-root')
 
   if (!appRoot) {
     return null

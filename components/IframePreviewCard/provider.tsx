@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useMemo, useState } from 'react'
 
 import useStateRef from '@/lib/hooks/useStateRef'
@@ -112,7 +114,7 @@ export const IframePreviewCardProvider = ({
 
   const isHoldingShiftRef = useHoldingShiftKey()
 
-  useMemo(() => {
+  useEffect(() => {
     setPreviewCardEnabled(width > 768)
   }, [setPreviewCardEnabled, width])
 

@@ -1,3 +1,5 @@
+'use client'
+
 import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react'
 
 const isFunction = <S>(

@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "prebuild": "node scripts/generate-ads-txt.js",
-    "build": "rimraf .next/cache/posts && rimraf .next/cache/notes && next build --webpack",
+    "build": "next build --webpack",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint ."

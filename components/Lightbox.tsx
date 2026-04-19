@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowLeftIcon, ArrowRightIcon, XIcon } from '@primer/octicons-react'
 import type { MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 import { useEffect, useId, useRef, useState } from 'react'

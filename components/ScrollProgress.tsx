@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
@@ -14,7 +16,19 @@ const findOrCreatePortalContainer = () => {
 }
 
 const Portal = ({ children }: { children: React.ReactNode }) => {
-  return ReactDOM.createPortal(children, findOrCreatePortalContainer())
+  const [portalContainer, setPortalContainer] = React.useState<Element | null>(
+    null,
+  )
+
+  useEffect(() => {
+    setPortalContainer(findOrCreatePortalContainer())
+  }, [])
+
+  if (!portalContainer) {
+    return null
+  }
+
+  return ReactDOM.createPortal(children, portalContainer)
 }
 
 export const ScrollProgress = () => {

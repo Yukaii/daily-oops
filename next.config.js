@@ -6,12 +6,22 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ['en', 'zh-TW'],
-    defaultLocale: 'en',
-  },
   sassOptions: {
     includePaths: [path.join(__dirname, 'node_modules')],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/en',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/en/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+    ]
   },
   webpack: (config, options) => {
     config.resolve.fallback = {

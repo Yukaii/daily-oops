@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
-import useCopySnippet from '@/lib/hooks/useCopySnippet'
 import { render } from '@/lib/markdown'
+
+import CopySnippetBinder from './CopySnippetBinder'
 
 type MarkdownProps = Omit<
   ComponentPropsWithoutRef<'article'>,
@@ -16,17 +17,20 @@ const Markdown = ({
   className = '',
   ...articleProps
 }: MarkdownProps) => {
-  useCopySnippet()
+  const rdfaProps = {
+    typeof: 'schema:Article schema:BlogPosting',
+  }
 
   return (
     <main id="main" property="schema:mainEntity" className="e-content ">
+      <CopySnippetBinder />
       <article
         itemScope
         itemProp="post"
-        typeof="schema:Article schema:BlogPosting"
         property="schema:articleBody"
         className={`markdown-body ${className}`}
         dangerouslySetInnerHTML={{ __html: render(content) }}
+        {...rdfaProps}
         {...articleProps}
       />
 

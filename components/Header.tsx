@@ -1,3 +1,5 @@
+'use client'
+
 import {
   BookIcon,
   CodeIcon,
@@ -9,10 +11,16 @@ import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
-import { getMessages, normalizeLocale } from '@/lib/i18n'
+import {
+  AppLocale,
+  getLocalizedPath,
+  getMessages,
+  stripLocalePrefix,
+  switchLocalePath,
+} from '@/lib/i18n'
 
 import LogoAnimated from '../public/logo-animated.gif'
 
@@ -20,44 +28,52 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
   ssr: false,
 })
 
-const Header = () => {
+type HeaderProps = {
+  locale: AppLocale
+}
+
+const Header = ({ locale }: HeaderProps) => {
   const router = useRouter()
-  const { asPath, locale, pathname, query } = router
-  const currentLocale = normalizeLocale(locale)
-  const copy = getMessages(currentLocale)
-  const nextLocale = currentLocale === 'en' ? 'zh-TW' : 'en'
+  const pathname = usePathname() ?? '/'
+  const currentPath = stripLocalePrefix(pathname)
+  const copy = getMessages(locale)
+  const nextLocale = locale === 'en' ? 'zh-TW' : 'en'
   const nextLocaleLabel = copy.languageNames[nextLocale]
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   const items = [
     {
+      baseHref: '/',
       text: copy.nav.home,
-      href: '/',
+      href: getLocalizedPath('/', locale),
       icon: HomeIcon,
     },
     {
+      baseHref: '/blog',
       text: copy.nav.blog,
-      href: '/blog',
+      href: getLocalizedPath('/blog', locale),
       icon: BookIcon,
     },
     {
+      baseHref: '/projects',
       text: copy.nav.projects,
-      href: '/projects',
+      href: getLocalizedPath('/projects', locale),
       icon: CodeIcon,
     },
     {
+      baseHref: '/about',
       text: copy.nav.about,
-      href: '/about',
+      href: getLocalizedPath('/about', locale),
       icon: InfoIcon,
     },
   ]
 
-  const small = !items.map((i) => i.href).includes(pathname)
+  const small = !items.map((item) => item.baseHref).includes(currentPath)
 
   useEffect(() => {
     setIsMobileMenuOpen(false)
-  }, [pathname, locale])
+  }, [pathname])
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -96,9 +112,7 @@ const Header = () => {
   }, [isMobileMenuOpen])
 
   const switchLocale = () => {
-    document.cookie = `NEXT_LOCALE=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`
-
-    router.push({ pathname, query }, asPath, { locale: nextLocale })
+    router.push(switchLocalePath(pathname, nextLocale))
   }
 
   return (
@@ -145,7 +159,7 @@ const Header = () => {
                 href={item.href}
                 key={item.href}
                 className={cx('UnderlineNav-item', {
-                  selected: item.href === pathname,
+                  selected: item.baseHref === currentPath,
                 })}
               >
                 {item.icon ? (

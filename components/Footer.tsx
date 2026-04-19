@@ -11,7 +11,10 @@ export const Footer = () => {
   return (
     <footer className="container py-3">
       <hr />
-      <div className="d-flex flex-justify-center footer-links-container flex-wrap">
+      <div
+        className="d-flex flex-justify-center flex-wrap"
+        style={{ gap: '1rem' }}
+      >
         {links.map((link) => (
           <a
             key={link.url}
@@ -23,18 +26,6 @@ export const Footer = () => {
           </a>
         ))}
       </div>
-
-      <style jsx scoped>{`
-        .footer-links-container {
-          gap: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-          .footer-links-container {
-            gap: 0.5rem;
-          }
-        }
-      `}</style>
     </footer>
   )
 }

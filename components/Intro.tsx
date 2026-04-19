@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { getMessages } from '@/lib/i18n'
+import { getLocalizedPath, getMessages } from '@/lib/i18n'
 
 type IntroProps = {
   locale?: string
@@ -17,11 +17,17 @@ export default function Intro({ locale }: IntroProps) {
 
       <p>
         {copy.home.introBeforeBlog}
-        <Link href="/blog">{copy.home.introBlog}</Link>
+        <Link href={getLocalizedPath('/blog', locale)}>
+          {copy.home.introBlog}
+        </Link>
         {copy.home.introBetweenBlogAndProjects}
-        <Link href="/projects">{copy.home.introProjects}</Link>
+        <Link href={getLocalizedPath('/projects', locale)}>
+          {copy.home.introProjects}
+        </Link>
         {copy.home.introBetweenProjectsAndAbout}
-        <Link href="/about">{copy.home.introAbout}</Link>
+        <Link href={getLocalizedPath('/about', locale)}>
+          {copy.home.introAbout}
+        </Link>
         {copy.home.introAfterAbout}
       </p>
 
