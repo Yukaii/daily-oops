@@ -149,11 +149,16 @@ html {
 }
 
 .site-mobile-menu-item-label {
+  flex: 1 1 auto;
   min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .site-mobile-menu-item-value {
   flex: 0 0 auto;
+  margin-left: auto;
   color: var(--color-fg-muted);
   font-size: 0.875rem;
 }
@@ -170,6 +175,21 @@ html {
 
 .site-chrome-button-right {
   right: 0.5rem;
+}
+
+.site-chrome-button-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-chrome-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .night-switch-button {

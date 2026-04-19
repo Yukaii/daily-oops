@@ -51,6 +51,26 @@ type Messages = {
     publishedLinkLabel: string
     giscusLang: string
   }
+  shortcuts: {
+    openHelp: string
+    title: string
+    description: string
+    shortcutLabel: string
+    actionLabel: string
+    navigationSection: string
+    postsSection: string
+    historySection: string
+    goHome: string
+    goPosts: string
+    goProjects: string
+    goAbout: string
+    focusNextPost: string
+    focusPreviousPost: string
+    openFocusedPost: string
+    goBack: string
+    closeHelp: string
+    scopeNote: string
+  }
 }
 
 const messages: Record<AppLocale, Messages> = {
@@ -118,6 +138,26 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       publishedLinkLabel: 'published',
       giscusLang: 'en',
     },
+    shortcuts: {
+      openHelp: 'Keyboard shortcuts',
+      title: 'Keyboard shortcuts',
+      description: 'A quick guide to site navigation.',
+      shortcutLabel: 'Shortcut',
+      actionLabel: 'Action',
+      navigationSection: 'Navigation',
+      postsSection: 'Post lists',
+      historySection: 'History',
+      goHome: 'Go home',
+      goPosts: 'Go to posts',
+      goProjects: 'Go to projects',
+      goAbout: 'Go to about',
+      focusNextPost: 'Focus next post',
+      focusPreviousPost: 'Focus previous post',
+      openFocusedPost: 'Open focused post',
+      goBack: 'Go back',
+      closeHelp: 'Close help',
+      scopeNote: 'Post list shortcuts work on the home page and blog index.',
+    },
   },
   'zh-TW': {
     htmlLang: 'zh-TW',
@@ -182,6 +222,26 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       publishedWithHackmdPrefix: '本篇文章驕傲地使用',
       publishedLinkLabel: '發佈',
       giscusLang: 'zh-TW',
+    },
+    shortcuts: {
+      openHelp: '鍵盤快捷鍵',
+      title: '鍵盤快捷鍵',
+      description: '快速查看網站導覽操作。',
+      shortcutLabel: '按鍵',
+      actionLabel: '功能',
+      navigationSection: '頁面導覽',
+      postsSection: '文章列表',
+      historySection: '返回',
+      goHome: '前往首頁',
+      goPosts: '前往文章',
+      goProjects: '前往專案',
+      goAbout: '前往關於',
+      focusNextPost: '移動到下一篇文章',
+      focusPreviousPost: '移動到上一篇文章',
+      openFocusedPost: '開啟目前文章',
+      goBack: '返回上一頁',
+      closeHelp: '關閉說明',
+      scopeNote: '文章列表快捷鍵可在首頁與文章列表頁使用。',
     },
   },
 }

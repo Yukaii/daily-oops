@@ -5,3 +5,9 @@
 .postLink:hover {
   color: var(--color-accent-fg);
 }
+
+.postLink:focus-visible {
+  color: var(--color-accent-fg);
+  outline: 2px solid var(--color-accent-emphasis);
+  outline-offset: 2px;
+}

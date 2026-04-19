@@ -3,9 +3,11 @@
 import {
   BookIcon,
   CodeIcon,
+  GlobeIcon,
   HomeIcon,
   InfoIcon,
   KebabHorizontalIcon,
+  QuestionIcon,
 } from '@primer/octicons-react'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
@@ -21,6 +23,7 @@ import {
   stripLocalePrefix,
   switchLocalePath,
 } from '@/lib/i18n'
+import { openShortcutsHelp } from '@/lib/keyboardShortcuts'
 
 import LogoAnimated from '../public/logo-animated.gif'
 
@@ -206,7 +209,8 @@ const Header = ({ locale }: HeaderProps) => {
                   }}
                 >
                   <span className="site-mobile-menu-item-label">
-                    {copy.languageSwitch}
+                    <GlobeIcon className="UnderlineNav-octicon" />
+                    <span>{copy.languageSwitch}</span>
                   </span>
                   <span className="site-mobile-menu-item-value">
                     {nextLocaleLabel}
@@ -217,9 +221,25 @@ const Header = ({ locale }: HeaderProps) => {
                   label={copy.themeToggle}
                   className="site-mobile-menu-item"
                   role="menuitem"
-                  showText
+                  variant="menu"
                   onPress={() => setIsMobileMenuOpen(false)}
                 />
+
+                <button
+                  type="button"
+                  className="site-mobile-menu-item"
+                  role="menuitem"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    openShortcutsHelp()
+                  }}
+                >
+                  <span className="site-mobile-menu-item-label">
+                    <QuestionIcon className="UnderlineNav-octicon" />
+                    <span>{copy.shortcuts.openHelp}</span>
+                  </span>
+                  <span className="site-mobile-menu-item-value">?</span>
+                </button>
               </div>
             ) : null}
           </div>
@@ -236,7 +256,17 @@ const Header = ({ locale }: HeaderProps) => {
         {nextLocaleLabel}
       </button>
 
-      <div className="site-chrome-button site-chrome-button-right">
+      <div className="site-chrome-button site-chrome-button-right site-chrome-button-group">
+        <button
+          type="button"
+          className="btn btn-sm site-chrome-icon-button"
+          aria-label={copy.shortcuts.openHelp}
+          aria-keyshortcuts="?"
+          title={copy.shortcuts.openHelp}
+          onClick={openShortcutsHelp}
+        >
+          <QuestionIcon />
+        </button>
         <NightSwitch label={copy.themeToggle} />
       </div>
     </>

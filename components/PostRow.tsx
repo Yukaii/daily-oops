@@ -66,6 +66,8 @@ export default function PostRow({
           )}
           onClick={onLinkClick}
           className={styles.postLink}
+          data-post-link="true"
+          aria-keyshortcuts="Enter l"
         >
           <strong>{post.title}</strong>
         </Link>

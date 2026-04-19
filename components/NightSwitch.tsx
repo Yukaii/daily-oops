@@ -12,6 +12,7 @@ type NightSwitchProps = {
   role?: AriaRole
   showText?: boolean
   onPress?: () => void
+  variant?: 'default' | 'menu'
 }
 
 const prefersReducedMotion = () =>
@@ -138,9 +139,11 @@ export default function NightSwitch({
   role,
   showText = false,
   onPress,
+  variant = 'default',
 }: NightSwitchProps) {
   const { resolvedTheme, setTheme } = useTheme()
   const isAnimatingRef = useRef(false)
+  const icon = resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />
 
   const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
     const nextTheme = resolvedTheme === 'light' ? 'dark' : 'light'
@@ -247,15 +250,24 @@ export default function NightSwitch({
 
   return (
     <button
-      className={cx('night-switch-button btn px-2', className)}
+      className={cx('night-switch-button btn', className, {
+        'px-2': variant !== 'menu',
+      })}
       type="button"
       onClick={handleClick}
       role={role}
       aria-label={label}
       title={label}
     >
-      {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
-      {showText ? (
+      {variant === 'menu' ? (
+        <span className="site-mobile-menu-item-label">
+          {icon}
+          <span>{label}</span>
+        </span>
+      ) : (
+        icon
+      )}
+      {showText && variant !== 'menu' ? (
         <span className="night-switch-button-label">{label}</span>
       ) : null}
     </button>

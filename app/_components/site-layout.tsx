@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import Intro from '@/components/Intro'
+import KeyboardShortcuts from '@/components/KeyboardShortcuts'
 import ScrollProgress from '@/components/ScrollProgress'
 import {
   NEXT_PUBLIC_DOMAIN,
@@ -21,6 +22,7 @@ export default function SiteLayout({ children, locale }: SiteLayoutProps) {
 
   return (
     <>
+      <KeyboardShortcuts locale={locale} />
       <Header locale={locale} />
       {children}
       <Footer />
