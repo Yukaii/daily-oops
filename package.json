@@ -26,7 +26,6 @@
     "classnames": "^2.3.2",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.9",
-    "disqus-react": "^1.1.5",
     "fast-glob": "^3.3.1",
     "feed": "^4.2.2",
     "got": "^11.8.6",

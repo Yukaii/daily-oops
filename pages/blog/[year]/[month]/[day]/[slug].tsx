@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import { IframePreviewCardProvider } from '@/components/IframePreviewCard'
 import Lightbox from '@/components/Lightbox'
 import Markdown from '@/components/Markdown'
-// import { DiscussionEmbed } from 'disqus-react'
 import { config } from '@/lib/config'
 import { NEXT_PUBLIC_DOMAIN } from '@/lib/constants'
 import dayjs from '@/lib/dayjs'
@@ -196,21 +195,6 @@ export default function Post({
             loading="lazy"
           />
         </div>
-
-        {/* {disqus && ( */}
-        {/*   <div className="container py-3 px-3"> */}
-        {/*     <DiscussionEmbed */}
-        {/*       shortname={disqus.shortname} */}
-        {/*       config={{ */}
-        {/*         url: url, */}
-        {/*         identifier: url, */}
-        {/*         title: title, */}
-        {/*         language: 'zh_TW', */}
-        {/*       }} */}
-        {/*       darkmode={JSON.stringify(layoutDarkMode)} */}
-        {/*     /> */}
-        {/*   </div> */}
-        {/* )} */}
       </div>
     </section>
   )
