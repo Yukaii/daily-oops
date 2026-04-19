@@ -8,7 +8,6 @@ import Head from 'next/head'
 import Router, { NextRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { useEffect } from 'react'
-import SimpleReactLightbox from 'simple-react-lightbox'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -45,15 +44,13 @@ function MyApp({ Component, pageProps, router }: MyAppProps) {
       </Head>
 
       <ThemeProvider attribute="data-color-mode">
-        <SimpleReactLightbox>
-          <Header />
-          <Component {...pageProps} key={`${router.route}:${currentLocale}`} />
-          <Footer />
+        <Header />
+        <Component {...pageProps} key={`${router.route}:${currentLocale}`} />
+        <Footer />
 
-          <WithMounted>
-            {({ mounted }) => mounted && <ScrollProgress />}
-          </WithMounted>
-        </SimpleReactLightbox>
+        <WithMounted>
+          {({ mounted }) => mounted && <ScrollProgress />}
+        </WithMounted>
       </ThemeProvider>
     </>
   )
