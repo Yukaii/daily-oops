@@ -37,6 +37,21 @@ type IframePreviewCardProps = {
   }
 }
 
+const getFallbackTitle = (url: string) => {
+  try {
+    const parsedUrl = new URL(url, window.location.origin)
+    const path = parsedUrl.pathname === '/' ? '' : parsedUrl.pathname
+
+    return `${parsedUrl.hostname}${path}`
+  } catch {
+    return url
+  }
+}
+
+const isCrossOriginAccessError = (error: unknown) => {
+  return error instanceof DOMException && error.name === 'SecurityError'
+}
+
 export const IframePreviewCard = ({
   url,
   onIframeError,
@@ -46,7 +61,11 @@ export const IframePreviewCard = ({
 }: IframePreviewCardProps) => {
   /** @type {React.RefObject<HTMLIFrameElement>} */
   const iframeRef = React.useRef(null) as any // TODO: TS support
-  const [title, setTitle] = React.useState('Loading...')
+  const [title, setTitle] = React.useState(() => getFallbackTitle(url))
+
+  React.useEffect(() => {
+    setTitle(getFallbackTitle(url))
+  }, [url])
 
   const onLoad = useCallback(() => {
     try {
@@ -55,15 +74,22 @@ export const IframePreviewCard = ({
       }
       const iframe = iframeRef.current
       const doc = iframe.contentDocument || iframe.contentWindow.document
-      setTitle(doc.title)
+      if (doc.title) {
+        setTitle(doc.title)
+      }
     } catch (e) {
+      if (isCrossOriginAccessError(e)) {
+        setTitle(getFallbackTitle(url))
+        return
+      }
+
       console.error('IframePreviewCard error')
       console.error(e)
       if (typeof onIframeError === 'function') {
         onIframeError(e)
       }
     }
-  }, [onIframeError])
+  }, [onIframeError, url])
 
   const {
     resizableRef: dragContainerRef,
