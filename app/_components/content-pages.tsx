@@ -130,6 +130,8 @@ export async function BlogPage({ locale }: { locale: AppLocale }) {
         className="d-block mx-auto markdown-body py-4 px-3"
         style={{ maxWidth: 680 }}
       >
+        <h2>{copy.home.allPosts}</h2>
+
         <div className="Box">
           {posts.map((post, index) => (
             <PostRow

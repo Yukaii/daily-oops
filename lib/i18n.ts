@@ -23,6 +23,7 @@ type Messages = {
     description: string
     signoff: string
     recentPosts: string
+    allPosts: string
     morePosts: string
     subscribeViaRss: string
     introBeforeBlog: string
@@ -96,6 +97,7 @@ const messages: Record<AppLocale, Messages> = {
       description: "This is Yukai Huang's personal website.",
       signoff: 'Enjoy!',
       recentPosts: 'Recent posts',
+      allPosts: 'All posts',
       morePosts: 'More posts',
       subscribeViaRss: 'Subscribe via RSS',
       introBeforeBlog: 'Here you can read my ',
@@ -181,6 +183,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       description: '這裡是 Yukai Huang 的個人網站。',
       signoff: '安久吧！',
       recentPosts: '最新文章',
+      allPosts: '全部文章',
       morePosts: '更多文章',
       subscribeViaRss: '透過 RSS 訂閱',
       introBeforeBlog: '你可以在這裡看看我的 ',
