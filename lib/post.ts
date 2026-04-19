@@ -58,6 +58,15 @@ try {
   console.error(error)
 }
 
+const writeCacheFile = (filePath: string, content: string): void => {
+  try {
+    fsExtra.ensureDirSync(path.dirname(filePath))
+    fsExtra.writeFileSync(filePath, content, 'utf8')
+  } catch {
+    // The runtime filesystem may be read-only; cache writes are best-effort only.
+  }
+}
+
 const isPost = (post: Post | null): post is Post => {
   return post !== null
 }
@@ -151,7 +160,7 @@ export const fetchPostData = async (
       }),
     )
 
-    fsExtra.writeFileSync(notePath, fullContent, 'utf8')
+    writeCacheFile(notePath, fullContent)
 
     return fullContent
   } catch (error) {
@@ -186,45 +195,51 @@ const getCachedPostFilename = (post: Post): string => {
 }
 
 const writePostsToCache = async (posts: Post[]): Promise<void> => {
-  const currentEntries = await fg(`${cachedDir}/*.json`)
-  const nextEntries = new Set<string>()
+  try {
+    fsExtra.ensureDirSync(cachedDir)
 
-  posts.forEach((post) => {
-    if (!post.note) {
-      return
-    }
+    const currentEntries = await fg(`${cachedDir}/*.json`)
+    const nextEntries = new Set<string>()
 
-    const filename = getCachedPostFilename(post)
-    nextEntries.add(filename)
-    const filePath = path.join(cachedDir, filename)
-    const tempFilePath = `${filePath}.tmp`
+    posts.forEach((post) => {
+      if (!post.note) {
+        return
+      }
 
-    fsExtra.writeFileSync(
-      tempFilePath,
-      JSON.stringify(
-        {
-          id: post.note.id,
-          meta: post.meta,
-          title: post.note.title,
-          content: post.content,
-          date: post.date,
-          slug: post.slug,
-          tags: post.tags,
-          publishedAt: post.publishedAt,
-        },
-        null,
-        2,
-      ),
-      'utf-8',
-    )
-    fsExtra.moveSync(tempFilePath, filePath, { overwrite: true })
-  })
+      const filename = getCachedPostFilename(post)
+      nextEntries.add(filename)
+      const filePath = path.join(cachedDir, filename)
+      const tempFilePath = `${filePath}.tmp`
 
-  currentEntries.forEach((entry) => {
-    if (!nextEntries.has(path.basename(entry))) {
-      fsExtra.removeSync(entry)
-    }
-  })
+      fsExtra.writeFileSync(
+        tempFilePath,
+        JSON.stringify(
+          {
+            id: post.note.id,
+            meta: post.meta,
+            title: post.note.title,
+            content: post.content,
+            date: post.date,
+            slug: post.slug,
+            tags: post.tags,
+            publishedAt: post.publishedAt,
+          },
+          null,
+          2,
+        ),
+        'utf-8',
+      )
+      fsExtra.moveSync(tempFilePath, filePath, { overwrite: true })
+    })
+
+    currentEntries.forEach((entry) => {
+      if (!nextEntries.has(path.basename(entry))) {
+        fsExtra.removeSync(entry)
+      }
+    })
+  } catch {
+    // Keep runtime requests working when the deployment filesystem is read-only.
+  }
 }
 
 const serializePosts = (posts: Post[]): Post[] => {
