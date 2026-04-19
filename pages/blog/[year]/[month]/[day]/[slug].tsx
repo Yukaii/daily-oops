@@ -171,18 +171,18 @@ export default function Post({
           <div className="container-block color-bg-accent color-border-accent-emphasis rounded-2 p-3">
             {currentLocale === 'zh-TW' ? (
               <>
-                本篇文章驕傲的使用 {hackmdLink()}{' '}
+                {copy.post.publishedWithHackmdPrefix} {hackmdLink()}{' '}
                 <a target="_blank" href={noteLink} rel="noopener noreferrer">
-                  {copy.post.publishedWithLabel}
+                  {copy.post.publishedLinkLabel}
                 </a>
+                。
               </>
             ) : (
               <>
-                This post is proudly{' '}
                 <a target="_blank" href={noteLink} rel="noopener noreferrer">
-                  {copy.post.publishedWithLabel}
+                  {copy.post.noteLinkLabel}
                 </a>{' '}
-                {hackmdLink()}.
+                {copy.post.publishedWithHackmdPrefix} {hackmdLink()}.
               </>
             )}
           </div>

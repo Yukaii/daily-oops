@@ -46,7 +46,9 @@ type Messages = {
   }
   post: {
     coverImageAlt: string
-    publishedWithLabel: string
+    noteLinkLabel: string
+    publishedWithHackmdPrefix: string
+    publishedLinkLabel: string
     giscusLang: string
   }
 }
@@ -111,7 +113,9 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     },
     post: {
       coverImageAlt: 'cover image',
-      publishedWithLabel: 'published with',
+      noteLinkLabel: 'This post',
+      publishedWithHackmdPrefix: 'is proudly published with',
+      publishedLinkLabel: 'published',
       giscusLang: 'en',
     },
   },
@@ -174,7 +178,9 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     },
     post: {
       coverImageAlt: '文章封面',
-      publishedWithLabel: '發佈於',
+      noteLinkLabel: '查看原始筆記',
+      publishedWithHackmdPrefix: '本篇文章驕傲地使用',
+      publishedLinkLabel: '發佈',
       giscusLang: 'zh-TW',
     },
   },
