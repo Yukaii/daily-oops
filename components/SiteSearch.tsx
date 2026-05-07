@@ -224,7 +224,7 @@ export default function SiteSearch({
       {isDesktop ? (
         <button
           type="button"
-          className={styles.desktopButton}
+          className={`btn btn-sm ${styles.desktopButton}`}
           onClick={() => setIsOpen((open) => !open)}
           aria-label={copy.siteSearch.open}
           title={copy.siteSearch.open}
@@ -236,7 +236,7 @@ export default function SiteSearch({
       ) : !isOpen ? (
         <button
           type="button"
-          className={styles.mobileButton}
+          className={`btn btn-sm ${styles.mobileButton}`}
           onClick={() => setIsOpen(true)}
           aria-label={copy.siteSearch.open}
           title={copy.siteSearch.open}
