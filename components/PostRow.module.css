@@ -1,13 +1,21 @@
+.postRow {
+  cursor: pointer;
+}
+
+.postRow:focus-visible {
+  outline: 2px solid var(--color-accent-emphasis);
+  outline-offset: -2px;
+  background-color: var(--color-accent-subtle);
+}
+
+.postRow:hover .postLink {
+  color: var(--color-accent-fg);
+}
+
 .postLink {
   color: var(--color-fg-default);
 }
 
 .postLink:hover {
   color: var(--color-accent-fg);
-}
-
-.postLink:focus-visible {
-  color: var(--color-accent-fg);
-  outline: 2px solid var(--color-accent-emphasis);
-  outline-offset: 2px;
 }

@@ -38,20 +38,20 @@ function isTypingTarget(target: EventTarget | null): boolean {
   return target.closest('[contenteditable="true"], [role="textbox"]') !== null
 }
 
-function getPostLinks(): HTMLAnchorElement[] {
+function getPostLinks(): HTMLElement[] {
   return Array.from(
-    document.querySelectorAll<HTMLAnchorElement>(POST_LINK_SELECTOR),
+    document.querySelectorAll<HTMLElement>(POST_LINK_SELECTOR),
   )
 }
 
-function getActivePostLink(): HTMLAnchorElement | null {
-  if (!(document.activeElement instanceof HTMLAnchorElement)) {
+function getActivePostLink(): HTMLElement | null {
+  const activeElement = document.activeElement
+
+  if (!(activeElement instanceof HTMLElement)) {
     return null
   }
 
-  return document.activeElement.matches(POST_LINK_SELECTOR)
-    ? document.activeElement
-    : null
+  return activeElement.matches(POST_LINK_SELECTOR) ? activeElement : null
 }
 
 function getVisibleSearchInput(): HTMLInputElement | null {
@@ -153,7 +153,7 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
       return true
     }
 
-    const focusPostLink = (direction: 'next' | 'previous') => {
+    const focusPostLink = (direction: 'next' | 'previous' | 'first' | 'last') => {
       const currentPath = stripLocalePrefix(pathname)
 
       if (currentPath !== '/' && currentPath !== '/blog') {
@@ -171,7 +171,11 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
 
       let nextIndex = 0
 
-      if (activeIndex === -1) {
+      if (direction === 'first') {
+        nextIndex = 0
+      } else if (direction === 'last') {
+        nextIndex = links.length - 1
+      } else if (activeIndex === -1) {
         nextIndex = direction === 'next' ? 0 : links.length - 1
       } else if (direction === 'next') {
         nextIndex = Math.min(activeIndex + 1, links.length - 1)
@@ -216,9 +220,107 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
         event.defaultPrevented ||
         event.isComposing ||
         event.metaKey ||
-        event.ctrlKey ||
         event.altKey
       ) {
+        clearSequence()
+        return
+      }
+
+    const focusPostInViewport = (direction: 'down' | 'up') => {
+      const currentPath = stripLocalePrefix(pathname)
+
+      if (currentPath !== '/' && currentPath !== '/blog') {
+        return false
+      }
+
+      const links = getPostLinks()
+
+      if (links.length === 0) {
+        return false
+      }
+
+      const viewportCenter = window.scrollY + window.innerHeight / 2
+      let bestLink: HTMLElement | null = null
+      let bestDistance = Number.POSITIVE_INFINITY
+
+      for (const link of links) {
+        const rect = link.getBoundingClientRect()
+        const linkCenter = window.scrollY + rect.top + rect.height / 2
+        const distance = Math.abs(linkCenter - viewportCenter)
+
+        // For 'down', prefer links below current viewport center
+        // For 'up', prefer links above current viewport center
+        if (direction === 'down' && linkCenter > viewportCenter - 100) {
+          if (distance < bestDistance) {
+            bestDistance = distance
+            bestLink = link
+          }
+        } else if (direction === 'up' && linkCenter < viewportCenter + 100) {
+          if (distance < bestDistance) {
+            bestDistance = distance
+            bestLink = link
+          }
+        }
+      }
+
+      // Fallback: if no suitable link found, use first/last visible
+      if (!bestLink) {
+        for (const link of links) {
+          const rect = link.getBoundingClientRect()
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0
+          if (isVisible) {
+            bestLink = link
+            if (direction === 'down') {
+              break
+            }
+          }
+        }
+      }
+
+      if (bestLink) {
+        bestLink.focus()
+        bestLink.scrollIntoView({ block: 'nearest' })
+        return true
+      }
+
+      return false
+    }
+
+      // Handle Ctrl+key shortcuts (Ctrl+D, Ctrl+U)
+      if (event.ctrlKey) {
+        if (isTypingTarget(event.target)) {
+          clearSequence()
+          return
+        }
+
+        const currentPath = stripLocalePrefix(pathname)
+
+        switch (event.key.toLowerCase()) {
+          case 'd':
+            event.preventDefault()
+            clearSequence()
+            if (currentPath === '/' || currentPath === '/blog') {
+              window.scrollBy({
+                top: window.innerHeight / 2,
+                behavior: 'smooth',
+              })
+              // Delay focus until after scroll completes
+              setTimeout(() => focusPostInViewport('down'), 200)
+            }
+            return
+          case 'u':
+            event.preventDefault()
+            clearSequence()
+            if (currentPath === '/' || currentPath === '/blog') {
+              window.scrollBy({
+                top: -(window.innerHeight / 2),
+                behavior: 'smooth',
+              })
+              // Delay focus until after scroll completes
+              setTimeout(() => focusPostInViewport('up'), 200)
+            }
+            return
+        }
         clearSequence()
         return
       }
@@ -250,6 +352,10 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
             event.preventDefault()
             navigateTo('/about')
             return
+          case 'g':
+            event.preventDefault()
+            focusPostLink('first')
+            return
           default:
             clearSequence()
         }
@@ -262,6 +368,11 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
           return
         case 'g':
           setSequence('g')
+          return
+        case 'G':
+          if (focusPostLink('last')) {
+            event.preventDefault()
+          }
           return
         case 'j':
           if (focusPostLink('next')) {
@@ -461,6 +572,46 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
                             <span className={styles.kbd}>h / ⌫</span>
                           </th>
                           <td>{copy.shortcuts.goBack}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+
+                  <section
+                    className={styles.section}
+                    aria-labelledby={`${titleId}-scroll`}
+                  >
+                    <h3
+                      className={styles.sectionTitle}
+                      id={`${titleId}-scroll`}
+                    >
+                      {copy.shortcuts.scrollSection}
+                    </h3>
+                    <table className={styles.table}>
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            <span className={styles.kbd}>gg</span>
+                          </th>
+                          <td>{copy.shortcuts.scrollToTop}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span className={styles.kbd}>G</span>
+                          </th>
+                          <td>{copy.shortcuts.scrollToBottom}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span className={styles.kbd}>Ctrl+d</span>
+                          </th>
+                          <td>{copy.shortcuts.halfPageDown}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span className={styles.kbd}>Ctrl+u</span>
+                          </th>
+                          <td>{copy.shortcuts.halfPageUp}</td>
                         </tr>
                       </tbody>
                     </table>

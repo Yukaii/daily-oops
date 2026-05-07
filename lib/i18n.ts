@@ -68,6 +68,7 @@ type Messages = {
     navigationSection: string
     postsSection: string
     historySection: string
+    scrollSection: string
     goHome: string
     goPosts: string
     goProjects: string
@@ -77,6 +78,10 @@ type Messages = {
     openFocusedPost: string
     focusSearch: string
     goBack: string
+    scrollToTop: string
+    scrollToBottom: string
+    halfPageDown: string
+    halfPageUp: string
     closeHelp: string
     scopeNote: string
   }
@@ -164,6 +169,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       navigationSection: 'Navigation',
       postsSection: 'Post lists',
       historySection: 'History',
+      scrollSection: 'Scrolling',
       goHome: 'Go home',
       goPosts: 'Go to posts',
       goProjects: 'Go to projects',
@@ -173,6 +179,10 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       openFocusedPost: 'Open focused post',
       focusSearch: 'Focus search',
       goBack: 'Go back',
+      scrollToTop: 'Focus first post',
+      scrollToBottom: 'Focus last post',
+      halfPageDown: 'Half page down',
+      halfPageUp: 'Half page up',
       closeHelp: 'Close help',
       scopeNote:
         'Post list shortcuts work on the home page and blog index. Search focuses the visible page search when available, otherwise it opens site search.',
@@ -259,6 +269,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       navigationSection: '頁面導覽',
       postsSection: '文章列表',
       historySection: '返回',
+      scrollSection: '捲動',
       goHome: '前往首頁',
       goPosts: '前往文章',
       goProjects: '前往專案',
@@ -268,6 +279,10 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       openFocusedPost: '開啟目前文章',
       focusSearch: '聚焦搜尋',
       goBack: '返回上一頁',
+      scrollToTop: '聚焦第一篇文章',
+      scrollToBottom: '聚焦最後一篇文章',
+      halfPageDown: '向下捲動半頁',
+      halfPageUp: '向上捲動半頁',
       closeHelp: '關閉說明',
       scopeNote:
         '文章列表快捷鍵可在首頁與文章列表頁使用。搜尋快捷鍵會優先聚焦目前可見的頁面搜尋欄，否則開啟站內搜尋。',

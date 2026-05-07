@@ -2,6 +2,7 @@
 
 import { DotFillIcon } from '@primer/octicons-react'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 import dayjs from '@/lib/dayjs'
 import {
@@ -38,16 +39,42 @@ export default function PostRow({
     .format('LL')
 
   const fullSlug = `/blog/${year}/${month}/${day}/${slug}`
+  const href = getLocalizedPath(fullSlug, locale)
 
   const [readStatus, setReadStatus, isLoaded] = useReadStatus(fullSlug)
   const isRead = readStatus || !isLoaded
+
+  const linkRef = useRef<HTMLAnchorElement>(null)
 
   const onLinkClick = () => {
     setReadStatus(true)
   }
 
+  const handleRowClick = (e: React.MouseEvent) => {
+    // Don't navigate if clicking the link directly (let Link handle it)
+    if (e.target instanceof HTMLElement && e.target.closest('a')) {
+      return
+    }
+    linkRef.current?.click()
+  }
+
+  const handleRowKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      linkRef.current?.click()
+    }
+  }
+
   return (
-    <div className="Box-row Box-row--hover-gray d-flex flex-items-start">
+    <div
+      className={`Box-row Box-row--hover-gray d-flex flex-items-start ${styles.postRow}`}
+      data-post-link="true"
+      tabIndex={0}
+      onClick={handleRowClick}
+      onKeyDown={handleRowKeyDown}
+      aria-keyshortcuts="Enter l"
+      role="link"
+    >
       <div
         className="mt-1 mr-2 d-flex flex-items-start"
         style={{ color: 'var(--color-scale-orange-3)' }}
@@ -60,14 +87,11 @@ export default function PostRow({
       </div>
       <div className="flex-auto">
         <Link
-          href={getLocalizedPath(
-            `/blog/${year}/${month}/${day}/${slug}`,
-            locale,
-          )}
+          ref={linkRef}
+          href={href}
           onClick={onLinkClick}
           className={styles.postLink}
-          data-post-link="true"
-          aria-keyshortcuts="Enter l"
+          tabIndex={-1}
         >
           <strong>{post.title}</strong>
         </Link>
