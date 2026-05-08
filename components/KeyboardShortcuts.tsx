@@ -39,9 +39,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 function getPostLinks(): HTMLElement[] {
-  return Array.from(
-    document.querySelectorAll<HTMLElement>(POST_LINK_SELECTOR),
-  )
+  return Array.from(document.querySelectorAll<HTMLElement>(POST_LINK_SELECTOR))
 }
 
 function getActivePostLink(): HTMLElement | null {
@@ -153,7 +151,9 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
       return true
     }
 
-    const focusPostLink = (direction: 'next' | 'previous' | 'first' | 'last') => {
+    const focusPostLink = (
+      direction: 'next' | 'previous' | 'first' | 'last',
+    ) => {
       const currentPath = stripLocalePrefix(pathname)
 
       if (currentPath !== '/' && currentPath !== '/blog') {
@@ -226,65 +226,65 @@ export default function KeyboardShortcuts({ locale }: KeyboardShortcutsProps) {
         return
       }
 
-    const focusPostInViewport = (direction: 'down' | 'up') => {
-      const currentPath = stripLocalePrefix(pathname)
+      const focusPostInViewport = (direction: 'down' | 'up') => {
+        const currentPath = stripLocalePrefix(pathname)
 
-      if (currentPath !== '/' && currentPath !== '/blog') {
-        return false
-      }
-
-      const links = getPostLinks()
-
-      if (links.length === 0) {
-        return false
-      }
-
-      const viewportCenter = window.scrollY + window.innerHeight / 2
-      let bestLink: HTMLElement | null = null
-      let bestDistance = Number.POSITIVE_INFINITY
-
-      for (const link of links) {
-        const rect = link.getBoundingClientRect()
-        const linkCenter = window.scrollY + rect.top + rect.height / 2
-        const distance = Math.abs(linkCenter - viewportCenter)
-
-        // For 'down', prefer links below current viewport center
-        // For 'up', prefer links above current viewport center
-        if (direction === 'down' && linkCenter > viewportCenter - 100) {
-          if (distance < bestDistance) {
-            bestDistance = distance
-            bestLink = link
-          }
-        } else if (direction === 'up' && linkCenter < viewportCenter + 100) {
-          if (distance < bestDistance) {
-            bestDistance = distance
-            bestLink = link
-          }
+        if (currentPath !== '/' && currentPath !== '/blog') {
+          return false
         }
-      }
 
-      // Fallback: if no suitable link found, use first/last visible
-      if (!bestLink) {
+        const links = getPostLinks()
+
+        if (links.length === 0) {
+          return false
+        }
+
+        const viewportCenter = window.scrollY + window.innerHeight / 2
+        let bestLink: HTMLElement | null = null
+        let bestDistance = Number.POSITIVE_INFINITY
+
         for (const link of links) {
           const rect = link.getBoundingClientRect()
-          const isVisible = rect.top < window.innerHeight && rect.bottom > 0
-          if (isVisible) {
-            bestLink = link
-            if (direction === 'down') {
-              break
+          const linkCenter = window.scrollY + rect.top + rect.height / 2
+          const distance = Math.abs(linkCenter - viewportCenter)
+
+          // For 'down', prefer links below current viewport center
+          // For 'up', prefer links above current viewport center
+          if (direction === 'down' && linkCenter > viewportCenter - 100) {
+            if (distance < bestDistance) {
+              bestDistance = distance
+              bestLink = link
+            }
+          } else if (direction === 'up' && linkCenter < viewportCenter + 100) {
+            if (distance < bestDistance) {
+              bestDistance = distance
+              bestLink = link
             }
           }
         }
-      }
 
-      if (bestLink) {
-        bestLink.focus()
-        bestLink.scrollIntoView({ block: 'nearest' })
-        return true
-      }
+        // Fallback: if no suitable link found, use first/last visible
+        if (!bestLink) {
+          for (const link of links) {
+            const rect = link.getBoundingClientRect()
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0
+            if (isVisible) {
+              bestLink = link
+              if (direction === 'down') {
+                break
+              }
+            }
+          }
+        }
 
-      return false
-    }
+        if (bestLink) {
+          bestLink.focus()
+          bestLink.scrollIntoView({ block: 'nearest' })
+          return true
+        }
+
+        return false
+      }
 
       // Handle Ctrl+key shortcuts (Ctrl+D, Ctrl+U)
       if (event.ctrlKey) {
