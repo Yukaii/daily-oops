@@ -6,6 +6,7 @@
 
 html {
   scroll-padding-top: 54px; /* height of sticky header */
+  --post-transition-distance: 24px;
 }
 
 ::view-transition {
@@ -13,46 +14,54 @@ html {
 }
 
 ::view-transition-old(.post-forward) {
-  animation: 160ms ease-in both post-transition-out-left;
+  animation: 150ms cubic-bezier(0.4, 0, 0.8, 1) both post-transition-out-left;
 }
 
 ::view-transition-new(.post-forward) {
-  animation: 240ms ease-out both post-transition-in-right;
+  animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both
+    post-transition-in-right;
 }
 
 ::view-transition-old(.post-back) {
-  animation: 160ms ease-in both post-transition-out-right;
+  animation: 150ms cubic-bezier(0.4, 0, 0.8, 1) both post-transition-out-right;
 }
 
 ::view-transition-new(.post-back) {
-  animation: 240ms ease-out both post-transition-in-left;
+  animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both
+    post-transition-in-left;
 }
 
 @keyframes post-transition-out-left {
   to {
     opacity: 0;
-    translate: -24px;
+    translate: calc(-1 * var(--post-transition-distance));
   }
 }
 
 @keyframes post-transition-in-right {
   from {
     opacity: 0;
-    translate: 24px;
+    translate: var(--post-transition-distance);
   }
 }
 
 @keyframes post-transition-out-right {
   to {
     opacity: 0;
-    translate: 24px;
+    translate: var(--post-transition-distance);
   }
 }
 
 @keyframes post-transition-in-left {
   from {
     opacity: 0;
-    translate: -24px;
+    translate: calc(-1 * var(--post-transition-distance));
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    --post-transition-distance: 16px;
   }
 }
 
