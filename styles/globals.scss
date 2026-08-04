@@ -6,6 +6,72 @@
 
 html {
   scroll-padding-top: 54px; /* height of sticky header */
+  --post-transition-distance: 24px;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.post-forward) {
+  animation: 150ms cubic-bezier(0.4, 0, 0.8, 1) both post-transition-out-left;
+}
+
+::view-transition-new(.post-forward) {
+  animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both
+    post-transition-in-right;
+}
+
+::view-transition-old(.post-back) {
+  animation: 150ms cubic-bezier(0.4, 0, 0.8, 1) both post-transition-out-right;
+}
+
+::view-transition-new(.post-back) {
+  animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both
+    post-transition-in-left;
+}
+
+@keyframes post-transition-out-left {
+  to {
+    opacity: 0;
+    translate: calc(-1 * var(--post-transition-distance));
+  }
+}
+
+@keyframes post-transition-in-right {
+  from {
+    opacity: 0;
+    translate: var(--post-transition-distance);
+  }
+}
+
+@keyframes post-transition-out-right {
+  to {
+    opacity: 0;
+    translate: var(--post-transition-distance);
+  }
+}
+
+@keyframes post-transition-in-left {
+  from {
+    opacity: 0;
+    translate: calc(-1 * var(--post-transition-distance));
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    --post-transition-distance: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }
 
 .container {

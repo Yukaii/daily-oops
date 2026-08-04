@@ -287,6 +287,14 @@ export async function PostPage({
           </div>
         ) : null}
         <div className="container pt-4 pb-3 px-3">
+          <Link
+            href={getLocalizedPath('/blog', locale)}
+            transitionTypes={['post-back']}
+            className="d-inline-block mb-3"
+          >
+            ← {copy.home.allPosts}
+          </Link>
+          <br />
           <span className="text-mono color-fg-muted">{localizedDate}</span>
         </div>
         <IframePreviewCardProvider>

@@ -5,6 +5,7 @@ import {
   getPostPageMetadata,
   PostPage,
 } from '@/app/_components/content-pages'
+import PageViewTransition from '@/components/PageViewTransition'
 import { PostParams } from '@/types'
 
 type PageProps = {
@@ -24,5 +25,9 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  return <PostPage locale="zh-TW" params={await params} />
+  return (
+    <PageViewTransition>
+      <PostPage locale="zh-TW" params={await params} />
+    </PageViewTransition>
+  )
 }
