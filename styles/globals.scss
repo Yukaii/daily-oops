@@ -8,6 +8,63 @@ html {
   scroll-padding-top: 54px; /* height of sticky header */
 }
 
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.post-forward) {
+  animation: 160ms ease-in both post-transition-out-left;
+}
+
+::view-transition-new(.post-forward) {
+  animation: 240ms ease-out both post-transition-in-right;
+}
+
+::view-transition-old(.post-back) {
+  animation: 160ms ease-in both post-transition-out-right;
+}
+
+::view-transition-new(.post-back) {
+  animation: 240ms ease-out both post-transition-in-left;
+}
+
+@keyframes post-transition-out-left {
+  to {
+    opacity: 0;
+    translate: -24px;
+  }
+}
+
+@keyframes post-transition-in-right {
+  from {
+    opacity: 0;
+    translate: 24px;
+  }
+}
+
+@keyframes post-transition-out-right {
+  to {
+    opacity: 0;
+    translate: 24px;
+  }
+}
+
+@keyframes post-transition-in-left {
+  from {
+    opacity: 0;
+    translate: -24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
 .container {
   max-width: 630px;
   display: block;

@@ -89,6 +89,7 @@ export default function PostRow({
         <Link
           ref={linkRef}
           href={href}
+          transitionTypes={['post-forward']}
           onClick={onLinkClick}
           className={styles.postLink}
           tabIndex={-1}
