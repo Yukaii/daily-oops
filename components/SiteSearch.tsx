@@ -13,39 +13,23 @@ import {
   useState,
 } from 'react'
 
-import dayjs from '@/lib/dayjs'
-import {
-  AppLocale,
-  getDayjsLocale,
-  getLocalizedPath,
-  getMessages,
-} from '@/lib/i18n'
+import type { AppLocale } from '@/lib/i18n'
+import { getMessages } from '@/lib/i18n'
 import { OPEN_SITE_SEARCH_EVENT } from '@/lib/keyboardShortcuts'
-import { SearchablePostPreview } from '@/types'
+import type { SearchIndexItem } from '@/lib/search'
 
 import styles from './SiteSearch.module.css'
 
 type SearchVariant = 'nav-desktop' | 'nav-mobile'
 
-type SearchItem = {
-  href: string
-  id: string
-  kind: 'page' | 'post'
-  meta: string
-  searchText: string
-  tags?: string[]
-  title: string
-}
-
 type SiteSearchProps = {
   locale: AppLocale
-  posts: SearchablePostPreview[]
   variant: SearchVariant
 }
 
 const MAX_RESULTS = 6
 
-const createFuse = (items: SearchItem[]) => {
+const createFuse = (items: SearchIndexItem[]) => {
   return new Fuse(items, {
     ignoreLocation: true,
     minMatchCharLength: 1,
@@ -58,11 +42,7 @@ const createFuse = (items: SearchItem[]) => {
   })
 }
 
-export default function SiteSearch({
-  locale,
-  posts,
-  variant,
-}: SiteSearchProps) {
+export default function SiteSearch({ locale, variant }: SiteSearchProps) {
   const router = useRouter()
   const copy = getMessages(locale)
   const pathname = usePathname()
@@ -73,66 +53,50 @@ export default function SiteSearch({
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query.trim())
 
-  const items = useMemo<SearchItem[]>(() => {
-    const pageItems: SearchItem[] = [
-      {
-        id: 'page-home',
-        title: copy.nav.home,
-        meta: copy.siteSearch.pageLabel,
-        href: getLocalizedPath('/', locale),
-        kind: 'page',
-        searchText: copy.home.description,
-      },
-      {
-        id: 'page-blog',
-        title: copy.nav.blog,
-        meta: copy.siteSearch.pageLabel,
-        href: getLocalizedPath('/blog', locale),
-        kind: 'page',
-        searchText: copy.pages.blogTitle,
-      },
-      {
-        id: 'page-projects',
-        title: copy.nav.projects,
-        meta: copy.siteSearch.pageLabel,
-        href: getLocalizedPath('/projects', locale),
-        kind: 'page',
-        searchText: copy.pages.projectsTitle,
-      },
-      {
-        id: 'page-about',
-        title: copy.nav.about,
-        meta: copy.siteSearch.pageLabel,
-        href: getLocalizedPath('/about', locale),
-        kind: 'page',
-        searchText: copy.pages.aboutTitle,
-      },
-    ]
+  const [items, setItems] = useState<SearchIndexItem[] | null>(null)
+  const [isIndexLoading, setIsIndexLoading] = useState(false)
 
-    const postItems = posts.map((post): SearchItem => {
-      const {
-        date: { year, month, day },
-        slug,
-      } = post
-
-      return {
-        id: post.id,
-        title: post.title,
-        meta: dayjs(`${year}-${month}-${day}`)
-          .locale(getDayjsLocale(locale))
-          .format('LL'),
-        href: getLocalizedPath(`/blog/${year}/${month}/${day}/${slug}`, locale),
-        kind: 'post',
-        searchText: post.searchText,
-        tags: post.tags,
-      }
-    })
-
-    return [...pageItems, ...postItems]
-  }, [copy, locale, posts])
-
-  const fuse = useMemo(() => createFuse(items), [items])
+  const fuse = useMemo(() => (items ? createFuse(items) : null), [items])
   const isDesktop = variant === 'nav-desktop'
+
+  // Fetch the prebuilt search index lazily so every page's RSC payload
+  // doesn't embed all post previews.
+  useEffect(() => {
+    if (!isOpen || items !== null || isIndexLoading) {
+      return
+    }
+
+    let cancelled = false
+    setIsIndexLoading(true)
+
+    fetch(`/api/search-index?locale=${locale}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Search index request failed: ${response.status}`)
+        }
+
+        return response.json() as Promise<SearchIndexItem[]>
+      })
+      .then((indexItems) => {
+        if (!cancelled) {
+          setItems(indexItems)
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setItems([])
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsIndexLoading(false)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [isOpen, items, isIndexLoading, locale])
 
   useEffect(() => {
     setIsOpen(false)
@@ -205,7 +169,7 @@ export default function SiteSearch({
   }, [variant])
 
   const results =
-    deferredQuery === ''
+    deferredQuery === '' || !fuse
       ? []
       : fuse
           .search(deferredQuery)
@@ -279,6 +243,8 @@ export default function SiteSearch({
                 <div className={styles.results} id={`${inputId}-results`}>
                   <SearchResults
                     emptyLabel={copy.siteSearch.empty(deferredQuery)}
+                    loadingLabel={copy.siteSearch.loading}
+                    isLoading={isIndexLoading || items === null}
                     pageLabel={copy.siteSearch.pageLabel}
                     postLabel={copy.siteSearch.postLabel}
                     results={results}
@@ -321,6 +287,8 @@ export default function SiteSearch({
                 <div className={resultsClassName} id={`${inputId}-results`}>
                   <SearchResults
                     emptyLabel={copy.siteSearch.empty(deferredQuery)}
+                    loadingLabel={copy.siteSearch.loading}
+                    isLoading={isIndexLoading || items === null}
                     pageLabel={copy.siteSearch.pageLabel}
                     postLabel={copy.siteSearch.postLabel}
                     results={results}
@@ -341,17 +309,25 @@ export default function SiteSearch({
 
 function SearchResults({
   emptyLabel,
+  loadingLabel,
+  isLoading,
   onNavigate,
   pageLabel,
   postLabel,
   results,
 }: {
   emptyLabel: string
+  loadingLabel: string
+  isLoading: boolean
   onNavigate: () => void
   pageLabel: string
   postLabel: string
-  results: SearchItem[]
+  results: SearchIndexItem[]
 }) {
+  if (isLoading) {
+    return <div className={styles.emptyState}>{loadingLabel}</div>
+  }
+
   if (results.length === 0) {
     return <div className={styles.emptyState}>{emptyLabel}</div>
   }

@@ -58,6 +58,7 @@ type Messages = {
   siteSearch: {
     open: string
     placeholder: string
+    loading: string
     pageLabel: string
     postLabel: string
     empty: (query: string) => string
@@ -162,6 +163,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     siteSearch: {
       open: 'Search',
       placeholder: 'Search posts and pages',
+      loading: 'Loading search index…',
       pageLabel: 'Page',
       postLabel: 'Post',
       empty: (query) => `No results matched "${query}".`,
@@ -265,6 +267,7 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
     siteSearch: {
       open: '搜尋',
       placeholder: '搜尋文章與頁面',
+      loading: '搜尋索引載入中…',
       pageLabel: '頁面',
       postLabel: '文章',
       empty: (query) => `找不到符合「${query}」的結果。`,

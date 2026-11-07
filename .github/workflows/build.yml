@@ -33,4 +33,6 @@ jobs:
           ABOUT_ME_NOTE_ID: ${{ secrets.ABOUT_ME_NOTE_ID }}
           DOMAIN: ${{ secrets.DOMAIN }}
           NEXT_PUBLIC_GA_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GA_TRACKING_ID }}
+          HACKMD_FETCH_CONCURRENCY: '5'
+          BUILD_PRERENDER_LIMIT: '20'
         run: pnpm build

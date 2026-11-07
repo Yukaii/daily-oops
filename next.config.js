@@ -24,7 +24,7 @@ const nextConfig = {
     ]
   },
   images: {
-    unoptimized: true,
+    // Optimized via Netlify Image CDN (requires remotePatterns below).
     remotePatterns: [
       {
         protocol: 'https',
