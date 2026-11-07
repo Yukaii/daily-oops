@@ -375,5 +375,19 @@ export async function getPostPageMetadata(
 }
 
 export async function getBlogPostStaticParams(): Promise<PostParams[]> {
-  return formatPostsAsParams(await getAllPostsWithSlug())
+  // Limit full prerender to the latest N posts to keep `next build` fast
+  // against the HackMD rate limit. Remaining slugs generate on-demand via
+  // ISR (`revalidate = 300` on the post pages, `dynamicParams` defaults to
+  // true). Set BUILD_PRERENDER_LIMIT=0 or a negative number to prerender all.
+  const rawLimit = Number.parseInt(
+    process.env.BUILD_PRERENDER_LIMIT ?? '20',
+    10,
+  )
+  const posts = await getAllPostsWithSlug()
+
+  if (!Number.isFinite(rawLimit) || rawLimit <= 0) {
+    return formatPostsAsParams(posts)
+  }
+
+  return formatPostsAsParams(posts.slice(0, Math.floor(rawLimit)))
 }

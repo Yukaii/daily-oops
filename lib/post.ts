@@ -1,3 +1,4 @@
+import pLimit from 'p-limit'
 import { cache } from 'react'
 
 import { config } from '@/lib/config'
@@ -45,6 +46,30 @@ type PostMetaWithSlug = PostMeta & {
 export const POSTS_REVALIDATE_SECONDS = 300
 
 const FETCH_RETRY_ATTEMPTS = 3
+const HACKMD_FETCH_CONCURRENCY =
+  Number.parseInt(process.env.HACKMD_FETCH_CONCURRENCY ?? '5', 10) || 5
+
+const getRetryAfterMs = (response: Response): number | null => {
+  const retryAfter = response.headers.get('retry-after')
+
+  if (!retryAfter) {
+    return null
+  }
+
+  const seconds = Number(retryAfter)
+
+  if (Number.isFinite(seconds)) {
+    return seconds * 1000
+  }
+
+  const dateMs = Date.parse(retryAfter)
+
+  if (!Number.isNaN(dateMs)) {
+    return Math.max(dateMs - Date.now(), 0)
+  }
+
+  return null
+}
 
 const sleep = (ms: number): Promise<void> => {
   return new Promise((resolve) => {
@@ -65,12 +90,37 @@ const withRetry = async <T>(
       lastError = error
 
       if (attempt < attempts) {
-        await sleep(attempt * 250)
+        const retryAfterMs = (error as { retryAfterMs?: unknown })?.retryAfterMs
+
+        await sleep(
+          typeof retryAfterMs === 'number' && retryAfterMs >= 0
+            ? Math.min(retryAfterMs, 30_000)
+            : attempt * 1000,
+        )
       }
     }
   }
 
   throw lastError
+}
+
+class RateLimitedResponse extends Error {
+  response: Response
+  retryAfterMs: number | null
+
+  constructor(response: Response) {
+    super(
+      `Failed to fetch ${response.url}: ${response.status} ${response.statusText}`,
+    )
+    this.response = response
+    this.retryAfterMs = getRetryAfterMs(response)
+  }
+}
+
+const throwOnRateLimit = async (response: Response): Promise<void> => {
+  if (response.status === 429) {
+    throw new RateLimitedResponse(response)
+  }
 }
 
 const normalizeMetaDate = (date: NoteFrontmatter['date']): string => {
@@ -105,8 +155,9 @@ const fetchText = async (url: string): Promise<string> => {
   return withRetry(() =>
     fetch(url, {
       next: { revalidate: POSTS_REVALIDATE_SECONDS },
-    }).then((response) => {
+    }).then(async (response) => {
       if (!response.ok) {
+        await throwOnRateLimit(response)
         throw new Error(
           `Failed to fetch ${url}: ${response.status} ${response.statusText}`,
         )
@@ -121,8 +172,9 @@ const fetchJson = async <T>(url: string): Promise<T> => {
   return withRetry(() =>
     fetch(url, {
       next: { revalidate: POSTS_REVALIDATE_SECONDS },
-    }).then((response) => {
+    }).then(async (response) => {
       if (!response.ok) {
+        await throwOnRateLimit(response)
         throw new Error(
           `Failed to fetch ${url}: ${response.status} ${response.statusText}`,
         )
@@ -157,35 +209,39 @@ const fetchOverviewNotes = cache(async (): Promise<HackmdNote[]> => {
 
 export const getAllPostsWithSlug = cache(async (): Promise<Post[]> => {
   const notes = await fetchOverviewNotes()
+  const limit = pLimit(HACKMD_FETCH_CONCURRENCY)
 
   const posts = (
     await Promise.all(
-      notes.map(async (note): Promise<Post | null> => {
-        const fullContent = await fetchPostData(note.id)
+      notes.map(
+        (note): Promise<Post | null> =>
+          limit(async (): Promise<Post | null> => {
+            const fullContent = await fetchPostData(note.id)
 
-        if (!fullContent) {
-          return null
-        }
+            if (!fullContent) {
+              return null
+            }
 
-        const { data, content } = parseMeta<NoteFrontmatter>(fullContent)
-        const meta = normalizePostMeta(data)
-        const slug = getSlugFromNote(note, data)
+            const { data, content } = parseMeta<NoteFrontmatter>(fullContent)
+            const meta = normalizePostMeta(data)
+            const slug = getSlugFromNote(note, data)
 
-        return {
-          id: note.id,
-          meta,
-          content,
-          note: {
-            id: note.id,
-            title: note.title,
-          },
-          title: note.title,
-          date: getDateFromNote(note, data),
-          slug,
-          tags: note.tags,
-          publishedAt: normalizePublishedAt(note.publishedAt),
-        }
-      }),
+            return {
+              id: note.id,
+              meta,
+              content,
+              note: {
+                id: note.id,
+                title: note.title,
+              },
+              title: note.title,
+              date: getDateFromNote(note, data),
+              slug,
+              tags: note.tags,
+              publishedAt: normalizePublishedAt(note.publishedAt),
+            }
+          }),
+      ),
     )
   )
     .filter((post): post is Post => post !== null)
