@@ -11,7 +11,11 @@ type ProvidersProps = {
 
 export default function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider attribute="data-color-mode">
+    <ThemeProvider
+      attribute="data-color-mode"
+      defaultTheme="system"
+      enableSystem
+    >
       <PageViewTracker />
       {children}
     </ThemeProvider>
