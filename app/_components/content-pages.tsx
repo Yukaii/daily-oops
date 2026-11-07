@@ -283,6 +283,8 @@ export async function PostPage({
               className="u-photo"
               width={820}
               height={312}
+              priority
+              sizes="(max-width: 820px) 100vw, 820px"
             />
           </div>
         ) : null}

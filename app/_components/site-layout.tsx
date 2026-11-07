@@ -10,25 +10,19 @@ import {
   NEXT_PUBLIC_GITHUB_USERNAME,
 } from '@/lib/constants'
 import { AppLocale, DEFAULT_LOCALE, getLocalizedPath } from '@/lib/i18n'
-import { getAllPostsWithSlug, toSearchablePostPreview } from '@/lib/post'
-
 type SiteLayoutProps = {
   children: ReactNode
   locale: AppLocale
 }
 
-export default async function SiteLayout({
-  children,
-  locale,
-}: SiteLayoutProps) {
+export default function SiteLayout({ children, locale }: SiteLayoutProps) {
   const homePath = getLocalizedPath('/', locale)
   const canonicalHomeUrl = `https://${NEXT_PUBLIC_DOMAIN}${homePath}`
-  const posts = (await getAllPostsWithSlug()).map(toSearchablePostPreview)
 
   return (
     <>
       <KeyboardShortcuts locale={locale} />
-      <Header locale={locale} posts={posts} />
+      <Header locale={locale} />
       {children}
       <Footer />
       <ScrollProgress />

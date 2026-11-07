@@ -24,7 +24,6 @@ import {
   switchLocalePath,
 } from '@/lib/i18n'
 import { openShortcutsHelp } from '@/lib/keyboardShortcuts'
-import { SearchablePostPreview } from '@/types'
 
 import LogoAnimated from '../public/logo-animated.gif'
 import SiteSearch from './SiteSearch'
@@ -35,10 +34,9 @@ const NightSwitch = dynamic(() => import('./NightSwitch'), {
 
 type HeaderProps = {
   locale: AppLocale
-  posts: SearchablePostPreview[]
 }
 
-const Header = ({ locale, posts }: HeaderProps) => {
+const Header = ({ locale }: HeaderProps) => {
   const router = useRouter()
   const pathname = usePathname() ?? '/'
   const currentPath = stripLocalePrefix(pathname)
@@ -141,6 +139,9 @@ const Header = ({ locale, posts }: HeaderProps) => {
           <Image
             src={LogoAnimated}
             alt="Daily Oops"
+            // Animated GIF: bypass the optimizer to preserve animation.
+            unoptimized
+            priority
             style={{ height: 'auto', maxWidth: '90%' }}
           />
         </div>
@@ -180,10 +181,10 @@ const Header = ({ locale, posts }: HeaderProps) => {
             ))}
           </div>
 
-          <SiteSearch locale={locale} posts={posts} variant="nav-desktop" />
+          <SiteSearch locale={locale} variant="nav-desktop" />
 
           <div className="site-mobile-actions">
-            <SiteSearch locale={locale} posts={posts} variant="nav-mobile" />
+            <SiteSearch locale={locale} variant="nav-mobile" />
 
             <div className="site-mobile-menu" ref={mobileMenuRef}>
               <button
