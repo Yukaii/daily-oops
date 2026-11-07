@@ -14,6 +14,9 @@ type PageProps = {
 
 export const revalidate = 300
 
+// Non-prerendered slugs are generated on first request and cached (ISR).
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   return getBlogPostStaticParams()
 }
