@@ -1,6 +1,6 @@
 'use client'
 
-import { MoonIcon, SunIcon } from '@primer/octicons-react'
+import { DeviceDesktopIcon, MoonIcon, SunIcon } from '@primer/octicons-react'
 import cx from 'classnames'
 import { useTheme } from 'next-themes'
 import type { AriaRole, MouseEvent } from 'react'
@@ -8,6 +8,9 @@ import { useRef } from 'react'
 
 type NightSwitchProps = {
   label: string
+  lightLabel?: string
+  darkLabel?: string
+  systemLabel?: string
   className?: string
   role?: AriaRole
   showText?: boolean
@@ -15,8 +18,21 @@ type NightSwitchProps = {
   variant?: 'default' | 'menu'
 }
 
+type ThemeChoice = 'light' | 'dark' | 'system'
+
+const THEME_ORDER: ThemeChoice[] = ['light', 'dark', 'system']
+
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const getSystemTheme = (): 'light' | 'dark' =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+const normalizeTheme = (theme?: string): ThemeChoice =>
+  theme === 'light' || theme === 'dark' || theme === 'system' ? theme : 'system'
+
+const getNextTheme = (theme: ThemeChoice): ThemeChoice =>
+  THEME_ORDER[(THEME_ORDER.indexOf(theme) + 1) % THEME_ORDER.length]
 
 const getRevealRadius = (x: number, y: number) =>
   Math.hypot(
@@ -135,18 +151,41 @@ const createThemeSnapshot = (theme: string, zIndex = 999) => {
 
 export default function NightSwitch({
   label,
+  lightLabel = 'Light',
+  darkLabel = 'Dark',
+  systemLabel = 'System',
   className,
   role,
   showText = false,
   onPress,
   variant = 'default',
 }: NightSwitchProps) {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
   const isAnimatingRef = useRef(false)
-  const icon = resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />
+  const currentTheme = normalizeTheme(theme)
+  const currentVisual =
+    resolvedTheme === 'light' || resolvedTheme === 'dark'
+      ? resolvedTheme
+      : undefined
+  const themeLabels: Record<ThemeChoice, string> = {
+    light: lightLabel,
+    dark: darkLabel,
+    system: systemLabel,
+  }
+  const currentLabel = themeLabels[currentTheme]
+
+  const icon =
+    currentTheme === 'system' ? (
+      <DeviceDesktopIcon />
+    ) : currentVisual === 'dark' ? (
+      <MoonIcon />
+    ) : (
+      <SunIcon />
+    )
+  const accessibleLabel = `${label}: ${currentLabel}`
 
   const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
-    const nextTheme = resolvedTheme === 'light' ? 'dark' : 'light'
+    const next = getNextTheme(normalizeTheme(theme))
 
     if (isAnimatingRef.current) {
       return
@@ -154,24 +193,36 @@ export default function NightSwitch({
 
     onPress?.()
 
-    if (!resolvedTheme || prefersReducedMotion()) {
-      setTheme(nextTheme)
+    if (prefersReducedMotion()) {
+      setTheme(next)
+      return
+    }
+
+    const fromVisual =
+      resolvedTheme === 'light' || resolvedTheme === 'dark'
+        ? resolvedTheme
+        : getSystemTheme()
+    const toVisual = next === 'system' ? getSystemTheme() : next
+
+    // Preference still changes even when the resolved colors match
+    // (e.g. System (Light) -> Light), so skip the reveal animation there.
+    if (!resolvedTheme || fromVisual === toVisual) {
+      setTheme(next)
       return
     }
 
     isAnimatingRef.current = true
-    const currentTheme = resolvedTheme
 
     const { left, top, width, height } =
       event.currentTarget.getBoundingClientRect()
     const x = left + width / 2
     const y = top + height / 2
     const revealRadius = getRevealRadius(x, y)
-    const reverseDirection = nextTheme === 'light'
-    const snapshot = createThemeSnapshot(currentTheme, 999)
+    const reverseDirection = toVisual === 'light'
+    const snapshot = createThemeSnapshot(fromVisual, 999)
 
     if (!snapshot) {
-      setTheme(nextTheme)
+      setTheme(next)
       isAnimatingRef.current = false
       return
     }
@@ -182,19 +233,19 @@ export default function NightSwitch({
       await nextFrame()
 
       if (reverseDirection) {
-        revealSnapshot = createThemeSnapshot(nextTheme, 1000)
+        revealSnapshot = createThemeSnapshot(toVisual, 1000)
 
         if (!revealSnapshot) {
-          setTheme(nextTheme)
-          await waitForThemeAttribute(nextTheme)
+          setTheme(next)
+          await waitForThemeAttribute(toVisual)
           await nextFrame()
           return
         }
 
         revealSnapshot.style.clipPath = `circle(0px at ${x}px ${y}px)`
 
-        setTheme(nextTheme)
-        await waitForThemeAttribute(nextTheme)
+        setTheme(next)
+        await waitForThemeAttribute(toVisual)
         await nextFrame()
 
         const revealAnimation = revealSnapshot.animate(
@@ -217,8 +268,8 @@ export default function NightSwitch({
 
         await revealAnimation.finished
       } else {
-        setTheme(nextTheme)
-        await waitForThemeAttribute(nextTheme)
+        setTheme(next)
+        await waitForThemeAttribute(toVisual)
         await nextFrame()
 
         const revealAnimation = snapshot.animate(
@@ -256,19 +307,22 @@ export default function NightSwitch({
       type="button"
       onClick={handleClick}
       role={role}
-      aria-label={label}
-      title={label}
+      aria-label={accessibleLabel}
+      title={accessibleLabel}
     >
       {variant === 'menu' ? (
-        <span className="site-mobile-menu-item-label">
-          {icon}
-          <span>{label}</span>
-        </span>
+        <>
+          <span className="site-mobile-menu-item-label">
+            {icon}
+            <span>{label}</span>
+          </span>
+          <span className="site-mobile-menu-item-value">{currentLabel}</span>
+        </>
       ) : (
         icon
       )}
       {showText && variant !== 'menu' ? (
-        <span className="night-switch-button-label">{label}</span>
+        <span className="night-switch-button-label">{currentLabel}</span>
       ) : null}
     </button>
   )

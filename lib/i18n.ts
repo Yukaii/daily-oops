@@ -11,6 +11,9 @@ type Messages = {
   languageSwitch: string
   languageNames: Record<AppLocale, string>
   themeToggle: string
+  themeLight: string
+  themeDark: string
+  themeSystem: string
   nav: {
     home: string
     blog: string
@@ -98,6 +101,9 @@ const messages: Record<AppLocale, Messages> = {
       'zh-TW': '中',
     },
     themeToggle: 'Toggle color theme',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    themeSystem: 'System',
     nav: {
       home: 'Home',
       blog: 'Blog',
@@ -198,6 +204,9 @@ For older projects, please visit my [GitHub](https://github.com/Yukaii), or take
       'zh-TW': '中',
     },
     themeToggle: '切換佈景主題',
+    themeLight: '淺色',
+    themeDark: '深色',
+    themeSystem: '跟隨系統',
     nav: {
       home: '首頁',
       blog: '文章',

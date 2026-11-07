@@ -227,6 +227,9 @@ const Header = ({ locale, posts }: HeaderProps) => {
 
                   <NightSwitch
                     label={copy.themeToggle}
+                    lightLabel={copy.themeLight}
+                    darkLabel={copy.themeDark}
+                    systemLabel={copy.themeSystem}
                     className="site-mobile-menu-item"
                     role="menuitem"
                     variant="menu"
@@ -276,7 +279,12 @@ const Header = ({ locale, posts }: HeaderProps) => {
         >
           <QuestionIcon />
         </button>
-        <NightSwitch label={copy.themeToggle} />
+        <NightSwitch
+          label={copy.themeToggle}
+          lightLabel={copy.themeLight}
+          darkLabel={copy.themeDark}
+          systemLabel={copy.themeSystem}
+        />
       </div>
     </>
   )
